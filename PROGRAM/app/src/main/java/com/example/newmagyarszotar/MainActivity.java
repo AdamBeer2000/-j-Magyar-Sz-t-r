@@ -9,9 +9,10 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity
 {
     //----------test-------------------------
-    private Button test_button;
-    private TextView text_view_test;
-    private int altern = 0;
+    private Button conn_test_button;
+    private TextView conn_text_view_test;
+    private boolean once_conn = true;
+    private DataBase db = new DataBase();
     //---------------------------------------
 
     @Override
@@ -21,11 +22,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //----------------test----------------------
-        text_view_test = (TextView)findViewById(R.id.textView);
-        test_button = (Button)findViewById(R.id.testbtn);
+        conn_text_view_test = (TextView)findViewById(R.id.textView);
+        conn_test_button = (Button)findViewById(R.id.testbtn);
 
-        test_button.setOnClickListener(testButtonClickListener);
-
+        conn_test_button.setOnClickListener(testButtonClickListener);
         //------------------------------------------
     }
 
@@ -34,15 +34,11 @@ public class MainActivity extends AppCompatActivity
     {
         public void onClick(View v)
         {
-            if(altern == 0)
+            if(once_conn)
             {
-                text_view_test.setText("HosszuIdoNemTenger++");
-                altern = 1;
-            }
-            else
-            {
-                text_view_test.setText("HosszuIdoNemTenger--");
-                altern = 0;
+
+                conn_text_view_test.setText(db.getStr());
+                once_conn = false;
             }
         }
     };
