@@ -6,8 +6,8 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="background-image: url('https://i.imgur.com/xhfoKn4.png')">
-    <img src="https://i.imgur.com/qwR2B46.png" alt="itt kéne lennie">
+<body style="background-image: url('https://i.imgur.com/ycKxlLt.png')">
+    <img src="https://i.imgur.com/WUMps0s.png" alt="itt kéne lennie">
     <form id="form1" runat="server">
         <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         <asp:Label ID="Label1" runat="server" BackColor="White" Text="Még semmi"></asp:Label>
