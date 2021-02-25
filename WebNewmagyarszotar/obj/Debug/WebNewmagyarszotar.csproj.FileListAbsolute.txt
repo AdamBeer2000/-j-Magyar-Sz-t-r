@@ -215,7 +215,6 @@ E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Newtonsoft.Json.xml
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Antlr3.Runtime.pdb
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.AspNet.FriendlyUrls.xml
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csprojAssemblyReference.cache
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csproj.CoreCompileInputs.cache
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csproj.CopyComplete
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.dll
