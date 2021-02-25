@@ -16,28 +16,33 @@
     height: 20%;
 }
 
-/*
+
 
 #Button1 {
-    background-color: #73e600;
+    background-color: #6ae134;
     border: none;
     font-family: Calibri;
     font-weight: bold;
     font-size: 20px;
     color: #202020;
+    margin-top: 5%;
     padding: 5px 15px;
     text-align: center;
     outline: none;
 }
-*/
 
-/*
 #Button1:hover {
-        cursor: pointer;
-        box-shadow: 0 0 10px #73e600;
-    }
-*/
+    cursor: pointer;
+    box-shadow: 0 0 10px #6ae134;
+}
 
-#title{
+
+#title {
+    padding-top: 1%;
     width: 50%;
+}
+
+Label1 {
+    padding-top: 5%;
+    margin-top: 5%;
 }
