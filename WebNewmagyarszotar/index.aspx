@@ -7,7 +7,7 @@
     <title>Sajt</title>
     <link rel="stylesheet" href="StyleSheet1.css">
 </head>
-<body style="background-image: url('https://i.imgur.com/DkxArzl.png')">
+<body>
     <table id="Page">
         <img src="https://i.imgur.com/WUMps0s.png" id="title" alt="title">
         <form id="form1" runat="server">
@@ -17,5 +17,5 @@
     </form>
     </table>
     
- </body>
+</body>
 </html>
