@@ -46,3 +46,23 @@ Label1 {
     padding-top: 5%;
     margin-top: 5%;
 }
+
+/*
+    telefon
+    https://i.imgur.com/tnzV576.png
+*/
+
+@media only screen and (min-width: 480px) {
+    body {
+        background-image: url('https://i.imgur.com/FKNQ2rM.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        /*background-position-x: 100%;*/
+    }
+    
+}
+
+    /*
+    nagy
+    
+*/

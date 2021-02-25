@@ -219,3 +219,4 @@ E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csproj.
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csproj.CopyComplete
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.dll
 E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.pdb
+E:\git2\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csprojAssemblyReference.cache
