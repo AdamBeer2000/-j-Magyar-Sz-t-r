@@ -16,10 +16,10 @@
     height: 20%;
 }
 
-/*
+
 
 #Button1 {
-    background-color: #73e600;
+    background-color: #54d422;
     border: none;
     font-family: Calibri;
     font-weight: bold;
@@ -29,14 +29,12 @@
     text-align: center;
     outline: none;
 }
-*/
 
-/*
+
 #Button1:hover {
         cursor: pointer;
         box-shadow: 0 0 10px #73e600;
     }
-*/
 
 #title{
     width: 50%;
