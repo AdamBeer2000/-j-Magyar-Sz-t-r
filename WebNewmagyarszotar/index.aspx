@@ -20,19 +20,19 @@
         <tr>
             <td>
                 <a href="https://www.youtube.com/watch?v=yV3U2jAlbVg">
-                    <img src="https://i.imgur.com/1eNto3n.png" width="15%" id="menu_b" alt="menu">
+                    <img src="https://i.imgur.com/NDrLvei.png" width="25%" id="menu_b" alt="ranks">
                 </a>
             </td>
 
             <td>
-                <a href="">
-                    <img src="https://i.imgur.com/jT5qLd4.png" width="15%" id="menu_b" alt="menu">
+                <a href="https://www.youtube.com/watch?v=yV3U2jAlbVg">
+                    <img src="https://i.imgur.com/fzoTrnp.png" width="45%" id="menu_b" alt="register">
                 </a>
             </td>
 
             <td>
-                <a href="">
-                    <img src="https://i.imgur.com/jT5qLd4.png" width="15%" id="menu_b" alt="menu">
+                <a href="https://www.youtube.com/watch?v=yV3U2jAlbVg">
+                    <img src="https://i.imgur.com/OapVS0v.png" width="25%" id="menu_b" alt="search">
                 </a>
             </td>
         </tr>
