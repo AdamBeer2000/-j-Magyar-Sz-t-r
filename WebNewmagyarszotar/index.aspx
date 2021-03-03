@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>New Magyar Szótár</title>
-    <link rel="stylesheet" href="StyleSheet1.css" />
+    <link rel="stylesheet" href="Style_index.css" />
 </head>
 <body>
     <table id="Menu_title">
