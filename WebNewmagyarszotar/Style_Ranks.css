@@ -1,2 +1,18 @@
 ﻿body {
+    background-image: url('https://i.imgur.com/DkxArzl.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media only screen and (min-width: 1024px) {
+    body {
+        background-image: url('https://i.imgur.com/FKNQ2rM.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
 }
