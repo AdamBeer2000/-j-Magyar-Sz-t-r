@@ -160,6 +160,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="Style_Ranks.css" />
+    <Content Include="Style_Browse.css" />
     <Content Include="Style_Register.css" />
     <Content Include="Style_index.css" />
     <Content Include="ViewSwitcher.ascx" />

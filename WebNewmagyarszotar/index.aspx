@@ -11,7 +11,7 @@
     <table id="Menu_title">
         <tr>
             <td>
-                <img src="https://i.imgur.com/WUMps0s.png" id="title" alt="title" />
+                <img src="https://i.imgur.com/WUMps0s.png" width="60%" id="title" alt="title" />
             </td>
         </tr>
     </table>
