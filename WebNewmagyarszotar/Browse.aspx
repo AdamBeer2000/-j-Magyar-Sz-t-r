@@ -118,8 +118,8 @@
     <table id="search">
         <tr>
             <td>
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-                <input id="kereses" type="text" name="kereses" placeholder="keress bazmeg" runat="server"/>
+                <asp:Label ID="Label1" runat="server" BackColor="White" Text="Label"></asp:Label>
+                <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
             </td>
         </tr>
     </table>
@@ -160,7 +160,6 @@
         </tr>
     </table>
         <div>
-            <asp:Label ID="Label1" runat="server" Text="Anyááááááááááááááááááád"></asp:Label>
         </div>
     </form>
 
