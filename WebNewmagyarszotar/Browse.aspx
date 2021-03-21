@@ -39,7 +39,7 @@
 
 
 
-        #Page {
+        #SzotarTable {
             border: 1px solid #898E01;
             margin-top: 1%;
             padding-top: 1%;
@@ -87,6 +87,12 @@
             width: 40%;
             height: 20%;
         }
+        #rowStyle
+        {
+            color:#898E01;
+            font-family: Calibri;
+        }
+
 
         @media only screen and (min-width: 1024px) {
             body {
@@ -107,18 +113,21 @@
         </tr>
     </table>
 
+    <form id="form1" runat="server">
+
     <table id="search">
         <tr>
             <td>
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
                 <input id="kereses" type="text" name="kereses" placeholder="keress bazmeg" runat="server"/>
             </td>
         </tr>
     </table>
 
-    <table id="Page">
+    <table id="SzotarTable" runat="server">
         <tr>
             <td>
-                <h1  style="color:#898E01;font-family: Calibri;">
+                <h1 style="color:#898E01;font-family: Calibri;">
                     angol szó
                 </h1>
             </td>
@@ -135,6 +144,7 @@
             </td>
         </tr>
     </table>
+
     <table id="for_back">
         <tr>
             <td>
@@ -149,7 +159,6 @@
             </td>
         </tr>
     </table>
-    <form id="form1" runat="server">
         <div>
             <asp:Label ID="Label1" runat="server" Text="Anyááááááááááááááááááád"></asp:Label>
         </div>

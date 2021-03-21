@@ -15,15 +15,6 @@ namespace WebNewmagyarszotar
     {
 
         /// <summary>
-        /// kereses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText kereses;
-
-        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -31,15 +22,6 @@ namespace WebNewmagyarszotar
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// Button1 control.
@@ -51,21 +33,30 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// Button2 control.
+        /// kereses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText kereses;
 
         /// <summary>
-        /// TextBox1 control.
+        /// SzotarTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.HtmlControls.HtmlTable SzotarTable;
+
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }
