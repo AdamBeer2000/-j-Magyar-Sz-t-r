@@ -11,7 +11,13 @@ namespace WebNewmagyarszotar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            DataBase db = new DataBase();
+            Label1.Text = "Test<br>";
+            foreach (KeyValuePair<String, EnglishWord> word in db.getAll())
+            {
+                Label1.Text += word.ToString() + "<br>";
+            }
         }
+
     }
 }

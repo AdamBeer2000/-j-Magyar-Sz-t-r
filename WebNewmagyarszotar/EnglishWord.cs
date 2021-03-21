@@ -35,6 +35,8 @@ namespace WebNewmagyarszotar
         public string getWord() { return this.eng_word; }
         //-------------------------------------------------------------|
 
+        public void addTranslation(HungarianWord word) { hun.Add(word); }
+
         public string toString()
         {
             return "" + this.eng_ID.ToString() + "_" + this.eng_word + "_" + this.eng_desc + "_" + this.user;

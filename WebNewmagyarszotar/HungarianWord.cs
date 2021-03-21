@@ -12,14 +12,14 @@ namespace WebNewmagyarszotar
         
         public HungarianWord() { }
         
-        public HungarianWord(int _ID, string _word, string _user, int _like = 0, int _dislike = 0, int _report)
+        public HungarianWord(int _ID, string _word, string _user, int _like = 0, int _dislike = 0)
         {
             this.hun_ID = _ID;
             this.like = _like;
             this.dislike = _dislike;
             this.hun_word = _word;
             this.user = _user;
-            this.report_count = _report;
+            //this.report_count = _report;
         }
 
         //-------------------------------------------------------------|
