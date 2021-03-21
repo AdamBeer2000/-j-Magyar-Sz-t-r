@@ -37,9 +37,14 @@ namespace WebNewmagyarszotar
 
         public void addTranslation(HungarianWord word) { hun.Add(word); }
 
-        public string toString()
+        public override string ToString()
         {
-            return "" + this.eng_ID.ToString() + "_" + this.eng_word + "_" + this.eng_desc + "_" + this.user;
+            string str="" + this.eng_ID.ToString() + "_" + this.eng_word + "_" + this.eng_desc + "_" + this.user+" : ";
+            foreach(HungarianWord word in hun)
+            {
+                str += word.ToString();
+            }
+            return str;
         }
     }
 

@@ -27,6 +27,16 @@ namespace WebNewmagyarszotar
         //-------------------------------------------------------------|
         public void setLike(int param) { this.like = param; }
         public void setDislike(int param) { this.dislike = param; }
+
+        public void addLike(int param) 
+        { 
+            this.like++; 
+        }
+        public void addDislike() 
+        { 
+            this.dislike++; 
+        }
+
         public void setReport(int param) { this.report_count = param; }
         public void setID(int param) { this.hun_ID = param; }
         public void setHunWord(string param) { this.hun_word = param; }
@@ -40,7 +50,7 @@ namespace WebNewmagyarszotar
         public string getUser() { return this.user; }
         //-------------------------------------------------------------|
 
-        public string toString()
+        public override string ToString()
         {
             return "" + this.hun_ID.ToString() + "_" + this.hun_word + "_" + this.user + "_" + this.like.ToString() + "_" + this.dislike.ToString() + "_" + this.report_count.ToString();
         }
