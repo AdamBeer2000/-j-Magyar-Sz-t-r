@@ -88,9 +88,37 @@
     <table id="Page">
         <tr>
             <td>
-                <h1>
-                    asd
-                </h1>
+
+                <table id="first">
+                    <tr>
+                        <td>
+                            <h1>
+                                1. szó
+                            </h1>
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="splitter">
+                    <tr>
+                        <td>
+                            <h1>
+                                ide kell a vonal
+                            </h1>
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="second">
+                    <tr>
+                        <td>
+                            <h1>
+                                1. szó
+                            </h1>
+                        </td>
+                    </tr>
+                </table>
+
             </td>
         </tr>
     </table>
