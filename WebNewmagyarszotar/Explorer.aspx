@@ -34,7 +34,7 @@
             padding-top: 1%;
             margin-left: 20%;
             margin-right: 20%;
-            text-align: center;
+            text-align: left;
             width: 60%;
             height: 20%;
         }
@@ -46,7 +46,7 @@
             margin-right: 20%;
             text-align: center;
             width: 60%;
-            height: 20%;
+            height: 60%;
         }
 
         h1 {
@@ -80,6 +80,16 @@
             <td>
                 <h1>
                     angol szó
+                </h1>
+            </td>
+        </tr>
+    </table>
+
+    <table id="Page">
+        <tr>
+            <td>
+                <h1>
+                    asd
                 </h1>
             </td>
         </tr>

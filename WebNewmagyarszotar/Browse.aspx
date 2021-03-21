@@ -48,6 +48,8 @@
             text-align: center;
             width: 90%;
             height: 20%;
+            background-color: #080808;
+            opacity: 0.8;
         }
 
         h1 {
@@ -63,6 +65,7 @@
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
+            opacity: 0.8;
         }
         #kereses::-webkit-input-placeholder {
             color:    #898E01;
@@ -72,6 +75,17 @@
         }
         #kereses::-moz-placeholder {
             color:    #898E01;
+        }
+
+        #for_back {
+            border: none;
+            margin-top: 1%;
+            padding-top: 1%;
+            margin-left: 30%;
+            margin-right: 30%;
+            text-align: center;
+            width: 40%;
+            height: 20%;
         }
 
         @media only screen and (min-width: 1024px) {
@@ -118,6 +132,20 @@
                     vicces magyar jelentése
                 </h1>
 
+            </td>
+        </tr>
+    </table>
+    <table id="for_back">
+        <tr>
+            <td>
+                <a href="Browse.aspx">
+                    <img src="https://i.imgur.com/D5tvrqL.png" width="10%" alt="browse" />
+                </a>
+            </td>
+            <td>
+                <a href="Browse.aspx">
+                    <img src="https://i.imgur.com/by9oUf1.png" width="10%" alt="browse" />
+                </a>
             </td>
         </tr>
     </table>
