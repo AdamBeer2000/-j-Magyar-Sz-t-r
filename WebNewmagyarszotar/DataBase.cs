@@ -32,5 +32,7 @@ namespace WebNewmagyarszotar
 
             return result;
         }
+
+        
     }
 }
