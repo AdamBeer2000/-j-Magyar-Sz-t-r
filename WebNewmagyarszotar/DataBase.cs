@@ -33,6 +33,31 @@ namespace WebNewmagyarszotar
             return result;
         }
 
+<<<<<<< Updated upstream
         
+=======
+        public string  test ()
+        {
+            string querry = "SELECT eng.szo, hun.szo FROM szotar AS sz INNER JOIN magyarszo AS hun ON sz.magyarszo_id = hun.ID INNER JOIN angolszo AS eng ON eng.ID = sz.angolszo_id ORDER BY eng.szo";
+            SqlCommand c = new SqlCommand(querry, conn);
+            string thing="";
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = c.ExecuteReader();
+                while (reader.Read())
+                {
+                    thing += reader.GetString(0)+":"+reader.GetString(1)+"<br>";
+                }
+
+                conn.Close();
+            }
+            catch
+            {
+                return "Fuck";
+            }
+            return thing;
+        }
+>>>>>>> Stashed changes
     }
 }
