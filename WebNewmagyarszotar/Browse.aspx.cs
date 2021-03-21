@@ -45,10 +45,5 @@ namespace WebNewmagyarszotar
 
             SzotarTable.Rows.Add(row);
         }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            
-            Console.WriteLine("asd");
-        }
     }
 }

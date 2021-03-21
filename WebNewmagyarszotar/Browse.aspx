@@ -77,6 +77,10 @@
             color:    #898E01;
         }
 
+        #ImageButton1 {
+            
+        }
+
         #for_back {
             border: none;
             margin-top: 1%;
@@ -118,7 +122,6 @@
     <table id="search">
         <tr>
             <td>
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
                 <input id="kereses" type="text" name="kereses" placeholder="keress bazmeg" runat="server"/>
             </td>
         </tr>
