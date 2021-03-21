@@ -20,12 +20,12 @@ namespace WebNewmagyarszotar
             {
                 //YEY ->Connection check
             }
+            //connection_info = db.getAllDataDEBUG();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-            Label1.Text = connection_info;         
         }
     }
 }

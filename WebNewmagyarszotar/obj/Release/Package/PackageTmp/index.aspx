@@ -4,18 +4,57 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Sajt</title>
-    <link rel="stylesheet" href="StyleSheet1.css">
+    <title>New Magyar Szótár</title>
+    <link rel="stylesheet" href="Style_index.css" />
 </head>
-<body style="background-image: url('https://i.imgur.com/DkxArzl.png')">
-    <table id="Page">
-        <img src="https://i.imgur.com/WUMps0s.png" id="title" alt="title">
-        <form id="form1" runat="server">
-        <asp:Button ID="Button1" runat="server" Text="Nyomd meg, ha vagány vagy" OnClick="Button1_Click" />
-        <br>
-        <asp:Label ID="Label1" runat="server" BackColor="White" Text="Még semmi"></asp:Label>
-    </form>
+<body>
+    <table id="Menu_title">
+        <tr>
+            <td>
+                <img src="https://i.imgur.com/WUMps0s.png" width="60%" id="title" alt="title" />
+            </td>
+        </tr>
     </table>
+
+    <table id="Menu_bar">
+        <tr>
+            <td>
+                <a href="Ranks.aspx">
+                    <img src="https://i.imgur.com/NDrLvei.png" width="30%" id="ranks" alt="ranks" />
+                </a>
+            </td>
+
+            <td>
+                <a href="Register.aspx">
+                    <img src="https://i.imgur.com/fzoTrnp.png" width="55%" id="register" alt="register" />
+                </a>
+            </td>
+
+            <td>
+                <a href="Browse.aspx">
+                    <img src="https://i.imgur.com/fQnUHnw.png" width="38%" id="browse" alt="browse" />
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <table id="Page">
+        <tr>
+            <td>
+
+                <form id="form1" runat="server">
+                    <asp:Button ID="Button1" runat="server" Text="Nyomd meg, ha vagány vagy" OnClick="Button1_Click" />
+                    <br />
+                    <asp:Label ID="Label1" runat="server" BackColor="White" Text="Még semmi"></asp:Label>
+                </form>
+            </td>
+        </tr>
+        
+    </table>
+    <!--
+        <img src="https://i.imgur.com/1eNto3n.png" id="menu" alt="menu">
+        -->
     
- </body>
+    
+</body>
 </html>
