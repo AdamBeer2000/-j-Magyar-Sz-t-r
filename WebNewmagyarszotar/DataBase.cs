@@ -40,6 +40,42 @@ namespace WebNewmagyarszotar
             return result;
         }
 
+        public Dictionary<String, EnglishWord> getAll(string searchField="")
+        {
+            //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
+            searchField = "%" + searchField + "%";
+            string querry = "SELECT angolszo_id,angolszo.szo,definicio,angolszo.bekuldo,magyarszo_id,magyarszo.szo,magyarszo.bekuldo,tetszes,nemtetszes FROM szotar JOIN angolszo on angolszo_id = angolszo.ID JOIN magyarszo on magyarszo_id = magyarszo.ID WHERE angolszo.szo like '%"+searchField+ "%' OR magyarszo.szo like '%" + searchField + "%' OR definicio like '%" + searchField + "%' ";
+
+            Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
+
+            SqlCommand c = new SqlCommand(querry, conn);
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = c.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (!words.ContainsKey(reader.GetString(1)))
+                    {
+                        words.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
+                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8)));
+                    }
+                    else
+                    {
+                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8)));
+                    }
+
+                }
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                latestErrorMsg = e.Message;
+            }
+
+            return words;
+        }
         public Dictionary<String, EnglishWord> getAll()
         {
             //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
