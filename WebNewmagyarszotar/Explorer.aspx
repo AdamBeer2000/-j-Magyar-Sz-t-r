@@ -45,7 +45,7 @@
             margin-right: 20%;
             text-align: center;
             width: 60%;
-            height: 70%;
+            height: 80%;
         }
 
         #elso_szo
@@ -123,7 +123,7 @@
                     <tr>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/eDgHUgc.png" width="100%" id="vonal_1" alt="vonal" />
+                                <img src="https://i.imgur.com/VEp6mpu.png" width="100%" id="vonal_1" alt="vonal" />
                             </h1>
                         </td>
                         <td>
@@ -138,7 +138,7 @@
                         </td>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/eDgHUgc.png" width="100%" id="vonal_2" alt="vonal" />
+                                <img src="https://i.imgur.com/Vqd8ni8.png" width="100%" id="vonal_2" alt="vonal" />
                             </h1>
                         </td>
                     </tr>
