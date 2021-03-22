@@ -78,13 +78,14 @@ namespace WebNewmagyarszotar
             HtmlTableCell cell3 = new HtmlTableCell();
             HtmlTableCell cell4 = new HtmlTableCell();
 
-            HtmlButton lenyit = new HtmlButton();
+            ImageButton lenyit = new ImageButton();
 
             lenyit.ID = "Button_lenyit_" + eng.getWord();
 
-            lenyit.ServerClick += new System.EventHandler(this.show_all);
+            lenyit.Click += new ImageClickEventHandler(this.show_all);
             lenyit.Attributes.Add("runat", "server");
-            lenyit.InnerText = "etc....";
+            lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";
+            lenyit.Attributes.Add("class", "lenyitbutton");
 
             cell1.InnerText = eng.getWord();
             cell2.InnerText = eng.getTranslations()[0].getHunWord()+"\t";
@@ -95,6 +96,7 @@ namespace WebNewmagyarszotar
             row.Cells.Add(cell4);
 
             row.Attributes.Add("class", "rowStyle");
+            row.Attributes.Add("max-height", "30%");
             table.Rows.Add(row);
 
             if (showall.Contains(eng.getWord()))
@@ -120,7 +122,10 @@ namespace WebNewmagyarszotar
             ImageButton dislike = new ImageButton();
 
             cell1.InnerText = eng;
+            //cell1.Attributes.Add("border", "1px solid #898E01");
             cell3.InnerText = hun.getHunWord();
+            cell3.BorderColor = "#898E01";
+
 
             row.Cells.Add(cell1);
             row.Cells.Add(cell3);
@@ -129,10 +134,14 @@ namespace WebNewmagyarszotar
             like.ID="Button_like_" + hun.getHunID();
             like.Click += new ImageClickEventHandler(this.like_button_button_Click);
             like.Attributes.Add("runat", "server");
+            like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
+            like.Attributes.Add("class", "likebutton");
 
             dislike.ID = "Button_dislike_" + hun.getHunID();
             dislike.Click+=new ImageClickEventHandler(this.dislike_button_button_Click);
             dislike.Attributes.Add("runat", "server");
+            dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
+            dislike.Attributes.Add("class", "likebutton");
 
 
             cell4.InnerText = "" + hun.getLike();
@@ -147,6 +156,8 @@ namespace WebNewmagyarszotar
             row.Cells.Add(cell5);
 
             row.Attributes.Add("class", "rowStyle");
+            row.Attributes.Add("max-height", "30%");
+
 
             table.Rows.Add(row);
         }
@@ -174,8 +185,8 @@ namespace WebNewmagyarszotar
 
         protected void like_button_button_Click(object sender, ImageClickEventArgs e)
         {
-            Label1.Text = "Megnyomva :"+((HtmlButton)sender).ID;
-            string id = (((HtmlButton)sender).ID);
+            Label1.Text = "Megnyomva :"+((ImageButton)sender).ID;
+            string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_like_", "");
 
             db.addLike(Convert.ToInt32(id));
@@ -185,8 +196,8 @@ namespace WebNewmagyarszotar
         }
         protected void dislike_button_button_Click(object sender, ImageClickEventArgs e)
         {
-            Label1.Text = "Megnyomva :"+ ((HtmlButton)sender).ID;
-            string id = (((HtmlButton)sender).ID);
+            Label1.Text = "Megnyomva :"+ ((ImageButton)sender).ID;
+            string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_dislike_", "");
 
             db.addDislike(Convert.ToInt32(id));
@@ -196,7 +207,7 @@ namespace WebNewmagyarszotar
         }
         protected void show_all(object sender, EventArgs e)
         {
-            string id = (((HtmlButton)sender).ID);
+            string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_lenyit_", "");
 
             if (!showall.Contains(id))

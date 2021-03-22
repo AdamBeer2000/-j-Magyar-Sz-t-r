@@ -29,10 +29,10 @@
         }
 
         #search {
-            padding-right: 5%;
+            padding-left: 5%;
             border: none;
             margin-top: 1%;
-            text-align: right;
+            text-align: left;
             width: 100%;
             height: 20%;
         }
@@ -40,7 +40,6 @@
         #SzotarTable {
             border: 1px solid #898E01;
             margin-top: 1%;
-            padding-top: 1%;
             margin-left: 5%;
             margin-right: 5%;
             text-align: center;
@@ -78,21 +77,24 @@
         #searchBox {
             outline: none;
             border: 1px solid #898E01;
+            min-width: 40%;
             font-size: 100%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
-        .cimsor {
+        .cimsor td{
+            border: 1px dashed rgba(137, 142, 1, 0.2);
+            border-bottom: 1px solid rgba(137, 142, 1, 0.5);
             color: #898E01;
             font-size: 150%;
             font-family: Calibri;
             font-weight: bold;
         }
 
-        #egysor{
+        tr.egysor td{
             border: 1px solid #898E01;
         }
 
@@ -107,13 +109,25 @@
             height: 20%;
         }
 
-        .rowStyle
+        .rowStyle td
         {
-            color:#898E01;
+            border: 1px dashed rgba(137, 142, 1, 0.2);
+            border-bottom: 1px solid rgba(137, 142, 1, 0.5);
+            color: #898E01;
             font-size: 120%;
             font-family: Calibri;
+            max-height: 30%;
         }
 
+        .likebutton
+        {
+            height: 30px;
+        }
+
+        .lenyitbutton
+        {
+            height: 10px;
+        }
 
         @media only screen and (min-width: 1024px) {
             body {
@@ -139,24 +153,21 @@
     <table id="search">
         <tr>
             <td>
-                <asp:Label ID="Label1" runat="server" Text="Label" BackColor="White"></asp:Label>
                 <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                <asp:Label ID="Label1" runat="server" Text="Label" BackColor="White"></asp:Label>
             </td>
         </tr>
     </table>
 
     <table id="SzotarTable" runat="server">
-        <tr id="egysor">
+        <tr class="egysor">
             <td>
                 <h1 style="color:#898E01;font-family: Calibri;">
-                    angol szó
                 </h1>
             </td>
             <td>
                 <h1  style="color:#898E01;font-family: Calibri;">
-                    vicces magyar jelentése
                 </h1>
-
             </td>
         </tr>
     </table>
