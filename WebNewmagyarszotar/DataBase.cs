@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace WebNewmagyarszotar
 {
@@ -40,11 +41,16 @@ namespace WebNewmagyarszotar
             return result;
         }
 
-        public Dictionary<String, EnglishWord> getAll(string searchField="")
+        public Dictionary<String, EnglishWord> getAll(string searchField,int page_num)
         {
             //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
-            searchField = "%" + searchField + "%";
-            string querry = "SELECT angolszo_id,angolszo.szo,definicio,angolszo.bekuldo,magyarszo_id,magyarszo.szo,magyarszo.bekuldo,tetszes,nemtetszes FROM szotar JOIN angolszo on angolszo_id = angolszo.ID JOIN magyarszo on magyarszo_id = magyarszo.ID WHERE angolszo.szo like '%"+searchField+ "%' OR magyarszo.szo like '%" + searchField + "%' OR definicio like '%" + searchField + "%' ";
+            //searchField = "%" + searchField + "%";"
+            string path = AppDomain.CurrentDomain.BaseDirectory+"/Scripts/listquerryB.sql";
+            string querry = File.ReadAllText(path);
+
+            querry=querry.Replace("PAR_1",Convert.ToString(20));
+            querry=querry.Replace("PAR_2", Convert.ToString((page_num*20)));
+            querry=querry.Replace("PAR_3", searchField);
 
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
 
@@ -53,7 +59,6 @@ namespace WebNewmagyarszotar
             {
                 conn.Open();
                 SqlDataReader reader = c.ExecuteReader();
-
                 while (reader.Read())
                 {
                     if (!words.ContainsKey(reader.GetString(1)))
@@ -71,46 +76,12 @@ namespace WebNewmagyarszotar
             }
             catch (Exception e)
             {
-                latestErrorMsg = e.Message;
+                latestErrorMsg = querry+ " "+e.Message;
             }
 
             return words;
         }
-        public Dictionary<String, EnglishWord> getAll()
-        {
-            //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
-            string querry = "SELECT angolszo_id,angolszo.szo,definicio,angolszo.bekuldo,magyarszo_id,magyarszo.szo,magyarszo.bekuldo,tetszes,nemtetszes FROM szotar JOIN angolszo on angolszo_id = angolszo.ID JOIN magyarszo on magyarszo_id = magyarszo.ID";
 
-            Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
-
-            SqlCommand c = new SqlCommand(querry, conn);
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = c.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    if (!words.ContainsKey(reader.GetString(1)))
-                    {
-                        words.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
-                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8)));
-                    }
-                    else
-                    {
-                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8)));
-                    }
-
-                }
-                conn.Close();
-            }
-            catch (Exception e)
-            {
-                latestErrorMsg = e.Message;
-            }
-
-            return words;
-        }
         public void addLike(int id)
         {
             string querry = "UPDATE magyarszo SET tetszes = tetszes + 1 WHERE id = "+id;
