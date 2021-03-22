@@ -31,10 +31,9 @@
         #Page_title {
             border: 1px solid #898E01;
             margin-top: 1%;
-            padding-top: 1%;
             margin-left: 20%;
             margin-right: 20%;
-            text-align: center;
+            text-align: left;
             width: 60%;
             height: 20%;
         }
@@ -46,11 +45,31 @@
             margin-right: 20%;
             text-align: center;
             width: 60%;
-            height: 20%;
+            height: 80%;
+        }
+
+        #elso_szo
+        {
+            border: none;
+            text-align: left;
+            width: 100%;
+        }
+
+        #masodik_szo
+        {
+            border: none;
+            text-align: right;
+            width: 100%;
+        }
+
+        #vonal{
+            border: none;
+            width: 100%;
         }
 
         h1 {
-            font-size: 120%;
+            font-size: 150%;
+            font-weight: bold;
             font-family: Calibri;
             color: #898E01;
         }
@@ -82,6 +101,59 @@
                 <h1>
                     angol szó
                 </h1>
+            </td>
+        </tr>
+    </table>
+
+    <table id="Page">
+        <tr>
+            <td>
+
+                <table id="elso_szo">
+                    <tr>
+                        <td>
+                            <h1>
+                                első fordítás
+                            </h1>
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="vonal">
+                    <tr>
+                        <td>
+                            <h1>
+                                <img src="https://i.imgur.com/VEp6mpu.png" width="100%" id="vonal_1" alt="vonal" />
+                            </h1>
+                        </td>
+                        <td>
+                            <h1>
+                                <img src="https://i.imgur.com/4Qv1V8L.png" width="40%" id="up_down" alt="vonal" />
+                            </h1>
+                        </td>
+                        <td>
+                            <h1>
+                                <img src="https://i.imgur.com/kkF7JDM.png" width="40%" id="up_down" alt="vonal" />
+                            </h1>
+                        </td>
+                        <td>
+                            <h1>
+                                <img src="https://i.imgur.com/Vqd8ni8.png" width="100%" id="vonal_2" alt="vonal" />
+                            </h1>
+                        </td>
+                    </tr>
+                </table>
+
+                <table id="masodik_szo">
+                    <tr>
+                        <td>
+                            <h1>
+                                masodik fordítás
+                            </h1>
+                        </td>
+                    </tr>
+                </table>
+
             </td>
         </tr>
     </table>
