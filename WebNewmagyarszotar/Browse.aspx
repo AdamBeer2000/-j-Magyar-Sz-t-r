@@ -68,13 +68,34 @@
             opacity: 0.8;
         }
         #kereses::-webkit-input-placeholder {
-            color:    #898E01;
+            color: #898E01;
         }
         #kereses:-moz-placeholder {
-            color:    #898E01;
+            color: #898E01;
         }
         #kereses::-moz-placeholder {
-            color:    #898E01;
+            color: #898E01;
+        }
+
+        #searchBox {
+            outline: none;
+            border: 1px solid #898E01;
+            font-size: 100%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
+            opacity: 0.8;
+        }
+
+        .cimsor {
+            color: #898E01;
+            font-size: 150%;
+            font-family: Calibri;
+            font-weight: bold;
+        }
+
+        #egysor{
+            border: 1px solid #898E01;
         }
 
         #for_back {
@@ -90,6 +111,7 @@
         .rowStyle
         {
             color:#898E01;
+            font-size: 120%;
             font-family: Calibri;
         }
 
@@ -125,7 +147,7 @@
     </table>
 
     <table id="SzotarTable" runat="server">
-        <tr>
+        <tr id="egysor">
             <td>
                 <h1 style="color:#898E01;font-family: Calibri;">
                     angol szó
@@ -149,12 +171,12 @@
         <tr>
             <td>
                 <a href="Browse.aspx">
-                    <asp:ImageButton ID="back_button" runat="server" src="https://i.imgur.com/D5tvrqL.png" width="10%" alt="browse" OnClick="back_button_Click"/>
+                    <asp:ImageButton ID="back_button" runat="server" src="https://i.imgur.com/D5tvrqL.png" outline="none" width="10%" alt="browse" OnClick="back_button_Click"/>
                 </a>
             </td>
             <td>
                 <a href="Browse.aspx">
-                    <asp:ImageButton ID="forward_button" runat="server" src="https://i.imgur.com/by9oUf1.png" width="10%" alt="browse" OnClick="forward_button_Click"/>
+                    <asp:ImageButton ID="forward_button" runat="server" src="https://i.imgur.com/by9oUf1.png" outline="none" width="10%" alt="browse" OnClick="forward_button_Click"/>
                 </a>
             </td>
         </tr>
