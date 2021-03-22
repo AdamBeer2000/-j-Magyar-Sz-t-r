@@ -13,5 +13,23 @@ namespace WebNewmagyarszotar
 
     public partial class WebForm4
     {
+
+        /// <summary>
+        /// form111 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form111;
+
+        /// <summary>
+        /// DebugLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DebugLabel;
     }
 }

@@ -33,6 +33,7 @@ namespace WebNewmagyarszotar
         public string getDesc(){ return this.eng_desc; }
         public string getUser(){ return this.user; }
         public string getWord() { return this.eng_word; }
+        public List<HungarianWord> getHunList() { return this.hun; }
         //-------------------------------------------------------------|
 
         public void addTranslation(HungarianWord word) { hun.Add(word); }

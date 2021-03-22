@@ -66,6 +66,7 @@
     </style>
 </head>
 <body>
+    <form id="form111" runat="server">
     <table id="Menu_title">
         <tr>
             <td>
@@ -85,6 +86,14 @@
         </tr>
     </table>
 
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Label ID="DebugLabel" runat="server" Text="Teszt"></asp:Label>
+        </p>
+    </form>
 
 </body>
 </html>

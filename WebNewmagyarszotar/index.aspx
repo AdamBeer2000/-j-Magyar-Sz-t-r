@@ -47,6 +47,10 @@
                     <br />
                     <asp:Label ID="Label1" runat="server" BackColor="White" Text="Még semmi"></asp:Label>
                 </form>
+                
+                <a href="Explorer.aspx">
+                    <img src="https://i.imgur.com/YuSDoUE.jpeg" width="40%" id="explorer" alt="explorer mode" />
+                </a>
             </td>
         </tr>
         
