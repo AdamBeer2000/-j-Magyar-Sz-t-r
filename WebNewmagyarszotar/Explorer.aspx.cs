@@ -63,6 +63,7 @@ namespace WebNewmagyarszotar
             {
                 res += words[i].ToString();
             }
+            
         }
     }
 }
