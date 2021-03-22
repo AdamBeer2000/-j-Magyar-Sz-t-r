@@ -12,6 +12,7 @@ namespace WebNewmagyarszotar
     {
         DataBase db = new DataBase();
         static public int pagenum = 0;
+        static public List<String> showall = new List<string>();
 
         protected bool update()
         {
@@ -20,7 +21,9 @@ namespace WebNewmagyarszotar
             {
                 return false;
             }
+
             Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum);
+
             if (words.Count == 0)
             {
                 return false;
@@ -31,18 +34,18 @@ namespace WebNewmagyarszotar
 
             foreach (KeyValuePair<String, EnglishWord> word in words)
             {
-                string all = "";
-                foreach (HungarianWord trans in word.Value.getTranslations())
+                if(word.Value.getTranslations().Count>1)
                 {
-                    all += trans.getHunWord() + ", ";
+                    addOneRowMoultipleTrans(word.Value,SzotarTable);
                 }
-                all = all.Substring(0, all.Length - 2);
-                addOneRow(word.Key, all, SzotarTable);
+                else
+                {
+                    addOneRow(word.Key,word.Value.getTranslations()[0], SzotarTable);
+                }
                 i++;
             }
             Label1.Text = Convert.ToString(pagenum) +" it: "+i;
             return true;
-            
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -53,35 +56,92 @@ namespace WebNewmagyarszotar
         {
             HtmlTableRow row = new HtmlTableRow();
             HtmlTableCell cell1 = new HtmlTableCell();
-            HtmlTableCell cell2 = new HtmlTableCell();
             HtmlTableCell cell3 = new HtmlTableCell();
 
             cell1.InnerText = "Angol";
-            cell2.InnerText = "placeholder test";
             cell3.InnerText = "Magyar";
 
             row.Cells.Add(cell1);
-            row.Cells.Add(cell2);
             row.Cells.Add(cell3);
 
-            row.Attributes.Add("class", "rowStyle");
+            row.Attributes.Add("class", "cimsor");
 
             table.Rows.Add(row);
         }
-        private void addOneRow(string eng, string hun, HtmlTable table)
+        private void addOneRowMoultipleTrans(EnglishWord eng, HtmlTable table)
         {
+            //addOneRow(eng.getWord(),"-----------", table);
             HtmlTableRow row = new HtmlTableRow();
+       
             HtmlTableCell cell1 = new HtmlTableCell();
             HtmlTableCell cell2 = new HtmlTableCell();
-            HtmlTableCell cell3 = new HtmlTableCell();
 
-            cell1.InnerText = eng;
-            cell2.InnerText = "placeholder test";
-            cell3.InnerText = hun;
+            HtmlButton lenyit = new HtmlButton();
+
+            lenyit.ID = "Button_lenyit_" + eng.getWord();
+
+            lenyit.ServerClick += new System.EventHandler(this.show_all);
+            lenyit.Attributes.Add("runat", "server");
+            lenyit.InnerText = "etc....";
+
+            cell1.InnerText = eng.getWord();
+            cell2.InnerText = eng.getTranslations()[0].getHunWord()+"\t";
+            cell2.Controls.Add(lenyit);
 
             row.Cells.Add(cell1);
             row.Cells.Add(cell2);
+
+            row.Attributes.Add("class", "rowStyle");
+            table.Rows.Add(row);
+
+            if (showall.Contains(eng.getWord()))
+                foreach (HungarianWord trans in eng.getTranslations())
+                {
+                    addOneRow("|", trans, table);
+                }
+        }
+
+        private void addOneRow(string eng, HungarianWord hun, HtmlTable table)
+        {
+            HtmlTableRow row = new HtmlTableRow();
+
+            HtmlTableCell cell1 = new HtmlTableCell();
+            HtmlTableCell cell3 = new HtmlTableCell();
+
+            HtmlTableCell cell4 = new HtmlTableCell();
+            HtmlButton like = new HtmlButton();
+
+            HtmlTableCell cell5 = new HtmlTableCell();
+
+            HtmlButton dislike = new HtmlButton();
+
+            cell1.InnerText = eng;
+            cell3.InnerText = hun.getHunWord();
+
+            row.Cells.Add(cell1);
             row.Cells.Add(cell3);
+
+
+            like.ID="Button_like_" + hun.getHunID();
+            like.ServerClick += new System.EventHandler(this.like_button_button_Click);
+            like.Attributes.Add("runat", "server");
+            like.InnerText = "Testszik";
+
+            dislike.ID = "Button_dislike_" + hun.getHunID();
+            dislike.ServerClick += new System.EventHandler(this.dislike_button_button_Click);
+            dislike.Attributes.Add("runat", "server");
+            dislike.InnerText = "Nem tetszik";
+
+            cell4.InnerText = "" + hun.getLike();
+            cell4.Controls.Add(like);
+            
+
+            cell5.InnerText = "" + hun.getDislike();
+            cell5.Controls.Add(dislike);
+            
+
+            row.Cells.Add(cell4);
+            row.Cells.Add(cell5);
 
             row.Attributes.Add("class", "rowStyle");
 
@@ -90,25 +150,7 @@ namespace WebNewmagyarszotar
 
         protected void searchBox_TextChanged(object sender, EventArgs e)
         {
-            //SzotarTable.InnerHtml = "<table id='SzotarTable' runat='server'>< tr >< td >< h1 style = 'color:#898E01;font-family: Calibri;' >angol szó</ h1 ></ td >< td >< h1  style = 'color:#898E01;font-family: Calibri;' >eredeti magyar jelentése</ h1 ></ td >< td >< h1  style = 'color:#898E01;font-family: Calibri;' >vicces magyar jelentése</ h1 ></ td ></ tr ></ table >";
-            SzotarTable = new HtmlTable();
-            HtmlTableRow row = new HtmlTableRow();
-
-            HtmlTableCell cell1 = new HtmlTableCell();
-            HtmlTableCell cell2 = new HtmlTableCell();
-            HtmlTableCell cell3 = new HtmlTableCell();
-
-            cell1.InnerText = "Magyar";
-            cell2.InnerText = "ez nem lesz itt";
-            cell3.InnerText = "angol";
-
-            row.Cells.Add(cell1);
-            row.Cells.Add(cell2);
-            row.Cells.Add(cell3);
-
-            row.Attributes.Add("class", "rowStyle");
-
-            SzotarTable.Rows.Add(row);
+            update();
         }
 
         protected void forward_button_Click(object sender, ImageClickEventArgs e)
@@ -124,6 +166,45 @@ namespace WebNewmagyarszotar
         {
             if(pagenum>0)
             pagenum--;
+            update();
+        }
+
+        protected void like_button_button_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "Megnyomva :"+((HtmlButton)sender).ID;
+            string id = (((HtmlButton)sender).ID);
+            id = id.Replace("Button_like_", "");
+
+            db.addLike(Convert.ToInt32(id));
+
+            update();
+
+        }
+        protected void dislike_button_button_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "Megnyomva :"+ ((HtmlButton)sender).ID;
+            string id = (((HtmlButton)sender).ID);
+            id = id.Replace("Button_dislike_", "");
+
+            db.addDislike(Convert.ToInt32(id));
+
+            update();
+
+        }
+        protected void show_all(object sender, EventArgs e)
+        {
+            string id = (((HtmlButton)sender).ID);
+            id = id.Replace("Button_lenyit_", "");
+
+            if (!showall.Contains(id))
+            {
+                showall.Add(id);
+            }
+            else
+            {
+                showall.Remove(id);
+            }
+
             update();
         }
     }

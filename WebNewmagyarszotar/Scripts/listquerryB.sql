@@ -14,4 +14,4 @@ where angolszo_id NOT in
     from #TEMP
     ORDER By angolszo,tetszes
 )
-ORDER By angolszo,tetszes
+ORDER By angolszo,tetszes DESC

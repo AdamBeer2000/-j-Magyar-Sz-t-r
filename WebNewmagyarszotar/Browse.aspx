@@ -140,7 +140,7 @@
     <table id="search">
         <tr>
             <td>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="Label" BackColor="White"></asp:Label>
                 <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
             </td>
         </tr>
@@ -151,11 +151,6 @@
             <td>
                 <h1 style="color:#898E01;font-family: Calibri;">
                     angol szó
-                </h1>
-            </td>
-            <td>
-                <h1  style="color:#898E01;font-family: Calibri;">
-                    eredeti magyar jelentése
                 </h1>
             </td>
             <td>
