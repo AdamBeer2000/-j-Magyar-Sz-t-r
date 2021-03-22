@@ -10,15 +10,17 @@ namespace WebNewmagyarszotar
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
-        DataBase db;
+        DataBase db = new DataBase();
         static public int pagenum = 0;
-        static public Dictionary<String, EnglishWord> words;
 
         protected bool update()
         {
             int i=0;
-            
-            words = db.getAll(searchBox.Text, pagenum);
+            if(searchBox==null)
+            {
+                return false;
+            }
+            Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum);
             if (words.Count == 0)
             {
                 return false;
@@ -45,7 +47,6 @@ namespace WebNewmagyarszotar
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            db = new DataBase();
             update();
         }
         private void addHeaderRow(HtmlTable table)
