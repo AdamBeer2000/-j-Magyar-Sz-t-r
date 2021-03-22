@@ -31,7 +31,6 @@
         #Page_title {
             border: 1px solid #898E01;
             margin-top: 1%;
-            padding-top: 1%;
             margin-left: 20%;
             margin-right: 20%;
             text-align: left;
@@ -46,25 +45,25 @@
             margin-right: 20%;
             text-align: center;
             width: 60%;
-            height: 40%;
+            height: 70%;
         }
 
         #elso_szo
         {
-            border: 1px solid #898E01;
+            border: none;
             text-align: left;
             width: 100%;
         }
 
         #masodik_szo
         {
-            border: 1px solid #898E01;
+            border: none;
             text-align: right;
             width: 100%;
         }
 
         #vonal{
-            border: 1px solid #898E01;
+            border: none;
             width: 100%;
         }
 
@@ -124,22 +123,22 @@
                     <tr>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/Hpz7zUv.png" width="35%" id="vonal_1" alt="vonal" />
+                                <img src="https://i.imgur.com/eDgHUgc.png" width="100%" id="vonal_1" alt="vonal" />
                             </h1>
                         </td>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/4Qv1V8L.png" width="35%" id="up_down" alt="vonal" />
+                                <img src="https://i.imgur.com/4Qv1V8L.png" width="40%" id="up_down" alt="vonal" />
                             </h1>
                         </td>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/kkF7JDM.png" width="35%" id="up_down" alt="vonal" />
+                                <img src="https://i.imgur.com/kkF7JDM.png" width="40%" id="up_down" alt="vonal" />
                             </h1>
                         </td>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/Hpz7zUv.png" width="35%" id="vonal_1" alt="vonal" />
+                                <img src="https://i.imgur.com/eDgHUgc.png" width="100%" id="vonal_2" alt="vonal" />
                             </h1>
                         </td>
                     </tr>
