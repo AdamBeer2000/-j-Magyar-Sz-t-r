@@ -37,8 +37,6 @@
             height: 20%;
         }
 
-
-
         #SzotarTable {
             border: 1px solid #898E01;
             margin-top: 1%;
@@ -108,6 +106,7 @@
             width: 40%;
             height: 20%;
         }
+
         .rowStyle
         {
             color:#898E01;

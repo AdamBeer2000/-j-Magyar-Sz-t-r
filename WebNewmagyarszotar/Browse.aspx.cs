@@ -75,6 +75,11 @@ namespace WebNewmagyarszotar
        
             HtmlTableCell cell1 = new HtmlTableCell();
             HtmlTableCell cell2 = new HtmlTableCell();
+<<<<<<< Updated upstream
+=======
+            HtmlTableCell cell3 = new HtmlTableCell();
+            HtmlTableCell cell4 = new HtmlTableCell();
+>>>>>>> Stashed changes
 
             HtmlButton lenyit = new HtmlButton();
 
@@ -90,6 +95,13 @@ namespace WebNewmagyarszotar
 
             row.Cells.Add(cell1);
             row.Cells.Add(cell2);
+
+            HtmlButton b = new HtmlButton();
+            b.ID="Button_" + table.Rows.Count;
+            b.Attributes.Add("onClick", "like_button_back_button_Click(this)");
+
+            cell4.Controls.Add(b);
+            row.Cells.Add(cell4);
 
             row.Attributes.Add("class", "rowStyle");
             table.Rows.Add(row);
@@ -169,6 +181,7 @@ namespace WebNewmagyarszotar
             update();
         }
 
+<<<<<<< Updated upstream
         protected void like_button_button_Click(object sender, EventArgs e)
         {
             Label1.Text = "Megnyomva :"+((HtmlButton)sender).ID;
@@ -206,6 +219,16 @@ namespace WebNewmagyarszotar
             }
 
             update();
+=======
+        protected void like_button_back_button_Click(object sender, ImageClickEventArgs e)
+        {
+            Label1.Text = "like Megnyomva :" + ((Button)sender).ID;
+            
+        }
+        protected void dislike_button_back_button_Click(object sender, ImageClickEventArgs e)
+        {
+            Label1.Text = "dislike Megnyomva :" + ((Button)sender).ID;
+>>>>>>> Stashed changes
         }
     }
 }
