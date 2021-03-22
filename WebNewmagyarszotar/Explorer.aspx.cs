@@ -61,7 +61,7 @@ namespace WebNewmagyarszotar
             string res = "";
             for (int i = 0; i < words.Count; i++)
             {
-                res += words[i].toString();
+                res += words[i].ToString();
             }
             
         }
