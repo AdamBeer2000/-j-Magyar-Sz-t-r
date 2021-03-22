@@ -24,22 +24,13 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Label1 control.
+        /// kereses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// searchBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox searchBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText kereses;
 
         /// <summary>
         /// SzotarTable control.
@@ -51,21 +42,12 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.HtmlControls.HtmlTable SzotarTable;
 
         /// <summary>
-        /// back_button control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton back_button;
-
-        /// <summary>
-        /// forward_button control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton forward_button;
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

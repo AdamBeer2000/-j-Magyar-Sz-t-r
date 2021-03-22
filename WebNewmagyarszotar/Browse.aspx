@@ -77,6 +77,10 @@
             color:    #898E01;
         }
 
+        #ImageButton1 {
+            
+        }
+
         #for_back {
             border: none;
             margin-top: 1%;
@@ -87,7 +91,7 @@
             width: 40%;
             height: 20%;
         }
-        .rowStyle
+        #rowStyle
         {
             color:#898E01;
             font-family: Calibri;
@@ -118,8 +122,7 @@
     <table id="search">
         <tr>
             <td>
-                <asp:Label ID="Label1" runat="server" Text="Label" BackColor="White"></asp:Label>
-                <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                <input id="kereses" type="text" name="kereses" placeholder="keress bazmeg" runat="server"/>
             </td>
         </tr>
     </table>
@@ -149,17 +152,18 @@
         <tr>
             <td>
                 <a href="Browse.aspx">
-                    <asp:ImageButton ID="back_button" runat="server" src="https://i.imgur.com/D5tvrqL.png" width="10%" alt="browse" OnClick="back_button_Click"/>
+                    <img src="https://i.imgur.com/D5tvrqL.png" width="10%" alt="browse" />
                 </a>
             </td>
             <td>
                 <a href="Browse.aspx">
-                    <asp:ImageButton ID="forward_button" runat="server" src="https://i.imgur.com/by9oUf1.png" width="10%" alt="browse" OnClick="forward_button_Click"/>
+                    <img src="https://i.imgur.com/by9oUf1.png" width="10%" alt="browse" />
                 </a>
             </td>
         </tr>
     </table>
         <div>
+            <asp:Label ID="Label1" runat="server" Text="Anyááááááááááááááááááád"></asp:Label>
         </div>
     </form>
 
