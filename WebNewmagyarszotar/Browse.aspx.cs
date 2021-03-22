@@ -112,11 +112,12 @@ namespace WebNewmagyarszotar
             HtmlTableCell cell3 = new HtmlTableCell();
 
             HtmlTableCell cell4 = new HtmlTableCell();
-            HtmlButton like = new HtmlButton();
+
+            ImageButton like = new ImageButton();
 
             HtmlTableCell cell5 = new HtmlTableCell();
 
-            HtmlButton dislike = new HtmlButton();
+            ImageButton dislike = new ImageButton();
 
             cell1.InnerText = eng;
             cell3.InnerText = hun.getHunWord();
@@ -126,14 +127,13 @@ namespace WebNewmagyarszotar
 
 
             like.ID="Button_like_" + hun.getHunID();
-            like.ServerClick += new System.EventHandler(this.like_button_button_Click);
+            like.Click += new ImageClickEventHandler(this.like_button_button_Click);
             like.Attributes.Add("runat", "server");
-            like.InnerText = "Testszik";
 
             dislike.ID = "Button_dislike_" + hun.getHunID();
-            dislike.ServerClick += new System.EventHandler(this.dislike_button_button_Click);
+            dislike.Click+=new ImageClickEventHandler(this.dislike_button_button_Click);
             dislike.Attributes.Add("runat", "server");
-            dislike.InnerText = "Nem tetszik";
+
 
             cell4.InnerText = "" + hun.getLike();
             cell4.Controls.Add(like);
@@ -172,7 +172,7 @@ namespace WebNewmagyarszotar
             update();
         }
 
-        protected void like_button_button_Click(object sender, EventArgs e)
+        protected void like_button_button_Click(object sender, ImageClickEventArgs e)
         {
             Label1.Text = "Megnyomva :"+((HtmlButton)sender).ID;
             string id = (((HtmlButton)sender).ID);
@@ -183,7 +183,7 @@ namespace WebNewmagyarszotar
             update();
 
         }
-        protected void dislike_button_button_Click(object sender, EventArgs e)
+        protected void dislike_button_button_Click(object sender, ImageClickEventArgs e)
         {
             Label1.Text = "Megnyomva :"+ ((HtmlButton)sender).ID;
             string id = (((HtmlButton)sender).ID);
@@ -207,7 +207,6 @@ namespace WebNewmagyarszotar
             {
                 showall.Remove(id);
             }
-
             update();
         }
     }
