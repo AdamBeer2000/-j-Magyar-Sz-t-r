@@ -41,8 +41,9 @@ namespace WebNewmagyarszotar
             return result;
         }
         public Dictionary<String, EnglishWord> getExploreWords()
-        {   
-            string querry = "SELECT eng.ID, eng.szo, hun.ID, hun.szo, hun.tetszes, hun.nemtetszes, hun.bekuldo, eng.definicio, eng.bekuldo FROM szotar AS sz INNER JOIN magyarszo AS hun ON sz.magyarszo_id = hun.ID INNER JOIN angolszo AS eng ON eng.ID = sz.angolszo_id ORDER BY eng.szo";
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/explorer_sql_a.sql";
+            string querry = File.ReadAllText(path);
             SqlCommand command = new SqlCommand(querry, conn);
             Dictionary<String, EnglishWord> result = new Dictionary<String, EnglishWord>();
 
@@ -67,9 +68,9 @@ namespace WebNewmagyarszotar
 
                 conn.Close();
             }
-            catch
+            catch (SqlException ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
             return result;
