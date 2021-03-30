@@ -106,6 +106,22 @@
             box-shadow: 0 0 10px #898E01;
         }
 
+        #hiba_username {
+            color: #FF3D3D;
+        }
+
+        #hiba_password1 {
+            color: #FF3D3D;
+        }
+
+        #hiba_password2 {
+            color: #FF3D3D;
+        }
+
+        #hiba_email {
+            color: #FF3D3D;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
@@ -134,7 +150,7 @@
                         <h1>
                             Felhasználónév:
                         </h1>
-                        <p id="hiba_username" runat="server" color="#FF3D3D">
+                        <p id="hiba_username" runat="server">
                         </p>
                         <asp:TextBox ID="usernameBox" runat="server"></asp:TextBox>
                         <br />
@@ -142,7 +158,7 @@
                         <h1>
                             Jelszó:
                         </h1>
-                        <p id="hiba_password1" runat="server" color="#FF3D3D"> 
+                        <p id="hiba_password1" runat="server"> 
                         </p>
                         <asp:TextBox  ID="passwordBox1" TextMode="Password" runat="server"></asp:TextBox>
                         <br />
@@ -150,7 +166,7 @@
                         <h1>
                             Jelszó mégegyszer:
                         </h1>
-                        <p id="hiba_password2" runat="server" color="#FF3D3D">
+                        <p id="hiba_password2" runat="server">
                         </p>
                         <asp:TextBox  ID="passwordBox2" TextMode="Password" runat="server"></asp:TextBox>
                         <br />
@@ -158,7 +174,7 @@
                         <h1>
                             E-mail:
                         </h1>
-                        <p id="hiba_email" runat="server" color="#FF3D3D">
+                        <p id="hiba_email" runat="server">
                         </p>
                         <asp:TextBox ID="emailBox" TextMode="Email" runat="server" ></asp:TextBox>
                         <br />
