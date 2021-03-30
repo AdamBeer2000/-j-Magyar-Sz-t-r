@@ -33,6 +33,7 @@
             margin-top: 1%;
             margin-left: 20%;
             margin-right: 20%;
+            padding-left: 2%;
             text-align: left;
             width: 60%;
             height: 20%;
@@ -52,6 +53,7 @@
         {
             border: none;
             text-align: left;
+            padding-left: 2%;
             width: 100%;
         }
 
@@ -59,6 +61,7 @@
         {
             border: none;
             text-align: right;
+            padding-right: 2%;
             width: 100%;
         }
 
@@ -68,8 +71,15 @@
         }
 
         h1 {
-            font-size: 150%;
+            font-size: 170%;
             font-weight: bold;
+            font-family: Calibri;
+            color: #898E01;
+        }
+
+        #vissza {
+            margin-top: 3%;
+            font-size: 100%;
             font-family: Calibri;
             color: #898E01;
         }
@@ -159,6 +169,9 @@
             </td>
         </tr>
     </table>
+
+    <a id="vissza" href="Ranks.aspx">Vissza a kezdőoldalra</a>
+
     </form>
 
 </body>
