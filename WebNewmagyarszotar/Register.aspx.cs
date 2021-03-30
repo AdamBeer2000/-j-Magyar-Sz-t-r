@@ -33,5 +33,10 @@ namespace WebNewmagyarszotar
         {
             //nem megfelelő formátumú email
         }
+
+        protected void tovabb_Click(object sender, EventArgs e)
+        {
+            //submit button
+        }
     }
 }

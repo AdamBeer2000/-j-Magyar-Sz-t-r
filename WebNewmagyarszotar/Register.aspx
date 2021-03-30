@@ -32,10 +32,78 @@
             border: 1px solid #898E01;
             margin-top: 1%;
             text-align: center;
+            width: 40%;
+            margin-left: 30%;
+            background-color: #080808;
+            opacity: 0.8;
         }
 
         h1 {
             color: #898E01;
+            font-family: Calibri;
+            font-size: 140%;
+        }
+
+        #usernameBox {
+            outline: none;
+            border: 1px solid #898E01;
+            min-width: 40%;
+            font-size: 100%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
+            opacity: 0.9;
+        }
+
+        #passwordBox1 {
+            outline: none;
+            border: 1px solid #898E01;
+            min-width: 40%;
+            font-size: 100%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
+            opacity: 0.9;
+        }
+
+        #passwordBox2 {
+            outline: none;
+            border: 1px solid #898E01;
+            min-width: 40%;
+            font-size: 100%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
+            opacity: 0.9;
+        }
+
+        #emailBox {
+            outline: none;
+            border: 1px solid #898E01;
+            min-width: 40%;
+            font-size: 100%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
+            opacity: 0.9;
+        }
+
+        #tovabb {
+            cursor: pointer;
+            border: none;
+            margin-top: 3%;
+            margin-bottom: 2%;
+            outline: none;
+            background-color: #898E01;
+            color: #080808;
+            font-size: 100%;
+            font-weight: bolder;
+            font-family: Calibri;
+            padding: 1%;
+        }
+
+        #tovabb:hover{
+            box-shadow: 0 0 10px #898E01;
         }
 
         @media only screen and (min-width: 1024px) {
@@ -61,6 +129,7 @@
         <div>
             <table id="register">
                 <tr>
+
                     <td>
                         <h1>
                             Felhasználónév:
@@ -73,7 +142,7 @@
                         <h1>
                             Jelszó:
                         </h1>
-                        <p id="hiba_password1">
+                        <p id="hiba_password1"> 
                         </p>
                         <asp:TextBox  ID="passwordBox1" TextMode="Password" runat="server" OnTextChanged="passwordBox1_TextChanged" AutoPostBack="True"></asp:TextBox>
                         <br />
@@ -92,9 +161,12 @@
                         <p id="hiba_email">
                         </p>
                         <asp:TextBox ID="emailBox" TextMode="Email" runat="server" OnTextChanged="emailBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <br />
+
+                        <asp:Button ID="tovabb" runat="server" Text="Tovább" OnClick="tovabb_Click" />
                     </td>
+
                 </tr>
-                
             </table>
         </div>
     </form>
