@@ -129,6 +129,7 @@
     <Content Include="Ranks.aspx" />
     <Content Include="Browse.aspx" />
     <Content Include="Explorer.aspx" />
+    <Content Include="Scripts\registration.sql" />
     <Content Include="WebForm6.aspx" />
     <None Include="Properties\PublishProfiles\NewMagyarSzotar - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
