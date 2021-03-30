@@ -227,14 +227,23 @@ namespace WebNewmagyarszotar
         public bool checkhUsername(string username)//igaz ha létezik
         {
             string querry;
-            querry = "SELECT felhasznalonev,jelszo FROM felhasznalok WHERE felhasznalonev='" + username + "'";
+            querry = "SELECT COUNT(*) FROM felhasznalok WHERE felhasznalonev='" + username + "'"+ "GROUP BY felhasznalonev";
             try
             {
                 SqlCommand sqlCmd = new SqlCommand(querry, getSecureConn());
 
                 SqlDataReader reader = sqlCmd.ExecuteReader();
+                bool ret;
 
-                return reader.HasRows;
+                sqlCmd.Connection.Open();
+
+                reader.Read();
+
+                ret = reader.GetInt32(0) > 0;
+
+                sqlCmd.Connection.Close();
+
+                return ret;
             }
             catch(Exception e)
             {
@@ -245,8 +254,8 @@ namespace WebNewmagyarszotar
 
         public bool regUser(string username,string email,string jelszo)
         {
-            string querry = @"INSERT into felhasznalok([felhasznalonev],[emailcim],[jogosultasag],[jelszo])"+
-                            "VALUES(@p1, @p2, @p3, @p4)";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/registration.sql";
+            string querry = File.ReadAllText(path);
 
             if(checkhUsername(username))
             {

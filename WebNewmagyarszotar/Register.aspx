@@ -179,7 +179,7 @@
                         <asp:TextBox ID="emailBox" TextMode="Email" runat="server" ></asp:TextBox>
                         <br />
 
-                        <asp:Button ID="tovabb" runat="server" Text="Tovább" OnClick="tovabb_Click" />
+                        <asp:Button ID="tovabb" runat="server" Text="Tovább" OnClick="tovabb_Click"/>
                     </td>
 
                 </tr>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace WebNewmagyarszotar
 {
@@ -45,26 +46,49 @@ namespace WebNewmagyarszotar
                 count++;
                 hiba_username.InnerText = "Nincs megadva felhasználónév";
             }
+            else
+            {
+                hiba_username.InnerText = "";
+            }
+
             if (passwordBox1.Text == String.Empty)
             {
                 count++;
                 hiba_password1.InnerText = "Nincs megadva jelszó";
             }
+            else
+            {
+                hiba_password1.InnerText = "";
+            }
+
             if (passwordBox2.Text == String.Empty)
             {
                 count++;
                 hiba_password2.InnerText = "Nincs megadva ellenőrző jelszó";
             }
+            else
+            {
+                hiba_password2.InnerText = "";
+            }
+
             if (emailBox.Text==String.Empty)
             {
                 count++;
                 hiba_email.InnerText = "Nincs megadva e-mail cím";
+            }
+            else
+            {
+                hiba_email.InnerText= "";
             }
 
             if (passwordBox1.Text!= passwordBox2.Text)
             {
                 count++;
                 hiba_password2.InnerText = "A jelszó nem egyezik az ellenőrző jelszóval";
+            }
+            else
+            {
+                hiba_password2.InnerText = "";
             }
 
             if(count!=0)
@@ -73,7 +97,7 @@ namespace WebNewmagyarszotar
                 return;
             }
 
-            if (db.regUser(usernameBox.Text, passwordBox1.Text, emailBox.Text))
+            if (db.regUser(usernameBox.Text,emailBox.Text, passwordBox1.Text))
             {
                 Label1.Text = "Sikeres regisztráció :";
             }
