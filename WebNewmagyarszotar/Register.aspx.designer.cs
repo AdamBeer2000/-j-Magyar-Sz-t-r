@@ -24,6 +24,15 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// hiba_username control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiba_username;
+
+        /// <summary>
         /// usernameBox control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace WebNewmagyarszotar
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox usernameBox;
+
+        /// <summary>
+        /// hiba_password1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiba_password1;
 
         /// <summary>
         /// passwordBox1 control.
@@ -42,6 +60,15 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.TextBox passwordBox1;
 
         /// <summary>
+        /// hiba_password2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiba_password2;
+
+        /// <summary>
         /// passwordBox2 control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,15 @@ namespace WebNewmagyarszotar
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox passwordBox2;
+
+        /// <summary>
+        /// hiba_email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiba_email;
 
         /// <summary>
         /// emailBox control.
@@ -67,5 +103,14 @@ namespace WebNewmagyarszotar
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button tovabb;
+
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }
