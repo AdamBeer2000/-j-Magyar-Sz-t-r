@@ -9,7 +9,7 @@
 
     <style type="text/css">
         body {
-            background-image: url('https://i.imgur.com/RflwZ1R.png');
+            background-image: url('https://i.imgur.com/DkxArzl.png');
             background-size: 100%;
             background-repeat: no-repeat;
             text-align: center;
@@ -39,7 +39,7 @@
             height: 20%;
         }
 
-        #Page {
+        #fo_tablazat {
             border: 1px solid #898E01;
             margin-top: 1%;
             margin-left: 20%;
@@ -84,6 +84,11 @@
             color: #898E01;
         }
 
+        #friss {
+            text-align: right;
+            padding-right: 2%;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
@@ -111,11 +116,17 @@
                 <h1>
                     <asp:Label ID="angol_szo_label" runat="server"></asp:Label>
                 </h1>
+            </td> 
+            
+            <td id="friss">            
+                <a href="Explorer.aspx">
+                    <img src="https://i.imgur.com/r665QFH.png" height="40px" id="reload" alt="reload" />
+                </a>
             </td>
         </tr>
     </table>
 
-    <table id="Page">
+    <table id="fo_tablazat">
         <tr>
             <td>
 
@@ -170,7 +181,7 @@
         </tr>
     </table>
 
-    <a id="vissza" href="Ranks.aspx">Vissza a kezdőoldalra</a>
+    <a id="vissza" href="index.aspx">Vissza a kezdőoldalra</a>
 
     </form>
 
