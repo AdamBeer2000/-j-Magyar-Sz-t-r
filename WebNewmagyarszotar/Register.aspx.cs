@@ -13,5 +13,25 @@ namespace WebNewmagyarszotar
         {
 
         }
+
+        protected void usernameBox_TextChanged(object sender, EventArgs e)
+        {
+            //már létező felhasználónév
+        }
+
+        protected void passwordBox1_TextChanged(object sender, EventArgs e)
+        {
+            //nem elég hosszú jelszó, nincs benne nagy betű, speciális karakter
+        }
+
+        protected void passwordBox2_TextChanged(object sender, EventArgs e)
+        {
+            //nem egyezik meg a két jelszó
+        }
+
+        protected void emailBox_TextChanged(object sender, EventArgs e)
+        {
+            //nem megfelelő formátumú email
+        }
     }
 }
