@@ -28,6 +28,16 @@
             height: 20%;
         }
 
+        #register{
+            border: 1px solid #898E01;
+            margin-top: 1%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #898E01;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
@@ -49,6 +59,43 @@
 
     <form id="form1" runat="server">
         <div>
+            <table id="register">
+                <tr>
+                    <td>
+                        <h1>
+                            Felhasználónév:
+                        </h1>
+                        <p id="hiba_username">
+                        </p>
+                        <asp:TextBox ID="usernameBox" runat="server" OnTextChanged="usernameBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <br />
+
+                        <h1>
+                            Jelszó:
+                        </h1>
+                        <p id="hiba_password1">
+                        </p>
+                        <asp:TextBox  ID="passwordBox1" TextMode="Password" runat="server" OnTextChanged="passwordBox1_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <br />
+
+                        <h1>
+                            Jelszó mégegyszer:
+                        </h1>
+                        <p id="hiba_password2">
+                        </p>
+                        <asp:TextBox  ID="passwordBox2" TextMode="Password" runat="server" OnTextChanged="passwordBox2_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <br />
+
+                        <h1>
+                            E-mail:
+                        </h1>
+                        <p id="hiba_email">
+                        </p>
+                        <asp:TextBox ID="emailBox" TextMode="Email" runat="server" OnTextChanged="emailBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                    </td>
+                </tr>
+                
+            </table>
         </div>
     </form>
 </body>
