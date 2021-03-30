@@ -89,7 +89,7 @@
     <table id="Menu_title">
         <tr>
             <td>
-                <img src="https://i.imgur.com/RflwZ1R.png" width="35%" id="title" alt="title" />
+                <img src="https://i.imgur.com/HwosnuG.png" width="35%" id="title" alt="title" />
             </td>
         </tr>
     </table>

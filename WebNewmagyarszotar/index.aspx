@@ -11,7 +11,7 @@
     <table id="Menu_title">
         <tr>
             <td>
-                <img src="https://i.imgur.com/WUMps0s.png" width="60%" id="title" alt="title" />
+                <img src="https://i.imgur.com/bUmy7ss.png" width="70%" id="title" alt="title" />
             </td>
         </tr>
     </table>
@@ -20,19 +20,19 @@
         <tr>
             <td>
                 <a href="Ranks.aspx">
-                    <img src="https://i.imgur.com/NDrLvei.png" width="30%" id="ranks" alt="ranks" />
+                    <img src="https://i.imgur.com/SBwBvcT.png" width="30%" id="ranks" alt="ranks" />
                 </a>
             </td>
 
             <td>
                 <a href="Register.aspx">
-                    <img src="https://i.imgur.com/fzoTrnp.png" width="55%" id="register" alt="register" />
+                    <img src="https://i.imgur.com/uOKgULx.png" width="55%" id="register" alt="register" />
                 </a>
             </td>
 
             <td>
                 <a href="Browse.aspx">
-                    <img src="https://i.imgur.com/fQnUHnw.png" width="38%" id="browse" alt="browse" />
+                    <img src="https://i.imgur.com/7bBZof5.png" width="38%" id="browse" alt="browse" />
                 </a>
             </td>
         </tr>
