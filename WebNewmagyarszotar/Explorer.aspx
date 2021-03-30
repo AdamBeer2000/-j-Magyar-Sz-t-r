@@ -128,12 +128,14 @@
                         </td>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/4Qv1V8L.png" width="40%" id="up_down" alt="vonal" />
+                                <asp:ImageButton id="up" runat="server" ImageUrl="https://i.imgur.com/4Qv1V8L.png" width="40%" alt="vonal"  OnClick="upClick"/>
+                                <!--<img src="https://i.imgur.com/4Qv1V8L.png" width="40%" id="up_down" alt="vonal" />-->
                             </h1>
                         </td>
                         <td>
                             <h1>
-                                <img src="https://i.imgur.com/kkF7JDM.png" width="40%" id="up_down" alt="vonal" />
+                                <asp:ImageButton id="down" runat="server" ImageUrl="https://i.imgur.com/kkF7JDM.png"  width="40%" alt="vonal" OnClick="downClick"/>
+                                <!--<img src="https://i.imgur.com/kkF7JDM.png" width="40%" id="up_down" alt="vonal" /> -->
                             </h1>
                         </td>
                         <td>

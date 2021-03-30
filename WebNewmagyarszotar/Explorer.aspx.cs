@@ -18,6 +18,7 @@ namespace WebNewmagyarszotar
         DataBase db = new DataBase();
         List<EnglishWord> words = new List<EnglishWord>();
         Random rand = new Random();
+        int[] ids = new int[2];
 
         private int getRand() { return rand.Next(0, words.Count); }
 
@@ -71,6 +72,22 @@ namespace WebNewmagyarszotar
 
             first_forditas.Text = hun_list[f].getHunWord();
             second_forditas.Text = hun_list[s].getHunWord();
+            ids[0] = hun_list[f].getHunID();
+            ids[1] = hun_list[s].getHunID();
+        }
+
+        protected void upClick(object sender, ImageClickEventArgs e)
+        {
+            //update elso forditas like++
+            db.addLike(ids[0]);
+            this.vizualize();
+        }
+
+        protected void downClick(object sender, ImageClickEventArgs e)
+        {
+            //update masodik forditas like++
+            db.addLike(ids[1]);
+            this.vizualize();
         }
     }
 }
