@@ -49,7 +49,7 @@
                 </form>
                 
                 <a href="Explorer.aspx">
-                    <img src="https://i.imgur.com/YuSDoUE.jpeg" width="40%" id="explorer" alt="explorer mode" />
+                    <img src="https://i.imgur.com/zmsTgGY.png" width="40%" id="explorer" alt="explorer mode" />
                 </a>
             </td>
         </tr>
