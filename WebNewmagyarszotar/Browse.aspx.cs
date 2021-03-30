@@ -10,7 +10,7 @@ namespace WebNewmagyarszotar
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
-        DataBase db = new DataBase();
+        static public DataBase db = new DataBase();
         static public int pagenum = 0;
         static public List<String> showall = new List<string>();
 
@@ -51,6 +51,7 @@ namespace WebNewmagyarszotar
         protected void Page_Load(object sender, EventArgs e)
         {
             update();
+            Label1.Text = db.getLatestErrorMsg();
         }
         private void addHeaderRow(HtmlTable table)
         {
@@ -84,9 +85,13 @@ namespace WebNewmagyarszotar
 
             lenyit.Click += new ImageClickEventHandler(this.show_all);
             lenyit.Attributes.Add("runat", "server");
-            lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";
-            lenyit.Attributes.Add("class", "lenyitbutton");
 
+            if(showall.Contains(eng.getWord()))
+                lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//lenéz
+            else
+                lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//felnéz
+
+            lenyit.Attributes.Add("class", "lenyitbutton");
             cell1.InnerText = eng.getWord();
             cell2.InnerText = eng.getTranslations()[0].getHunWord()+"\t";
             cell2.Controls.Add(lenyit);
@@ -100,10 +105,13 @@ namespace WebNewmagyarszotar
             table.Rows.Add(row);
 
             if (showall.Contains(eng.getWord()))
+            {
+                //lenéz
                 foreach (HungarianWord trans in eng.getTranslations())
                 {
                     addOneRow("|", trans, table);
                 }
+            }
         }
 
         private void addOneRow(string eng, HungarianWord hun, HtmlTable table)

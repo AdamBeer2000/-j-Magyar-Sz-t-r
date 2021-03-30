@@ -4,12 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.IO;
+using System.Data;
 
 namespace WebNewmagyarszotar
 {
     public class DataBase
     {
-        private SqlConnection conn = new SqlConnection("Server=tcp:the-first-git-emire.database.windows.net,1433;Initial Catalog=NewMagyarSzotar;Persist Security Info=False;User ID=pistabacsi;Password=Nemezajelszo1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        private static string conn_string = buildDefConnString();
+
+        private static SqlConnection conn = new SqlConnection(conn_string);
+
+        private static string buildDefConnString()
+        {
+            SqlConnectionStringBuilder defconn = new SqlConnectionStringBuilder("Server=tcp:the-first-git-emire.database.windows.net,1433");
+            defconn.InitialCatalog = "NewMagyarSzotar";
+            defconn.PersistSecurityInfo = false;
+            defconn.UserID = "pistabacsi";
+            defconn.Password = "Nemezajelszo1";
+            defconn.MultipleActiveResultSets = false;
+            defconn.Encrypt = true;
+            defconn.TrustServerCertificate = false;
+            defconn.ConnectTimeout = 30;
+            return defconn.ConnectionString;
+        }
 
         public DataBase()
         {
@@ -76,16 +93,16 @@ namespace WebNewmagyarszotar
             return result;
         }
 
-        public Dictionary<String, EnglishWord> getAll(string searchField,int page_num)
+        public Dictionary<String, EnglishWord> getAll(string searchField, int page_num)
         {
             //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
             //searchField = "%" + searchField + "%";"
-            string path = AppDomain.CurrentDomain.BaseDirectory+"/Scripts/listquerryB.sql";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryB.sql";
             string querry = File.ReadAllText(path);
 
-            querry=querry.Replace("PAR_1",Convert.ToString(20));
-            querry=querry.Replace("PAR_2", Convert.ToString((page_num*20)));
-            querry=querry.Replace("PAR_3", searchField);
+            querry = querry.Replace("PAR_1", Convert.ToString(20));
+            querry = querry.Replace("PAR_2", Convert.ToString((page_num * 20)));
+            querry = querry.Replace("PAR_3", searchField);
 
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
 
@@ -111,7 +128,7 @@ namespace WebNewmagyarszotar
             }
             catch (Exception e)
             {
-                latestErrorMsg = querry+ " "+e.Message;
+                latestErrorMsg = querry + " " + e.Message;
             }
 
             return words;
@@ -119,7 +136,7 @@ namespace WebNewmagyarszotar
 
         public void addLike(int id)
         {
-            string querry = "UPDATE magyarszo SET tetszes = tetszes + 1 WHERE id = "+id;
+            string querry = "UPDATE magyarszo SET tetszes = tetszes + 1 WHERE id = " + id;
             try
             {
                 conn.Open();
@@ -147,6 +164,139 @@ namespace WebNewmagyarszotar
             {
                 latestErrorMsg = e.Message;
             }
+        }
+
+        private SqlConnection getSecureConn()
+        {
+            return new SqlConnection("Data Source=tcp:the-first-git-emire.database.windows.net,1433;USER ID=pistabacsi;password=Nemezajelszo1;Initial Catalog=NewMagyarSzotar;Integrated Security=true;Column Encryption Setting=enabled;Trusted_Connection=False;Encrypt=True");
+            /*
+            SqlConnectionStringBuilder tmp = new SqlConnectionStringBuilder("Data Source=tcp:the-first-git-emire.database.windows.net,1433");
+            tmp.UserID = "pistabacsi";
+            tmp.Password = "Nemezajelszo1";
+            tmp.InitialCatalog = "NewMagyarSzotar";
+            tmp.IntegratedSecurity = true;
+            tmp.ColumnEncryptionSetting = SqlConnectionColumnEncryptionSetting.Enabled;
+            tmp.Encrypt = true;
+            return new SqlConnection(tmp.ConnectionString);
+            */
+        }
+        //https://docs.microsoft.com/hu-hu/azure/azure-sql/database/always-encrypted-certificate-store-configure
+
+        public bool verifyUser(string username, string jelszo)
+        {
+            string querry = "";
+            bool ret = false;
+            try
+            {
+                querry = "SELECT felhasznalonev,jelszo FROM felhasznalok WHERE felhasznalonev='" + username + "'";
+                SqlCommand sqlCmd = new SqlCommand(querry, getSecureConn());
+
+                /*
+                SqlParameter passw = new SqlParameter(@"@passw", jelszo);
+                passw.DbType = DbType.AnsiStringFixedLength;
+                passw.Direction = ParameterDirection.Input;
+                passw.Size = 32;
+                */
+
+                sqlCmd.Connection.Open();
+
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    ret = (reader.GetString(1) == jelszo);
+                }
+                else
+                {
+                    latestErrorMsg = "Nincs ilyen embör";
+                    ret = false;
+                }
+
+                sqlCmd.Connection.Close();
+
+                return ret;
+            }
+            catch (Exception e)
+            {
+                latestErrorMsg = e.Message + querry;
+                return false;
+            }
+        }
+
+        public bool checkhUsername(string username)//igaz ha létezik
+        {
+            string querry;
+            querry = "SELECT felhasznalonev,jelszo FROM felhasznalok WHERE felhasznalonev='" + username + "'";
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand(querry, getSecureConn());
+
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+
+                return reader.HasRows;
+            }
+            catch(Exception e)
+            {
+                latestErrorMsg = e.Message;
+                return false;
+            }
+        }
+
+        public bool regUser(string username,string email,string jelszo)
+        {
+            string querry = @"INSERT into felhasznalok([felhasznalonev],[emailcim],[jogosultasag],[jelszo])"+
+                            "VALUES(@p1, @p2, @p3, @p4)";
+            if(!checkhUsername(username))
+            {
+                latestErrorMsg = "Van már ilyen felhsználónév";
+                return false;
+            }
+
+            SqlCommand sqlCmd = new SqlCommand(querry);
+
+            SqlParameter p1 = new SqlParameter(@"@p1", username);
+            p1.SqlDbType = SqlDbType.VarChar;
+            p1.Direction = ParameterDirection.Input;
+            p1.Size = 32;
+
+            SqlParameter p2 = new SqlParameter(@"@p2", email);
+            p2.SqlDbType = SqlDbType.VarChar;
+            p2.Direction = ParameterDirection.Input;
+            p1.Size = 50;
+
+            SqlParameter p3 = new SqlParameter(@"@p3", "+");
+            p3.SqlDbType = SqlDbType.VarChar;
+            p3.Direction = ParameterDirection.Input;
+            p1.Size = 10;
+
+            SqlParameter p4 = new SqlParameter(@"@p4", jelszo);
+            p4.SqlDbType = SqlDbType.VarChar;
+            p4.Direction = ParameterDirection.Input;
+            p1.Size = 32;
+
+            sqlCmd.Parameters.Add(p1);
+            sqlCmd.Parameters.Add(p2);
+            sqlCmd.Parameters.Add(p3);
+            sqlCmd.Parameters.Add(p4);
+
+            using (sqlCmd.Connection= getSecureConn())
+            {
+                try
+                {
+                    sqlCmd.Connection.Open();
+
+                    sqlCmd.ExecuteNonQuery();
+
+                    sqlCmd.Connection.Close();
+                }
+                catch (Exception e)
+                {
+                    latestErrorMsg = e.Message;
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

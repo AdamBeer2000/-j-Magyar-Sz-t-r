@@ -18,8 +18,12 @@ namespace WebNewmagyarszotar
         DataBase db = new DataBase();
         List<EnglishWord> words = new List<EnglishWord>();
         Random rand = new Random();
+<<<<<<< Updated upstream
         int[] ids = new int[2];
 
+=======
+        
+>>>>>>> Stashed changes
         private int getRand() { return rand.Next(0, words.Count); }
 
         public bool moreThanTwo(int _id)
