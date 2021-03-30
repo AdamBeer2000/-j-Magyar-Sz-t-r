@@ -134,33 +134,33 @@
                         <h1>
                             Felhasználónév:
                         </h1>
-                        <p id="hiba_username">
+                        <p id="hiba_username" runat="server" color="#FF3D3D">
                         </p>
-                        <asp:TextBox ID="usernameBox" runat="server" OnTextChanged="usernameBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <asp:TextBox ID="usernameBox" runat="server"></asp:TextBox>
                         <br />
 
                         <h1>
                             Jelszó:
                         </h1>
-                        <p id="hiba_password1"> 
+                        <p id="hiba_password1" runat="server" color="#FF3D3D"> 
                         </p>
-                        <asp:TextBox  ID="passwordBox1" TextMode="Password" runat="server" OnTextChanged="passwordBox1_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <asp:TextBox  ID="passwordBox1" TextMode="Password" runat="server"></asp:TextBox>
                         <br />
 
                         <h1>
                             Jelszó mégegyszer:
                         </h1>
-                        <p id="hiba_password2">
+                        <p id="hiba_password2" runat="server" color="#FF3D3D">
                         </p>
-                        <asp:TextBox  ID="passwordBox2" TextMode="Password" runat="server" OnTextChanged="passwordBox2_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <asp:TextBox  ID="passwordBox2" TextMode="Password" runat="server"></asp:TextBox>
                         <br />
 
                         <h1>
                             E-mail:
                         </h1>
-                        <p id="hiba_email">
+                        <p id="hiba_email" runat="server" color="#FF3D3D">
                         </p>
-                        <asp:TextBox ID="emailBox" TextMode="Email" runat="server" OnTextChanged="emailBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        <asp:TextBox ID="emailBox" TextMode="Email" runat="server" ></asp:TextBox>
                         <br />
 
                         <asp:Button ID="tovabb" runat="server" Text="Tovább" OnClick="tovabb_Click" />
@@ -169,6 +169,9 @@
                 </tr>
             </table>
         </div>
+        <p>
+            <asp:Label ID="Label1" runat="server" BackColor="White" Text="Label"></asp:Label>
+        </p>
     </form>
 </body>
 </html>

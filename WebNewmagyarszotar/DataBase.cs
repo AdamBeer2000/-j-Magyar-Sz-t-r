@@ -247,7 +247,8 @@ namespace WebNewmagyarszotar
         {
             string querry = @"INSERT into felhasznalok([felhasznalonev],[emailcim],[jogosultasag],[jelszo])"+
                             "VALUES(@p1, @p2, @p3, @p4)";
-            if(!checkhUsername(username))
+
+            if(checkhUsername(username))
             {
                 latestErrorMsg = "Van már ilyen felhsználónév";
                 return false;
