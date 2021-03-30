@@ -11,7 +11,7 @@ namespace WebNewmagyarszotar
 {
 
 
-    public partial class WebForm4
+    public partial class WebForm5
     {
 
         /// <summary>
@@ -24,12 +24,30 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.HtmlControls.HtmlForm form111;
 
         /// <summary>
-        /// DebugLabel control.
+        /// angol_szo_label control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DebugLabel;
+        protected global::System.Web.UI.WebControls.Label angol_szo_label;
+
+        /// <summary>
+        /// first_forditas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label first_forditas;
+
+        /// <summary>
+        /// second_forditas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label second_forditas;
     }
 }

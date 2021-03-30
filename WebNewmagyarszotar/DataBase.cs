@@ -57,7 +57,7 @@ namespace WebNewmagyarszotar
                     if (!result.ContainsKey(reader.GetString(1)))
                     {
                         result.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(7), reader.GetString(8)));
-                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8)));
+                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3), reader.GetString(6), reader.GetInt32(4), reader.GetInt32(5)));
                     }
                     else
                     {
@@ -70,7 +70,7 @@ namespace WebNewmagyarszotar
             }
             catch (SqlException ex)
             {
-                Console.WriteLine(ex.Message);
+                latestErrorMsg = ex.Message;
             }
 
             return result;

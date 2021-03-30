@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Explorer.aspx.cs" Inherits="WebNewmagyarszotar.WebForm4" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Explorer.aspx.cs" Inherits="WebNewmagyarszotar.WebForm5" %>
 
 <!DOCTYPE html>
 
@@ -99,7 +99,7 @@
         <tr>
             <td>
                 <h1>
-                    angol szó
+                    <asp:Label ID="angol_szo_label" runat="server"></asp:Label>
                 </h1>
             </td>
         </tr>
@@ -113,7 +113,7 @@
                     <tr>
                         <td>
                             <h1>
-                                első fordítás
+                                <asp:Label ID="first_forditas" runat="server"></asp:Label>
                             </h1>
                         </td>
                     </tr>
@@ -148,7 +148,7 @@
                     <tr>
                         <td>
                             <h1>
-                                masodik fordítás
+                                <asp:Label ID="second_forditas" runat="server"></asp:Label>
                             </h1>
                         </td>
                     </tr>
@@ -157,14 +157,6 @@
             </td>
         </tr>
     </table>
-
-        <p>
-            &nbsp;</p>
-        <p>
-            &nbsp;</p>
-        <p>
-            <asp:Label ID="DebugLabel" runat="server" Text="Teszt"></asp:Label>
-        </p>
     </form>
 
 </body>

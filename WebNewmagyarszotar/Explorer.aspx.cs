@@ -12,7 +12,7 @@ namespace WebNewmagyarszotar
         protected void Page_Load(object sender, EventArgs e)
         {
             getWords();
-            doit();
+            vizualize();
         }
 
         DataBase db = new DataBase();
@@ -53,16 +53,24 @@ namespace WebNewmagyarszotar
             Dictionary<String, EnglishWord> temp = new Dictionary<string, EnglishWord>();
             temp = db.getExploreWords();
             words = temp.Values.ToList<EnglishWord>();
-            
         }
 
-        protected void doit()
+        public void vizualize()
         {
-            string res = "";
-            for (int i = 0; i < words.Count; i++)
+            EnglishWord env = this.exploreVisualization();
+            angol_szo_label.Text = env.getWord();
+
+            List<HungarianWord> hun_list = new List<HungarianWord>();
+            hun_list = env.getHunList();
+            int f, s;
+            f = rand.Next(0, hun_list.Count);
+            do
             {
-                res += words[i].ToString();
-            }
+                s = rand.Next(0, hun_list.Count);
+            } while (s == f);
+
+            first_forditas.Text = hun_list[f].getHunWord();
+            second_forditas.Text = hun_list[s].getHunWord();
         }
     }
 }
