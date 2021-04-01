@@ -57,11 +57,60 @@ namespace WebNewmagyarszotar
 
             return result;
         }
+
+        public List<string> getAllEnglishWord()
+        {
+            List<string> send_this = new List<string>();
+            string query = "SELECT szo FROM angolszo";
+            SqlCommand command = new SqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (!send_this.Contains(reader.GetString(0)))
+                    {
+                        send_this.Add(reader.GetString(0));
+                    }
+                }
+
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                latestErrorMsg = ex.Message;
+            }
+
+            return send_this;
+        }
+
+        public void addEndlishWord(string word, string description, string username)
+        {
+            string insert = "INSERT INTO angolszo (szo, bekuldo, definicio) VALUES(\'" + word + "\', \'" + username + "\', \'" + description + "\')";
+            //string tryfirst = "INSERT INTO angolszo (szo, bekuldo, definicio) VALUES(\'" + username +"\', \'" + username +"\', \'" + description +"\')";
+            
+            try
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(insert, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                latestErrorMsg = e.Message;
+            }
+
+        }
+
         public Dictionary<String, EnglishWord> getExploreWords()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/explorer_sql_a.sql";
-            string querry = File.ReadAllText(path);
-            SqlCommand command = new SqlCommand(querry, conn);
+            string query = File.ReadAllText(path);
+            SqlCommand command = new SqlCommand(query, conn);
             Dictionary<String, EnglishWord> result = new Dictionary<String, EnglishWord>();
 
             try
