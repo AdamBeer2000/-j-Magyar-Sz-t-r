@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Regisztáció</title>
-    <link rel="stylesheet" href="Style_Register.css" />
 
     <style type="text/css">
         body {
@@ -28,12 +27,16 @@
             height: 20%;
         }
 
+        #title {
+           width: 80%;
+        }
+
         #register{
             border: 1px solid #898E01;
             margin-top: 1%;
             text-align: center;
-            width: 40%;
-            margin-left: 30%;
+            width: 80%;
+            margin-left: 10%;
             background-color: #080808;
             opacity: 0.8;
         }
@@ -41,14 +44,14 @@
         h1 {
             color: #898E01;
             font-family: Calibri;
-            font-size: 140%;
+            font-size: 250%;
         }
 
         #usernameBox {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 40%;
-            font-size: 100%;
+            min-width: 80%;
+            font-size: 200%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -58,8 +61,8 @@
         #passwordBox1 {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 40%;
-            font-size: 100%;
+            min-width: 80%;
+            font-size: 200%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -69,8 +72,8 @@
         #passwordBox2 {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 40%;
-            font-size: 100%;
+            min-width: 80%;
+            font-size: 200%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -80,8 +83,8 @@
         #emailBox {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 40%;
-            font-size: 100%;
+            min-width: 80%;
+            font-size: 200%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -96,10 +99,10 @@
             outline: none;
             background-color: #898E01;
             color: #080808;
-            font-size: 100%;
+            font-size: 200%;
             font-weight: bolder;
             font-family: Calibri;
-            padding: 1%;
+            padding: 2%;
         }
 
         #tovabb:hover{
@@ -108,18 +111,22 @@
 
         #hiba_username {
             color: #FF3D3D;
+            font-size: 200%;
         }
 
         #hiba_password1 {
             color: #FF3D3D;
+            font-size: 200%;
         }
 
         #hiba_password2 {
             color: #FF3D3D;
+            font-size: 200%;
         }
 
         #hiba_email {
             color: #FF3D3D;
+            font-size: 200%;
         }
 
         @media only screen and (min-width: 1024px) {
@@ -127,6 +134,104 @@
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
                 background-size: 100%;
                 background-repeat: no-repeat;
+            }
+
+            #title {
+                width: 70%;
+            }
+
+            #register{
+                border: 1px solid #898E01;
+                margin-top: 1%;
+                text-align: center;
+                width: 40%;
+                margin-left: 30%;
+                background-color: #080808;
+                opacity: 0.8;
+            }
+
+            h1 {
+                color: #898E01;
+                font-family: Calibri;
+                font-size: 140%;
+            }
+
+            #usernameBox {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
+
+            #passwordBox1 {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
+
+            #passwordBox2 {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
+
+            #emailBox {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
+
+            #tovabb {
+                cursor: pointer;
+                border: none;
+                margin-top: 3%;
+                margin-bottom: 2%;
+                outline: none;
+                background-color: #898E01;
+                color: #080808;
+                font-size: 100%;
+                font-weight: bolder;
+                font-family: Calibri;
+                padding: 1%;
+            }
+
+            #hiba_username {
+                color: #FF3D3D;
+                font-size: 100%;
+            }
+
+            #hiba_password1 {
+                color: #FF3D3D;
+                font-size: 100%;
+            }
+
+            #hiba_password2 {
+                color: #FF3D3D;
+                font-size: 100%;
+            }
+
+            #hiba_email {
+                color: #FF3D3D;
+                font-size: 100%;
             }
         }
 
@@ -136,7 +241,7 @@
     <table id="Menu_title">
         <tr>
             <td>
-                <img src="https://i.imgur.com/McfDfCf.png"width="35%" id="title" alt="title" />
+                <img src="https://i.imgur.com/McfDfCf.png" width="35%" id="title" alt="title" />
             </td>
         </tr>
     </table>

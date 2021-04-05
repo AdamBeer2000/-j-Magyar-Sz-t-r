@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Felfedező mód</title>
-    <link rel="stylesheet" href="Style_Explorer.css" />
 
     <style type="text/css">
         body {
