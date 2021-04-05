@@ -170,7 +170,6 @@
     <Content Include="Style_Ranks.css" />
     <Content Include="Style_Browse.css" />
     <Content Include="Style_Register.css" />
-    <Content Include="Style_index.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
