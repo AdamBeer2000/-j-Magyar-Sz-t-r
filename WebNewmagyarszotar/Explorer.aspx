@@ -27,25 +27,33 @@
             height: 20%;
         }
 
+        #title {
+            width: 80%;
+        }
+
         #Page_title {
             border: 1px solid #898E01;
             margin-top: 1%;
-            margin-left: 20%;
-            margin-right: 20%;
+            margin-left: 10%;
+            margin-right: 10%;
             padding-left: 2%;
             text-align: left;
-            width: 60%;
+            width: 80%;
             height: 20%;
+            background-color: #080808;
+            opacity: 0.8;
         }
 
         #fo_tablazat {
             border: 1px solid #898E01;
             margin-top: 1%;
-            margin-left: 20%;
-            margin-right: 20%;
+            margin-left: 10%;
+            margin-right: 10%;
             text-align: center;
-            width: 60%;
+            width: 80%;
             height: 80%;
+            background-color: #080808;
+            opacity: 0.8;
         }
 
         #elso_szo
@@ -70,7 +78,7 @@
         }
 
         h1 {
-            font-size: 170%;
+            font-size: 300%;
             font-weight: bold;
             font-family: Calibri;
             color: #898E01;
@@ -88,11 +96,75 @@
             padding-right: 2%;
         }
 
+        #up {
+            width: 60%;
+        }
+
+        #down {
+            width: 60%;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
                 background-size: 100%;
                 background-repeat: no-repeat;
+            }
+
+            #title {
+                width: 60%;
+            }
+
+            h1 {
+                font-size: 170%;
+                font-weight: bold;
+                font-family: Calibri;
+                color: #898E01;
+            }
+
+            #fo_tablazat {
+                border: 1px solid #898E01;
+                margin-top: 1%;
+                margin-left: 20%;
+                margin-right: 20%;
+                text-align: center;
+                width: 60%;
+                height: 80%;
+            }
+
+            #elso_szo
+            {
+                border: none;
+                text-align: left;
+                padding-left: 2%;
+                width: 100%;
+            }
+
+            #masodik_szo
+            {
+                border: none;
+                text-align: right;
+                padding-right: 2%;
+                width: 100%;
+            }
+
+            #Page_title {
+                border: 1px solid #898E01;
+                margin-top: 1%;
+                margin-left: 20%;
+                margin-right: 20%;
+                padding-left: 2%;
+                text-align: left;
+                width: 60%;
+                height: 20%;
+            }
+
+            #up {
+                width: 40%;
+            }
+
+            #down {
+                width: 40%;
             }
         }
 
@@ -103,7 +175,7 @@
     <table id="Menu_title">
         <tr>
             <td>
-                <img src="https://i.imgur.com/HwosnuG.png" width="35%" id="title" alt="title" />
+                <img src="https://i.imgur.com/HwosnuG.png" id="title" alt="title" />
             </td>
         </tr>
     </table>
@@ -148,13 +220,13 @@
                         </td>
                         <td>
                             <h1>
-                                <asp:ImageButton id="up" runat="server" ImageUrl="https://i.imgur.com/4Qv1V8L.png" width="40%" alt="vonal"  OnClick="upClick"/>
+                                <asp:ImageButton id="up" runat="server" ImageUrl="https://i.imgur.com/4Qv1V8L.png" alt="up"  OnClick="upClick"/>
                                 <!--<img src="https://i.imgur.com/4Qv1V8L.png" width="40%" id="up_down" alt="vonal" />-->
                             </h1>
                         </td>
                         <td>
                             <h1>
-                                <asp:ImageButton id="down" runat="server" ImageUrl="https://i.imgur.com/kkF7JDM.png"  width="40%" alt="vonal" OnClick="downClick"/>
+                                <asp:ImageButton id="down" runat="server" ImageUrl="https://i.imgur.com/kkF7JDM.png" alt="down" OnClick="downClick"/>
                                 <!--<img src="https://i.imgur.com/kkF7JDM.png" width="40%" id="up_down" alt="vonal" /> -->
                             </h1>
                         </td>

@@ -27,12 +27,16 @@
             height: 20%;
         }
 
+        #title {
+            width: 80%;
+        }
+
         #login{
             border: 1px solid #898E01;
             margin-top: 1%;
             text-align: center;
-            width: 40%;
-            margin-left: 30%;
+            width: 80%;
+            margin-left: 10%;
             background-color: #080808;
             opacity: 0.8;
         }
@@ -40,15 +44,15 @@
         h1 {
             color: #898E01;
             font-family: Calibri;
-            font-size: 140%;
+            font-size: 300%;
         }
 
 
         #username_ {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 40%;
-            font-size: 100%;
+            min-width: 80%;
+            font-size: 200%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -58,8 +62,8 @@
         #Password1 {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 40%;
-            font-size: 100%;
+            min-width: 80%;
+            font-size: 200%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -74,10 +78,10 @@
             outline: none;
             background-color: #898E01;
             color: #080808;
-            font-size: 100%;
+            font-size: 200%;
             font-weight: bolder;
             font-family: Calibri;
-            padding: 1%;
+            padding: 2%;
         }
 
         #Button1:hover{
@@ -95,6 +99,62 @@
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
                 background-size: 100%;
                 background-repeat: no-repeat;
+            }
+
+            #title {
+                width: 60%;
+            }
+
+            #login{
+                border: 1px solid #898E01;
+                margin-top: 1%;
+                text-align: center;
+                width: 40%;
+                margin-left: 30%;
+                background-color: #080808;
+                opacity: 0.8;
+            }
+
+            h1 {
+                color: #898E01;
+                font-family: Calibri;
+                font-size: 140%;
+            }
+
+            #username_ {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
+
+            #Password1 {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
+
+            #Button1 {
+                cursor: pointer;
+                border: none;
+                margin-top: 3%;
+                margin-bottom: 2%;
+                outline: none;
+                background-color: #898E01;
+                color: #080808;
+                font-size: 100%;
+                font-weight: bolder;
+                font-family: Calibri;
+                padding: 1%;
             }
         }
 
