@@ -197,6 +197,8 @@
         <p>
             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </p>
+
+        <a id="vissza" href="index.aspx">Vissza a kezdőoldalra</a>
     </form>
             
 </body>
