@@ -16,7 +16,13 @@ namespace WebNewmagyarszotar
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            english_words = db.getAllEnglishWord();
+            List<string> temporary = new List<string>();
+            temporary = db.getAllEnglishWord();
+
+            for (int i = 0; i < temporary.Count; i++)
+            {
+                english_words.Add(temporary[i].ToUpper());
+            }
         }
 
         private void debug1()
@@ -40,7 +46,7 @@ namespace WebNewmagyarszotar
         }
         private void validate(string str)
         {
-            if(!english_words.Contains(str))
+            if(!english_words.Contains(str.ToUpper()))
             {
                 valid = true;
             }
@@ -85,6 +91,7 @@ namespace WebNewmagyarszotar
 
         protected void eng_word_textbox_TextChanged(object sender, EventArgs e)
         {
+            error_label.Text = "";
             this.word = eng_word_textbox.Text;
         }
     }
