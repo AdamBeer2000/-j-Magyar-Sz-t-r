@@ -49,6 +49,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <a id="vissza" href="index.aspx">Vissza a kezdőoldalra</a>
     </form>
 </body>
 </html>

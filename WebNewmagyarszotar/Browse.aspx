@@ -248,6 +248,7 @@
     </table>
         <div>
         </div>
+        <a id="vissza" href="index.aspx">Vissza a kezdőoldalra</a>
     </form>
 </body>
 </html>
