@@ -27,11 +27,19 @@
             height: 20%;
         }
 
+        #back_image {
+            width: 20%;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
                 background-size: 100%;
                 background-repeat: no-repeat;
+            }
+
+            #back_image {
+                width: 15%;
             }
         }
 
@@ -49,7 +57,9 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <a id="vissza" href="index.aspx">Vissza a kezdőoldalra</a>
+        <a id="vissza" href="index.aspx">
+            <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />
+        </a>
     </form>
 </body>
 </html>

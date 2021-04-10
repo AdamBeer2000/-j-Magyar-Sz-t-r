@@ -104,6 +104,10 @@
             width: 60%;
         }
 
+        #back_image {
+            width: 15%;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
@@ -165,6 +169,10 @@
 
             #down {
                 width: 40%;
+            }
+
+            #back_image {
+                width: 15%;
             }
         }
 
@@ -252,7 +260,9 @@
         </tr>
     </table>
 
-    <a id="vissza" href="index.aspx">Vissza a kezdőoldalra</a>
+    <a id="vissza" href="index.aspx">
+            <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />
+        </a>
 
     </form>
 
