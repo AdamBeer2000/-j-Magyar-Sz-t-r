@@ -183,16 +183,36 @@ namespace WebNewmagyarszotar
             return words;
         }
 
-        public void addLike(int id)
+        public void addLike(int magyarszo_id,int felhasz_id)
         {
             //todo a felhasználó által likeolt szavak listájához adni
             //ha egyszer rákatint akkor like olja, ha mégegyszer akkor meg viszavonja
-            string querry = "UPDATE magyarszo SET tetszes = tetszes + 1 WHERE id = " + id;
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/addreaction.sql";
+            string querry = File.ReadAllText(path);
+
             try
             {
                 conn.Open();
-                SqlCommand c = new SqlCommand(querry, conn);
-                SqlDataReader reader = c.ExecuteReader();
+                SqlCommand sqlCmd = new SqlCommand(querry, conn);
+
+                SqlParameter p1 = new SqlParameter(@"@magyarszo_id", magyarszo_id);
+                p1.SqlDbType = SqlDbType.VarChar;
+                p1.Direction = ParameterDirection.Input;
+
+                SqlParameter p2 = new SqlParameter(@"@felhasz_id", felhasz_id);
+                p2.SqlDbType = SqlDbType.VarChar;
+                p2.Direction = ParameterDirection.Input;
+
+                SqlParameter p3 = new SqlParameter(@"@reaction", "L");
+                p3.SqlDbType = SqlDbType.Char;
+                p3.Direction = ParameterDirection.Input;
+
+                sqlCmd.Parameters.Add(p1);
+                sqlCmd.Parameters.Add(p2);
+                sqlCmd.Parameters.Add(p3);
+
+                SqlDataReader reader = sqlCmd.ExecuteReader();
                 conn.Close();
 
             }
@@ -201,17 +221,37 @@ namespace WebNewmagyarszotar
                 latestErrorMsg = e.Message;
             }
         }
-        public void addDislike(int id)
+        public void addDislike(int magyarszo_id, int felhasz_id)
         {
             //todo a felhasználó által dislikeolt szavak listájához adni
             //ha egyszer rákatint akkor dislike olja, ha mégegyszer akkor meg viszavonja
-            string querry = "UPDATE magyarszo SET nemtetszes = nemtetszes + 1 WHERE id = " + id;
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/addreaction.sql";
+            string querry = File.ReadAllText(path);
+
             try
             {
                 conn.Open();
-                SqlCommand c = new SqlCommand(querry, conn);
-                SqlDataReader reader = c.ExecuteReader();
+                SqlCommand sqlCmd = new SqlCommand(querry, conn);
+
+                SqlParameter p1 = new SqlParameter(@"@magyarszo_id", magyarszo_id);
+                p1.SqlDbType = SqlDbType.VarChar;
+                p1.Direction = ParameterDirection.Input;
+
+                SqlParameter p2 = new SqlParameter(@"@felhasz_id", felhasz_id);
+                p2.SqlDbType = SqlDbType.VarChar;
+                p2.Direction = ParameterDirection.Input;
+
+                SqlParameter p3 = new SqlParameter(@"@reaction", "D");
+                p3.SqlDbType = SqlDbType.Char;
+                p3.Direction = ParameterDirection.Input;
+
+                sqlCmd.Parameters.Add(p1);
+                sqlCmd.Parameters.Add(p2);
+                sqlCmd.Parameters.Add(p3);
+
+                SqlDataReader reader = sqlCmd.ExecuteReader();
                 conn.Close();
+
             }
             catch (Exception e)
             {
@@ -235,13 +275,13 @@ namespace WebNewmagyarszotar
         }
         //https://docs.microsoft.com/hu-hu/azure/azure-sql/database/always-encrypted-certificate-store-configure
 
-        public bool verifyUser(string username, string jelszo)
+        public int verifyUser(string username, string jelszo)//ha létezik és sikeres a bejelentkezés felhaszidvel tér vissza egyébként -1
         {
             string querry = "";
-            bool ret = false;
+            int id = -1; ;
             try
             {
-                querry = "SELECT felhasznalonev,jelszo FROM felhasznalok WHERE felhasznalonev='" + username + "'";
+                querry = "SELECT id,felhasznalonev,jelszo FROM felhasznalok WHERE felhasznalonev='" + username + "'";
                 SqlCommand sqlCmd = new SqlCommand(querry, getSecureConn());
 
                 /*
@@ -258,26 +298,28 @@ namespace WebNewmagyarszotar
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    ret = (reader.GetString(1) == jelszo);
-                    if(!ret)
+                    if (reader.GetString(2) != jelszo)
                     {
                         latestErrorMsg = "Rossz jelszó";
+                    }
+                    else
+                    {
+                        id = reader.GetInt32(0);
                     }
                 }
                 else
                 {
                     latestErrorMsg = "Nincs ilyen embör";
-                    ret = false;
                 }
 
                 sqlCmd.Connection.Close();
 
-                return ret;
+                return id;
             }
             catch (Exception e)
             {
                 latestErrorMsg = e.Message + querry;
-                return false;
+                return -1;
             }
         }
 
