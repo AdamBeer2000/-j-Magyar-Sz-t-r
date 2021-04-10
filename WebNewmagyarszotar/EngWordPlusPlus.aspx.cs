@@ -70,11 +70,11 @@ namespace WebNewmagyarszotar
             }
         }
 
-        protected void add_eng_button_Click(object sender, ImageClickEventArgs e)
+        protected void add_eng_button_Click(object sender, EventArgs e)
         {
             this.addNewWord();
         }
-        
+
         protected void eng_description_textbox_TextChanged(object sender, EventArgs e)
         {
             if (eng_description_textbox.Text != "")
