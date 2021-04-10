@@ -49,7 +49,11 @@
                 </form>
                 
                 <a href="Explorer.aspx">
+<<<<<<< Updated upstream
                     <img src="https://i.imgur.com/bjf1uwn.png" width="20%" id="explorer" alt="explorer mode" />
+=======
+                    <img src="https://i.imgur.com/zmsTgGY.png" width="40%" id="explorer" alt="explorer mode" />
+>>>>>>> Stashed changes
                 </a>
             </td>
         </tr>

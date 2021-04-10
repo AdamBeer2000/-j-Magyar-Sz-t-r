@@ -185,6 +185,8 @@ namespace WebNewmagyarszotar
 
         public void addLike(int id)
         {
+            //todo a felhasználó által likeolt szavak listájához adni
+            //ha egyszer rákatint akkor like olja, ha mégegyszer akkor meg viszavonja
             string querry = "UPDATE magyarszo SET tetszes = tetszes + 1 WHERE id = " + id;
             try
             {
@@ -201,6 +203,8 @@ namespace WebNewmagyarszotar
         }
         public void addDislike(int id)
         {
+            //todo a felhasználó által dislikeolt szavak listájához adni
+            //ha egyszer rákatint akkor dislike olja, ha mégegyszer akkor meg viszavonja
             string querry = "UPDATE magyarszo SET nemtetszes = nemtetszes + 1 WHERE id = " + id;
             try
             {
@@ -255,6 +259,10 @@ namespace WebNewmagyarszotar
                 {
                     reader.Read();
                     ret = (reader.GetString(1) == jelszo);
+                    if(!ret)
+                    {
+                        latestErrorMsg = "Rossz jelszó";
+                    }
                 }
                 else
                 {

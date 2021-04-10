@@ -20,6 +20,7 @@ namespace WebNewmagyarszotar
             if(db.verifyUser(username_.Value, Password1.Value))
             {
                 Label1.Text = "Fasza";
+                Response.Cookies["User"]["Logged"] = username_.Value;
             }
             else
             {
