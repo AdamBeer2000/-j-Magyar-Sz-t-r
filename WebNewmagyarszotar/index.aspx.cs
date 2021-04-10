@@ -19,11 +19,11 @@ namespace WebNewmagyarszotar
             {
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    Label2.Text = Request.Cookies["User"]["Logged"].ToString();
+                    user_label.Text = Request.Cookies["User"]["Logged"].ToString();
                 }
                 else
                 {
-                    Label2.Text = "Unlogged";
+                    user_label.Text = "Unlogged";
                 }
             }
             

@@ -18,7 +18,7 @@
             user-select: none;
         }
 
-        #Label2 {
+        #user_label {
             width: 100%;
             padding: 0%;
             margin: 0%;
@@ -184,7 +184,7 @@
 
             <td>
                 <h1>
-                    <asp:Label ID="Label2" runat="server" Text="username"></asp:Label>
+                    <asp:Label ID="user_label" runat="server" Text="username"></asp:Label>
                 </h1>
             </td>
 
