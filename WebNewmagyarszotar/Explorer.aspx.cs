@@ -35,7 +35,6 @@ namespace WebNewmagyarszotar
                 return false;
             }
         }
-        
 
         public EnglishWord exploreVisualization()
         {
@@ -81,14 +80,16 @@ namespace WebNewmagyarszotar
         protected void upClick(object sender, ImageClickEventArgs e)
         {
             //update elso forditas like++
-            db.addLike(ids[0]);
+            if (Request.Cookies["User"]["Logged"] != null)
+                db.addLike(ids[0],Convert.ToInt32(Request.Cookies["User"]["Logged"]));
             this.vizualize();
         }
 
         protected void downClick(object sender, ImageClickEventArgs e)
         {
             //update masodik forditas like++
-            db.addLike(ids[1]);
+            if (Request.Cookies["User"]["Logged"] != null)
+                db.addLike(ids[1],Convert.ToInt32(Request.Cookies["User"]["Logged"]));
             this.vizualize();
         }
     }

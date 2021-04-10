@@ -21,8 +21,15 @@ namespace WebNewmagyarszotar
                 //YEY ->Connection check
             }
             //connection_info = db.getAllDataDEBUG();
+            if (Request.Cookies["User"]["Logged"] != null)
+            {
+                Label2.Text = Request.Cookies["User"]["Logged"].ToString();
+            }
+            else
+            {
+                Label2.Text = "Unlogged";
+            }
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
 

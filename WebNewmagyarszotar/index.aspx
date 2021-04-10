@@ -142,6 +142,7 @@
         <tr>
             <td>
                 <img src="https://i.imgur.com/bUmy7ss.png" id="title" alt="title" />
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
             </td>
         </tr>
     </table>

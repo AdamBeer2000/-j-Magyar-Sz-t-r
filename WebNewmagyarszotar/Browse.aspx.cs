@@ -197,7 +197,8 @@ namespace WebNewmagyarszotar
             string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_like_", "");
 
-            db.addLike(Convert.ToInt32(id));
+            if (Request.Cookies["User"]["Logged"] != null)
+            db.addLike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
 
             update();
 
@@ -208,7 +209,8 @@ namespace WebNewmagyarszotar
             string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_dislike_", "");
 
-            db.addDislike(Convert.ToInt32(id));
+            if (Request.Cookies["User"]["Logged"] != null)
+            db.addDislike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
 
             update();
 
