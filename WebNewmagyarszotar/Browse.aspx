@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Böngészés</title>
-    <link rel="stylesheet" href="Style_Browse.css" />
 
     <style type="text/css">
         body {
@@ -26,6 +25,10 @@
             text-align: center;
             width: 100%;
             height: 20%;
+        }
+
+        #title {
+            width: 80%;
         }
 
         #search {
@@ -50,27 +53,8 @@
         }
 
         h1 {
-            font-size: 120%;
+            font-size: 150%;
             font-family: Calibri;
-            color: #898E01;
-        }
-
-        #kereses {
-            outline: none;
-            border: 1px solid #898E01;
-            font-size: 100%;
-            font-family: Calibri;
-            color: #898E01;
-            background-color: #080808;
-            opacity: 0.8;
-        }
-        #kereses::-webkit-input-placeholder {
-            color: #898E01;
-        }
-        #kereses:-moz-placeholder {
-            color: #898E01;
-        }
-        #kereses::-moz-placeholder {
             color: #898E01;
         }
 
@@ -78,18 +62,28 @@
             outline: none;
             border: 1px solid #898E01;
             min-width: 40%;
-            font-size: 100%;
+            font-size: 300%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
             opacity: 0.9;
         }
 
+        #searchBox::-webkit-input-placeholder {
+            color: #898E01;
+        }
+        #searchBox:-moz-placeholder {
+            color: #898E01;
+        }
+        #searchBox::-moz-placeholder {
+            color: #898E01;
+        }
+
         .cimsor td{
             border: 1px dashed rgba(137, 142, 1, 0.2);
             border-bottom: 1px solid rgba(137, 142, 1, 0.5);
             color: #898E01;
-            font-size: 150%;
+            font-size: 300%;
             font-family: Calibri;
             font-weight: bold;
         }
@@ -100,33 +94,35 @@
 
         #for_back {
             border: none;
-            margin-top: 1%;
-            padding-top: 1%;
-            margin-left: 30%;
-            margin-right: 30%;
+            margin-top: 2%;
+            padding-top: 2%;
+            margin-left: 10%;
+            margin-right: 10%;
             text-align: center;
-            width: 40%;
-            height: 20%;
+            width: 80%;
+            height: 40%;
         }
 
         .rowStyle td
         {
+            padding-top: 2%;
+            padding-bottom: 2%;
             border: 1px dashed rgba(137, 142, 1, 0.2);
             border-bottom: 1px solid rgba(137, 142, 1, 0.5);
             color: #898E01;
-            font-size: 120%;
+            font-size: 200%;
             font-family: Calibri;
             max-height: 30%;
         }
 
         .likebutton
         {
-            height: 30px;
+            height: 60px;
         }
 
         .lenyitbutton
         {
-            height: 10px;
+            height: 20px;
         }
 
         @media only screen and (min-width: 1024px) {
@@ -135,6 +131,70 @@
                 background-size: 100%;
                 background-repeat: no-repeat;
             }
+
+            #title {
+                width: 60%;
+            }
+
+            h1 {
+                font-size: 120%;
+                font-family: Calibri;
+                color: #898E01;
+            }
+
+            #searchBox {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
+
+            .cimsor td{
+                border: 1px dashed rgba(137, 142, 1, 0.2);
+                border-bottom: 1px solid rgba(137, 142, 1, 0.5);
+                color: #898E01;
+                font-size: 150%;
+                font-family: Calibri;
+                font-weight: bold;
+            }
+
+            .rowStyle td
+            {
+                padding-top: 0%;
+                padding-bottom: 0%;
+                border: 1px dashed rgba(137, 142, 1, 0.2);
+                border-bottom: 1px solid rgba(137, 142, 1, 0.5);
+                color: #898E01;
+                font-size: 120%;
+                font-family: Calibri;
+                max-height: 30%;
+            }
+
+            .likebutton
+            {
+                height: 30px;
+            }
+
+            .lenyitbutton
+            {
+                height: 10px;
+            }
+
+            #for_back {
+                border: none;
+                margin-top: 1%;
+                padding-top: 1%;
+                margin-left: 30%;
+                margin-right: 30%;
+                text-align: center;
+                width: 40%;
+                height: 20%;
+            }
+
         }
 
     </style>

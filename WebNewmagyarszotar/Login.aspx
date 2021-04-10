@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WebNewmagyarszotar.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebNewmagyarszotar.WebForm6" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Regisztáció</title>
-
+    <title>Bejelentkezés</title>
+    
     <style type="text/css">
         body {
             background-image: url('https://i.imgur.com/DkxArzl.png');
@@ -16,7 +16,7 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-        }
+}
 
         #Menu_title {
             border: none;
@@ -28,10 +28,10 @@
         }
 
         #title {
-           width: 80%;
+            width: 80%;
         }
 
-        #register{
+        #login{
             border: 1px solid #898E01;
             margin-top: 1%;
             text-align: center;
@@ -44,10 +44,11 @@
         h1 {
             color: #898E01;
             font-family: Calibri;
-            font-size: 250%;
+            font-size: 300%;
         }
 
-        #usernameBox {
+
+        #username_ {
             outline: none;
             border: 1px solid #898E01;
             min-width: 80%;
@@ -58,7 +59,7 @@
             opacity: 0.9;
         }
 
-        #passwordBox1 {
+        #Password1 {
             outline: none;
             border: 1px solid #898E01;
             min-width: 80%;
@@ -69,29 +70,7 @@
             opacity: 0.9;
         }
 
-        #passwordBox2 {
-            outline: none;
-            border: 1px solid #898E01;
-            min-width: 80%;
-            font-size: 200%;
-            font-family: Calibri;
-            color: #898E01;
-            background-color: #080808;
-            opacity: 0.9;
-        }
-
-        #emailBox {
-            outline: none;
-            border: 1px solid #898E01;
-            min-width: 80%;
-            font-size: 200%;
-            font-family: Calibri;
-            color: #898E01;
-            background-color: #080808;
-            opacity: 0.9;
-        }
-
-        #tovabb {
+        #Button1 {
             cursor: pointer;
             border: none;
             margin-top: 3%;
@@ -105,28 +84,14 @@
             padding: 2%;
         }
 
-        #tovabb:hover{
+        #Button1:hover{
             box-shadow: 0 0 10px #898E01;
         }
 
-        #hiba_username {
-            color: #FF3D3D;
-            font-size: 200%;
-        }
-
-        #hiba_password1 {
-            color: #FF3D3D;
-            font-size: 200%;
-        }
-
-        #hiba_password2 {
-            color: #FF3D3D;
-            font-size: 200%;
-        }
-
-        #hiba_email {
-            color: #FF3D3D;
-            font-size: 200%;
+        #Label1 {
+            color: #898E01;
+            font-family: Calibri;
+            font-size: 140%;
         }
 
         @media only screen and (min-width: 1024px) {
@@ -137,10 +102,10 @@
             }
 
             #title {
-                width: 70%;
+                width: 60%;
             }
 
-            #register{
+            #login{
                 border: 1px solid #898E01;
                 margin-top: 1%;
                 text-align: center;
@@ -156,7 +121,7 @@
                 font-size: 140%;
             }
 
-            #usernameBox {
+            #username_ {
                 outline: none;
                 border: 1px solid #898E01;
                 min-width: 40%;
@@ -167,7 +132,7 @@
                 opacity: 0.9;
             }
 
-            #passwordBox1 {
+            #Password1 {
                 outline: none;
                 border: 1px solid #898E01;
                 min-width: 40%;
@@ -178,29 +143,7 @@
                 opacity: 0.9;
             }
 
-            #passwordBox2 {
-                outline: none;
-                border: 1px solid #898E01;
-                min-width: 40%;
-                font-size: 100%;
-                font-family: Calibri;
-                color: #898E01;
-                background-color: #080808;
-                opacity: 0.9;
-            }
-
-            #emailBox {
-                outline: none;
-                border: 1px solid #898E01;
-                min-width: 40%;
-                font-size: 100%;
-                font-family: Calibri;
-                color: #898E01;
-                background-color: #080808;
-                opacity: 0.9;
-            }
-
-            #tovabb {
+            #Button1 {
                 cursor: pointer;
                 border: none;
                 margin-top: 3%;
@@ -213,86 +156,48 @@
                 font-family: Calibri;
                 padding: 1%;
             }
-
-            #hiba_username {
-                color: #FF3D3D;
-                font-size: 100%;
-            }
-
-            #hiba_password1 {
-                color: #FF3D3D;
-                font-size: 100%;
-            }
-
-            #hiba_password2 {
-                color: #FF3D3D;
-                font-size: 100%;
-            }
-
-            #hiba_email {
-                color: #FF3D3D;
-                font-size: 100%;
-            }
         }
 
     </style>
 </head>
 <body>
-    <table id="Menu_title">
+
+     <table id="Menu_title">
         <tr>
             <td>
-                <img src="https://i.imgur.com/McfDfCf.png" width="35%" id="title" alt="title" />
+                <img src="https://i.imgur.com/bdQfMea.png"width="35%" id="title" alt="title" />
             </td>
         </tr>
     </table>
 
     <form id="form1" runat="server">
         <div>
-            <table id="register">
+            <table id="login">
                 <tr>
 
                     <td>
+
                         <h1>
                             Felhasználónév:
                         </h1>
-                        <p id="hiba_username" runat="server">
-                        </p>
-                        <asp:TextBox ID="usernameBox" runat="server"></asp:TextBox>
-                        <br />
+
+                        <p><input id="username_" type="text" runat="server"/></p>
 
                         <h1>
                             Jelszó:
                         </h1>
-                        <p id="hiba_password1" runat="server"> 
-                        </p>
-                        <asp:TextBox  ID="passwordBox1" TextMode="Password" runat="server"></asp:TextBox>
-                        <br />
+                        <p><input id="Password1" type="password" runat="server"/></p>
 
-                        <h1>
-                            Jelszó mégegyszer:
-                        </h1>
-                        <p id="hiba_password2" runat="server">
-                        </p>
-                        <asp:TextBox  ID="passwordBox2" TextMode="Password" runat="server"></asp:TextBox>
-                        <br />
-
-                        <h1>
-                            E-mail:
-                        </h1>
-                        <p id="hiba_email" runat="server">
-                        </p>
-                        <asp:TextBox ID="emailBox" TextMode="Email" runat="server" ></asp:TextBox>
-                        <br />
-
-                        <asp:Button ID="tovabb" runat="server" Text="Tovább" OnClick="tovabb_Click"/>
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Sajt" />
                     </td>
 
                 </tr>
             </table>
         </div>
         <p>
-            <asp:Label ID="Label1" runat="server" BackColor="White" Text="Label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </p>
     </form>
+            
 </body>
 </html>

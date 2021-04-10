@@ -17,7 +17,7 @@ namespace WebNewmagyarszotar
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if(db.regUser(Text1.Value,Text2.Value, Password1.Value))
+            if(db.verifyUser(username_.Value, Password1.Value))
             {
                 Label1.Text = "Fasza";
             }
