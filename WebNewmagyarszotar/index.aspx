@@ -7,118 +7,75 @@
     <title>New Magyar Szótár</title>
 
     <style>
-    body {
-        background-image: url('https://i.imgur.com/DkxArzl.png');
-        background-size: 100%;
-        background-repeat: no-repeat;
-        text-align: center;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    #Menu_title {
-        border: none;
-        margin-top: 1%;
-        padding: 1%;
-        text-align: center;
-        width: 100%;
-        height: 20%;
-    }
-
-    #title {
-       width: 80%;
-    }
-
-    #ranks {
-       width: 60%;
-    }
-
-    #register {
-       width: 85%;
-    }
-
-    #browse {
-       width: 68%;
-    }
-
-    #explorer {
-       width: 40%;
-    }
-
-    #login {
-       width: 60%;
-    }
-
-    #Menu_bar {
-        border: none;
-        text-align: center;
-        width: 100%;
-        height: 20%;
-    }
-
-    #Page {
-        border: none;
-        margin-top: 1%;
-        text-align: center;
-        width: 100%;
-        height: 20%;
-    }
-
-    #Button1 {
-        background-color: #6ae134;
-        border: none;
-        font-family: Calibri;
-        font-weight: bold;
-        font-size: 240%;
-        color: #202020;
-        margin-top: 5%;
-        padding: 5px 15px;
-        text-align: center;
-        outline: none;
-    }
-
-    #Button1:hover {
-        cursor: pointer;
-        box-shadow: 0 0 10px #6ae134;
-    }
-
-    Label1 {
-        padding-top: 5%;
-        margin-top: 5%;
-    }
-
-
-    @media only screen and (min-width: 1024px) {
         body {
-            background-image: url('https://i.imgur.com/FKNQ2rM.png');
+            background-image: url('https://i.imgur.com/DkxArzl.png');
             background-size: 100%;
             background-repeat: no-repeat;
+            text-align: center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #Label2 {
+            width: 100%;
+            padding: 0%;
+            margin: 0%;
+        }
+
+        #box {
+            text-align: right;
+            padding-right: 1%;
+            width: 100%;
+            margin-top: 5%;
+        }
+
+        #menu_title {
+            padding-left: 5%;
+            text-align: left;
         }
 
         #title {
-            width: 70%;
+           width: 100%;
+        }
+
+        h1 {
+            color: #898E01;
+            font-family: Calibri;
+            font-size: 100%;
         }
 
         #ranks {
-           width: 30%;
+           width: 60%;
         }
 
         #register {
-           width: 55%;
+           width: 100%;
+           padding: 0%;
+           margin: 0%;
         }
 
         #browse {
-           width: 38%;
+           width: 68%;
         }
 
         #explorer {
-           width: 20%;
+           width: 68%;
         }
 
         #login {
-            width: 30%;
+           width: 100%;
+           padding: 0%;
+           margin: 0%;
+        }
+
+        #Menu_bar {
+            margin-top: 10%;
+            border: none;
+            text-align: center;
+            width: 100%;
+            height: 20%;
         }
 
         #Button1 {
@@ -126,23 +83,122 @@
             border: none;
             font-family: Calibri;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 240%;
             color: #202020;
             margin-top: 5%;
             padding: 5px 15px;
             text-align: center;
             outline: none;
         }
-    }
+
+        #Button1:hover {
+            cursor: pointer;
+            box-shadow: 0 0 10px #6ae134;
+        }
+
+
+        @media only screen and (min-width: 1024px) {
+            body {
+                background-image: url('https://i.imgur.com/FKNQ2rM.png');
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+
+            #box {
+                text-align: right;
+                padding-right: 1%;
+                width: 100%;
+                margin-top: 0%;
+            }
+
+            #title {
+                width: 90%;
+            }
+
+            #menu_title {
+                padding-left: 3%;
+                text-align: left;
+            }
+
+            #Menu_bar {
+                margin-top: 5%;
+                border: none;
+                text-align: center;
+                width: 100%;
+                height: 20%;
+            }
+
+            h1 {
+                color: #898E01;
+                font-family: Calibri;
+                font-size: 100%;
+            }
+
+            #ranks {
+               width: 30%;
+            }
+
+            #register {
+               width: 70%;
+               padding: 0%;
+               margin: 0%;
+            }
+
+            #browse {
+               width: 38%;
+            }
+
+            #explorer {
+               width: 38%;
+            }
+
+            #login {
+               width: 70%;
+               padding: 0%;
+               margin: 0%;
+            }
+
+            #Button1 {
+                background-color: #6ae134;
+                border: none;
+                font-family: Calibri;
+                font-weight: bold;
+                font-size: 20px;
+                color: #202020;
+                margin-top: 5%;
+                padding: 5px 15px;
+                text-align: center;
+                outline: none;
+            }
+        }
     </style>
 
 </head>
 <body>
-    <table id="Menu_title">
+
+    <table id="box">
         <tr>
-            <td>
+            <td id="menu_title">
                 <img src="https://i.imgur.com/bUmy7ss.png" id="title" alt="title" />
-                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            </td>
+
+            <td>
+                <h1>
+                    <asp:Label ID="Label2" runat="server" Text="username"></asp:Label>
+                </h1>
+            </td>
+
+            <td>
+                <a href="Login.aspx">
+                    <img src="https://i.imgur.com/lwnbx8R.png" id="login" alt="login" />
+                </a>
+            </td>
+
+            <td>
+
+                <a href="Register.aspx">
+                    <img src="https://i.imgur.com/uOKgULx.png" id="register" alt="register" />
+                </a>
             </td>
         </tr>
     </table>
@@ -156,8 +212,8 @@
             </td>
 
             <td>
-                <a href="Register.aspx">
-                    <img src="https://i.imgur.com/uOKgULx.png" id="register" alt="register" />
+                <a href="Explorer.aspx">
+                    <img src="https://i.imgur.com/bjf1uwn.png" id="explorer" alt="explorer mode" />
                 </a>
             </td>
 
@@ -168,46 +224,7 @@
             </td>
         </tr>
 
-        <tr>
-            <td>
-
-            </td>
-
-            <td>
-                <br />
-                <a href="Login.aspx">
-                    <img src="https://i.imgur.com/lwnbx8R.png" id="login" alt="login" />
-                </a>
-            </td>
-
-            <td>
-
-            </td>
-        </tr>
-
     </table>
-
-    <table id="Page">
-        <tr>
-            <td>
-
-                <form id="form1" runat="server">
-                    <asp:Button ID="Button1" runat="server" Text="Nyomd meg, ha vagány vagy" OnClick="Button1_Click" />
-                    <br />
-                    <asp:Label ID="Label1" runat="server" BackColor="White" Text="Még semmi"></asp:Label>
-                </form>
-                
-                <a href="Explorer.aspx">
-                    <img src="https://i.imgur.com/bjf1uwn.png" id="explorer" alt="explorer mode" />
-                </a>
-            </td>
-        </tr>
-        
-    </table>
-    <!--
-        <img src="https://i.imgur.com/1eNto3n.png" id="menu" alt="menu">
-        -->
-    
     
 </body>
 </html>

@@ -10,29 +10,24 @@ namespace WebNewmagyarszotar
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        string connection_info = "Pending";
         DataBase db = new DataBase();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            connection_info = db.connect();
-            if(connection_info.Equals("CONNECTED"))
-            {
-                //YEY ->Connection check
-            }
             //connection_info = db.getAllDataDEBUG();
-            if (Request.Cookies["User"]["Logged"] != null)
+            if (Request.Cookies["User"] != null)
             {
-                Label2.Text = Request.Cookies["User"]["Logged"].ToString();
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    Label2.Text = Request.Cookies["User"]["Logged"].ToString();
+                }
+                else
+                {
+                    Label2.Text = "Unlogged";
+                }
             }
-            else
-            {
-                Label2.Text = "Unlogged";
-            }
+            
         }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
