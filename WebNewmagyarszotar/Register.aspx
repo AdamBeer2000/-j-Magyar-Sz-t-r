@@ -17,7 +17,7 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-}
+        }
 
         #Menu_title {
             border: none;
