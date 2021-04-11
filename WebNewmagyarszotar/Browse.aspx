@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Browse.aspx.cs" Inherits="WebNewmagyarszotar.WebForm4" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -129,6 +129,25 @@
             width: 20%;
         }
 
+        .modalBackground
+        {
+            background-color: Black;
+            filter: alpha(opacity=90);
+            opacity: 0.8;
+        }
+
+        .modalPopup
+        {
+            background-color: #FFFFFF;
+            border-width: 3px;
+            border-style: solid;
+            border-color: black;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: 300px;
+            height: 140px;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
@@ -217,6 +236,16 @@
     </table>
 
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="Sm1" runat="server"></asp:ScriptManager>
+
+        <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup">
+            <asp:TextBox ID="WordAddInputBox" runat="server"></asp:TextBox><br>
+            <asp:Button ID="WordAddInputConfirm" runat="server" Text="Button" OnClick="WordAddInputConfirm_Click" />
+        </asp:Panel>
+
+        <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
+        
+        <asp:Button ID="Button2" runat="server" Text="Button" style="display: none;"/>
 
     <table id="search">
         <tr>
@@ -261,4 +290,4 @@
         </a>
     </form>
 </body>
-</html>
+<%--</html>--%>

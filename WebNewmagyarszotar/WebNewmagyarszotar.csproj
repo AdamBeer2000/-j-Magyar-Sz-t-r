@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -130,9 +133,11 @@
     <Content Include="Ranks.aspx" />
     <Content Include="Browse.aspx" />
     <Content Include="Explorer.aspx" />
+    <Content Include="Scripts\addreaction.sql" />
     <Content Include="Scripts\registration.sql" />
     <Content Include="Login.aspx" />
     <Content Include="WebForm7.aspx" />
+    <Content Include="addHunWord.aspx" />
     <None Include="Properties\PublishProfiles\NewMagyarSzotar - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -279,6 +284,13 @@
     </Compile>
     <Compile Include="WebForm7.aspx.designer.cs">
       <DependentUpon>WebForm7.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addHunWord.aspx.cs">
+      <DependentUpon>addHunWord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addHunWord.aspx.designer.cs">
+      <DependentUpon>addHunWord.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

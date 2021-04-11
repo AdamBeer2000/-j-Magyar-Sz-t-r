@@ -1,6 +1,6 @@
 DECLARE @old_reaction CHAR
-SELECT @old_reaction=reaction
 
+SELECT @old_reaction=reaction
 FROM Reactions WHERE felhasz_id = @felhasz_id and  magyarszo_id = @magyarszo_id
 
 IF(@old_reaction is not null)--reagált e már erre a szóra a felhasználó

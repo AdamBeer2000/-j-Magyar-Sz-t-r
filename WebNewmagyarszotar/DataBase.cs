@@ -37,7 +37,9 @@ namespace WebNewmagyarszotar
 
         public string getLatestErrorMsg()
         {
-            return latestErrorMsg;
+            string ret = latestErrorMsg;
+            latestErrorMsg = "";
+            return ret;
         }
 
         public string connect()
@@ -190,10 +192,8 @@ namespace WebNewmagyarszotar
 
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/addreaction.sql";
             string querry = File.ReadAllText(path);
-
             try
             {
-                conn.Open();
                 SqlCommand sqlCmd = new SqlCommand(querry, conn);
 
                 SqlParameter p1 = new SqlParameter(@"@magyarszo_id", magyarszo_id);
@@ -212,14 +212,21 @@ namespace WebNewmagyarszotar
                 sqlCmd.Parameters.Add(p2);
                 sqlCmd.Parameters.Add(p3);
 
-                SqlDataReader reader = sqlCmd.ExecuteReader();
-                conn.Close();
-
+                sqlCmd.Connection.Open();
+                sqlCmd.ExecuteNonQuery();
             }
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
             }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
         }
         public void addDislike(int magyarszo_id, int felhasz_id)
         {
@@ -230,7 +237,6 @@ namespace WebNewmagyarszotar
 
             try
             {
-                conn.Open();
                 SqlCommand sqlCmd = new SqlCommand(querry, conn);
 
                 SqlParameter p1 = new SqlParameter(@"@magyarszo_id", magyarszo_id);
@@ -249,16 +255,68 @@ namespace WebNewmagyarszotar
                 sqlCmd.Parameters.Add(p2);
                 sqlCmd.Parameters.Add(p3);
 
-                SqlDataReader reader = sqlCmd.ExecuteReader();
-                conn.Close();
+                sqlCmd.Connection.Open();
+                sqlCmd.ExecuteNonQuery();
 
             }
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
             }
-        }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
 
+        }
+        public bool addHunWord(string magyarszo,int bekuldo_id, int angolszo_id)
+        {
+            //todo a felhasználó által dislikeolt szavak listájához adni
+            //ha egyszer rákatint akkor dislike olja, ha mégegyszer akkor meg viszavonja
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/addHunWord.sql";
+            string querry = File.ReadAllText(path);
+
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand(querry, conn);
+
+                SqlParameter p1 = new SqlParameter(@"@magyarszo", magyarszo);
+                p1.SqlDbType = SqlDbType.VarChar;
+                p1.Direction = ParameterDirection.Input;
+
+                SqlParameter p2 = new SqlParameter(@"@bekuldo_id", bekuldo_id);
+                p2.SqlDbType = SqlDbType.Int;
+                p2.Direction = ParameterDirection.Input;
+
+                SqlParameter p3 = new SqlParameter(@"@angolszo_id", angolszo_id);
+                p3.SqlDbType = SqlDbType.Int;
+                p3.Direction = ParameterDirection.Input;
+
+                sqlCmd.Parameters.Add(p1);
+                sqlCmd.Parameters.Add(p2);
+                sqlCmd.Parameters.Add(p3);
+
+                sqlCmd.Connection.Open();
+                sqlCmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                latestErrorMsg = e.Message +""+querry+"\n"+magyarszo+","+ bekuldo_id+","+angolszo_id;
+                return false;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
         private SqlConnection getSecureConn()
         {
             return new SqlConnection("Data Source=tcp:the-first-git-emire.database.windows.net,1433;USER ID=pistabacsi;password=Nemezajelszo1;Initial Catalog=NewMagyarSzotar;Integrated Security=true;Column Encryption Setting=enabled;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True;");
@@ -318,7 +376,7 @@ namespace WebNewmagyarszotar
             }
             catch (Exception e)
             {
-                latestErrorMsg = e.Message + querry;
+                latestErrorMsg = e.Message;
                 return -1;
             }
         }

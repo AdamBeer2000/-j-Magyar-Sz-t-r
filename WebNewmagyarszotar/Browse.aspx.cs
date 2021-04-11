@@ -13,6 +13,7 @@ namespace WebNewmagyarszotar
         static public DataBase db = new DataBase();
         static public int pagenum = 0;
         static public List<String> showall = new List<string>();
+        static int addwordid;
 
         protected bool update()
         {
@@ -40,7 +41,7 @@ namespace WebNewmagyarszotar
                 }
                 else
                 {
-                    addOneRow(word.Key,word.Value.getTranslations()[0], SzotarTable);
+                    addOneRow(word.Value,word.Value.getTranslations()[0], SzotarTable,false);
                 }
                 i++;
             }
@@ -69,6 +70,7 @@ namespace WebNewmagyarszotar
 
             table.Rows.Add(row);
         }
+
         private void addOneRowMoultipleTrans(EnglishWord eng, HtmlTable table)
         {
             //addOneRow(eng.getWord(),"-----------", table);
@@ -80,6 +82,12 @@ namespace WebNewmagyarszotar
             HtmlTableCell cell4 = new HtmlTableCell();
 
             ImageButton lenyit = new ImageButton();
+
+            Button addWord = new Button();
+            addWord.Text = "+";
+            addWord.Click += new EventHandler(this.OpenWindow);
+            addWord.ID = "add_" + eng.getEngID();
+            
 
             lenyit.ID = "Button_lenyit_" + eng.getWord();
 
@@ -97,6 +105,8 @@ namespace WebNewmagyarszotar
             cell2.Controls.Add(lenyit);
 
             row.Cells.Add(cell1);
+            cell1.Controls.Add(addWord);
+
             row.Cells.Add(cell2);
             row.Cells.Add(cell4);
 
@@ -109,13 +119,15 @@ namespace WebNewmagyarszotar
                 //lenéz
                 foreach (HungarianWord trans in eng.getTranslations())
                 {
-                    addOneRow("|", trans, table);
+                    addOneRow(eng, trans, table,true);
                 }
             }
         }
 
-        private void addOneRow(string eng, HungarianWord hun, HtmlTable table)
+        private void addOneRow(EnglishWord eng_world, HungarianWord hun, HtmlTable table,bool ismultiple)
         {
+            string eng = eng_world.getWord();
+
             HtmlTableRow row = new HtmlTableRow();
 
             HtmlTableCell cell1 = new HtmlTableCell();
@@ -124,16 +136,25 @@ namespace WebNewmagyarszotar
             HtmlTableCell cell4 = new HtmlTableCell();
 
             ImageButton like = new ImageButton();
-
-            HtmlTableCell cell5 = new HtmlTableCell();
-
             ImageButton dislike = new ImageButton();
 
+            HtmlTableCell cell5 = new HtmlTableCell();
             cell1.InnerText = eng;
-            //cell1.Attributes.Add("border", "1px solid #898E01");
+
+            cell1.InnerText = eng;
+            if(!ismultiple)
+            {
+                Button addWord = new Button();
+                addWord.Text = "+";
+                addWord.Click += new EventHandler(this.OpenWindow);
+                addWord.ID = "add_" + eng_world.getEngID();
+                cell1.Controls.Add(addWord);
+            }
+            
+
             cell3.InnerText = hun.getHunWord();
             cell3.BorderColor = "#898E01";
-
+            
 
             row.Cells.Add(cell1);
             row.Cells.Add(cell3);
@@ -166,8 +187,22 @@ namespace WebNewmagyarszotar
             row.Attributes.Add("class", "rowStyle");
             row.Attributes.Add("max-height", "30%");
 
-
             table.Rows.Add(row);
+        }
+
+        protected void OpenWindow(object sender, EventArgs e)
+        {
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    string partid = ((Button)sender).ID;
+                    partid = partid.Split('_')[1];
+                    int id = Convert.ToInt32(partid);
+                    addwordid = id;
+                    mp1.Show();
+                }
+            }
         }
 
         protected void searchBox_TextChanged(object sender, EventArgs e)
@@ -196,9 +231,9 @@ namespace WebNewmagyarszotar
             Label1.Text = "Megnyomva :"+((ImageButton)sender).ID;
             string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_like_", "");
-
-            if (Request.Cookies["User"]["Logged"] != null)
-            db.addLike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+            if (Request.Cookies["User"] != null)
+                if (Request.Cookies["User"]["Logged"] != null)
+                    db.addLike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
 
             update();
 
@@ -209,8 +244,9 @@ namespace WebNewmagyarszotar
             string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_dislike_", "");
 
-            if (Request.Cookies["User"]["Logged"] != null)
-            db.addDislike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+            if (Request.Cookies["User"] != null)
+                if (Request.Cookies["User"]["Logged"] != null)
+                    db.addDislike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
 
             update();
 
@@ -229,6 +265,29 @@ namespace WebNewmagyarszotar
                 showall.Remove(id);
             }
             update();
+        }
+
+        protected void WordAddInputConfirm_Click(object sender, EventArgs e)
+        {
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    bool state=!db.addHunWord(WordAddInputBox.Text,Convert.ToInt32(Request.Cookies["User"]["Logged"]),addwordid);
+                    update();
+                    if(state)
+                    {
+                        db.getLatestErrorMsg();
+                        Response.Write("<script>alert('Vótmá')</script>");
+                    }
+                    else
+                    {
+                        
+                        Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
+                    }
+                }
+            }
+            
         }
     }
 }
