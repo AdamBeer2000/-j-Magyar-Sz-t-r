@@ -173,7 +173,7 @@
      <table id="Menu_title">
         <tr>
             <td>
-                <img src="https://i.imgur.com/bdQfMea.png"width="35%" id="title" alt="title" />
+                <img src="https://i.imgur.com/bdQfMea.png" id="title" alt="title" />
             </td>
         </tr>
     </table>
@@ -196,7 +196,7 @@
                         </h1>
                         <p><input id="Password1" type="password" runat="server"/></p>
 
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Sajt" />
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Belépés" />
                     </td>
 
                 </tr>
