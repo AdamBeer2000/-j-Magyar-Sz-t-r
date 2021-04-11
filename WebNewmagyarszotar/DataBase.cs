@@ -148,20 +148,35 @@ namespace WebNewmagyarszotar
         {
             //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
             //searchField = "%" + searchField + "%";"
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryB.sql";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryC.sql";
             string querry = File.ReadAllText(path);
-
-            querry = querry.Replace("PAR_1", Convert.ToString(20));
-            querry = querry.Replace("PAR_2", Convert.ToString((page_num * 20)));
-            querry = querry.Replace("PAR_3", searchField);
 
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
 
-            SqlCommand c = new SqlCommand(querry, conn);
+            SqlCommand sqlCmd = new SqlCommand(querry, conn);
+
+            SqlParameter p1 = new SqlParameter(@"@scale", 20);
+            p1.SqlDbType = SqlDbType.Int;
+            p1.Direction = ParameterDirection.Input;
+
+            SqlParameter p2 = new SqlParameter(@"@pagenum", page_num);
+            p2.SqlDbType = SqlDbType.Int;
+            p2.Direction = ParameterDirection.Input;
+
+            
+            SqlParameter p3 = new SqlParameter(@"@search", searchField);
+            p3.SqlDbType = SqlDbType.NVarChar;
+            p3.Direction = ParameterDirection.Input;
+            
+
+            sqlCmd.Parameters.Add(p1);
+            sqlCmd.Parameters.Add(p2);
+            sqlCmd.Parameters.Add(p3);
+
             try
             {
                 conn.Open();
-                SqlDataReader reader = c.ExecuteReader();
+                SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
                     if (!words.ContainsKey(reader.GetString(1)))
