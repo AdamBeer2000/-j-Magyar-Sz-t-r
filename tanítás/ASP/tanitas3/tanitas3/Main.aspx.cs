@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace tanitas3
 {
@@ -144,7 +145,35 @@ namespace tanitas3
 
         //3.b Sql tsql script
         //{
+        void feladat3b()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/tsql_script_3b.sql";
+            string query = File.ReadAllText(path);
 
+            SqlCommand cmd = new SqlCommand(query, test2);
+
+            cmd.Parameters.Add(new SqlParameter(@"@param1", TextBox3b1.Text));
+            cmd.Parameters.Add(new SqlParameter(@"@param2", TextBox3b2.Text));
+            
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    label3b.Text = reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetInt32(3).ToString() + " " + reader.GetInt32(4).ToString() + " " + reader.GetDouble(5).ToString() + " " + reader.GetString(6) + " " + reader.GetInt32(7).ToString() + " " + reader.GetInt32(8).ToString();
+                }
+                cmd.Connection.Close();
+            }
+            catch (Exception exc)
+            {
+                Response.Write("<script>alert('Hiba:" + exc.Message + "')</script>");
+            }
+            finally
+            {
+                Response.Write("<script>alert('Done')</script>");
+            }
+        }
         //}
 
         protected void Page_Load(object sender, EventArgs e)
@@ -173,6 +202,11 @@ namespace tanitas3
                 feladat1b();
             }
             gomblenyom++;
+        }
+
+        protected void dewit(object sender, EventArgs e)
+        {
+            feladat3b();
         }
     }
 }

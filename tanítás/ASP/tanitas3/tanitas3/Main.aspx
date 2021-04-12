@@ -124,6 +124,12 @@
                 </chartareas>
             </asp:Chart>
         </div>
+        <div id="input_mezo">
+                <asp:TextBox ID="TextBox3b1" runat="server" placeholder="gyarto [Opel, Ford, stb]"></asp:TextBox>
+                <asp:TextBox ID="TextBox3b2" runat="server" placeholder="Uzemanyag [benzin, dizel]"></asp:TextBox>
+                <asp:Button ID="go3b" runat="server" onclick="dewit" Text="Dewit" /> <p></p>
+                <asp:Label ID="label3b" runat="server" Text="" ForeColor="#FF0000"></asp:Label>
+        </div>
     </form>
 </body>
 </html>
