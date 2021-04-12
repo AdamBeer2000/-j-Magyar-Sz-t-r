@@ -57,6 +57,10 @@ namespace tanitas3
             {
                 Response.Write("<script>alert('Hiba:"+ e.Message + "')</script>");
             }
+            finally
+            {
+                Response.Write("<script>alert('Done')</script>");
+            }
         }
 
         //lekérdezi hogy az szgk táblában  melyik márkából hány darab van és egy pie charton megjeleníti
@@ -84,7 +88,11 @@ namespace tanitas3
             {
                 Response.Write("<script>alert('Hiba:"+ e.Message + "')</script>");
             }
-            
+            finally
+            {
+                Response.Write("<script>alert('Done')</script>");
+            }
+
         }
         //}
 
