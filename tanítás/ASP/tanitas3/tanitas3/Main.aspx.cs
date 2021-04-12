@@ -143,7 +143,7 @@ namespace tanitas3
         }
         //}
 
-        //3.b Sql tsql script
+        //3. Sql tsql script
         //{
         void feladat3b()
         {
@@ -152,22 +152,50 @@ namespace tanitas3
 
             SqlCommand cmd = new SqlCommand(query, test2);
 
-            cmd.Parameters.Add(new SqlParameter(@"@param1", TextBox3b1.Text));
-            cmd.Parameters.Add(new SqlParameter(@"@param2", TextBox3b2.Text));
-            
+            var param1 = new SqlParameter(@"@param1", TextBox3b1.Text);
+            param1.SqlDbType = SqlDbType.VarChar;
+            param1.Size = 30;
+
+            var param2 = new SqlParameter(@"@param2", TextBox3b2.Text);
+            param2.SqlDbType = SqlDbType.VarChar;
+            param2.Size = 6;
+
+            cmd.Parameters.Add(param1);
+            cmd.Parameters.Add(param2);
+
+            string ret="placeholder";
+
             try
             {
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                
+                reader.Read();
+                if(reader.HasRows)
                 {
-                    label3b.Text = reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetInt32(3).ToString() + " " + reader.GetInt32(4).ToString() + " " + reader.GetDouble(5).ToString() + " " + reader.GetString(6) + " " + reader.GetInt32(7).ToString() + " " + reader.GetInt32(8).ToString();
+
+                    ret = "Talalat: " +
+                    reader[0] + " " +
+                    reader[1] + " " +
+                    reader[2] + " " +
+                    reader[3] + " " +
+                    reader[4] + " " +
+                    reader[5] + " " +
+                    reader[6] + " " +
+                    reader[7] + " " +
+                    reader[8];
+
+                    label3b.Text = ret;
+                }
+                else
+                {
+                    ret = "Fuck";
                 }
                 cmd.Connection.Close();
             }
             catch (Exception exc)
             {
-                Response.Write("<script>alert('Hiba:" + exc.Message + "')</script>");
+                Response.Write("<script>alert('Hiba:" + exc.Message + ":"+query+"')</script>");
             }
             finally
             {

@@ -1,7 +1,7 @@
 BEGIN TRY
     SELECT TOP(1) * 
     FROM szgk AS s
-        WHERE s.gyarto = @param1 AND s.uzemanyag = @param2
+        WHERE s.gyarto =@param1 AND s.uzemanyag = @param2
             ORDER BY s.ar DESC
 END TRY
 BEGIN CATCH
