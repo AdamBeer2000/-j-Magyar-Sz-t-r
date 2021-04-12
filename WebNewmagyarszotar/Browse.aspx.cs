@@ -172,15 +172,12 @@ namespace WebNewmagyarszotar
             dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
             dislike.Attributes.Add("class", "likebutton");
 
-
             cell4.InnerText = "" + hun.getLike();
             cell4.Controls.Add(like);
             
-
             cell5.InnerText = "" + hun.getDislike();
             cell5.Controls.Add(dislike);
             
-
             row.Cells.Add(cell4);
             row.Cells.Add(cell5);
 

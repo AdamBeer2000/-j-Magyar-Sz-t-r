@@ -89,10 +89,13 @@
 
             <div id="input_mezo">
                 <asp:TextBox ID="inputmezo" runat="server" placeholder="Ide lehet valamit írni..."></asp:TextBox>
+                <asp:TextBox ID="inputmezo2" runat="server" placeholder="Ide lehet valamit írni..."></asp:TextBox>
             </div>
 
             <asp:Button ID="Button1" runat="server" onclick="doit" Text="Do it" />
-            
+
+            <asp:Button ID="Button3" runat="server" onclick="feladat2b" Text="Do it 2" />
+
             <h2>
                 Ez egy másik szöveg.
             </h2>
@@ -107,6 +110,19 @@
                 <li>lista</li>
             </ul>
 
+        </div>
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="#006600"></asp:Label>
+            <asp:Chart ID="Chart1" runat="server">
+                <series>
+                    <asp:Series ChartType="Pie" Name="Series1">
+                    </asp:Series>
+                </series>
+                <chartareas>
+                    <asp:ChartArea Name="ChartArea1">
+                    </asp:ChartArea>
+                </chartareas>
+            </asp:Chart>
         </div>
     </form>
 </body>
