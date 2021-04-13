@@ -113,10 +113,13 @@
 
             <div id="input_mezo">
                 <asp:TextBox ID="inputmezo" runat="server" placeholder="Ide lehet valamit írni..."></asp:TextBox>
+                <asp:TextBox ID="inputmezo2" runat="server" placeholder="Ide lehet valamit írni..."></asp:TextBox>
             </div>
 
             <asp:Button ID="Button1" runat="server" onclick="doit" Text="Do it" />
-            
+
+            <asp:Button ID="Button3" runat="server" onclick="feladat2b" Text="Do it 2" />
+
             <h2>
                 Ez egy másik szöveg.
             </h2>
@@ -149,6 +152,25 @@
             <ul runat="server" id="lista1">
             </ul>
 
+        </div>
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Label" ForeColor="#006600"></asp:Label>
+            <asp:Chart ID="Chart1" runat="server">
+                <series>
+                    <asp:Series ChartType="Pie" Name="Series1">
+                    </asp:Series>
+                </series>
+                <chartareas>
+                    <asp:ChartArea Name="ChartArea1">
+                    </asp:ChartArea>
+                </chartareas>
+            </asp:Chart>
+        </div>
+        <div id="input_mezo">
+                <asp:TextBox ID="TextBox3b1" runat="server" placeholder="gyarto [Opel, Ford, stb]"></asp:TextBox>
+                <asp:TextBox ID="TextBox3b2" runat="server" placeholder="Uzemanyag [benzin, dizel]"></asp:TextBox>
+                <asp:Button ID="go3b" runat="server" onclick="dewit" Text="Dewit" /> <p></p>
+                <asp:Label ID="label3b" runat="server" Text="" ForeColor="#FF0000"></asp:Label>
         </div>
     </form>
 </body>
