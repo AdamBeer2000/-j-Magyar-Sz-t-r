@@ -72,9 +72,33 @@
             margin-top: 1%;
         }
 
+        #Button2 {
+            background-color: #00b0e6;
+            border: none;
+            font-family: Calibri;
+            font-weight: bold;
+            font-size: 20px;
+            color: #202020;
+            padding: 5px 15px;
+            text-align: center;
+            outline: none;
+            margin-top: 1%;
+        }
+
         #Button1:hover {
             cursor: pointer;
             box-shadow: 0 0 10px #00b0e6;
+        }
+
+        #macska{
+            border: 1px solid #6f00ff;
+            text-align: center;
+            color: #6f00ff;
+            font-family: Calibri;
+            font-size: 100%;
+            font-style: italic;
+            padding: 2%;
+            margin-left: 30%;
         }
 
     </style>
@@ -101,10 +125,28 @@
                     Ezt akarjuk megváltoztatni.
                 </div>
 
-            <ul id="lista1">
-                <li>Ez</li>
-                <li>egy</li>
-                <li>lista</li>
+            <table id="macska">
+                <tr>
+                    <td>
+                        Ez
+                    </td>
+                    <td>
+                        egy
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2x2
+                    </td>
+                    <td>
+                        táblázat
+                    </td>
+                </tr>
+            </table>
+
+            <asp:Button ID="Button2" runat="server" onclick="Hozzaad" Text="Hozzaad" />
+
+            <ul runat="server" id="lista1">
             </ul>
 
         </div>

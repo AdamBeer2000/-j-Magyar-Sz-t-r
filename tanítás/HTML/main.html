@@ -3,11 +3,17 @@
 <head>
     <title>Sample text</title>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css">
     
 </head>
 
 <body>
+
+    <div id="box">
+        <input id="dark" type="submit" value="Dark">
+        <input id="light" type="submit" value="Light">
+    </div>
 
     <h1>
         Ez itt egy szöveg.
@@ -31,11 +37,34 @@
         </div>
     </h3>
 
+    <table id="macska">
+        <tr>
+            <td>
+                Ez
+            </td>
+            <td>
+                egy
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2x2
+            </td>
+            <td>
+                táblázat
+            </td>
+        </tr>
+    </table>
+
+    <button id="gomb_1" onclick="Hozzaad()">Hozzaad</button>
+
     <ul id="lista1">
         <li>Ez</li>
         <li>egy</li>
         <li>lista</li>
     </ul>
+
+    
 
 </body>
 <script src="script.js"></script>

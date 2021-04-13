@@ -8,6 +8,40 @@ body {
     user-select: none;
 }
 
+#box{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding-top: 1%;
+    padding-right: 15%;
+}
+
+#dark{
+    background-color: #161616;
+    color: #8ec2ff;
+    border: none;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 15px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+#light{
+    background-color: #8ec2ff;
+    color: #161616;
+    border: none;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px 15px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
 h1 {
     font-family: Calibri;
     color: #f00f51;
@@ -66,4 +100,15 @@ h3  {
 #gomb_1:hover {
     cursor: pointer;
     box-shadow: 0 0 10px #00b0e6;
+}
+
+#macska{
+    border: 1px solid #6f00ff;
+    text-align: center;
+    color: #6f00ff;
+    font-family: Calibri;
+    font-size: 100%;
+    font-style: italic;
+    padding: 2%;
+    margin-left: 30%;
 }
