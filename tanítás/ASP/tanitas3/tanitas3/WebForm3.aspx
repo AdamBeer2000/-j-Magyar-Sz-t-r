@@ -22,8 +22,60 @@
 
         .black 
         {
-            background-color:#161616
+            background-color:#161616;
         }
+
+        #Csapat1_Gomb
+        {
+            background-color: #7400e7;
+            color: #8ec2ff;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            margin-left: 2%;
+            font-family: Calibri;
+            font-weight: bold;
+            font-size: 150%;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #TextBox1
+        {
+            font-family: Calibri;
+            text-align: left;
+            font-size: 20px;
+            margin-top: 1%;
+            border: 2px solid #00b0e6;
+            width: 300px;
+            background-color: #161616;
+            color: #00b0e6;
+            outline: none;
+        }
+
+        ::placeholder {
+            color: #03b200;
+        }
+
+        #TextBox2
+        {
+            font-family: Calibri;
+            text-align: left;
+            font-size: 20px;
+            margin-top: 1%;
+            border: 2px solid #00b0e6;
+            width: 300px;
+            background-color: #161616;
+            color: #00b0e6;
+            outline: none;
+        }
+
+        ::placeholder {
+            color: #03b200;
+        }
+
     </style>
 </head>
 <body id="ChartPage" runat="server" >
@@ -31,7 +83,7 @@
         <div>
             <asp:Menu ID="Menu1" runat="server">
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Main.aspx" Text="SzöbegSzerk" Value="SzöbegSzerk"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Main.aspx" Text="SzövegSzerk" Value="SzöbegSzerk"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/WebForm2.aspx" Text="TableGen" Value="TableGen"></asp:MenuItem>
                     <asp:MenuItem Text="Chart" Value="Chart" NavigateUrl="~/WebForm3.aspx"></asp:MenuItem>
                 </Items>
