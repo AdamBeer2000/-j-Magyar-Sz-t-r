@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="tanitas3.WebForm1" %>
 
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,12 +10,21 @@
     <style>
         body {
             margin: 2%;
-            background-color:  	#161616;
             text-align: center;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+        }
+
+        .light 
+        {
+            background-color:#8ec2ff;
+        }
+
+        .black 
+        {
+            background-color:#161616
         }
 
         h1 {
@@ -90,25 +101,40 @@
             box-shadow: 0 0 10px #00b0e6;
         }
 
-        #macska{
-            border: 1px solid #6f00ff;
-            text-align: center;
-            color: #6f00ff;
+        #Button5 {
+            border-style: none;
+            border-color: inherit;
+            border-width: medium;
+            background-color: #00b0e6;
             font-family: Calibri;
-            font-size: 100%;
-            font-style: italic;
-            padding: 2%;
-            margin-left: 30%;
+            font-weight: bold;
+            font-size: 20px;
+            color: #202020;
+            padding: 5px 15px;
+            text-align: center;
+            outline: none;
+            }
+
+        #Select1 {
+            width: 100px;
         }
 
-    </style>
+        </style>
 </head>
-<body>
+<body runat="server" id="mainPage">
     <form id="form1" runat="server">
         <div>
 
-            <h1>
-                Ez itt egy szöveg.
+            <asp:Menu ID="Menu1" runat="server">
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/Main.aspx" Text="SzöbegSzerk" Value="SzöbegSzerk"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/WebForm2.aspx" Text="TableGen" Value="TableGen"></asp:MenuItem>
+                    <asp:MenuItem Text="Chart" Value="Chart" NavigateUrl="~/WebForm3.aspx"></asp:MenuItem>
+                </Items>
+            </asp:Menu>
+            <h1>Ez itt egy szöveg.
+                <asp:Button ID="Button3" runat="server" OnClick="light_button_Click" Text="Light" />
+                <asp:Button ID="Button4" runat="server" Text="Dark" OnClick="dark_button_Click" />
             </h1>
 
             <div id="input_mezo">
@@ -119,37 +145,18 @@
             
             <h2>
                 Ez egy másik szöveg.
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </h2>
 
                 <div id="harmadik" runat="server">
                     Ezt akarjuk megváltoztatni.
                 </div>
 
-            <table id="macska">
-                <tr>
-                    <td>
-                        Ez
-                    </td>
-                    <td>
-                        egy
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2x2
-                    </td>
-                    <td>
-                        táblázat
-                    </td>
-                </tr>
-            </table>
-
-            <asp:Button ID="Button2" runat="server" onclick="Hozzaad" Text="Hozzaad" />
-
             <ul runat="server" id="lista1">
             </ul>
 
         </div>
+            
     </form>
 </body>
 </html>
