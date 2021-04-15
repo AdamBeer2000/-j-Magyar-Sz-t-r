@@ -22,7 +22,39 @@
 
         .black 
         {
-            background-color:#161616
+            background-color:#161616;
+        }
+
+        #Button5
+        {
+            background-color: #50ff1c;
+            color: #202020;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            margin-left: 2%;
+            font-family: Calibri;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #Button1
+        {
+            background-color: #ee0a1d;
+            color: #202020;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            margin-left: 2%;
+            font-family: Calibri;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            cursor: pointer;
         }
 
         .macska{
@@ -45,13 +77,13 @@
 
             <asp:Menu ID="Menu1" runat="server">
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Main.aspx" Text="SzöbegSzerk" Value="SzöbegSzerk"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/Main.aspx" Text="SzövegSzerk" Value="SzöbegSzerk"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/WebForm2.aspx" Text="TableGen" Value="TableGen"></asp:MenuItem>
                     <asp:MenuItem Text="Chart" Value="Chart" NavigateUrl="~/WebForm3.aspx"></asp:MenuItem>
                 </Items>
             </asp:Menu>
 
-            <asp:Button ID="Button5" runat="server" onclick="Hozzaad2" Text="Sor hozza adasa" />
+            <asp:Button ID="Button5" runat="server" onclick="Hozzaad2" Text="Sor hozzáadasa" />
             <asp:Button ID="Button1" runat="server" onclick="elvesz" Text="Sor elvétele" />
 
             <asp:Table ID="Tablazat1" runat="server" CssClass="macska"></asp:Table>

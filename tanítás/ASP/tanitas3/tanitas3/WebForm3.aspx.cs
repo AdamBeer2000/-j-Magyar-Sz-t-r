@@ -50,10 +50,17 @@ namespace tanitas3
 
         protected void Send_Click(object sender, EventArgs e)
         {
-            if (TextBox1.Text != "")
-                csapat_a += Convert.ToInt32(TextBox1.Text);
-            if (TextBox2.Text != "")
-                csapat_b += Convert.ToInt32(TextBox2.Text);
+            long number1 = 0;
+            bool _num1 = long.TryParse(TextBox1.Text, out number1);
+
+            long number2 = 0;
+            bool _num2 = long.TryParse(TextBox2.Text, out number2);
+
+            if (_num1)
+                csapat_a += Convert.ToInt32(number1);
+
+            if (_num2)
+                csapat_b += Convert.ToInt32(number2);
 
             TextBox1.Text = "";
             TextBox2.Text = "";

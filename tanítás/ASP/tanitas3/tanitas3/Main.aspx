@@ -18,12 +18,12 @@
 
         .light 
         {
-            background-color:#8ec2ff;
+            background-color: #8ec2ff;
         }
 
         .black 
         {
-            background-color:#161616
+            background-color: #161616;
         }
 
         h1 {
@@ -67,6 +67,36 @@
 
         ::placeholder {
             color: #00b0e6;
+        }
+
+        #Button3 {
+            color: #161616;
+            background-color: #8ec2ff;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            margin-left: 2%;
+            font-family: Calibri;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #Button4 {
+            color: #8ec2ff;
+            background-color: #161616;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            margin-left: 2%;
+            font-family: Calibri;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            cursor: pointer;
         }
 
         #Button1 {
@@ -144,7 +174,6 @@
             
             <h2>
                 Ez egy másik szöveg.
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </h2>
 
                 <div id="harmadik" runat="server">

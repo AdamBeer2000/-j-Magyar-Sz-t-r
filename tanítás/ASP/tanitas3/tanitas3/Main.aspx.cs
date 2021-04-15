@@ -31,7 +31,6 @@ namespace tanitas3
             if (Request.Cookies["User"] != null)
             {
                 theam = Request.Cookies["User"]["Theam"].ToString();
-                Label1.Text = theam;
             }
 
             update();
