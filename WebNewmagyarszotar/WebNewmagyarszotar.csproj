@@ -134,6 +134,7 @@
     <Content Include="Browse.aspx" />
     <Content Include="Explorer.aspx" />
     <Content Include="Scripts\addreaction.sql" />
+    <Content Include="Scripts\listquerryC.sql" />
     <Content Include="Scripts\registration.sql" />
     <Content Include="Login.aspx" />
     <Content Include="WebForm7.aspx" />

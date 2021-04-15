@@ -159,27 +159,37 @@ namespace WebNewmagyarszotar
             row.Cells.Add(cell1);
             row.Cells.Add(cell3);
 
+            if(hun.getHunID()!=-1)//csak akkor -1 ha még nincs arra az angol szóra fordítás
+            {
+                like.ID = "Button_like_" + hun.getHunID();
 
-            like.ID="Button_like_" + hun.getHunID();
-            like.Click += new ImageClickEventHandler(this.like_button_button_Click);
-            like.Attributes.Add("runat", "server");
-            like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
-            like.Attributes.Add("class", "likebutton");
+                //like.Click += new ImageClickEventHandler(this.like_button_button_Click);
+                like.CommandArgument += hun.getHunID();
+                like.Command += new CommandEventHandler(this.like_button_button_Click);
 
-            dislike.ID = "Button_dislike_" + hun.getHunID();
-            dislike.Click+=new ImageClickEventHandler(this.dislike_button_button_Click);
-            dislike.Attributes.Add("runat", "server");
-            dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
-            dislike.Attributes.Add("class", "likebutton");
+                like.Attributes.Add("runat", "server");
+                like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
+                like.Attributes.Add("class", "likebutton");
 
-            cell4.InnerText = "" + hun.getLike();
-            cell4.Controls.Add(like);
-            
-            cell5.InnerText = "" + hun.getDislike();
-            cell5.Controls.Add(dislike);
-            
-            row.Cells.Add(cell4);
-            row.Cells.Add(cell5);
+                dislike.ID = "Button_dislike_" + hun.getHunID();
+
+                //dislike.Click+=new ImageClickEventHandler(this.dislike_button_button_Click);
+                dislike.CommandArgument += hun.getHunID();
+                dislike.Command += new CommandEventHandler(this.dislike_button_button_Click);
+
+                dislike.Attributes.Add("runat", "server");
+                dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
+                dislike.Attributes.Add("class", "likebutton");
+
+                cell4.InnerText = "" + hun.getLike();
+                cell4.Controls.Add(like);
+
+                cell5.InnerText = "" + hun.getDislike();
+                cell5.Controls.Add(dislike);
+
+                row.Cells.Add(cell4);
+                row.Cells.Add(cell5);
+            }
 
             row.Attributes.Add("class", "rowStyle");
             row.Attributes.Add("max-height", "30%");
@@ -223,11 +233,10 @@ namespace WebNewmagyarszotar
             update();
         }
 
-        protected void like_button_button_Click(object sender, ImageClickEventArgs e)
+        protected void like_button_button_Click(object sender, CommandEventArgs e)
         {
-            Label1.Text = "Megnyomva :"+((ImageButton)sender).ID;
-            string id = (((ImageButton)sender).ID);
-            id = id.Replace("Button_like_", "");
+            string id = e.CommandArgument.ToString();
+
             if (Request.Cookies["User"] != null)
                 if (Request.Cookies["User"]["Logged"] != null)
                     db.addLike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
@@ -235,11 +244,9 @@ namespace WebNewmagyarszotar
             update();
 
         }
-        protected void dislike_button_button_Click(object sender, ImageClickEventArgs e)
+        protected void dislike_button_button_Click(object sender, CommandEventArgs e)
         {
-            Label1.Text = "Megnyomva :"+ ((ImageButton)sender).ID;
-            string id = (((ImageButton)sender).ID);
-            id = id.Replace("Button_dislike_", "");
+            string id = e.CommandArgument.ToString();
 
             if (Request.Cookies["User"] != null)
                 if (Request.Cookies["User"]["Logged"] != null)
