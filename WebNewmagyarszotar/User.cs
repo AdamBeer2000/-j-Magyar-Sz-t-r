@@ -18,28 +18,27 @@ namespace WebNewmagyarszotar
         private string username;
         private PERMISSION permission;
 
-        public string Username
+        public string Username //GETTER - USERNAME
         {
             get { return this.username; }
             //set { this.username = value; }
         }
-        public PERMISSION Permission
+        public PERMISSION Permission //GETTER - PERMISSION
         {
             get { return this.permission; }
             //set { this.permission = value; }
         }
 
-        public User() 
+        public User() //CONSTRUCTOR
         {
             this.username = "";
             this.permission = PERMISSION.GUEST;
         }
 
-        public void resetUser(string name, PERMISSION perm)
+        public void resetUser(string name, PERMISSION perm) //RESET USER [LOG OUT -> name=""; perm = PERMISSION.GUEST;] [LOG IN -> name="User"; perm = PERMISSION.LOGGED;]
         {
             this.username = name;
             this.permission = perm;
         }
-
     }
 }
