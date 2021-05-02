@@ -131,14 +131,14 @@
 
         .modalBackground
         {
-            background-color: Black;
+            background-color: #000000;
             filter: alpha(opacity=90);
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         .modalPopup
         {
-            background-color: #FFFFFF;
+            background-color: #080808;
             border-width: 3px;
             border-style: solid;
             border-color: black;
@@ -146,6 +146,34 @@
             padding-left: 10px;
             width: 300px;
             height: 140px;
+        }
+
+        #WordAddInputBox {
+            outline: none;
+            border: 1px solid #898E01;
+            min-width: 40%;
+            font-size: 150%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
+        }
+
+        #WordAddInputConfirm {
+            cursor: pointer;
+            border: none;
+            margin-top: 3%;
+            margin-bottom: 1%;
+            outline: none;
+            background-color: #898E01;
+            color: #080808;
+            font-size: 100%;
+            font-weight: bolder;
+            font-family: Calibri;
+            padding: 2%;
+        }
+
+        #WordAddInputConfirm:hover{
+            box-shadow: 0 0 10px #898E01;
         }
 
         @media only screen and (min-width: 1024px) {
@@ -197,14 +225,23 @@
                 max-height: 30%;
             }
 
+            .addbutton
+            {
+                height: 12px;
+                outline: none;
+            }
+
+
             .likebutton
             {
                 height: 30px;
+                outline: none;
             }
 
             .lenyitbutton
             {
                 height: 10px;
+                outline: none;
             }
 
             #for_back {
@@ -216,10 +253,12 @@
                 text-align: center;
                 width: 40%;
                 height: 20%;
+                outline: none;
             }
 
             #back_image {
                 width: 15%;
+                outline: none;
             }
 
         }

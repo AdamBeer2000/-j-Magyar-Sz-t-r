@@ -17,8 +17,8 @@ namespace WebNewmagyarszotar
 
         protected bool update()
         {
-            int i=0;
-            if(searchBox==null)
+            int i = 0;
+            if (searchBox == null)
             {
                 return false;
             }
@@ -35,17 +35,17 @@ namespace WebNewmagyarszotar
 
             foreach (KeyValuePair<String, EnglishWord> word in words)
             {
-                if(word.Value.getTranslations().Count>1)
+                if (word.Value.getTranslations().Count > 1)
                 {
-                    addOneRowMoultipleTrans(word.Value,SzotarTable);
+                    addOneRowMoultipleTrans(word.Value, SzotarTable);
                 }
                 else
                 {
-                    addOneRow(word.Value,word.Value.getTranslations()[0], SzotarTable,false);
+                    addOneRow(word.Value, word.Value.getTranslations()[0], SzotarTable, false);
                 }
                 i++;
             }
-            Label1.Text = Convert.ToString(pagenum) +" it: "+i;
+            Label1.Text = Convert.ToString(pagenum) + " it: " + i;
             return true;
         }
 
@@ -75,7 +75,7 @@ namespace WebNewmagyarszotar
         {
             //addOneRow(eng.getWord(),"-----------", table);
             HtmlTableRow row = new HtmlTableRow();
-       
+
             HtmlTableCell cell1 = new HtmlTableCell();
             HtmlTableCell cell2 = new HtmlTableCell();
             HtmlTableCell cell3 = new HtmlTableCell();
@@ -83,25 +83,26 @@ namespace WebNewmagyarszotar
 
             ImageButton lenyit = new ImageButton();
 
-            Button addWord = new Button();
-            addWord.Text = "+";
-            addWord.Click += new EventHandler(this.OpenWindow);
+            ImageButton addWord = new ImageButton();
+            addWord.ImageUrl = "https://i.imgur.com/ceYONF2.png";
+            addWord.Attributes.Add("class", "addbutton");
+            addWord.Click += new ImageClickEventHandler(this.OpenWindow);
             addWord.ID = "add_" + eng.getEngID();
-            
+
 
             lenyit.ID = "Button_lenyit_" + eng.getWord();
 
             lenyit.Click += new ImageClickEventHandler(this.show_all);
             lenyit.Attributes.Add("runat", "server");
 
-            if(showall.Contains(eng.getWord()))
+            if (showall.Contains(eng.getWord()))
                 lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//lenéz
             else
                 lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//felnéz
 
             lenyit.Attributes.Add("class", "lenyitbutton");
             cell1.InnerText = eng.getWord();
-            cell2.InnerText = eng.getTranslations()[0].getHunWord()+"\t";
+            cell2.InnerText = eng.getTranslations()[0].getHunWord() + "\t";
             cell2.Controls.Add(lenyit);
 
             row.Cells.Add(cell1);
@@ -119,12 +120,12 @@ namespace WebNewmagyarszotar
                 //lenéz
                 foreach (HungarianWord trans in eng.getTranslations())
                 {
-                    addOneRow(eng, trans, table,true);
+                    addOneRow(eng, trans, table, true);
                 }
             }
         }
 
-        private void addOneRow(EnglishWord eng_world, HungarianWord hun, HtmlTable table,bool ismultiple)
+        private void addOneRow(EnglishWord eng_world, HungarianWord hun, HtmlTable table, bool ismultiple)
         {
             string eng = eng_world.getWord();
 
@@ -142,24 +143,25 @@ namespace WebNewmagyarszotar
             cell1.InnerText = eng;
 
             cell1.InnerText = eng;
-            if(!ismultiple)
+            if (!ismultiple)
             {
-                Button addWord = new Button();
-                addWord.Text = "+";
-                addWord.Click += new EventHandler(this.OpenWindow);
+                ImageButton addWord = new ImageButton();
+                addWord.ImageUrl = "https://i.imgur.com/ceYONF2.png";
+                addWord.Attributes.Add("class", "addbutton");
+                addWord.Click += new ImageClickEventHandler(this.OpenWindow);
                 addWord.ID = "add_" + eng_world.getEngID();
                 cell1.Controls.Add(addWord);
             }
-            
+
 
             cell3.InnerText = hun.getHunWord();
             cell3.BorderColor = "#898E01";
-            
+
 
             row.Cells.Add(cell1);
             row.Cells.Add(cell3);
 
-            if(hun.getHunID()!=-1)//csak akkor -1 ha még nincs arra az angol szóra fordítás
+            if (hun.getHunID() != -1)//csak akkor -1 ha még nincs arra az angol szóra fordítás
             {
                 like.ID = "Button_like_" + hun.getHunID();
 
@@ -197,13 +199,13 @@ namespace WebNewmagyarszotar
             table.Rows.Add(row);
         }
 
-        protected void OpenWindow(object sender, EventArgs e)
+        protected void OpenWindow(object sender, ImageClickEventArgs e)
         {
             if (Request.Cookies["User"] != null)
             {
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    string partid = ((Button)sender).ID;
+                    string partid = ((ImageButton)sender).ID;
                     partid = partid.Split('_')[1];
                     int id = Convert.ToInt32(partid);
                     addwordid = id;
@@ -220,7 +222,7 @@ namespace WebNewmagyarszotar
         protected void forward_button_Click(object sender, ImageClickEventArgs e)
         {
             pagenum++;
-            if(!update())
+            if (!update())
             {
                 pagenum--;
             }
@@ -228,8 +230,8 @@ namespace WebNewmagyarszotar
 
         protected void back_button_Click(object sender, ImageClickEventArgs e)
         {
-            if(pagenum>0)
-            pagenum--;
+            if (pagenum > 0)
+                pagenum--;
             update();
         }
 
@@ -277,16 +279,16 @@ namespace WebNewmagyarszotar
             {
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    bool state=!db.addHunWord(WordAddInputBox.Text,Convert.ToInt32(Request.Cookies["User"]["Logged"]),addwordid);
+                    bool state = !db.addHunWord(WordAddInputBox.Text, Convert.ToInt32(Request.Cookies["User"]["Logged"]), addwordid);
                     update();
-                    if(state)
+                    if (state)
                     {
                         db.getLatestErrorMsg();
                         Response.Write("<script>alert('Vótmá')</script>");
                     }
                     else
                     {
-                        
+
                         Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                     }
                 }
