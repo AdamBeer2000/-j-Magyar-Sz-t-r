@@ -7,7 +7,7 @@ namespace WebNewmagyarszotar
 {
     public class HungarianWord
     {
-        private int hun_ID, like, dislike, report_count;
+        private int hun_ID, like, dislike, report_count,userId;
         private string hun_word, user;
         
         public HungarianWord() { }
@@ -19,6 +19,27 @@ namespace WebNewmagyarszotar
             this.dislike = _dislike;
             this.hun_word = _word;
             this.user = _user;
+            //this.report_count = _report;
+        }
+
+        public HungarianWord(int _ID, string _word, string _user,int _userId, int _like = 0, int _dislike = 0)
+        {
+            this.hun_ID = _ID;
+            this.like = _like;
+            this.dislike = _dislike;
+            this.hun_word = _word;
+            this.user = _user;
+            this.userId = _userId;
+            //this.report_count = _report;
+        }
+
+        public HungarianWord(int _ID, string _word, int _userId, int _like = 0, int _dislike = 0)
+        {
+            this.hun_ID = _ID;
+            this.like = _like;
+            this.dislike = _dislike;
+            this.hun_word = _word;
+            this.userId = _userId;
             //this.report_count = _report;
         }
 

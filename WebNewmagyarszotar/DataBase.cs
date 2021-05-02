@@ -1,13 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data.SqlClient;
 using System.IO;
 using System.Data;
+using Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure;
+using System.Security.Cryptography;
+using Azure.Identity;
 
 namespace WebNewmagyarszotar
 {
+    public sealed class PasswordHash
+    {
+        public string encrpyt(string passw)
+        {
+            string hash;
+            using (SHA512 shaM = new SHA512Managed())
+            {
+                byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(passw);
+                var thing=shaM.ComputeHash(byteArray);
+                hash = System.Text.Encoding.Default.GetString(thing);
+            }
+            return hash;
+        }
+    }
+
     public class DataBase
     {
         private static string conn_string = buildDefConnString();
@@ -27,6 +45,7 @@ namespace WebNewmagyarszotar
             defconn.ConnectTimeout = 30;
             return defconn.ConnectionString;
         }
+
 
         public DataBase()
         {
@@ -125,11 +144,11 @@ namespace WebNewmagyarszotar
                     if (!result.ContainsKey(reader.GetString(1)))
                     {
                         result.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(7), reader.GetString(8)));
-                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3), reader.GetString(6), reader.GetInt32(4), reader.GetInt32(5)));
+                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3), reader.GetInt32(6), reader.GetInt32(4), reader.GetInt32(5)));
                     }
                     else
                     {
-                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3), reader.GetString(6), reader.GetInt32(4), reader.GetInt32(5)));
+                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3),reader.GetInt32(6), reader.GetInt32(4), reader.GetInt32(5)));
                     }
 
                 }
@@ -163,12 +182,10 @@ namespace WebNewmagyarszotar
             p2.SqlDbType = SqlDbType.Int;
             p2.Direction = ParameterDirection.Input;
 
-            
             SqlParameter p3 = new SqlParameter(@"@search", searchField);
             p3.SqlDbType = SqlDbType.NVarChar;
             p3.Direction = ParameterDirection.Input;
-            
-
+           
             sqlCmd.Parameters.Add(p1);
             sqlCmd.Parameters.Add(p2);
             sqlCmd.Parameters.Add(p3);
@@ -182,11 +199,11 @@ namespace WebNewmagyarszotar
                     if (!words.ContainsKey(reader.GetString(1)))
                     {
                         words.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
-                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8)));
+                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8)));
                     }
                     else
                     {
-                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(6), reader.GetInt32(7), reader.GetInt32(8)));
+                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8)));
                     }
 
                 }
@@ -345,6 +362,7 @@ namespace WebNewmagyarszotar
             tmp.Encrypt = true;
             tmp.Add("Trusted_Connection", false);
             tmp.TrustServerCertificate = true;
+
             return new SqlConnection(tmp.ConnectionString);
         }
         //https://docs.microsoft.com/hu-hu/azure/azure-sql/database/always-encrypted-certificate-store-configure
@@ -352,7 +370,9 @@ namespace WebNewmagyarszotar
         public int verifyUser(string username, string jelszo)//ha létezik és sikeres a bejelentkezés felhaszidvel tér vissza egyébként -1
         {
             string querry = "";
-            int id = -1; ;
+            byte[] jelszo_hash;
+            int id = -1; 
+
             try
             {
                 querry = "SELECT id,felhasznalonev,jelszo FROM felhasznalok WHERE felhasznalonev='" + username + "'";
@@ -365,6 +385,12 @@ namespace WebNewmagyarszotar
                 passw.Size = 32;
                 */
 
+                using (SHA512 shaM = new SHA512Managed())
+                {
+                    byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(jelszo);
+                    jelszo_hash = shaM.ComputeHash(byteArray);
+                }
+
                 sqlCmd.Connection.Open();
 
                 SqlDataReader reader = sqlCmd.ExecuteReader();
@@ -372,7 +398,7 @@ namespace WebNewmagyarszotar
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    if (reader.GetString(2) != jelszo)
+                    if (reader.GetSqlBinary(2)!= jelszo_hash)
                     {
                         latestErrorMsg = "Rossz jelszó";
                     }
@@ -429,8 +455,15 @@ namespace WebNewmagyarszotar
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/registration.sql";
             string querry = File.ReadAllText(path);
+            byte[] jelszo_hash;
 
-            if(checkhUsername(username))
+            using (SHA512 shaM = new SHA512Managed())
+            {
+                byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(jelszo);
+                jelszo_hash = shaM.ComputeHash(byteArray);
+            }
+
+            if (checkhUsername(username))
             {
                 latestErrorMsg = "Van már ilyen felhsználónév";
                 return false;
@@ -453,10 +486,9 @@ namespace WebNewmagyarszotar
             p3.Direction = ParameterDirection.Input;
             p1.Size = 10;
 
-            SqlParameter p4 = new SqlParameter(@"@p4", jelszo);
-            p4.SqlDbType = SqlDbType.VarChar;
+            SqlParameter p4 = new SqlParameter(@"@p4", jelszo_hash);
+            p4.SqlDbType = SqlDbType.Binary;
             p4.Direction = ParameterDirection.Input;
-            p1.Size = 32;
 
             sqlCmd.Parameters.Add(p1);
             sqlCmd.Parameters.Add(p2);

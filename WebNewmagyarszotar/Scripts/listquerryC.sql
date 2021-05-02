@@ -6,7 +6,7 @@ DECLARE @prev INT
 
 --set @search=''
 --set @pagenum=0
---set @scale=2000
+--set @scale=20
 
 set @prev=@pagenum*@scale
 
@@ -33,7 +33,7 @@ angolszo.szo as 'angolszo',
 definicio,angolszo.bekuldo as 'angolbekuldo',
 ISNULL(szotar.magyarszo_id,-1) as 'magyarszo',
 ISNULL(magyarszo.szo,'Nincs mmég fordítás') as 'forditas',
-ISNULL(magyarszo.bekuldo,'Senki') as 'magyarbekuldo',
+ISNULL(magyarszo.bekuldo,3) as 'magyarbekuldo',
 ISNULL(#TMPTetszes.tetszes,0)as 'tetszes' ,
 ISNULL(#TMPNemTetszes.nemtetszes,0) as 'nemtetszes'
 INTO #TEMP
