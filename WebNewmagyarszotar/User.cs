@@ -11,12 +11,14 @@ namespace WebNewmagyarszotar
         LOGGED,
         GUEST
     }
-
+   
     public class User
     {
         //ONLY data storage! + functions what we need
         private string username;
         private PERMISSION permission;
+        public int id { get; }
+
 
         public string Username //GETTER - USERNAME
         {
@@ -33,6 +35,14 @@ namespace WebNewmagyarszotar
         {
             this.username = "";
             this.permission = PERMISSION.GUEST;
+            id = 0;
+        }
+
+        public User(string username, int id,PERMISSION p) //CONSTRUCTOR
+        {
+            this.username = username;
+            this.permission = p;
+            this.id = id;
         }
 
         public void resetUser(string name, PERMISSION perm) //RESET USER [LOG OUT -> name=""; perm = PERMISSION.GUEST;] [LOG IN -> name="User"; perm = PERMISSION.LOGGED;]

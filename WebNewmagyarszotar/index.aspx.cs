@@ -11,7 +11,7 @@ namespace WebNewmagyarszotar
     public partial class WebForm1 : System.Web.UI.Page
     {
         DataBase db = new DataBase();
-
+        User logged = new User();
         protected void Page_Load(object sender, EventArgs e)
         {
             //connection_info = db.getAllDataDEBUG();
@@ -19,7 +19,9 @@ namespace WebNewmagyarszotar
             {
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    user_label.Text = Request.Cookies["User"]["Logged"].ToString();
+                    User logged = db.getUserById(Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    if (logged != null)
+                        user_label.Text = logged.Username;
                 }
                 else
                 {

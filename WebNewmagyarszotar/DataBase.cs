@@ -367,15 +367,16 @@ namespace WebNewmagyarszotar
         }
         //https://docs.microsoft.com/hu-hu/azure/azure-sql/database/always-encrypted-certificate-store-configure
 
-        public int verifyUser(string username, string jelszo)//ha létezik és sikeres a bejelentkezés felhaszidvel tér vissza egyébként -1
+        public User verifyUser(string username, string jelszo)//ha létezik és sikeres a bejelentkezés felhaszidvel tér vissza egyébként -1
         {
             string querry = "";
             byte[] jelszo_hash;
-            int id = -1; 
+            int id = -1;
+            string jog="";
 
             try
             {
-                querry = "SELECT id,felhasznalonev,jelszo FROM felhasznalok WHERE felhasznalonev='" + username + "'";
+                querry = "SELECT id,felhasznalonev,jelszo,jogosultasag FROM felhasznalok WHERE felhasznalonev='" + username + "'";
                 SqlCommand sqlCmd = new SqlCommand(querry, getSecureConn());
 
                 /*
@@ -405,6 +406,7 @@ namespace WebNewmagyarszotar
                     else
                     {
                         id = reader.GetInt32(0);
+                        jog = reader.GetString(3);
                     }
                 }
                 else
@@ -413,14 +415,35 @@ namespace WebNewmagyarszotar
                 }
 
                 sqlCmd.Connection.Close();
-
-                return id;
+                if(id!=-1)
+                {
+                    PERMISSION p=PERMISSION.GUEST;
+                    if(jog=="+")
+                    {
+                        p = PERMISSION.LOGGED;
+                    }
+                    if (jog == "++")
+                    {
+                        p = PERMISSION.ADMIN;
+                    }
+                    if (jog == "-")
+                    {
+                        //tudo csökentett hozzáférés
+                    }
+                    return new User(username, id, PERMISSION.LOGGED);
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
-                return -1;
+                return null;
             }
+
         }
 
         public bool checkhUsername(string username)//igaz ha létezik
@@ -512,6 +535,67 @@ namespace WebNewmagyarszotar
                 }
             }
             return true;
+        }
+        public User getUserById(int id)
+        {
+            string querry = "";
+            string username="";
+            string jog = "";
+
+            try
+            {
+                querry = "SELECT id,felhasznalonev,jelszo,jogosultasag FROM felhasznalok WHERE id=" + id;
+                SqlCommand sqlCmd = new SqlCommand(querry, getSecureConn());
+
+                /*
+                SqlParameter passw = new SqlParameter(@"@passw", jelszo);
+                passw.DbType = DbType.AnsiStringFixedLength;
+                passw.Direction = ParameterDirection.Input;
+                passw.Size = 32;
+                */
+                sqlCmd.Connection.Open();
+
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    username = reader.GetString(1);
+                    jog = reader.GetString(3);
+                }
+                else
+                {
+                    latestErrorMsg = "Nincs ilyen embör";
+                }
+
+                sqlCmd.Connection.Close();
+                if (id != -1)
+                {
+                    PERMISSION p = PERMISSION.GUEST;
+                    if (jog == "+")
+                    {
+                        p = PERMISSION.LOGGED;
+                    }
+                    if (jog == "++")
+                    {
+                        p = PERMISSION.ADMIN;
+                    }
+                    if (jog == "-")
+                    {
+                        //tudo csökentett hozzáférés
+                    }
+                    return new User(username, id, PERMISSION.LOGGED);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                latestErrorMsg = e.Message;
+                return null;
+            }
         }
     }
 }

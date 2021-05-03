@@ -18,13 +18,12 @@ namespace WebNewmagyarszotar
         protected void Button1_Click(object sender, EventArgs e)
         {
             string username = username_.Value;
-            int id = db.verifyUser(username, Password1.Value);
-            if (id!=-1)
+            var user = db.verifyUser(username, Password1.Value);
+            if (user!=null)
             {
                 Label1.Text = "Fasza Üdv "+username;
-                Response.Cookies["User"]["Logged"] = id.ToString();
+                Response.Cookies["User"]["Logged"] = user.id.ToString();
                 Response.Cookies["User"].Expires = DateTime.Now.AddHours(8);
-
                 //Response.Redirect("index.aspx");
             }
             else
