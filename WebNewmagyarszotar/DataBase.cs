@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Data;
-using Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Azure;
 using System.Security.Cryptography;
-using Azure.Identity;
 
 namespace WebNewmagyarszotar
 {
