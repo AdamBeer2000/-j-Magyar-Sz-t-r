@@ -294,5 +294,9 @@ namespace WebNewmagyarszotar
                 }
             }
         }
+        protected void WordAddCancle_Click(object sender, EventArgs e)
+        {
+            mp1.Hide();
+        }
     }
 }

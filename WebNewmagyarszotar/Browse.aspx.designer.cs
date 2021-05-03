@@ -42,6 +42,15 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+
+        /// <summary>
         /// WordAddInputBox control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,22 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.TextBox WordAddInputBox;
 
         /// <summary>
-        /// WordAddInputConfirm control.
+        /// Confirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button WordAddInputConfirm;
+        protected global::System.Web.UI.WebControls.Button Confirm;
+
+        /// <summary>
+        /// Cancle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Cancle;
 
         /// <summary>
         /// mp1 control.

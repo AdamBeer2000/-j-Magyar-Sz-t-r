@@ -158,7 +158,7 @@
             background-color: #080808;
         }
 
-        #WordAddInputConfirm {
+        .WordAddInputConfirm {
             cursor: pointer;
             border: none;
             margin-top: 3%;
@@ -172,7 +172,7 @@
             padding: 2%;
         }
 
-        #WordAddInputConfirm:hover{
+        .WordAddInputConfirm:hover{
             box-shadow: 0 0 10px #898E01;
         }
 
@@ -231,7 +231,6 @@
                 outline: none;
             }
 
-
             .likebutton
             {
                 height: 30px;
@@ -278,8 +277,10 @@
         <asp:ScriptManager ID="Sm1" runat="server"></asp:ScriptManager>
 
         <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup">
+            <asp:Label ID="Label2" runat="server" Text="Szó Hozzáadása"></asp:Label><br>
             <asp:TextBox ID="WordAddInputBox" runat="server"></asp:TextBox><br>
-            <asp:Button ID="WordAddInputConfirm" runat="server" Text="Button" OnClick="WordAddInputConfirm_Click" />
+            <asp:Button ID="Confirm" runat="server" Text="Submit" OnClick="WordAddInputConfirm_Click" CssClass="WordAddInputConfirm"/>
+            <asp:Button ID="Cancle" runat="server" Text="Megse" OnClick="WordAddCancle_Click" CssClass="WordAddInputConfirm"/>;
         </asp:Panel>
 
         <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
