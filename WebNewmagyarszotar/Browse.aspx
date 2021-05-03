@@ -115,14 +115,22 @@
             max-height: 30%;
         }
 
+        .addbutton
+        {
+                height: 20px;
+                outline: none;
+        }
+
         .likebutton
         {
             height: 60px;
+            outline: none;
         }
 
         .lenyitbutton
         {
             height: 20px;
+            outline: none;
         }
 
         #back_image {
@@ -144,23 +152,23 @@
             border-color: black;
             padding-top: 10px;
             padding-left: 10px;
-            width: 300px;
-            height: 140px;
+            width: 400px;
+            height: 210px;
         }
 
         #Label2 {
             color: #898E01;
             padding-top: 2%;
             padding-bottom: 4%;
-            font-size: 120%;
+            font-size: 180%;
             font-family: Calibri;
         }
 
         #WordAddInputBox {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 40%;
-            font-size: 150%;
+            min-width: 60%;
+            font-size: 200%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -174,7 +182,7 @@
             outline: none;
             background-color: #898E01;
             color: #080808;
-            font-size: 100%;
+            font-size: 160%;
             font-weight: bolder;
             font-family: Calibri;
             padding: 2%;
@@ -249,6 +257,50 @@
             {
                 height: 10px;
                 outline: none;
+            }
+
+            .modalPopup
+            {
+                background-color: #080808;
+                border-width: 3px;
+                border-style: solid;
+                border-color: black;
+                padding-top: 10px;
+                padding-left: 10px;
+                width: 300px;
+                height: 140px;
+            }
+
+            #Label2 {
+                color: #898E01;
+                padding-top: 2%;
+                padding-bottom: 4%;
+                font-size: 120%;
+                font-family: Calibri;
+            }
+
+            #WordAddInputBox {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 150%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+            }
+
+            .WordAddInputConfirm {
+                cursor: pointer;
+                border: none;
+                margin-top: 3%;
+                margin-bottom: 1%;
+                outline: none;
+                background-color: #898E01;
+                color: #080808;
+                font-size: 100%;
+                font-weight: bolder;
+                font-family: Calibri;
+                padding: 2%;
             }
 
             #for_back {

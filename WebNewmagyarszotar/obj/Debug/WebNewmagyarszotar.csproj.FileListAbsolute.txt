@@ -268,13 +268,11 @@ C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\zh-Hans\Microsoft.SqlServer.Mana
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\zh-Hant\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\AjaxControlToolkit.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Azure.Core.dll
-E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Azure.Identity.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.WebKey.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Bcl.AsyncInterfaces.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Identity.Client.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Identity.Client.Extensions.Msal.dll
-E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Rest.ClientRuntime.Azure.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Rest.ClientRuntime.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.dll
@@ -289,13 +287,11 @@ E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\System.Text.Json.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\System.Threading.Tasks.Extensions.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\System.ValueTuple.dll
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Azure.Core.xml
-E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Azure.Identity.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.WebKey.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Bcl.AsyncInterfaces.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Identity.Client.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Identity.Client.Extensions.Msal.xml
-E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Rest.ClientRuntime.Azure.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\System.Buffers.xml
 E:\git\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\System.Diagnostics.DiagnosticSource.xml
