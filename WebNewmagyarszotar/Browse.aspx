@@ -148,6 +148,14 @@
             height: 140px;
         }
 
+        #Label2 {
+            color: #898E01;
+            padding-top: 2%;
+            padding-bottom: 4%;
+            font-size: 120%;
+            font-family: Calibri;
+        }
+
         #WordAddInputBox {
             outline: none;
             border: 1px solid #898E01;
@@ -280,7 +288,7 @@
             <asp:Label ID="Label2" runat="server" Text="Szó Hozzáadása"></asp:Label><br>
             <asp:TextBox ID="WordAddInputBox" runat="server"></asp:TextBox><br>
             <asp:Button ID="Confirm" runat="server" Text="Submit" OnClick="WordAddInputConfirm_Click" CssClass="WordAddInputConfirm"/>
-            <asp:Button ID="Cancle" runat="server" Text="Megse" OnClick="WordAddCancle_Click" CssClass="WordAddInputConfirm"/>;
+            <asp:Button ID="Cancle" runat="server" Text="Megse" OnClick="WordAddCancle_Click" CssClass="WordAddInputConfirm"/>
         </asp:Panel>
 
         <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
