@@ -94,7 +94,7 @@ namespace WebNewmagyarszotar
             ImageButton reportWord = new ImageButton();
             reportWord.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
             reportWord.Attributes.Add("class", "reportbutton");
-            reportWord.CommandArgument = "E,"+eng.getEngID();
+            reportWord.CommandArgument = "E," + eng.getEngID();
             reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
             reportWord.ID = "rep_e_" + eng.getEngID();
 
@@ -109,8 +109,24 @@ namespace WebNewmagyarszotar
                 lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//felnéz
 
             lenyit.Attributes.Add("class", "lenyitbutton");
-            cell1.InnerText = eng.getWord();
-            cell2.InnerText = eng.getTranslations()[0].getHunWord() + "\t";
+            //cell1.InnerText = eng.getWord();
+            //cell2.InnerText = eng.getTranslations()[0].getHunWord() + "\t";
+
+            LinkButton engWorld = new LinkButton();
+            engWorld.Text = eng.getWord();
+            engWorld.CssClass = "textStyle";
+            engWorld.Command += new CommandEventHandler(OpenWindowInfo);
+            engWorld.CommandArgument = eng.getWord() + "," + eng.getUser() + "," + eng.getDesc();
+            cell1.Controls.Add(engWorld);
+
+            LinkButton hunWorld = new LinkButton();
+            hunWorld.Text = eng.getWord();
+            hunWorld.CssClass = "textStyle";
+            hunWorld.Command += new CommandEventHandler(OpenWindowInfo);
+            hunWorld.CommandArgument = eng.getTranslations()[0].getHunWord() + "," + eng.getTranslations()[0].getUser() + ",";
+            cell2.Controls.Add(hunWorld);
+
+
 
             ImageButton reportWordHun = new ImageButton();
             reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
@@ -158,9 +174,14 @@ namespace WebNewmagyarszotar
             ImageButton dislike = new ImageButton();
 
             HtmlTableCell cell5 = new HtmlTableCell();
-            cell1.InnerText = eng;
 
-            cell1.InnerText = eng;
+            LinkButton engWorld = new LinkButton();
+
+            engWorld.Text = eng;
+            engWorld.CssClass = "textStyle";
+            //cell1.InnerText = eng;
+            cell1.Controls.Add(engWorld);
+
             if (!ismultiple)
             {
                 ImageButton addWord = new ImageButton();
@@ -177,12 +198,21 @@ namespace WebNewmagyarszotar
                 reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
                 reportWord.ID = "rep_e_" + eng_world.getEngID();
                 cell1.Controls.Add(reportWord);
+
+                engWorld.Command += new CommandEventHandler(OpenWindowInfo);
+                engWorld.CommandArgument = eng_world.getWord() + "," + eng_world.getUser() + "," + eng_world.getDesc();
             }
 
 
-            cell3.InnerText = hun.getHunWord();
+            //cell3.InnerText = hun.getHunWord();
+            LinkButton hunWord = new LinkButton();
+            hunWord.Text = hun.getHunWord();
+            hunWord.CommandArgument = hun.getHunWord() + "," + hun.getUser();
+            hunWord.CssClass = "textStyle";
+            hunWord.Command += new CommandEventHandler(OpenWindowInfo);
+            cell3.Controls.Add(hunWord);
             cell3.BorderColor = "#898E01";
-            
+
 
             row.Cells.Add(cell1);
             row.Cells.Add(cell3);
@@ -248,8 +278,8 @@ namespace WebNewmagyarszotar
                 }
             }
         }
-        
-        protected void OpenWindowReport(object sender,CommandEventArgs e)
+
+        protected void OpenWindowReport(object sender, CommandEventArgs e)
         {
             if (Request.Cookies["User"] != null)
             {
@@ -257,12 +287,22 @@ namespace WebNewmagyarszotar
                 {
                     e.ToString().Split();
                     int id = Convert.ToInt32(e.CommandArgument.ToString().Split(',')[1]);
-                    char wordType= Convert.ToChar(e.CommandArgument.ToString().Split(',')[0][0]);
+                    char wordType = Convert.ToChar(e.CommandArgument.ToString().Split(',')[0][0]);
                     reportwordid = id;
                     reportWordType = wordType;
                     mp2.Show();
                 }
             }
+        }
+
+        protected void OpenWindowInfo(object sender, CommandEventArgs e)
+        {
+            string[] split = e.CommandArgument.ToString().Split(',');
+            World.Text = split[0];
+            Creator.Text = "Beküldte: " + split[1];
+            if (split.Length == 3)
+                Definicon.Text = "Definició: " + split[2];
+            WorldInfoExtender.Show();
         }
 
         protected void searchBox_TextChanged(object sender, EventArgs e)
@@ -356,7 +396,7 @@ namespace WebNewmagyarszotar
             {
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]),reportWordType, reportwordid,reportCommentInput.Text);
+                    db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), reportWordType, reportwordid, reportCommentInput.Text);
                     update();
                 }
             }
