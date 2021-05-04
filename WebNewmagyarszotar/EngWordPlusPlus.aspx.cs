@@ -73,7 +73,7 @@ namespace WebNewmagyarszotar
                             if (state)
                             {
                                 db.getLatestErrorMsg();
-                                Response.Write("<script>alert('Vótmá ilyen magyar szó, de az angol szó sikeresen hozzáadva')</script>");
+                                Response.Write("<script>alert('Vótmá ilyen magyar szó, de az angol szó ')</script>");
                             }
                             else
                             {
@@ -81,7 +81,6 @@ namespace WebNewmagyarszotar
                                 Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                             }
                         }
-                        Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                     }
                     else if (!valid)
                     {
