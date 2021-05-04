@@ -169,6 +169,14 @@ namespace WebNewmagyarszotar
                 addWord.Click += new ImageClickEventHandler(this.OpenWindow);
                 addWord.ID = "add_" + eng_world.getEngID();
                 cell1.Controls.Add(addWord);
+
+                ImageButton reportWord = new ImageButton();
+                reportWord.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
+                reportWord.Attributes.Add("class", "addbutton");
+                reportWord.CommandArgument = "E," + eng_world.getEngID();
+                reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
+                reportWord.ID = "rep_e_" + eng_world.getEngID();
+                cell1.Controls.Add(reportWord);
             }
 
 
