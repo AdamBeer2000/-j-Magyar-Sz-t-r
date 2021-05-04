@@ -96,6 +96,36 @@
             box-shadow: 0 0 10px #6ae134;
         }
 
+        #HozzaadAngolSzot {
+            border: 1px solid #898E01;
+            margin-top: 1%;
+            margin-left: 5%;
+            margin-right: 5%;
+            text-align: center;
+            width: 90%;
+            height: 20%;
+            background-color: #080808;
+            opacity: 0.8;
+        }
+
+        .addEnglishWord {
+            cursor: pointer;
+            border: none;
+            margin-top: 3%;
+            margin-bottom: 1%;
+            outline: none;
+            background-color: #898E01;
+            color: #080808;
+            font-size: 160%;
+            font-weight: bolder;
+            font-family: Calibri;
+            padding: 2%;
+        }
+
+        .addEnglishWord:hover{
+            box-shadow: 0 0 10px #898E01;
+        }
+
 
         @media only screen and (min-width: 1024px) {
             body {
@@ -170,6 +200,20 @@
                 text-align: center;
                 outline: none;
             }
+
+            .addEnglishWord {
+                cursor: pointer;
+                border: none;
+                margin-top: 3%;
+                margin-bottom: 1%;
+                outline: none;
+                background-color: #898E01;
+                color: #080808;
+                font-size: 100%;
+                font-weight: bolder;
+                font-family: Calibri;
+                padding: 2%;
+            }
         }
     </style>
 
@@ -223,8 +267,28 @@
                 </a>
             </td>
         </tr>
-
     </table>
+
+    <form id="form23" runat="server">
+        <table id="HozzaadAngolSzot">
+            <tr>
+                <td>
+
+                    <h1>
+                        Új angol szó hozzáadása
+                    </h1>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                
+                    <asp:Button ID="addEnglishWord" runat="server" Text="Angol szó hozzáadása" CssClass="addEnglishWord"/>
+                
+                </td>
+            </tr>
+        </table>
+    </form>
     
 </body>
 </html>
