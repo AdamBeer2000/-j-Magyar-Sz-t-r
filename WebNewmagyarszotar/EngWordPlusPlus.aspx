@@ -1,4 +1,4 @@
-﻿amú<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EngWordPlusPlus.aspx.cs" Inherits="WebNewmagyarszotar.EngWordPlusPlus" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EngWordPlusPlus.aspx.cs" Inherits="WebNewmagyarszotar.EngWordPlusPlus" %>
 
 <!DOCTYPE html>
 

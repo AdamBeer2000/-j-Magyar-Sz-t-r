@@ -49,4 +49,5 @@ namespace WebNewmagyarszotar
             return str;
         }
     }
+
 }
