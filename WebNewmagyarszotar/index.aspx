@@ -60,6 +60,11 @@
            width: 68%;
         }
 
+        #engword {
+               width: 68%;
+               margin-top: 16%;
+        }
+
         #explorer {
            width: 68%;
         }
@@ -178,6 +183,11 @@
                width: 38%;
             }
 
+            #engword {
+               width: 38%;
+               margin-top: 8%;
+            }
+
             #explorer {
                width: 38%;
             }
@@ -267,28 +277,23 @@
                 </a>
             </td>
         </tr>
+
+        <tr>
+            <td>
+
+            </td>
+
+            <td>
+                <a href="EngWordPlusPlus.aspx">
+                    <img src="https://i.imgur.com/Bgd2WNW.png" id="engword" alt="browse" />
+                </a>
+            </td>
+
+            <td>
+
+            </td>
+        </tr>
     </table>
-
-    <form id="form23" runat="server">
-        <table id="HozzaadAngolSzot">
-            <tr>
-                <td>
-
-                    <h1>
-                        Új angol szó hozzáadása
-                    </h1>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                
-                    <asp:Button ID="addEnglishWord" runat="server" Text="Angol szó hozzáadása" CssClass="addEnglishWord"/>
-                
-                </td>
-            </tr>
-        </table>
-    </form>
     
 </body>
 </html>
