@@ -68,9 +68,20 @@ namespace WebNewmagyarszotar
                         if (ht.Text != "")
                         {
                             hunword = ht.Text;
-                            db.addHunWord(hunword, Convert.ToInt32(Request.Cookies["User"]["Logged"]), engid);
-                            debugl.Text = db.getLatestErrorMsg();
+                            bool state = !db.addHunWord(hunword, Convert.ToInt32(Request.Cookies["User"]["Logged"]), engid);
+                            //debugl.Text = db.getLatestErrorMsg();
+                            if (state)
+                            {
+                                db.getLatestErrorMsg();
+                                Response.Write("<script>alert('Vótmá ilyen magyar szó, de az angol szó sikeresen hozzáadva')</script>");
+                            }
+                            else
+                            {
+
+                                Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
+                            }
                         }
+                        Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                     }
                     else if (!valid)
                     {
