@@ -233,6 +233,7 @@
     <Content Include="Ranks.aspx" />
     <Content Include="Browse.aspx" />
     <Content Include="Explorer.aspx" />
+    <Content Include="Scripts\addHUnWord.sql" />
     <Content Include="Scripts\addreaction.sql" />
     <Content Include="Scripts\listquerryC.sql" />
     <Content Include="Scripts\registration.sql" />

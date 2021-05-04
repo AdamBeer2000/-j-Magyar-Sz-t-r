@@ -38,5 +38,20 @@ namespace WebNewmagyarszotar
             }
             Label1.Text = "Nem Fasza";
         }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]),'M',6,TextBox1.Text);
+                }
+            }
+            else
+            {
+                db.addReport(3, 'M', 6, TextBox1.Text);
+            }
+        }
     }
 }

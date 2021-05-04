@@ -14,6 +14,8 @@ namespace WebNewmagyarszotar
         static public int pagenum = 0;
         static public List<String> showall = new List<string>();
         static int addwordid;
+        static int reportwordid;
+        static char reportWordType;
 
         protected bool update()
         {
@@ -89,6 +91,11 @@ namespace WebNewmagyarszotar
             addWord.Click += new ImageClickEventHandler(this.OpenWindow);
             addWord.ID = "add_" + eng.getEngID();
 
+            Button reportWord = new Button();
+            reportWord.Text = "!";
+            reportWord.CommandArgument = "E,"+eng.getEngID();
+            reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
+            reportWord.ID = "rep_e_" + eng.getEngID();
 
             lenyit.ID = "Button_lenyit_" + eng.getWord();
 
@@ -103,10 +110,19 @@ namespace WebNewmagyarszotar
             lenyit.Attributes.Add("class", "lenyitbutton");
             cell1.InnerText = eng.getWord();
             cell2.InnerText = eng.getTranslations()[0].getHunWord() + "\t";
+
+            Button reportWordHun = new Button();
+            reportWordHun.Text = "!";
+            reportWordHun.CommandArgument = "H," + eng.getTranslations()[0].getHunID();
+            reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
+            reportWordHun.ID = "rep_m_" + eng.getTranslations()[0].getHunID();
+
+            cell2.Controls.Add(reportWordHun);
             cell2.Controls.Add(lenyit);
 
             row.Cells.Add(cell1);
             cell1.Controls.Add(addWord);
+            cell1.Controls.Add(reportWord);
 
             row.Cells.Add(cell2);
             row.Cells.Add(cell4);
@@ -156,13 +172,21 @@ namespace WebNewmagyarszotar
 
             cell3.InnerText = hun.getHunWord();
             cell3.BorderColor = "#898E01";
-
+            
 
             row.Cells.Add(cell1);
             row.Cells.Add(cell3);
 
             if (hun.getHunID() != -1)//csak akkor -1 ha még nincs arra az angol szóra fordítás
             {
+                Button reportWordHun = new Button();
+                reportWordHun.Text = "!";
+                reportWordHun.CommandArgument = "H," + hun.getHunID();
+                reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
+                reportWordHun.ID = "rep_h_" + hun.getHunID();
+
+                cell3.Controls.Add(reportWordHun);
+
                 like.ID = "Button_like_" + hun.getHunID();
 
                 //like.Click += new ImageClickEventHandler(this.like_button_button_Click);
@@ -210,6 +234,22 @@ namespace WebNewmagyarszotar
                     int id = Convert.ToInt32(partid);
                     addwordid = id;
                     mp1.Show();
+                }
+            }
+        }
+        
+        protected void OpenWindowReport(object sender,CommandEventArgs e)
+        {
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    e.ToString().Split();
+                    int id = Convert.ToInt32(e.CommandArgument.ToString().Split(',')[1]);
+                    char wordType= Convert.ToChar(e.CommandArgument.ToString().Split(',')[0][0]);
+                    reportwordid = id;
+                    reportWordType = wordType;
+                    mp2.Show();
                 }
             }
         }
@@ -297,6 +337,22 @@ namespace WebNewmagyarszotar
         protected void WordAddCancle_Click(object sender, EventArgs e)
         {
             mp1.Hide();
+        }
+
+        protected void WordAddReportConfirm_Click(object sender, EventArgs e)
+        {
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]),reportWordType, reportwordid,reportCommentInput.Text);
+                    update();
+                }
+            }
+        }
+        protected void WordReportCancle_Click(object sender, EventArgs e)
+        {
+            mp2.Hide();
         }
     }
 }

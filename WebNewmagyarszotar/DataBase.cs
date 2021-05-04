@@ -213,6 +213,33 @@ namespace WebNewmagyarszotar
             return words;
         }
 
+        public void addReport(int userId,char wordType,int wordId,string comment)
+        {
+            string querry = "INSERT into reports values(@userId, @wordType, @wordId, @comment)";
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand(querry, conn);
+
+                SqlParameter p1 = new SqlParameter(@"@userId", userId);
+                SqlParameter p2 = new SqlParameter(@"@wordType", wordType);
+                SqlParameter p3 = new SqlParameter(@"@wordId", wordId);
+                SqlParameter p4 = new SqlParameter(@"@comment", comment);
+
+                sqlCmd.Parameters.Add(p1);
+                sqlCmd.Parameters.Add(p2);
+                sqlCmd.Parameters.Add(p3);
+                sqlCmd.Parameters.Add(p4);
+
+                sqlCmd.Connection.Open();
+                sqlCmd.ExecuteNonQuery();
+                sqlCmd.Connection.Close();
+            }
+            catch (Exception e)
+            {
+                latestErrorMsg = e.Message;
+            }
+        }
+
         public void addLike(int magyarszo_id,int felhasz_id)
         {
             //todo a felhasználó által likeolt szavak listájához adni
@@ -242,19 +269,12 @@ namespace WebNewmagyarszotar
 
                 sqlCmd.Connection.Open();
                 sqlCmd.ExecuteNonQuery();
+                sqlCmd.Connection.Close();
             }
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
             }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
-
         }
         public void addDislike(int magyarszo_id, int felhasz_id)
         {

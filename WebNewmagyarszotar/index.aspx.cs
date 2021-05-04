@@ -28,8 +28,6 @@ namespace WebNewmagyarszotar
                     user_label.Text = "Unlogged";
                 }
             }
-            
         }
-
     }
 }

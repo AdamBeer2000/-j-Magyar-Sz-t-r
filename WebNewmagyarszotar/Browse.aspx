@@ -292,7 +292,18 @@
         </asp:Panel>
 
         <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
-        
+
+        <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
+
+            <asp:Label ID="Label3" runat="server" Text="Szó Hozzáadása"></asp:Label><br>
+            <asp:TextBox ID="reportCommentInput" runat="server"></asp:TextBox><br>
+
+            <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="WordAddReportConfirm_Click" CssClass="WordAddInputConfirm"/>
+            <asp:Button ID="Button3" runat="server" Text="Megse" OnClick="WordReportCancle_Click" CssClass="WordAddInputConfirm"/>
+
+        </asp:Panel>
+
+        <cc1:ModalPopupExtender ID="mp2" runat="server" PopupControlID="Panel2" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
         <asp:Button ID="Button2" runat="server" Text="Button" style="display: none;"/>
 
     <table id="search">

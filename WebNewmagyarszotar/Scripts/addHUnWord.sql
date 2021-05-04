@@ -1,12 +1,7 @@
 DECLARE @magyarszo_id int
-DECLARE @bekuldo varchar 
-
-select @bekuldo= felhasznalonev 
-FROM felhasznalok
-WHERE ID=@bekuldo_id
 
 INSERT into magyarszo
-values (@magyarszo,@bekuldo,0,0)
+values (@magyarszo,@bekuldo_id,0,0)
 
 SELECT @magyarszo_id= @@IDENTITY 
 
