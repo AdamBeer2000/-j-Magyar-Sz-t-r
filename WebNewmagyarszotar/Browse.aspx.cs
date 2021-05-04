@@ -93,7 +93,7 @@ namespace WebNewmagyarszotar
 
             ImageButton reportWord = new ImageButton();
             reportWord.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
-            reportWord.Attributes.Add("class", "addbutton");
+            reportWord.Attributes.Add("class", "reportbutton");
             reportWord.CommandArgument = "E,"+eng.getEngID();
             reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
             reportWord.ID = "rep_e_" + eng.getEngID();
@@ -114,7 +114,7 @@ namespace WebNewmagyarszotar
 
             ImageButton reportWordHun = new ImageButton();
             reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
-            reportWordHun.Attributes.Add("class", "addbutton");
+            reportWordHun.Attributes.Add("class", "reportbutton");
             reportWordHun.CommandArgument = "H," + eng.getTranslations()[0].getHunID();
             reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
             reportWordHun.ID = "rep_m_" + eng.getTranslations()[0].getHunID();
@@ -191,7 +191,7 @@ namespace WebNewmagyarszotar
             {
                 ImageButton reportWordHun = new ImageButton();
                 reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
-                reportWordHun.Attributes.Add("class", "addbutton");
+                reportWordHun.Attributes.Add("class", "reportbutton");
                 reportWordHun.CommandArgument = "H," + hun.getHunID();
                 reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
                 reportWordHun.ID = "rep_h_" + hun.getHunID();
