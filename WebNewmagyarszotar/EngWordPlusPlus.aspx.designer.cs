@@ -60,6 +60,24 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.TextBox eng_description_textbox;
 
         /// <summary>
+        /// hl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label hl;
+
+        /// <summary>
+        /// ht control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ht;
+
+        /// <summary>
         /// add_eng_button control.
         /// </summary>
         /// <remarks>

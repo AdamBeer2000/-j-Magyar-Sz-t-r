@@ -228,6 +228,15 @@
 
                 <asp:TextBox ID="eng_description_textbox" runat="server" OnTextChanged="eng_description_textbox_TextChanged"></asp:TextBox>
                 <br />
+                <h1>
+                    Magyar szó (Opcionális):
+                </h1>
+
+                <asp:Label ID="hl" runat="server" Text=""></asp:Label>
+                <br />
+
+                <asp:TextBox ID="ht" runat="server"></asp:TextBox>
+                <br />
 
                 <asp:Button ID="add_eng_button" runat="server" OnClick="add_eng_button_Click" Text="Hozzáad" />
             </td>

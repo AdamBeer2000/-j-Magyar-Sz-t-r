@@ -10,8 +10,9 @@ namespace WebNewmagyarszotar
     public partial class EngWordPlusPlus : System.Web.UI.Page
     {
         private DataBase db = new DataBase();
+        private User logged = new User();
         private List<string> english_words = new List<string>();
-        private string word = "", description = "No data", username = "Martin"; // IDEIGLENES DEBUG USERNAME
+        private string word = "", description = "No data", hunword = "", username = "GUEST";
         private bool valid = false;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -23,27 +24,18 @@ namespace WebNewmagyarszotar
             {
                 english_words.Add(temporary[i].ToUpper());
             }
-        }
 
-        private void debug1()
-        {
-            string str = "";
-            foreach (var element in english_words)
+            if (Request.Cookies["User"] != null)
             {
-                str += element + "   ";
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    logged = db.getUserById(Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    if (logged != null)
+                        username = logged.Username;
+                }
             }
-            debugl.Text = str;
         }
 
-        private void debug2()
-        {
-            debugl.Text = eng_word_textbox.Text;
-        }
-
-        private void debug3()
-        {
-            debugl.Text = valid.ToString();
-        }
         private void validate(string str)
         {
             if(!english_words.Contains(str.ToUpper()))
@@ -58,21 +50,37 @@ namespace WebNewmagyarszotar
 
         private void addNewWord()
         {
-            this.validate(eng_word_textbox.Text);
-            if (word != "" && valid)
+            if (Request.Cookies["User"] != null)
             {
-                string new_word = this.word;
-                string new_desc = this.description;
-                db.addEndlishWord(new_word, new_desc, this.username);
-                debugl.Text = db.getLatestErrorMsg();
-            }
-            else if(!valid)
-            {
-                error_label.Text = "Ez a szó már létezik a szótárban!";
-            }
-            else
-            {
-                error_label.Text = "Nem megfelelő szó!";
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    this.validate(eng_word_textbox.Text);
+                    if (word != "" && valid)
+                    {
+                        string new_word = this.word;
+                        string new_desc = this.description;
+                        db.addEndlishWord(new_word, new_desc, this.username);
+                        debugl.Text = db.getLatestErrorMsg();
+
+                        EnglishWord e = db.getEnglishWord(word);
+                        int engid = e.getEngID();
+
+                        if (ht.Text != "")
+                        {
+                            hunword = ht.Text;
+                            db.addHunWord(hunword, Convert.ToInt32(Request.Cookies["User"]["Logged"]), engid);
+                            debugl.Text = db.getLatestErrorMsg();
+                        }
+                    }
+                    else if (!valid)
+                    {
+                        error_label.Text = "Ez a szó már létezik a szótárban!";
+                    }
+                    else
+                    {
+                        error_label.Text = "Nem megfelelő szó!";
+                    }
+                }
             }
         }
 
