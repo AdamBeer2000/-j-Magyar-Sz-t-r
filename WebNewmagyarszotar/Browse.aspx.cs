@@ -91,8 +91,9 @@ namespace WebNewmagyarszotar
             addWord.Click += new ImageClickEventHandler(this.OpenWindow);
             addWord.ID = "add_" + eng.getEngID();
 
-            Button reportWord = new Button();
-            reportWord.Text = "!";
+            ImageButton reportWord = new ImageButton();
+            reportWord.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
+            reportWord.Attributes.Add("class", "addbutton");
             reportWord.CommandArgument = "E,"+eng.getEngID();
             reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
             reportWord.ID = "rep_e_" + eng.getEngID();
@@ -111,8 +112,9 @@ namespace WebNewmagyarszotar
             cell1.InnerText = eng.getWord();
             cell2.InnerText = eng.getTranslations()[0].getHunWord() + "\t";
 
-            Button reportWordHun = new Button();
-            reportWordHun.Text = "!";
+            ImageButton reportWordHun = new ImageButton();
+            reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
+            reportWordHun.Attributes.Add("class", "addbutton");
             reportWordHun.CommandArgument = "H," + eng.getTranslations()[0].getHunID();
             reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
             reportWordHun.ID = "rep_m_" + eng.getTranslations()[0].getHunID();
@@ -179,8 +181,9 @@ namespace WebNewmagyarszotar
 
             if (hun.getHunID() != -1)//csak akkor -1 ha még nincs arra az angol szóra fordítás
             {
-                Button reportWordHun = new Button();
-                reportWordHun.Text = "!";
+                ImageButton reportWordHun = new ImageButton();
+                reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
+                reportWordHun.Attributes.Add("class", "addbutton");
                 reportWordHun.CommandArgument = "H," + hun.getHunID();
                 reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
                 reportWordHun.ID = "rep_h_" + hun.getHunID();

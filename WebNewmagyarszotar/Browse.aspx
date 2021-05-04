@@ -117,8 +117,16 @@
 
         .addbutton
         {
-                height: 20px;
-                outline: none;
+            height: 20px;
+            outline: none;
+        }
+
+        .reportbutton
+        {
+            margin-left: 2%;
+            height: 23px;
+            outline: none;
+
         }
 
         .likebutton
@@ -244,6 +252,13 @@
             .addbutton
             {
                 height: 12px;
+                outline: none;
+            }
+
+            .reportbutton
+            {
+                margin-left: 2%;
+                height: 13px;
                 outline: none;
             }
 
