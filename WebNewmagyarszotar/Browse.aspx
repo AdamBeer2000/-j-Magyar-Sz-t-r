@@ -114,11 +114,24 @@
             font-family: Calibri;
             max-height: 30%;
         }
-
+        .textStyle 
+        {
+            color: #898E01;
+            font-family: Calibri;
+            max-height: 30%;
+        }
         .addbutton
         {
-                height: 20px;
-                outline: none;
+            height: 20px;
+            outline: none;
+        }
+
+        .reportbutton
+        {
+            margin-left: 2%;
+            height: 23px;
+            outline: none;
+
         }
 
         .likebutton
@@ -247,6 +260,13 @@
                 outline: none;
             }
 
+            .reportbutton
+            {
+                margin-left: 2%;
+                height: 13px;
+                outline: none;
+            }
+
             .likebutton
             {
                 height: 30px;
@@ -356,6 +376,17 @@
         </asp:Panel>
 
         <cc1:ModalPopupExtender ID="mp2" runat="server" PopupControlID="Panel2" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
+
+        <asp:Panel ID="WordInfoPanel" runat="server" CssClass="modalPopup">
+
+            <asp:Label ID="World" runat="server"></asp:Label>
+            <asp:Label ID="Creator" runat="server"></asp:Label><br>
+            <asp:Label ID="Definicon" runat="server"></asp:Label><br>
+            <asp:Button ID="Button4" runat="server" Text="Vissza" OnClick="WordReportCancle_Click" CssClass="WordAddInputConfirm"/>
+
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="WorldInfoExtender" runat="server" PopupControlID="WordInfoPanel" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
+
         <asp:Button ID="Button2" runat="server" Text="Button" style="display: none;"/>
 
     <table id="search">

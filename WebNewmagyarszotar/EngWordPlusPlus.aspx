@@ -71,6 +71,18 @@
             margin-bottom: 2%;
          }
 
+         #ht {
+            outline: none;
+            border: 1px solid #898E01;
+            min-width: 60%;
+            font-size: 200%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
+            opacity: 0.9;
+            margin-bottom: 2%;
+         }
+
          #error_label {
             font-size: 200%;
             font-family: Calibri;
@@ -105,6 +117,17 @@
 
          #add_eng_button:hover{
             box-shadow: 0 0 10px #898E01;
+         }
+
+         #vissza {
+            margin-top: 3%;
+            font-size: 100%;
+            font-family: Calibri;
+            color: #898E01;
+         }
+
+         #back_image {
+            width: 15%;
          }
 
 
@@ -158,6 +181,18 @@
                 margin-bottom: 2%;
             }
 
+            #ht {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 40%;
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+                margin-bottom: 2%;
+            }
+
             #error_label {
                 font-size: 100%;
                 font-family: Calibri;
@@ -188,6 +223,10 @@
                 font-weight: bolder;
                 font-family: Calibri;
                 padding: 1%;
+             }
+
+             #back_image {
+                width: 15%;
              }
 
         }
@@ -241,11 +280,17 @@
                 <asp:Button ID="add_eng_button" runat="server" OnClick="add_eng_button_Click" Text="Hozzáad" />
             </td>
         </tr>
+
+        
     </table>
+    <a id="vissza" href="index.aspx">
+        <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />
+    </a>
             
         <p>
         <asp:Label ID="debugl" runat="server" Text="D-Dont look my d-debug.. b-baka!!!"></asp:Label>
         </p>
+    
     </form>
 </body>
 </html>
