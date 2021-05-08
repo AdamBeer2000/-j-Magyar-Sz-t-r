@@ -371,8 +371,6 @@ C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Azure.Core.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.AspNet.FriendlyUrls.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
-C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.dll
-C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.WebKey.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Identity.Client.dll
@@ -381,7 +379,6 @@ C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Rest.ClientRuntime.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.ScriptManager.MSAjax.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.ScriptManager.WebForms.dll
-C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Newtonsoft.Json.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\System.Buffers.dll
@@ -397,8 +394,6 @@ C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\System.Web.Optimization.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\WebGrease.dll
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Azure.Core.xml
-C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.xml
-C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.WebKey.xml
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Bcl.AsyncInterfaces.xml
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Identity.Client.xml
 C:\Users\marti\OneDrive\Dokumentumok\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\bin\Microsoft.Identity.Client.Extensions.Msal.xml
