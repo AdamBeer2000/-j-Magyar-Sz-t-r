@@ -639,5 +639,31 @@ namespace WebNewmagyarszotar
 
             return result;
         }
+
+        public int getMostLiked(int user_id)
+        {
+            string query = "SELECT * FROM angolszo WHERE szo = \'" + w + "\'";
+            SqlCommand command = new SqlCommand(query, conn);
+            int result = 0;
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    result = new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(3), reader.GetString(2));
+                }
+
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                latestErrorMsg = ex.Message;
+            }
+
+            return result;
+        }
     }
 }
