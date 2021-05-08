@@ -642,7 +642,7 @@ namespace WebNewmagyarszotar
 
         public int getMostLiked(int user_id)
         {
-            string query = "SELECT * FROM angolszo WHERE szo = \'" + w + "\'";
+            string query = "SELECT TOP(1) tetszes FROM magyarszo WHERE bekuldo = " + user_id + " ORDER BY tetszes DESC";
             SqlCommand command = new SqlCommand(query, conn);
             int result = 0;
 
@@ -653,7 +653,7 @@ namespace WebNewmagyarszotar
 
                 while (reader.Read())
                 {
-                    result = new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(3), reader.GetString(2));
+                    result = reader.GetInt32(0);
                 }
 
                 conn.Close();
