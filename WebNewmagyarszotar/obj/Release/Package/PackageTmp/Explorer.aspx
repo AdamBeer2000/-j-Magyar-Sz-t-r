@@ -262,7 +262,7 @@
 
     <a id="vissza" href="index.aspx">
             <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />
-        </a>
+    </a>
 
     </form>
 

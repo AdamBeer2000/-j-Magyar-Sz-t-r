@@ -60,6 +60,11 @@
            width: 68%;
         }
 
+        #engword {
+               width: 68%;
+               margin-top: 16%;
+        }
+
         #explorer {
            width: 68%;
         }
@@ -94,6 +99,36 @@
         #Button1:hover {
             cursor: pointer;
             box-shadow: 0 0 10px #6ae134;
+        }
+
+        #HozzaadAngolSzot {
+            border: 1px solid #898E01;
+            margin-top: 1%;
+            margin-left: 5%;
+            margin-right: 5%;
+            text-align: center;
+            width: 90%;
+            height: 20%;
+            background-color: #080808;
+            opacity: 0.8;
+        }
+
+        .addEnglishWord {
+            cursor: pointer;
+            border: none;
+            margin-top: 3%;
+            margin-bottom: 1%;
+            outline: none;
+            background-color: #898E01;
+            color: #080808;
+            font-size: 160%;
+            font-weight: bolder;
+            font-family: Calibri;
+            padding: 2%;
+        }
+
+        .addEnglishWord:hover{
+            box-shadow: 0 0 10px #898E01;
         }
 
 
@@ -148,6 +183,11 @@
                width: 38%;
             }
 
+            #engword {
+               width: 38%;
+               margin-top: 8%;
+            }
+
             #explorer {
                width: 38%;
             }
@@ -169,6 +209,20 @@
                 padding: 5px 15px;
                 text-align: center;
                 outline: none;
+            }
+
+            .addEnglishWord {
+                cursor: pointer;
+                border: none;
+                margin-top: 3%;
+                margin-bottom: 1%;
+                outline: none;
+                background-color: #898E01;
+                color: #080808;
+                font-size: 100%;
+                font-weight: bolder;
+                font-family: Calibri;
+                padding: 2%;
             }
         }
     </style>
@@ -224,6 +278,21 @@
             </td>
         </tr>
 
+        <tr>
+            <td>
+
+            </td>
+
+            <td>
+                <a href="EngWordPlusPlus.aspx">
+                    <img src="https://i.imgur.com/Bgd2WNW.png" id="engword" alt="browse" />
+                </a>
+            </td>
+
+            <td>
+
+            </td>
+        </tr>
     </table>
     
 </body>

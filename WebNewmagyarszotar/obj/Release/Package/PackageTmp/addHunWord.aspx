@@ -17,8 +17,10 @@
         <div>
             <asp:TextBox ID="TextBox1" runat="server" Width="181px"></asp:TextBox>
         </div>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" Width="188px" />
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <p>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
+        </p>
     </form>
 </body>
 </html>
