@@ -55,7 +55,8 @@ namespace WebNewmagyarszotar
             while (db.getAll(searchBox.Text, k).Count>0)
             {
                 LinkButton lb = new LinkButton();
-                lb.Text = ""+k;
+                lb.Attributes.Add("class", "lapozo");
+                    lb.Text = ""+k;
                 int tmp = k;
                 lb.CommandArgument += tmp;
                 lb.Command += new CommandEventHandler(skip_forwad_button_Click);
