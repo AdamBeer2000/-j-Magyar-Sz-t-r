@@ -48,6 +48,26 @@ namespace WebNewmagyarszotar
                 i++;
             }
             Label1.Text = Convert.ToString(pagenum) + " it: " + i;
+
+            pagenums.Controls.Clear();
+            int k = 0;
+            if(pagenums.Controls.Count<=1)
+            while (db.getAll(searchBox.Text, k).Count>0)
+            {
+                LinkButton lb = new LinkButton();
+                lb.Text = ""+k;
+                int tmp = k;
+                lb.CommandArgument += tmp;
+                lb.Command += new CommandEventHandler(skip_forwad_button_Click);
+                pagenums.Controls.Add(lb);
+
+                Label l = new Label();
+                l.Text = " ";
+
+                pagenums.Controls.Add(l);
+                k++;
+            }
+            
             return true;
         }
 
@@ -56,6 +76,7 @@ namespace WebNewmagyarszotar
             update();
             Label1.Text = db.getLatestErrorMsg();
         }
+
         private void addHeaderRow(HtmlTable table)
         {
             HtmlTableRow row = new HtmlTableRow();
@@ -326,6 +347,14 @@ namespace WebNewmagyarszotar
             update();
         }
 
+        protected void skip_forwad_button_Click(object sender, CommandEventArgs e)
+        {
+            //update();
+            pagenum = Convert.ToInt32(e.CommandArgument);
+            update();
+            Response.Redirect(Request.RawUrl);
+        }
+
         protected void like_button_button_Click(object sender, CommandEventArgs e)
         {
             string id = e.CommandArgument.ToString();
@@ -346,7 +375,6 @@ namespace WebNewmagyarszotar
                     db.addDislike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
 
             update();
-
         }
         protected void show_all(object sender, EventArgs e)
         {

@@ -240,6 +240,15 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.ImageButton back_button;
 
         /// <summary>
+        /// pagenums control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell pagenums;
+
+        /// <summary>
         /// forward_button control.
         /// </summary>
         /// <remarks>

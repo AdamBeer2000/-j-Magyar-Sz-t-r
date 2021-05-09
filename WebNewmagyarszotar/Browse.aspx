@@ -418,6 +418,9 @@
                     <asp:ImageButton ID="back_button" runat="server" src="https://i.imgur.com/D5tvrqL.png" outline="none" width="10%" alt="browse" OnClick="back_button_Click"/>
                 </a>
             </td>
+            <td id="pagenums" runat="server">
+                
+            </td>
             <td>
                 <a href="Browse.aspx">
                     <asp:ImageButton ID="forward_button" runat="server" src="https://i.imgur.com/by9oUf1.png" outline="none" width="10%" alt="browse" OnClick="forward_button_Click"/>
