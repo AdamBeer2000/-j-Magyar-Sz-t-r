@@ -56,6 +56,12 @@
     </table>
     <form id="form1" runat="server">
         <div>
+            
+            <asp:Label ID="only_text_label0" runat="server" Text="Rang" BackColor="White"></asp:Label><br>
+            <asp:Label ID="rank_label" runat="server" BackColor="White"></asp:Label><br>
+            <asp:Label ID="only_text_label1" runat="server" Text="A legkedveltebb szavadról hiányzó like-ok következő rangig" BackColor="White"></asp:Label><br>
+            <asp:Label ID="need_to_next_rank_label" runat="server" BackColor="White"></asp:Label><br>
+            
         </div>
         <a id="vissza" href="index.aspx">
             <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />

@@ -639,5 +639,31 @@ namespace WebNewmagyarszotar
 
             return result;
         }
+
+        public int getMostLiked(int user_id)
+        {
+            string query = "SELECT TOP(1) tetszes FROM magyarszo WHERE bekuldo = " + user_id + " ORDER BY tetszes DESC";
+            SqlCommand command = new SqlCommand(query, conn);
+            int result = 0;
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    result = reader.GetInt32(0);
+                }
+
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                latestErrorMsg = ex.Message;
+            }
+
+            return result;
+        }
     }
 }
