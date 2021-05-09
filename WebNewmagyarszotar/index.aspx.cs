@@ -34,5 +34,11 @@ namespace WebNewmagyarszotar
                 engword.Visible = false;
             }
         }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            Response.Cookies["User"].Expires= DateTime.Now.AddDays(-1);
+            Response.Redirect(Request.RawUrl);
+        }
     }
 }

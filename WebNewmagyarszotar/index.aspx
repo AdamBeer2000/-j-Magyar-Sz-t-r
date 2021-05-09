@@ -229,6 +229,7 @@
 
 </head>
 <body runat="server">
+    
     <table id="box">
         <tr>
             <td id="menu_title">
@@ -252,6 +253,11 @@
                 <a href="Register.aspx">
                     <img src="https://i.imgur.com/uOKgULx.png" id="register" alt="register" />
                 </a>
+            </td>
+            <td>
+                <form id="form1" runat="server">
+                    <asp:Button ID="Button1" runat="server" Text="Loguot placeholder" OnClick="Logout_Click" />
+                </form>
             </td>
         </tr>
     </table>
