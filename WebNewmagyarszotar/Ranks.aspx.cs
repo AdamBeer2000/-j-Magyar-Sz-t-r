@@ -27,6 +27,10 @@ namespace WebNewmagyarszotar
                     this.top_likes_on_word = db.getMostLiked(user_id);
                 }
             }
+            if(Request.Cookies["User"] == null)
+            {
+                Response.Redirect("index.aspx");
+            }
             this.setRank();
         }
 
