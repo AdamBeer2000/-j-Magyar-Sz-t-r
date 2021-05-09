@@ -112,6 +112,7 @@ namespace WebNewmagyarszotar
             addWord.Attributes.Add("class", "addbutton");
             addWord.Click += new ImageClickEventHandler(this.OpenWindow);
             addWord.ID = "add_" + eng.getEngID();
+            addWord.Attributes.Add("title", "Hozzáadás");
 
             ImageButton reportWord = new ImageButton();
             reportWord.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
@@ -119,6 +120,7 @@ namespace WebNewmagyarszotar
             reportWord.CommandArgument = "E," + eng.getEngID();
             reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
             reportWord.ID = "rep_e_" + eng.getEngID();
+            reportWord.Attributes.Add("title", "Jelentés");
 
             lenyit.ID = "Button_lenyit_" + eng.getWord();
 
@@ -156,6 +158,7 @@ namespace WebNewmagyarszotar
             reportWordHun.CommandArgument = "H," + eng.getTranslations()[0].getHunID();
             reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
             reportWordHun.ID = "rep_m_" + eng.getTranslations()[0].getHunID();
+            reportWordHun.Attributes.Add("title", "Jelentés");
 
             cell2.Controls.Add(reportWordHun);
             cell2.Controls.Add(lenyit);
@@ -212,6 +215,7 @@ namespace WebNewmagyarszotar
                 addWord.Click += new ImageClickEventHandler(this.OpenWindow);
                 addWord.ID = "add_" + eng_world.getEngID();
                 cell1.Controls.Add(addWord);
+                addWord.Attributes.Add("title", "Hozzáadás");
 
                 ImageButton reportWord = new ImageButton();
                 reportWord.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
@@ -219,7 +223,9 @@ namespace WebNewmagyarszotar
                 reportWord.CommandArgument = "E," + eng_world.getEngID();
                 reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
                 reportWord.ID = "rep_e_" + eng_world.getEngID();
+                reportWord.Attributes.Add("title", "Jelentés");
                 cell1.Controls.Add(reportWord);
+                
 
                 engWorld.Command += new CommandEventHandler(OpenWindowInfo);
                 engWorld.CommandArgument = eng_world.getWord() + "," + eng_world.getUser() + "," + eng_world.getDesc();
@@ -247,7 +253,7 @@ namespace WebNewmagyarszotar
                 reportWordHun.CommandArgument = "H," + hun.getHunID();
                 reportWordHun.Command += new CommandEventHandler(this.OpenWindowReport);
                 reportWordHun.ID = "rep_h_" + hun.getHunID();
-
+                reportWordHun.Attributes.Add("title", "Jelentés");
                 cell3.Controls.Add(reportWordHun);
 
                 like.ID = "Button_like_" + hun.getHunID();
