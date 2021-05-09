@@ -11,6 +11,10 @@ namespace WebNewmagyarszotar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["User"] == null)
+            {
+                Response.Redirect("index.aspx");
+            }
             getWords();
             vizualize();
         }

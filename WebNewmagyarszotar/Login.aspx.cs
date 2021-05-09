@@ -24,6 +24,7 @@ namespace WebNewmagyarszotar
                 Label1.Text = "Fasza Üdv "+username;
                 Response.Cookies["User"]["Logged"] = user.id.ToString();
                 Response.Cookies["User"].Expires = DateTime.Now.AddHours(8);
+                Response.Redirect("index.aspx");
                 //Response.Redirect("index.aspx");
             }
             else
