@@ -28,6 +28,11 @@ namespace WebNewmagyarszotar
                     user_label.Text = "Unlogged";
                 }
             }
+            if(Request.Cookies["User"] == null)
+            {
+                explorer.Visible = false;
+                engword.Visible = false;
+            }
         }
     }
 }

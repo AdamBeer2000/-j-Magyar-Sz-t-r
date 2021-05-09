@@ -228,8 +228,7 @@
     </style>
 
 </head>
-<body>
-
+<body runat="server">
     <table id="box">
         <tr>
             <td id="menu_title">
@@ -267,7 +266,7 @@
 
             <td>
                 <a href="Explorer.aspx">
-                    <img src="https://i.imgur.com/bjf1uwn.png" id="explorer" alt="explorer mode" />
+                    <img src="https://i.imgur.com/bjf1uwn.png" runat="server" id="explorer" alt="explorer mode" />
                 </a>
             </td>
 
@@ -285,7 +284,7 @@
 
             <td>
                 <a href="EngWordPlusPlus.aspx">
-                    <img src="https://i.imgur.com/Bgd2WNW.png" id="engword" alt="browse" />
+                    <img src="https://i.imgur.com/Bgd2WNW.png" runat="server" id="engword" alt="browse" />
                 </a>
             </td>
 
