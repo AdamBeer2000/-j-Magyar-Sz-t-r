@@ -58,6 +58,43 @@
             color: #898E01;
         }
 
+        .lapozo {
+            font-size: 120%;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: Calibri;
+            color: #898E01;
+        }
+
+        #Label3 {
+            color: #898E01;
+            padding-top: 2%;
+            padding-bottom: 5%;
+            font-size: 150%;
+            font-family: Calibri;
+        }
+
+        #World {
+            font-size: 180%;
+            text-decoration: none;
+            font-family: Calibri;
+            color: #898E01;
+        }
+
+        #Creator {
+            font-size: 140%;
+            text-decoration: none;
+            font-family: Calibri;
+            color: #898E01;
+        }
+
+        #Definicon {
+            font-size: 140%;
+            text-decoration: none;
+            font-family: Calibri;
+            color: #898E01;
+        }
+
         #searchBox {
             outline: none;
             border: 1px solid #898E01;
@@ -117,6 +154,7 @@
         .textStyle 
         {
             color: #898E01;
+            text-decoration: none;
             font-family: Calibri;
             max-height: 30%;
         }
@@ -172,9 +210,19 @@
         #Label2 {
             color: #898E01;
             padding-top: 2%;
-            padding-bottom: 4%;
-            font-size: 180%;
+            padding-bottom: 5%;
+            font-size: 200%;
             font-family: Calibri;
+        }
+
+        #reportCommentInput {
+            outline: none;
+            border: 1px solid #898E01;
+            min-width: 60%;
+            font-size: 200%;
+            font-family: Calibri;
+            color: #898E01;
+            background-color: #080808;
         }
 
         #WordAddInputBox {
@@ -218,6 +266,43 @@
 
             h1 {
                 font-size: 120%;
+                font-family: Calibri;
+                color: #898E01;
+            }
+
+            .lapozo {
+                font-size: 120%;
+                font-weight: bold;
+                text-decoration: none;
+                font-family: Calibri;
+                color: #898E01;
+            }
+
+            #Label3 {
+                color: #898E01;
+                padding-top: 2%;
+                padding-bottom: 5%;
+                font-size: 150%;
+                font-family: Calibri;
+            }
+
+            #World {
+                font-size: 160%;
+                text-decoration: none;
+                font-family: Calibri;
+                color: #898E01;
+            }
+
+            #Creator {
+                font-size: 120%;
+                text-decoration: none;
+                font-family: Calibri;
+                color: #898E01;
+            }
+
+            #Definicon {
+                font-size: 120%;
+                text-decoration: none;
                 font-family: Calibri;
                 color: #898E01;
             }
@@ -294,8 +379,8 @@
             #Label2 {
                 color: #898E01;
                 padding-top: 2%;
-                padding-bottom: 4%;
-                font-size: 120%;
+                padding-bottom: 5%;
+                font-size: 150%;
                 font-family: Calibri;
             }
 
@@ -304,6 +389,16 @@
                 border: 1px solid #898E01;
                 min-width: 40%;
                 font-size: 150%;
+                font-family: Calibri;
+                color: #898E01;
+                background-color: #080808;
+            }
+
+            #reportCommentInput {
+                outline: none;
+                border: 1px solid #898E01;
+                min-width: 60%;
+                font-size: 200%;
                 font-family: Calibri;
                 color: #898E01;
                 background-color: #080808;
@@ -359,19 +454,19 @@
         <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup">
             <asp:Label ID="Label2" runat="server" Text="Szó Hozzáadása"></asp:Label><br>
             <asp:TextBox ID="WordAddInputBox" runat="server"></asp:TextBox><br>
-            <asp:Button ID="Confirm" runat="server" Text="Submit" OnClick="WordAddInputConfirm_Click" CssClass="WordAddInputConfirm"/>
-            <asp:Button ID="Cancle" runat="server" Text="Megse" OnClick="WordAddCancle_Click" CssClass="WordAddInputConfirm"/>
+            <asp:Button ID="Confirm" runat="server" Text="Hozzáad" OnClick="WordAddInputConfirm_Click" CssClass="WordAddInputConfirm"/>
+            <asp:Button ID="Cancle" runat="server" Text="Mégse" OnClick="WordAddCancle_Click" CssClass="WordAddInputConfirm"/>
         </asp:Panel>
 
         <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
 
         <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
 
-            <asp:Label ID="Label3" runat="server" Text="Szó Hozzáadása"></asp:Label><br>
+            <asp:Label ID="Label3" runat="server" Text="Szó bejelentése"></asp:Label><br>
             <asp:TextBox ID="reportCommentInput" runat="server"></asp:TextBox><br>
 
-            <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="WordAddReportConfirm_Click" CssClass="WordAddInputConfirm"/>
-            <asp:Button ID="Button3" runat="server" Text="Megse" OnClick="WordReportCancle_Click" CssClass="WordAddInputConfirm"/>
+            <asp:Button ID="Button1" runat="server" Text="Bejelent" OnClick="WordAddReportConfirm_Click" CssClass="WordAddInputConfirm"/>
+            <asp:Button ID="Button3" runat="server" Text="Mégse" OnClick="WordReportCancle_Click" CssClass="WordAddInputConfirm"/>
 
         </asp:Panel>
 
@@ -379,7 +474,7 @@
 
         <asp:Panel ID="WordInfoPanel" runat="server" CssClass="modalPopup">
 
-            <asp:Label ID="World" runat="server"></asp:Label>
+            <asp:Label ID="World" runat="server"></asp:Label><br>
             <asp:Label ID="Creator" runat="server"></asp:Label><br>
             <asp:Label ID="Definicon" runat="server"></asp:Label><br>
             <asp:Button ID="Button4" runat="server" Text="Vissza" OnClick="WordReportCancle_Click" CssClass="WordAddInputConfirm"/>
