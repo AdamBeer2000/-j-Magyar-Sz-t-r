@@ -230,6 +230,7 @@
     <Content Include="Scripts\listquerryD.sql" />
     <Content Include="Scripts\registration.sql" />
     <Content Include="Login.aspx" />
+    <Content Include="Scripts\WebForms\getAllMostLiked.sql" />
     <Content Include="WebForm7.aspx" />
     <Content Include="addHunWord.aspx" />
     <None Include="Properties\PublishProfiles\NewMagyarSzotar - Web Deploy.pubxml" />

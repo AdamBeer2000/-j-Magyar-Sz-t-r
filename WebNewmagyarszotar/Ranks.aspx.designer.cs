@@ -58,5 +58,23 @@ namespace WebNewmagyarszotar
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label need_to_next_rank_label;
+
+        /// <summary>
+        /// only_text_label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label only_text_label2;
+
+        /// <summary>
+        /// rank_table control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable rank_table;
     }
 }

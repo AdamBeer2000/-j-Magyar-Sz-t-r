@@ -670,5 +670,36 @@ namespace WebNewmagyarszotar
 
             return result;
         }
+
+        public Dictionary<string, int> getAllMostLiked()
+        {
+            //string query = "SELECT TOP(1) tetszes FROM magyarszo WHERE bekuldo = " + user_id + " ORDER BY tetszes DESC";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/getAllMostLiked.sql";
+            string querry = File.ReadAllText(path);
+
+            SqlCommand command = new SqlCommand(querry, conn);
+            //SqlParameter p = new SqlParameter(@"@user_id", user_id);
+            //command.Parameters.Add(p);
+            Dictionary<string, int> result = new Dictionary<string, int>();
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    result.Add(reader.GetString(0), reader.GetInt32(1));
+                }
+
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                latestErrorMsg = ex.Message;
+            }
+
+            return result;
+        }
     }
 }
