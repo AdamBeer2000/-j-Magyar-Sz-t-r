@@ -104,9 +104,9 @@ namespace WebNewmagyarszotar
             return send_this;
         }
 
-        public void addEndlishWord(string word, string description, string username)
+        public void addEndlishWord(string word, string description, string userId)
         {
-            string insert = "INSERT INTO angolszo (szo, bekuldo, definicio) VALUES(\'" + word + "\', \'" + username + "\', \'" + description + "\')";
+            string insert = "INSERT INTO angolszo (szo, bekuldo, definicio) VALUES(\'" + word + "\', \'" + userId + "\', \'" + description + "\')";
             //string tryfirst = "INSERT INTO angolszo (szo, bekuldo, definicio) VALUES(\'" + username +"\', \'" + username +"\', \'" + description +"\')";
             
             try
@@ -616,7 +616,7 @@ namespace WebNewmagyarszotar
 
         public EnglishWord getEnglishWord(string w)
         {
-            string query = "SELECT * FROM angolszo WHERE szo = \'" + w + "\'";
+            string query = "SELECT angolszo.ID,szo,bekuldo,definicio,felhasznalok.felhasznalonev FROM angolszo join felhasznalok on felhasznalok.id = angolszo.bekuldo WHERE szo = \'" + w + "\'";
             SqlCommand command = new SqlCommand(query, conn);
             EnglishWord result = new EnglishWord();
 
@@ -627,7 +627,7 @@ namespace WebNewmagyarszotar
 
                 while (reader.Read())
                 {
-                    result = new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(3), reader.GetString(2));
+                    result = new EnglishWord(reader.GetInt32(0), reader.GetString(1),reader.GetString(3),reader.GetString(4),reader.GetInt32(2));
                 }
 
                 conn.Close();

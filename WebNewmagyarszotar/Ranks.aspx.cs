@@ -186,16 +186,13 @@ namespace WebNewmagyarszotar
             HtmlTableCell cell1 = new HtmlTableCell();
             HtmlTableCell cell2 = new HtmlTableCell();
 
-            LinkButton name = new LinkButton();
-            name.Text = _name;
-            LinkButton rank = new LinkButton();
-            rank.Text = _rank;
-
-            cell1.Controls.Add(name);
-            cell2.Controls.Add(rank);
+            cell1.InnerText = _name;
+            cell2.InnerText = _rank;
 
             row.Controls.Add(cell1);
             row.Controls.Add(cell2);
+
+            rank_table.Rows.Add(row);
         }
     }
 }

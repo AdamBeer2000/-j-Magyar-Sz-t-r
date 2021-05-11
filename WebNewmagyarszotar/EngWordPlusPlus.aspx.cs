@@ -59,7 +59,7 @@ namespace WebNewmagyarszotar
                     {
                         string new_word = this.word;
                         string new_desc = this.description;
-                        db.addEndlishWord(new_word, new_desc, this.username);
+                        db.addEndlishWord(new_word, new_desc,Request.Cookies["User"]["Logged"]);
                         debugl.Text = db.getLatestErrorMsg();
 
                         EnglishWord e = db.getEnglishWord(word);
