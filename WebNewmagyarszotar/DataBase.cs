@@ -163,7 +163,7 @@ namespace WebNewmagyarszotar
         {
             //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
             //searchField = "%" + searchField + "%";"
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryD.sql";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryE.sql";
             string querry = File.ReadAllText(path);
 
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
@@ -194,7 +194,7 @@ namespace WebNewmagyarszotar
                 {
                     if (!words.ContainsKey(reader.GetString(1)))
                     {
-                        words.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
+                        words.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(2),reader.GetString(10), reader.GetInt32(3)));
                         words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(9), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8)));
                     }
                     else

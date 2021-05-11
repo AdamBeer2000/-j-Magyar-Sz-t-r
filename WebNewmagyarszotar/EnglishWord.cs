@@ -7,7 +7,7 @@ namespace WebNewmagyarszotar
 {
     public class EnglishWord
     {
-        int eng_ID;
+        int eng_ID,userId;
         string eng_word, eng_desc, user;
         List<HungarianWord> hun = new List<HungarianWord>();
 
@@ -19,6 +19,14 @@ namespace WebNewmagyarszotar
             this.eng_desc = _desc;
             this.eng_word = _word;
             this.user = _user;
+        }
+        public EnglishWord(int _ID, string _word, string _desc, string _user,int _userId)
+        {
+            this.eng_ID = _ID;
+            this.eng_desc = _desc;
+            this.eng_word = _word;
+            this.user = _user;
+            this.userId = _userId;
         }
 
         //-------------------------------------------------------------|
