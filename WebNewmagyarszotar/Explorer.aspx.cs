@@ -85,7 +85,9 @@ namespace WebNewmagyarszotar
         {
             //update elso forditas like++
             if (Request.Cookies["User"]["Logged"] != null)
-                db.addLike(ids[0],Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+            {
+                db.addLike(ids[0], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+            }
             this.vizualize();
         }
 
@@ -93,7 +95,9 @@ namespace WebNewmagyarszotar
         {
             //update masodik forditas like++
             if (Request.Cookies["User"]["Logged"] != null)
-                db.addLike(ids[1],Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+            {
+                db.addLike(ids[1], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+            }
             this.vizualize();
         }
     }

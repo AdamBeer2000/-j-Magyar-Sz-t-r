@@ -62,6 +62,21 @@
             <asp:Label ID="only_text_label1" runat="server" Text="A legkedveltebb szavadról hiányzó like-ok következő rangig" BackColor="White"></asp:Label><br>
             <asp:Label ID="need_to_next_rank_label" runat="server" BackColor="White"></asp:Label><br>
             
+            <asp:Label ID="only_text_label2" runat="server" Text="Többi felhasználó rangja" BackColor="White"></asp:Label><br>
+            
+            <table id="rank_table" runat="server">
+            <tr class="egysor">
+                <td>
+                    <h1 style="color:#898E01;font-family: Calibri;">
+                    </h1>
+                </td>
+                <td>
+                    <h1  style="color:#898E01;font-family: Calibri;">
+                    </h1>
+                </td>
+            </tr>
+        </table>
+            
         </div>
         <a id="vissza" href="index.aspx">
             <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />
