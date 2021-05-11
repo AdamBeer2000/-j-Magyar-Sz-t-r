@@ -139,7 +139,7 @@ namespace WebNewmagyarszotar
                 {
                     if (!result.ContainsKey(reader.GetString(1)))
                     {
-                        result.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(7), reader.GetString(8)));
+                        result.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1),reader.GetString(7), reader.GetInt32(8)));
                         result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3), reader.GetInt32(6), reader.GetInt32(4), reader.GetInt32(5)));
                     }
                     else
@@ -207,6 +207,7 @@ namespace WebNewmagyarszotar
             }
             catch (Exception e)
             {
+                conn.Close();
                 latestErrorMsg = querry + " " + e.Message;
             }
 
@@ -273,6 +274,7 @@ namespace WebNewmagyarszotar
             }
             catch (Exception e)
             {
+                conn.Close();
                 latestErrorMsg = e.Message;
             }
         }
@@ -309,6 +311,7 @@ namespace WebNewmagyarszotar
             }
             catch (Exception e)
             {
+                conn.Close();
                 latestErrorMsg = e.Message;
             }
             finally
@@ -450,6 +453,7 @@ namespace WebNewmagyarszotar
                 }
                 else
                 {
+                    conn.Close();
                     return null;
                 }
                 
@@ -486,6 +490,7 @@ namespace WebNewmagyarszotar
             catch(Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
                 return false;
             }
         }
@@ -547,6 +552,7 @@ namespace WebNewmagyarszotar
                 catch (Exception e)
                 {
                     latestErrorMsg = e.Message;
+                    conn.Close();
                     return false;
                 }
             }
@@ -610,6 +616,7 @@ namespace WebNewmagyarszotar
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
                 return null;
             }
         }
@@ -635,6 +642,7 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 latestErrorMsg = ex.Message;
+                conn.Close();
             }
 
             return result;
@@ -666,6 +674,7 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 latestErrorMsg = ex.Message;
+                conn.Close();
             }
 
             return result;
@@ -697,9 +706,17 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 latestErrorMsg = ex.Message;
+                conn.Close();
             }
 
             return result;
+        }
+        public void safteyNet()
+        {
+            if(conn.State==ConnectionState.Open)
+            {
+                conn.Close();
+            }
         }
     }
 }

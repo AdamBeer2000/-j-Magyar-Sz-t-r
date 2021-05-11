@@ -226,8 +226,11 @@
     <Content Include="Explorer.aspx" />
     <Content Include="Scripts\addHUnWord.sql" />
     <Content Include="Scripts\addreaction.sql" />
+    <Content Include="Scripts\getAllMostLiked.sql" />
+    <Content Include="Scripts\getMostLiked.sql" />
     <Content Include="Scripts\listquerryC.sql" />
     <Content Include="Scripts\listquerryD.sql" />
+    <Content Include="Scripts\listquerryE.sql" />
     <Content Include="Scripts\registration.sql" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\WebForms\getAllMostLiked.sql" />

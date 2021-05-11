@@ -68,7 +68,7 @@ namespace WebNewmagyarszotar
                 pagenums.Controls.Add(l);
                 k++;
             }
-            
+            db.safteyNet();
             return true;
         }
 

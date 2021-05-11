@@ -74,14 +74,11 @@ C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\obj\Release\WebNewmagyarszotar.cspro
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\obj\Release\WebNewmagyarszotar.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\obj\Release\WebNewmagyarszotar.pdb
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Azure.Core.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.WebKey.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Bcl.AsyncInterfaces.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Identity.Client.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Rest.ClientRuntime.Azure.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Rest.ClientRuntime.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Buffers.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Diagnostics.DiagnosticSource.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Memory.dll
@@ -93,8 +90,6 @@ C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Text.Json.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Threading.Tasks.Extensions.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.ValueTuple.dll
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Azure.Core.xml
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.xml
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Azure.KeyVault.WebKey.xml
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Bcl.AsyncInterfaces.xml
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Identity.Client.xml
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\Microsoft.Identity.Client.Extensions.Msal.xml
@@ -108,13 +103,3 @@ C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Text.Encodings.Web.xml
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Text.Json.xml
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.Threading.Tasks.Extensions.xml
 C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\System.ValueTuple.xml
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\de\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\es\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\fr\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\it\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\ja\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\ko\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\pt-BR\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\ru\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\zh-Hans\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
-C:\GIT\-j-Magyar-Sz-t-r2\WebNewmagyarszotar\bin\zh-Hant\Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider.resources.dll
