@@ -158,12 +158,20 @@ namespace WebNewmagyarszotar
 
         }
 
-        public Dictionary<String, EnglishWord> getExploreWords()
+        public Dictionary<String, EnglishWord> getExploreWords(int param)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/explorer_sql_a.sql";
             string query = File.ReadAllText(path);
+
+
             SqlCommand command = new SqlCommand(query, conn);
             Dictionary<String, EnglishWord> result = new Dictionary<String, EnglishWord>();
+
+            SqlParameter p1 = new SqlParameter(@"@userid", param);
+            p1.SqlDbType = SqlDbType.Int;
+            p1.Direction = ParameterDirection.Input;
+
+            command.Parameters.Add(p1);
 
             try
             {
@@ -189,6 +197,7 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 latestErrorMsg = ex.Message;
+                conn.Close();
             }
 
             return result;
@@ -746,6 +755,7 @@ namespace WebNewmagyarszotar
 
             return result;
         }
+
         public void safteyNet()
         {
             if(conn.State==ConnectionState.Open)
