@@ -292,6 +292,8 @@ namespace WebNewmagyarszotar
 
         protected void OpenWindow(object sender, ImageClickEventArgs e)
         {
+            AddWordResponseLable.Text = "";
+            WordAddInputBox.Text = "";
             if (Request.Cookies["User"] != null)
             {
                 if (Request.Cookies["User"]["Logged"] != null)
@@ -307,6 +309,9 @@ namespace WebNewmagyarszotar
 
         protected void OpenWindowReport(object sender, CommandEventArgs e)
         {
+            ReportWordResponseLable.Text = "";
+            reportCommentInput.Text = "";
+            Button3.Text = "Mégse";
             if (Request.Cookies["User"] != null)
             {
                 if (Request.Cookies["User"]["Logged"] != null)
@@ -404,19 +409,22 @@ namespace WebNewmagyarszotar
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
                     bool state = !db.addHunWord(WordAddInputBox.Text, Convert.ToInt32(Request.Cookies["User"]["Logged"]), addwordid);
-                    update();
                     if (state)
                     {
                         db.getLatestErrorMsg();
-                        Response.Write("<script>alert('Vótmá')</script>");
+                        AddWordResponseLable.Text = "Vótmá";
+                        AddWordResponseLable.CssClass = "LableBad";
+                        //Response.Write("<script>alert('Vótmá')</script>");
                     }
                     else
                     {
-
-                        Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
+                        AddWordResponseLable.Text = "Sikeresen hozzáadva";
+                        AddWordResponseLable.CssClass = "LableGood";
+                        //Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                     }
                 }
             }
+            mp1.Show();
         }
         protected void WordAddCancle_Click(object sender, EventArgs e)
         {
@@ -430,9 +438,12 @@ namespace WebNewmagyarszotar
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
                     db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), reportWordType, reportwordid, reportCommentInput.Text);
-                    update();
+                    ReportWordResponseLable.Text = "A bejelentést megkaptuk.Köszönjük a viszajelzést!";
+                    ReportWordResponseLable.CssClass = "LableGood";
+                    Button3.Text = "Vissza";
                 }
             }
+            mp2.Show();
         }
         protected void WordReportCancle_Click(object sender, EventArgs e)
         {

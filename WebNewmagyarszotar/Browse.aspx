@@ -384,6 +384,21 @@
                 font-family: Calibri;
             }
 
+            .LableBad {
+                color: red;
+                padding-top: 2%;
+                padding-bottom: 5%;
+                font-size: 100%;
+                font-family: Calibri;
+            }
+            .LableGood {
+                color: green;
+                padding-top: 2%;
+                padding-bottom: 5%;
+                font-size: 100%;
+                font-family: Calibri;
+            }
+
             #WordAddInputBox {
                 outline: none;
                 border: 1px solid #898E01;
@@ -453,6 +468,7 @@
 
         <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup">
             <asp:Label ID="Label2" runat="server" Text="Szó Hozzáadása"></asp:Label><br>
+            <asp:Label ID="AddWordResponseLable" runat="server" Text=""></asp:Label><br>
             <asp:TextBox ID="WordAddInputBox" runat="server"></asp:TextBox><br>
             <asp:Button ID="Confirm" runat="server" Text="Hozzáad" OnClick="WordAddInputConfirm_Click" CssClass="WordAddInputConfirm"/>
             <asp:Button ID="Cancle" runat="server" Text="Mégse" OnClick="WordAddCancle_Click" CssClass="WordAddInputConfirm"/>
@@ -463,6 +479,7 @@
         <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
 
             <asp:Label ID="Label3" runat="server" Text="Szó bejelentése"></asp:Label><br>
+            <asp:Label ID="ReportWordResponseLable" runat="server" Text=""></asp:Label><br>
             <asp:TextBox ID="reportCommentInput" runat="server"></asp:TextBox><br>
 
             <asp:Button ID="Button1" runat="server" Text="Bejelent" OnClick="WordAddReportConfirm_Click" CssClass="WordAddInputConfirm"/>
