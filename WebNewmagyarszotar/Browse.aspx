@@ -65,6 +65,13 @@
             font-family: Calibri;
             color: #898E01;
         }
+        .lapozofocus {
+            font-size: 120%;
+            font-weight: bold;
+            text-decoration: underline;
+            font-family: Calibri;
+            color: #898E01;
+        }
 
         #Label3 {
             color: #898E01;

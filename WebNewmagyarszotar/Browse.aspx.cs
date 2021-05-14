@@ -51,7 +51,16 @@ namespace WebNewmagyarszotar
             for (int k = 0;k<=cunt; k++)
             {
                 LinkButton lb = new LinkButton();
-                lb.Attributes.Add("class", "lapozo");
+                if(k==pagenum)
+                {
+                    lb.CssClass = "lapozofocus";
+                }
+                else
+                {
+                    lb.CssClass = "lapozo";
+                }
+                
+
                 lb.ID = k + "_Page";
                 lb.Text = "" + k;
                 int tmp = k;
