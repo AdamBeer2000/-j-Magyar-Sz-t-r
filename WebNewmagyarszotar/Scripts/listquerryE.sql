@@ -52,6 +52,7 @@ LEFT JOIN felhasznalok on magyarszo.bekuldo = felhasznalok.ID
 
 WHERE angolszo.szo like '%'+@search+'%' OR magyarszo.szo like '%'+@search+'%' OR definicio like '%'+@search+'%'
 
+
 SELECT TOP(@prev) with ties angolszoID 
 into #VOTMA
 FROM #TEMP
@@ -66,7 +67,7 @@ WHERE angolszoID not IN
     SELECT * from #VOTMA
 )
 GROUP by angolszoID,angolszo,tetszes
-ORDER by angolszo,tetszes
+ORDER by angolszo,tetszes DESC
 
 SELECT *
 FROM #TEMP
@@ -74,4 +75,4 @@ WHERE angolszoID IN
 (
     SELECT * from #NEMVOTMA
 )
-ORDER by angolszo,tetszes
+ORDER by angolszo,tetszes DESC

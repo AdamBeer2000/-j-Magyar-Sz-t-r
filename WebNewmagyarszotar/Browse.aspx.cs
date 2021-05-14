@@ -142,13 +142,11 @@ namespace WebNewmagyarszotar
             cell1.Controls.Add(engWorld);
 
             LinkButton hunWorld = new LinkButton();
-            hunWorld.Text = eng.getWord();
+            hunWorld.Text = eng.getTranslations()[0].getHunWord();
             hunWorld.CssClass = "textStyle";
             hunWorld.Command += new CommandEventHandler(OpenWindowInfo);
             hunWorld.CommandArgument = eng.getTranslations()[0].getHunWord() + "," + eng.getTranslations()[0].getUser() + ",";
             cell2.Controls.Add(hunWorld);
-
-
 
             ImageButton reportWordHun = new ImageButton();
             reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
