@@ -97,6 +97,9 @@ namespace WebNewmagyarszotar
         protected void add_eng_button_Click(object sender, EventArgs e)
         {
             this.addNewWord();
+            eng_word_textbox.Text = "";
+            eng_description_textbox.Text = "";
+            ht.Text = "";
         }
 
         protected void eng_description_textbox_TextChanged(object sender, EventArgs e)

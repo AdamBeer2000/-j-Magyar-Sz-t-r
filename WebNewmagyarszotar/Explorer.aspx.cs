@@ -17,7 +17,6 @@ namespace WebNewmagyarszotar
             }
             getWords();
             vizualize();
-            
         }
 
         DataBase db = new DataBase();
