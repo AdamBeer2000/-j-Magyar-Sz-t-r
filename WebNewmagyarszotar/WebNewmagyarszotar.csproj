@@ -226,6 +226,7 @@
     <Content Include="Explorer.aspx" />
     <Content Include="Scripts\addHUnWord.sql" />
     <Content Include="Scripts\addreaction.sql" />
+    <Content Include="Scripts\countPageNums.sql" />
     <Content Include="Scripts\getAllMostLiked.sql" />
     <Content Include="Scripts\getMostLiked.sql" />
     <Content Include="Scripts\listquerryC.sql" />

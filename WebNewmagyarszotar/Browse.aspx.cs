@@ -50,13 +50,14 @@ namespace WebNewmagyarszotar
             Label1.Text = Convert.ToString(pagenum) + " it: " + i;
 
             pagenums.Controls.Clear();
-            int k = 0;
-            if(pagenums.Controls.Count<=1)
-            while (db.getAll(searchBox.Text, k).Count>0)
+            
+            int cunt = db.rowCount(searchBox.Text, 20);
+
+            for (int k = 0;k<=cunt; k++)
             {
                 LinkButton lb = new LinkButton();
                 lb.Attributes.Add("class", "lapozo");
-                    lb.Text = ""+k;
+                lb.Text = "" + k;
                 int tmp = k;
                 lb.CommandArgument += tmp;
                 lb.Command += new CommandEventHandler(skip_forwad_button_Click);
@@ -64,11 +65,8 @@ namespace WebNewmagyarszotar
 
                 Label l = new Label();
                 l.Text = " ";
-
                 pagenums.Controls.Add(l);
-                k++;
             }
-            db.safteyNet();
             return true;
         }
 

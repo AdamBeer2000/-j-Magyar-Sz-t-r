@@ -74,6 +74,41 @@ namespace WebNewmagyarszotar
 
             return result;
         }
+        
+        public int rowCount(string serarch,int scale)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/countPageNums.sql";
+            string querry = File.ReadAllText(path);
+            SqlCommand cmd = new SqlCommand(querry, conn);
+            SqlParameter p1 = new SqlParameter(@"@scale", 20);
+            p1.SqlDbType = SqlDbType.Int;
+            p1.Direction = ParameterDirection.Input;
+
+            SqlParameter p3 = new SqlParameter(@"@search", serarch);
+            p3.SqlDbType = SqlDbType.NVarChar;
+            p3.Direction = ParameterDirection.Input;
+
+            cmd.Parameters.Add(p1);
+            cmd.Parameters.Add(p3);
+
+            int rows=0;
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                rows = reader.GetInt32(0);
+                Console.WriteLine(rows);
+                cmd.Connection.Close();
+            }
+            catch(Exception e)
+            {
+                conn.Close();
+                Console.WriteLine(e.Message);
+                
+            }
+            return rows;
+        }
 
         public List<string> getAllEnglishWord()
         {
