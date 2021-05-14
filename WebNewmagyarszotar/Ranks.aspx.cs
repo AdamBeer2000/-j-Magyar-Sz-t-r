@@ -31,7 +31,7 @@ namespace WebNewmagyarszotar
             }
             if (Request.Cookies["User"] == null)
             {
-                Response.Redirect("index.aspx");
+                //Response.Redirect("index.aspx");
             }
             this.setRank();
         }

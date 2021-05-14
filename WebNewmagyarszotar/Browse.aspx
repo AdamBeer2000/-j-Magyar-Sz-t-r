@@ -505,7 +505,6 @@
         <tr>
             <td>
                 <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
-                <asp:Label ID="Label1" runat="server" Text="Label" BackColor="White"></asp:Label>
             </td>
         </tr>
     </table>

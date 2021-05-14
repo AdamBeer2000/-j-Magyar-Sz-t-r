@@ -20,11 +20,6 @@ namespace WebNewmagyarszotar
         protected bool update()
         {
             int i = 0;
-            if (searchBox == null)
-            {
-                return false;
-            }
-
             Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum);
 
             if (words.Count == 0)
@@ -47,7 +42,7 @@ namespace WebNewmagyarszotar
                 }
                 i++;
             }
-            Label1.Text = Convert.ToString(pagenum) + " it: " + i;
+            //Label1.Text = Convert.ToString(pagenum) + " it: " + i;
 
             pagenums.Controls.Clear();
             
@@ -57,6 +52,7 @@ namespace WebNewmagyarszotar
             {
                 LinkButton lb = new LinkButton();
                 lb.Attributes.Add("class", "lapozo");
+                lb.ID = k + "_Page";
                 lb.Text = "" + k;
                 int tmp = k;
                 lb.CommandArgument += tmp;
@@ -73,7 +69,7 @@ namespace WebNewmagyarszotar
         protected void Page_Load(object sender, EventArgs e)
         {
             update();
-            Label1.Text = db.getLatestErrorMsg();
+            //Label1.Text = db.getLatestErrorMsg();
         }
 
         private void addHeaderRow(HtmlTable table)
@@ -336,6 +332,7 @@ namespace WebNewmagyarszotar
 
         protected void searchBox_TextChanged(object sender, EventArgs e)
         {
+            pagenum=0;
             update();
         }
 
@@ -357,10 +354,8 @@ namespace WebNewmagyarszotar
 
         protected void skip_forwad_button_Click(object sender, CommandEventArgs e)
         {
-            //update();
             pagenum = Convert.ToInt32(e.CommandArgument);
             update();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void like_button_button_Click(object sender, CommandEventArgs e)
