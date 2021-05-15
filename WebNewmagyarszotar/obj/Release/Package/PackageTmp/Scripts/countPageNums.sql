@@ -1,3 +1,4 @@
+SET NOCOUNT ON
 --DECLARE @pagenum INT
 --DECLARE @search VARCHAR
 --DECLARE @scale INT
@@ -5,16 +6,11 @@
 DECLARE @prev INT
 
 --set @search=''
---set @pagenum=0
 --set @scale=20
-
-set @prev=@pagenum*@scale
 
 DROP TABLE IF EXISTS #TEMP 
 DROP TABLE IF EXISTS #TMPTetszes
 DROP TABLE IF EXISTS #TMPNemTetszes
-DROP TABLE IF EXISTS #VOTMA
-DROP TABLE IF EXISTS #NEMVOTMA
 
 SELECT magyarszo_id,COUNT(*) as 'tetszes'
 into #TMPTetszes
@@ -52,27 +48,12 @@ LEFT JOIN felhasznalok on magyarszo.bekuldo = felhasznalok.ID
 
 WHERE angolszo.szo like '%'+@search+'%' OR magyarszo.szo like '%'+@search+'%' OR definicio like '%'+@search+'%'
 
+declare @db INT
 
-SELECT TOP(@prev) with ties angolszoID 
-into #VOTMA
-FROM #TEMP
-GROUP by angolszoID,angolszo,tetszes
-ORDER by angolszo,tetszes
-
-SELECT TOP(@scale) with ties angolszoID 
-into #NEMVOTMA
-FROM #TEMP
-WHERE angolszoID not IN
+SELECT (count(*)/20)as db
+FROM
 (
-    SELECT * from #VOTMA
-)
-GROUP by angolszoID,angolszo,tetszes
-ORDER by angolszo,tetszes DESC
+    SELECT  count(*) as  [db] from #TEMP 
+    GROUP BY angolszo
+)as ass
 
-SELECT *
-FROM #TEMP
-WHERE angolszoID IN
-(
-    SELECT * from #NEMVOTMA
-)
-ORDER by angolszo,tetszes DESC
