@@ -20,11 +20,6 @@ namespace WebNewmagyarszotar
         protected bool update()
         {
             int i = 0;
-            if (searchBox == null)
-            {
-                return false;
-            }
-
             Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum);
 
             if (words.Count == 0)
@@ -47,16 +42,27 @@ namespace WebNewmagyarszotar
                 }
                 i++;
             }
-            Label1.Text = Convert.ToString(pagenum) + " it: " + i;
+            //Label1.Text = Convert.ToString(pagenum) + " it: " + i;
 
             pagenums.Controls.Clear();
-            int k = 0;
-            if(pagenums.Controls.Count<=1)
-            while (db.getAll(searchBox.Text, k).Count>0)
+            
+            int cunt = db.rowCount(searchBox.Text, 20);
+
+            for (int k = 0;k<=cunt; k++)
             {
                 LinkButton lb = new LinkButton();
-                lb.Attributes.Add("class", "lapozo");
-                    lb.Text = ""+k;
+                if(k==pagenum)
+                {
+                    lb.CssClass = "lapozofocus";
+                }
+                else
+                {
+                    lb.CssClass = "lapozo";
+                }
+                
+
+                lb.ID = k + "_Page";
+                lb.Text = "" + k;
                 int tmp = k;
                 lb.CommandArgument += tmp;
                 lb.Command += new CommandEventHandler(skip_forwad_button_Click);
@@ -64,18 +70,15 @@ namespace WebNewmagyarszotar
 
                 Label l = new Label();
                 l.Text = " ";
-
                 pagenums.Controls.Add(l);
-                k++;
             }
-            
             return true;
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             update();
-            Label1.Text = db.getLatestErrorMsg();
+            //Label1.Text = db.getLatestErrorMsg();
         }
 
         private void addHeaderRow(HtmlTable table)
@@ -144,13 +147,11 @@ namespace WebNewmagyarszotar
             cell1.Controls.Add(engWorld);
 
             LinkButton hunWorld = new LinkButton();
-            hunWorld.Text = eng.getWord();
+            hunWorld.Text = eng.getTranslations()[0].getHunWord();
             hunWorld.CssClass = "textStyle";
             hunWorld.Command += new CommandEventHandler(OpenWindowInfo);
             hunWorld.CommandArgument = eng.getTranslations()[0].getHunWord() + "," + eng.getTranslations()[0].getUser() + ",";
             cell2.Controls.Add(hunWorld);
-
-
 
             ImageButton reportWordHun = new ImageButton();
             reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
@@ -294,6 +295,8 @@ namespace WebNewmagyarszotar
 
         protected void OpenWindow(object sender, ImageClickEventArgs e)
         {
+            AddWordResponseLable.Text = "";
+            WordAddInputBox.Text = "";
             if (Request.Cookies["User"] != null)
             {
                 if (Request.Cookies["User"]["Logged"] != null)
@@ -309,6 +312,9 @@ namespace WebNewmagyarszotar
 
         protected void OpenWindowReport(object sender, CommandEventArgs e)
         {
+            ReportWordResponseLable.Text = "";
+            reportCommentInput.Text = "";
+            Button3.Text = "Mégse";
             if (Request.Cookies["User"] != null)
             {
                 if (Request.Cookies["User"]["Logged"] != null)
@@ -335,6 +341,7 @@ namespace WebNewmagyarszotar
 
         protected void searchBox_TextChanged(object sender, EventArgs e)
         {
+            pagenum=0;
             update();
         }
 
@@ -356,10 +363,8 @@ namespace WebNewmagyarszotar
 
         protected void skip_forwad_button_Click(object sender, CommandEventArgs e)
         {
-            //update();
             pagenum = Convert.ToInt32(e.CommandArgument);
             update();
-            Response.Redirect(Request.RawUrl);
         }
 
         protected void like_button_button_Click(object sender, CommandEventArgs e)
@@ -406,19 +411,22 @@ namespace WebNewmagyarszotar
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
                     bool state = !db.addHunWord(WordAddInputBox.Text, Convert.ToInt32(Request.Cookies["User"]["Logged"]), addwordid);
-                    update();
                     if (state)
                     {
                         db.getLatestErrorMsg();
-                        Response.Write("<script>alert('Vótmá')</script>");
+                        AddWordResponseLable.Text = "Vótmá";
+                        AddWordResponseLable.CssClass = "LableBad";
+                        //Response.Write("<script>alert('Vótmá')</script>");
                     }
                     else
                     {
-
-                        Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
+                        AddWordResponseLable.Text = "Sikeresen hozzáadva";
+                        AddWordResponseLable.CssClass = "LableGood";
+                        //Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                     }
                 }
             }
+            mp1.Show();
         }
         protected void WordAddCancle_Click(object sender, EventArgs e)
         {
@@ -432,9 +440,12 @@ namespace WebNewmagyarszotar
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
                     db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), reportWordType, reportwordid, reportCommentInput.Text);
-                    update();
+                    ReportWordResponseLable.Text = "A bejelentést megkaptuk.Köszönjük a viszajelzést!";
+                    ReportWordResponseLable.CssClass = "LableGood";
+                    Button3.Text = "Vissza";
                 }
             }
+            mp2.Show();
         }
         protected void WordReportCancle_Click(object sender, EventArgs e)
         {

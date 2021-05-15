@@ -14,7 +14,7 @@ namespace WebNewmagyarszotar
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Label1.Text = String.Empty;
         }
 
         protected void usernameBox_TextChanged(object sender, EventArgs e)

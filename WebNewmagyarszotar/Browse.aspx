@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Browse.aspx.cs" Inherits="WebNewmagyarszotar.WebForm4" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Browse.aspx.cs" Inherits="WebNewmagyarszotar.WebForm4"  MaintainScrollPositionOnPostback="true"%>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <!DOCTYPE html>
 
@@ -65,6 +65,13 @@
             font-family: Calibri;
             color: #898E01;
         }
+        .lapozofocus {
+            font-size: 120%;
+            font-weight: bold;
+            text-decoration: underline;
+            font-family: Calibri;
+            color: #898E01;
+        }
 
         #Label3 {
             color: #898E01;
@@ -93,6 +100,11 @@
             text-decoration: none;
             font-family: Calibri;
             color: #898E01;
+        }
+
+        #searchbutton {
+            height: 12%;
+            outline: none;
         }
 
         #searchBox {
@@ -307,6 +319,11 @@
                 color: #898E01;
             }
 
+            #searchbutton {
+                width: 10%;
+                outline: none;
+            }
+
             #searchBox {
                 outline: none;
                 border: 1px solid #898E01;
@@ -384,6 +401,21 @@
                 font-family: Calibri;
             }
 
+            .LableBad {
+                color: red;
+                padding-top: 2%;
+                padding-bottom: 5%;
+                font-size: 100%;
+                font-family: Calibri;
+            }
+            .LableGood {
+                color: green;
+                padding-top: 2%;
+                padding-bottom: 5%;
+                font-size: 100%;
+                font-family: Calibri;
+            }
+
             #WordAddInputBox {
                 outline: none;
                 border: 1px solid #898E01;
@@ -453,6 +485,7 @@
 
         <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup">
             <asp:Label ID="Label2" runat="server" Text="Szó Hozzáadása"></asp:Label><br>
+            <asp:Label ID="AddWordResponseLable" runat="server" Text=""></asp:Label><br>
             <asp:TextBox ID="WordAddInputBox" runat="server"></asp:TextBox><br>
             <asp:Button ID="Confirm" runat="server" Text="Hozzáad" OnClick="WordAddInputConfirm_Click" CssClass="WordAddInputConfirm"/>
             <asp:Button ID="Cancle" runat="server" Text="Mégse" OnClick="WordAddCancle_Click" CssClass="WordAddInputConfirm"/>
@@ -463,6 +496,7 @@
         <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup">
 
             <asp:Label ID="Label3" runat="server" Text="Szó bejelentése"></asp:Label><br>
+            <asp:Label ID="ReportWordResponseLable" runat="server" Text=""></asp:Label><br>
             <asp:TextBox ID="reportCommentInput" runat="server"></asp:TextBox><br>
 
             <asp:Button ID="Button1" runat="server" Text="Bejelent" OnClick="WordAddReportConfirm_Click" CssClass="WordAddInputConfirm"/>
@@ -488,7 +522,11 @@
         <tr>
             <td>
                 <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+<<<<<<< HEAD
+                <asp:ImageButton ID ="searchbutton" runat="server" src="https://i.imgur.com/vXukVi0.png"></asp:ImageButton>
                 <asp:Label ID="Label1" runat="server" Text="Label" BackColor="White"></asp:Label>
+=======
+>>>>>>> b21a26c9ab190320366d723cdaef117a6be0dcd7
             </td>
         </tr>
     </table>

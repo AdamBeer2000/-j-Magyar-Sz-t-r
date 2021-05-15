@@ -12,7 +12,13 @@ namespace WebNewmagyarszotar
         List<HungarianWord> hun = new List<HungarianWord>();
 
         public EnglishWord() { }
-
+        public EnglishWord(int _ID, string _word, string _desc, int _userId)
+        {
+            this.eng_ID = _ID;
+            this.eng_desc = _desc;
+            this.eng_word = _word;
+            this.userId = _userId;
+        }
         public EnglishWord(int _ID, string _word, string _desc,string _user)
         {
             this.eng_ID = _ID;

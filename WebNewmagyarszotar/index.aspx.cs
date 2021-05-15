@@ -21,7 +21,10 @@ namespace WebNewmagyarszotar
                 {
                     User logged = db.getUserById(Convert.ToInt32(Request.Cookies["User"]["Logged"]));
                     if (logged != null)
+                    {
+                        user_label.Visible = true;
                         user_label.Text = logged.Username;
+                    }
                 }
                 else
                 {
@@ -32,6 +35,7 @@ namespace WebNewmagyarszotar
             {
                 explorer.Visible = false;
                 engword.Visible = false;
+                user_label.Visible = false;
             }
         }
 

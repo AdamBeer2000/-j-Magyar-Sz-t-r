@@ -28,28 +28,11 @@ namespace WebNewmagyarszotar
 
         private int getRand() { return rand.Next(0, words.Count); }
 
-        public bool moreThanTwo(int _id)
-        {
-            if (words[_id].getHunList().Count > 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public EnglishWord exploreVisualization()
         {
             EnglishWord result = new EnglishWord();
             int random_id = this.getRand();
-
-            do
-            {
-                random_id = this.getRand();
-            } while (!moreThanTwo(random_id));
-
+            random_id = this.getRand();
             result = this.words[random_id];
             return result;
         }
@@ -57,7 +40,7 @@ namespace WebNewmagyarszotar
         public void getWords()
         {
             Dictionary<String, EnglishWord> temp = new Dictionary<string, EnglishWord>();
-            temp = db.getExploreWords();
+            temp = db.getExploreWords(Convert.ToInt32(Request.Cookies["User"]["Logged"]));
             words = temp.Values.ToList<EnglishWord>();
         }
 
@@ -87,6 +70,7 @@ namespace WebNewmagyarszotar
             if (Request.Cookies["User"]["Logged"] != null)
             {
                 db.addLike(ids[0], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                getWords();
             }
             this.vizualize();
         }
@@ -97,6 +81,7 @@ namespace WebNewmagyarszotar
             if (Request.Cookies["User"]["Logged"] != null)
             {
                 db.addLike(ids[1], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                getWords();
             }
             this.vizualize();
         }

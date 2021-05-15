@@ -12,7 +12,7 @@ namespace WebNewmagyarszotar
         DataBase db = new DataBase();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Label1.Text = String.Empty;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
