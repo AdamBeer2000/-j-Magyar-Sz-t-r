@@ -231,7 +231,6 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.TextBox searchBox;
 
         /// <summary>
-<<<<<<< HEAD
         /// searchbutton control.
         /// </summary>
         /// <remarks>
@@ -250,8 +249,6 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-=======
->>>>>>> b21a26c9ab190320366d723cdaef117a6be0dcd7
         /// SzotarTable control.
         /// </summary>
         /// <remarks>

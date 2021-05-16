@@ -32,7 +32,7 @@ namespace WebNewmagyarszotar
         {
             EnglishWord result = new EnglishWord();
             int random_id = this.getRand();
-            random_id = this.getRand();
+            random_id = this.getRand();//LEKEZELNI, HA A WORDS üres 
             result = this.words[random_id];
             return result;
         }
