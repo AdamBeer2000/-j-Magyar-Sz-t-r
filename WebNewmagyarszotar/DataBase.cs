@@ -210,9 +210,7 @@ namespace WebNewmagyarszotar
 
         public Dictionary<String, EnglishWord> getAll(string searchField, int page_num)
         {
-            //todo egyszerre ne az egészet hanem csak párat töltsön le pl 50-et mert egy 1000 szavas cucra ez sok
-            //searchField = "%" + searchField + "%";"
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryE.sql";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryF.sql";
             string querry = File.ReadAllText(path);
 
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
@@ -257,7 +255,8 @@ namespace WebNewmagyarszotar
             catch (Exception e)
             {
                 conn.Close();
-                latestErrorMsg = querry + " " + e.Message;
+                latestErrorMsg = e.Message;
+                Console.WriteLine(e.Message); 
             }
 
             return words;

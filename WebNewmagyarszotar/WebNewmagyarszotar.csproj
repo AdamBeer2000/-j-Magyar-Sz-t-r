@@ -233,6 +233,7 @@
     <Content Include="Scripts\listquerryC.sql" />
     <Content Include="Scripts\listquerryD.sql" />
     <Content Include="Scripts\listquerryE.sql" />
+    <Content Include="Scripts\listquerryF.sql" />
     <Content Include="Scripts\registration.sql" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\WebForms\getAllMostLiked.sql" />

@@ -6,7 +6,7 @@
         body {
             background-image: url('https://i.imgur.com/DkxArzl.png');
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             text-align: center;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -131,7 +131,7 @@
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
                 background-size: 100%;
-                background-repeat: no-repeat;
+                background-repeat: repeat;
             }
 
             #title {
