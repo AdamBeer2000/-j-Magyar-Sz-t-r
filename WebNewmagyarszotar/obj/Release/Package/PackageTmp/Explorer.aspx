@@ -228,7 +228,7 @@
                         </td>
                         <td>
                             <h1>
-                                <asp:ImageButton id="up" runat="server" ImageUrl="https://i.imgur.com/4Qv1V8L.png" alt="up"  OnClick="upClick"/>
+                                <asp:ImageButton id="up" runat="server" ImageUrl="https://i.imgur.com/4Qv1V8L.png" alt="up" OnClick="upClick"/>
                                 <!--<img src="https://i.imgur.com/4Qv1V8L.png" width="40%" id="up_down" alt="vonal" />-->
                             </h1>
                         </td>

@@ -284,12 +284,6 @@
                         <asp:TextBox  ID="passwordBox2" TextMode="Password" runat="server"></asp:TextBox>
                         <br />
 
-                        <h1>
-                            E-mail:
-                        </h1>
-                        <p id="hiba_email" runat="server">
-                        </p>
-                        <asp:TextBox ID="emailBox" TextMode="Email" runat="server" ></asp:TextBox>
                         <br />
 
                         <asp:Button ID="tovabb" runat="server" Text="Tovább" OnClick="tovabb_Click"/>

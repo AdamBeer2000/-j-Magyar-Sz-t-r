@@ -84,21 +84,9 @@
         }
 
         #Button1 {
-            background-color: #6ae134;
-            border: none;
-            font-family: Calibri;
-            font-weight: bold;
-            font-size: 240%;
-            color: #202020;
-            margin-top: 5%;
-            padding: 5px 15px;
-            text-align: center;
-            outline: none;
-        }
-
-        #Button1:hover {
             cursor: pointer;
-            box-shadow: 0 0 10px #6ae134;
+            width: 120%;
+            outline: none;
         }
 
         #HozzaadAngolSzot {
@@ -199,15 +187,7 @@
             }
 
             #Button1 {
-                background-color: #6ae134;
-                border: none;
-                font-family: Calibri;
-                font-weight: bold;
-                font-size: 20px;
-                color: #202020;
-                margin-top: 5%;
-                padding: 5px 15px;
-                text-align: center;
+                width: 60%;
                 outline: none;
             }
 
@@ -256,7 +236,7 @@
             </td>
             <td>
                 <form id="form1" runat="server">
-                    <asp:Button ID="Button1" runat="server" Text="Loguot placeholder" OnClick="Logout_Click" />
+                    <asp:ImageButton ID="Button1" runat="server" ImageUrl="https://i.imgur.com/2sT0dv0.png" Text="Kijelentkezés" OnClick="Logout_Click" />
                 </form>
             </td>
         </tr>
