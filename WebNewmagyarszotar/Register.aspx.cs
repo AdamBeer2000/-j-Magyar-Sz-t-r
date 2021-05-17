@@ -46,6 +46,16 @@ namespace WebNewmagyarszotar
                 count++;
                 hiba_username.InnerText = "Nincs megadva felhasználónév";
             }
+            else if(usernameBox.Text.Length > 32)
+            {
+                hiba_username.InnerText = "Túl hosszú felhasználónév (max 32 karakter)";
+                count++;
+            }
+            else if (usernameBox.Text.Split(' ').Length>1)
+            {
+                hiba_username.InnerText = "Nem lehet benne üres ' ' space a felhasználónév-ben";
+                count++;
+            }
             else
             {
                 hiba_username.InnerText = "";
