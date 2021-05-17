@@ -39,9 +39,9 @@ namespace WebNewmagyarszotar
             }
         }
 
-        protected void Logout_Click(object sender, EventArgs e)
+        protected void Logout_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Cookies["User"].Expires= DateTime.Now.AddDays(-1);
+            Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect(Request.RawUrl);
         }
     }

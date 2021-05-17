@@ -103,7 +103,9 @@
         }
 
         #searchbutton {
-            height: 12%;
+            margin-top: 100px;
+            height: 30px;
+            height: 30px;
             outline: none;
         }
 
@@ -230,8 +232,8 @@
         #reportCommentInput {
             outline: none;
             border: 1px solid #898E01;
-            min-width: 60%;
-            font-size: 200%;
+            min-width: 50%;
+            font-size: 150%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -320,7 +322,8 @@
             }
 
             #searchbutton {
-                width: 10%;
+                height: 25px;
+                height: 25px;
                 outline: none;
             }
 
@@ -429,8 +432,8 @@
             #reportCommentInput {
                 outline: none;
                 border: 1px solid #898E01;
-                min-width: 60%;
-                font-size: 200%;
+                min-width: 50%;
+                font-size: 150%;
                 font-family: Calibri;
                 color: #898E01;
                 background-color: #080808;
@@ -522,11 +525,8 @@
         <tr>
             <td>
                 <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
-<<<<<<< HEAD
                 <asp:ImageButton ID ="searchbutton" runat="server" src="https://i.imgur.com/vXukVi0.png"></asp:ImageButton>
                 <asp:Label ID="Label1" runat="server" Text="Label" BackColor="White"></asp:Label>
-=======
->>>>>>> b21a26c9ab190320366d723cdaef117a6be0dcd7
             </td>
         </tr>
     </table>
