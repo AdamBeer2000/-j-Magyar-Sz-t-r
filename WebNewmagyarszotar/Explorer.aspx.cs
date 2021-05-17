@@ -46,51 +46,66 @@ namespace WebNewmagyarszotar
 
         public void vizualize()
         {
-            if(ids[0]==-1&& ids[1]==-1)
+            if (words.Count > 0)
             {
-                EnglishWord env = this.exploreVisualization();
-                angol_szo_label.Text = env.getWord();
-
-                List<HungarianWord> hun_list = env.getHunList();
-                int f, s;
-                f = rand.Next(0, hun_list.Count);
-                do
+                if (ids[0] == -1 && ids[1] == -1)
                 {
-                    s = rand.Next(0, hun_list.Count);
-                } while (s == f);
+                    EnglishWord env = this.exploreVisualization();
+                    angol_szo_label.Text = env.getWord();
 
-                first_forditas.Text = hun_list[f].getHunWord();
-                second_forditas.Text = hun_list[s].getHunWord();
-                ids[0] = hun_list[f].getHunID();
-                ids[1] = hun_list[s].getHunID();
-                loaded = true;
+                    List<HungarianWord> hun_list = env.getHunList();
+                    int f, s;
+                    f = rand.Next(0, hun_list.Count);
+                    do
+                    {
+                        s = rand.Next(0, hun_list.Count);
+                    } while (s == f);
+
+                    first_forditas.Text = hun_list[f].getHunWord();
+                    second_forditas.Text = hun_list[s].getHunWord();
+                    ids[0] = hun_list[f].getHunID();
+                    ids[1] = hun_list[s].getHunID();
+                    loaded = true;
+                }
+            }
+            else
+            {
+                angol_szo_label.Text = "Nincs több olyan szó, ami több fordítással rendelkezik, és még nem likeoltad";
+                first_forditas.Text = "";
+                second_forditas.Text = "";
             }
         }
 
         protected void upClick(object sender, ImageClickEventArgs e)
         {
-            //update elso forditas like++
-            if (Request.Cookies["User"]["Logged"] != null)
+            if (words.Count > 0)
             {
-                db.addLike(ids[0], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
-                ids[0] = -1;
-                ids[1] = -1;
-                getWords();
+                //update elso forditas like++
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    db.addLike(ids[0], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    ids[0] = -1;
+                    ids[1] = -1;
+                    getWords();
+                }
+                this.vizualize();
             }
-            this.vizualize();
         }
 
         protected void downClick(object sender, ImageClickEventArgs e)
         {
-            //update masodik forditas like++
-            if (Request.Cookies["User"]["Logged"] != null)
+            if (words.Count > 0)
             {
-                db.addLike(ids[1], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
-                ids[0] = -1;
-                ids[1] = -1;
-                getWords();
+                //update masodik forditas like++
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    db.addLike(ids[1], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    ids[0] = -1;
+                    ids[1] = -1;
+                    getWords();
+                }
+                this.vizualize();
             }
-            this.vizualize();
         }
     }
 }

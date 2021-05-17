@@ -27,6 +27,15 @@
             height: 20%;
         }
 
+        .rangtabla {
+            border: none;
+            margin-left: 20%;
+            padding: 1%;
+            text-align: center;
+            width: 60%;
+            height: 20%;
+        }
+
         #back_image {
             width: 20%;
         }
@@ -35,7 +44,7 @@
             font-family: Calibri;
             font-size: 100%;
             color: #898E01;
-            background-color: #080808;
+            background-color: none;
             opacity: 0.9;
         }
 
@@ -43,7 +52,7 @@
             font-family: Calibri;
             font-size: 100%;
             color: #898E01;
-            background-color: #080808;
+            background-color: none;
             opacity: 0.9;
         }
 
@@ -51,7 +60,7 @@
             font-family: Calibri;
             font-size: 100%;
             color: #898E01;
-            background-color: #080808;
+            background-color: none;
             opacity: 0.9;
         }
 
@@ -59,7 +68,7 @@
             font-family: Calibri;
             font-size: 100%;
             color: #898E01;
-            background-color: #080808;
+            background-color: none;
             opacity: 0.9;
         }
 
@@ -67,7 +76,23 @@
             font-family: Calibri;
             font-size: 100%;
             color: #898E01;
-            background-color: #080808;
+            background-color: none;
+            opacity: 0.9;
+        }
+
+        .cimsor {
+           font-family: Calibri;
+            font-size: 200%;
+            color: #898E01;
+            background-color: none;
+            opacity: 0.9;
+        }
+
+        .simasor {
+           font-family: Calibri;
+            font-size: 160%;
+            color: #898E01;
+            background-color: none;
             opacity: 0.9;
         }
 
@@ -78,9 +103,26 @@
                 background-repeat: no-repeat;
             }
 
+            .rangtabla {
+                margin-left: 25%;
+                padding: 1%;
+                text-align: center;
+                width: 60%;
+                height: 20%;
+            }
+
             #back_image {
                 width: 15%;
             }
+
+            .cimsor {
+                font-size: 120%;
+            }
+
+            .simasor {
+                font-size: 100%;
+            }
+            
         }
 
     </style>
