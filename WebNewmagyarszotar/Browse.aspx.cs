@@ -199,6 +199,8 @@ namespace WebNewmagyarszotar
             ImageButton like = new ImageButton();
             ImageButton dislike = new ImageButton();
 
+            ImageButton dummy = new ImageButton();
+
             HtmlTableCell cell5 = new HtmlTableCell();
 
             LinkButton engWorld = new LinkButton();
@@ -269,6 +271,9 @@ namespace WebNewmagyarszotar
 
                 dislike.ID = "Button_dislike_" + hun.getHunID();
 
+                dummy.ImageUrl = "https://i.imgur.com/Oc1Ynsm.png";
+                dummy.Attributes.Add("class", "likebutton");
+
                 //dislike.Click+=new ImageClickEventHandler(this.dislike_button_button_Click);
                 dislike.CommandArgument += hun.getHunID();
                 dislike.Command += new CommandEventHandler(this.dislike_button_button_Click);
@@ -282,6 +287,17 @@ namespace WebNewmagyarszotar
 
                 cell5.InnerText = "" + hun.getDislike();
                 cell5.Controls.Add(dislike);
+
+                row.Cells.Add(cell4);
+                row.Cells.Add(cell5);
+            }
+            else
+            {
+                dummy.ImageUrl = "https://i.imgur.com/Oc1Ynsm.png";
+                dummy.Attributes.Add("class", "likebutton");
+
+                cell4.Controls.Add(dummy);
+                cell5.Controls.Add(dummy);
 
                 row.Cells.Add(cell4);
                 row.Cells.Add(cell5);
