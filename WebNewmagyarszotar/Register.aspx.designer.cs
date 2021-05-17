@@ -78,24 +78,6 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.TextBox passwordBox2;
 
         /// <summary>
-        /// hiba_email control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiba_email;
-
-        /// <summary>
-        /// emailBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailBox;
-
-        /// <summary>
         /// tovabb control.
         /// </summary>
         /// <remarks>

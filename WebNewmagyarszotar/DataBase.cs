@@ -558,25 +558,10 @@ namespace WebNewmagyarszotar
             }
 
             SqlCommand sqlCmd = new SqlCommand(querry);
-
             SqlParameter p1 = new SqlParameter(@"@p1", username);
-            p1.SqlDbType = SqlDbType.VarChar;
-            p1.Direction = ParameterDirection.Input;
-            p1.Size = 32;
-
             SqlParameter p2 = new SqlParameter(@"@p2", email);
-            p2.SqlDbType = SqlDbType.VarChar;
-            p2.Direction = ParameterDirection.Input;
-            p1.Size = 50;
-
-            SqlParameter p3 = new SqlParameter(@"@p3", "+");
-            p3.SqlDbType = SqlDbType.VarChar;
-            p3.Direction = ParameterDirection.Input;
-            p1.Size = 10;
-
+            SqlParameter p3 = new SqlParameter(@"@p3", "+");;
             SqlParameter p4 = new SqlParameter(@"@p4", jelszo_hash);
-            p4.SqlDbType = SqlDbType.Binary;
-            p4.Direction = ParameterDirection.Input;
 
             sqlCmd.Parameters.Add(p1);
             sqlCmd.Parameters.Add(p2);
