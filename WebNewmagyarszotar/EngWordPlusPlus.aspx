@@ -1,9 +1,6 @@
-﻿b<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EngWordPlusPlus.aspx.cs" Inherits="WebNewmagyarszotar.EngWordPlusPlus" %>
+﻿eeb<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EngWordPlusPlus.aspx.cs" Inherits="WebNewmagyarszotar.EngWordPlusPlus" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">Angol szó hozzáadása</title>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head runat="server">Angol szó hozzáadása</title>
 
      <style type="text/css">
         body {

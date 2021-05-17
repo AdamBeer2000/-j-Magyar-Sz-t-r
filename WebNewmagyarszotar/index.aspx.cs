@@ -24,6 +24,8 @@ namespace WebNewmagyarszotar
                     {
                         user_label.Visible = true;
                         user_label.Text = logged.Username;
+                        register.Visible = false;
+                        login.Visible = false;
                     }
                 }
                 else
@@ -36,6 +38,7 @@ namespace WebNewmagyarszotar
                 explorer.Visible = false;
                 engword.Visible = false;
                 user_label.Visible = false;
+                Button1.Visible = false;
             }
         }
 

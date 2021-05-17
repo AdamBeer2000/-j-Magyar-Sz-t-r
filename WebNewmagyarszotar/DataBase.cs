@@ -199,6 +199,11 @@ namespace WebNewmagyarszotar
                 latestErrorMsg = ex.Message;
                 conn.Close();
             }
+            finally
+            {
+                if(conn.State==ConnectionState.Open)
+                conn.Close();
+            }
 
             return result;
         }
