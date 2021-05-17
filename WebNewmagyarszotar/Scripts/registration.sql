@@ -13,7 +13,7 @@ SELECT @vaneEmail=COUNT(*)
 
 if @vaneFelhasz>0 OR @vaneEmail>0
     BEGIN;
-        THROW 69420, 'Már létezik ilyen nevü felhasználó vagy ilyen email cím', 1;
+        THROW 69420, 'Már létezik ilyen nevü felhasználó', 1;
     END;
 ELSE 
     BEGIN 
