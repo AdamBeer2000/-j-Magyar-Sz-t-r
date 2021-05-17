@@ -168,6 +168,11 @@ namespace WebNewmagyarszotar
             HtmlTableCell cell1 = new HtmlTableCell();
             HtmlTableCell cell2 = new HtmlTableCell();
 
+            table.Attributes.Add("class", "rangtabla");
+
+            cell1.Attributes.Add("class", "cimsor");
+            cell2.Attributes.Add("class", "cimsor");
+
             cell1.InnerText = "Felhasználó";
             cell2.InnerText = "Rang";
 
@@ -185,6 +190,9 @@ namespace WebNewmagyarszotar
 
             HtmlTableCell cell1 = new HtmlTableCell();
             HtmlTableCell cell2 = new HtmlTableCell();
+
+            cell1.Attributes.Add("class", "simasor");
+            cell2.Attributes.Add("class", "simasor");
 
             cell1.InnerText = _name;
             cell2.InnerText = _rank;
