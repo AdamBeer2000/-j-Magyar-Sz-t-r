@@ -22,9 +22,9 @@ namespace WebNewmagyarszotar
         DataBase db = new DataBase();
         List<EnglishWord> words = new List<EnglishWord>();
         Random rand = new Random();
-
-        int[] ids = new int[2];
-
+        static bool loaded=false;
+        static int[] ids = { -1,-1};
+        //static int[] ids=new int[2];
 
         private int getRand() { return rand.Next(0, words.Count); }
 
@@ -46,22 +46,25 @@ namespace WebNewmagyarszotar
 
         public void vizualize()
         {
-            EnglishWord env = this.exploreVisualization();
-            angol_szo_label.Text = env.getWord();
-
-            List<HungarianWord> hun_list = new List<HungarianWord>();
-            hun_list = env.getHunList();
-            int f, s;
-            f = rand.Next(0, hun_list.Count);
-            do
+            if(ids[0]==-1&& ids[1]==-1)
             {
-                s = rand.Next(0, hun_list.Count);
-            } while (s == f);
+                EnglishWord env = this.exploreVisualization();
+                angol_szo_label.Text = env.getWord();
 
-            first_forditas.Text = hun_list[f].getHunWord();
-            second_forditas.Text = hun_list[s].getHunWord();
-            ids[0] = hun_list[f].getHunID();
-            ids[1] = hun_list[s].getHunID();
+                List<HungarianWord> hun_list = env.getHunList();
+                int f, s;
+                f = rand.Next(0, hun_list.Count);
+                do
+                {
+                    s = rand.Next(0, hun_list.Count);
+                } while (s == f);
+
+                first_forditas.Text = hun_list[f].getHunWord();
+                second_forditas.Text = hun_list[s].getHunWord();
+                ids[0] = hun_list[f].getHunID();
+                ids[1] = hun_list[s].getHunID();
+                loaded = true;
+            }
         }
 
         protected void upClick(object sender, ImageClickEventArgs e)
@@ -70,6 +73,8 @@ namespace WebNewmagyarszotar
             if (Request.Cookies["User"]["Logged"] != null)
             {
                 db.addLike(ids[0], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                ids[0] = -1;
+                ids[1] = -1;
                 getWords();
             }
             this.vizualize();
@@ -81,6 +86,8 @@ namespace WebNewmagyarszotar
             if (Request.Cookies["User"]["Logged"] != null)
             {
                 db.addLike(ids[1], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                ids[0] = -1;
+                ids[1] = -1;
                 getWords();
             }
             this.vizualize();
