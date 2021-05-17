@@ -60,6 +60,15 @@ namespace WebNewmagyarszotar
         protected global::System.Web.UI.WebControls.TextBox eng_description_textbox;
 
         /// <summary>
+        /// error_hun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label error_hun;
+
+        /// <summary>
         /// hl control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace WebNewmagyarszotar
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button add_eng_button;
+
+        /// <summary>
+        /// added_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label added_label;
 
         /// <summary>
         /// debugl control.

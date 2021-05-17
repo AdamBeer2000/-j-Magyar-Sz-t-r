@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Angol szó hozzáadása</title>
+<head runat="server">Angol szó hozzáadása</title>
 
      <style type="text/css">
         body {
@@ -199,6 +198,18 @@
                 color: #898E01;
              }
 
+            #error_hun {
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+             }
+
+            #added_label {
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+             }
+
             #error_desc {
                 font-size: 100%;
                 font-family: Calibri;
@@ -231,7 +242,31 @@
 
         }
 
-    </style>
+         #error_desc0 {
+            font-size: 200%;
+            font-family: Calibri;
+            color: #898E01;
+         }
+
+            #error_desc0 {
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+             }
+
+             #error_label0 {
+            font-size: 200%;
+            font-family: Calibri;
+            color: #898E01;
+         }
+
+            #error_label0 {
+                font-size: 100%;
+                font-family: Calibri;
+                color: #898E01;
+             }
+
+            </style>
 </head>
 <body>
     <form id="eng_form" runat="server">
@@ -271,6 +306,8 @@
                     Magyar szó (Opcionális):
                 </h1>
 
+                <asp:Label ID="error_hun" runat="server" Text=""></asp:Label>
+
                 <asp:Label ID="hl" runat="server" Text=""></asp:Label>
                 <br />
 
@@ -278,6 +315,9 @@
                 <br />
 
                 <asp:Button ID="add_eng_button" runat="server" OnClick="add_eng_button_Click" Text="Hozzáad" />
+                <br />
+                
+                <asp:Label ID="added_label" runat="server" Text=""></asp:Label>
             </td>
         </tr>
 

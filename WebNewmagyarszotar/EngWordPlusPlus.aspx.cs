@@ -73,12 +73,12 @@ namespace WebNewmagyarszotar
                             if (state)
                             {
                                 db.getLatestErrorMsg();
-                                Response.Write("<script>alert('Vótmá ilyen magyar szó, de az angol szó ')</script>");
+                                error_hun.Text = "Vólt már ilyen magyar szó";
                             }
                             else
                             {
 
-                                Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
+                                added_label.Text = "Sikeresen hozzáadva";
                             }
                         }
                     }
