@@ -137,7 +137,7 @@ namespace WebNewmagyarszotar
             if (showall.Contains(eng.getWord()))
                 lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//lenéz
             else
-                lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//felnéz
+                lenyit.ImageUrl = "https://i.imgur.com/4Qv1V8L.png";//felnéz
 
             lenyit.Attributes.Add("class", "lenyitbutton");
             //cell1.InnerText = eng.getWord();
