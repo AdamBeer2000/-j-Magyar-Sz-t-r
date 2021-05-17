@@ -9,8 +9,8 @@
     <style>
         body {
             background-image: url('https://i.imgur.com/DkxArzl.png');
-            background-size: 100%;
-            background-repeat: no-repeat;
+            background-size: 120%;
+            background-repeat: repeat;
             text-align: center;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -124,7 +124,7 @@
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
                 background-size: 100%;
-                background-repeat: no-repeat;
+                background-repeat: repeat;
             }
 
             #box {
@@ -209,7 +209,7 @@
 
 </head>
 <body runat="server">
-    
+    <form id="form1" runat="server">
     <table id="box">
         <tr>
             <td id="menu_title">
@@ -234,9 +234,9 @@
                 </a>
             </td>
             <td>
-                <form id="form1" runat="server">
-                    <asp:ImageButton ID="Button1" runat="server" ImageUrl="https://i.imgur.com/2sT0dv0.png" Text="Kijelentkezés" OnClick="Logout_Click" />
-                </form>
+                
+                 <asp:ImageButton ID="Button1" runat="server" ImageUrl="https://i.imgur.com/2sT0dv0.png" Text="Kijelentkezés" OnClick="Logout_Click" />
+                
             </td>
         </tr>
     </table>
@@ -278,6 +278,6 @@
             </td>
         </tr>
     </table>
-    
+    </form>
 </body>
 </html>
