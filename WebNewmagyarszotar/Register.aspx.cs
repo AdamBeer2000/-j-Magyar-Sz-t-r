@@ -70,7 +70,7 @@ namespace WebNewmagyarszotar
             {
                 hiba_password2.InnerText = "";
             }
-
+            /*
             if (emailBox.Text==String.Empty)
             {
                 count++;
@@ -80,6 +80,7 @@ namespace WebNewmagyarszotar
             {
                 hiba_email.InnerText= "";
             }
+            */
 
             if (passwordBox1.Text!= passwordBox2.Text)
             {
@@ -97,7 +98,7 @@ namespace WebNewmagyarszotar
                 return;
             }
 
-            if (db.regUser(usernameBox.Text,emailBox.Text, passwordBox1.Text))
+            if (db.regUser(usernameBox.Text,"no e-mail here", passwordBox1.Text))
             {
                 Label1.Text = "Sikeres regisztráció :";
             }
