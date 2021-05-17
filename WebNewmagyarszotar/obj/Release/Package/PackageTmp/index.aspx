@@ -224,14 +224,13 @@
 
             <td>
                 <a href="Login.aspx">
-                    <img src="https://i.imgur.com/lwnbx8R.png" id="login" alt="login" />
+                    <img src="https://i.imgur.com/lwnbx8R.png" runat="server" id="login" alt="login" />
                 </a>
             </td>
 
             <td>
-
                 <a href="Register.aspx">
-                    <img src="https://i.imgur.com/uOKgULx.png" id="register" alt="register" />
+                    <img src="https://i.imgur.com/uOKgULx.png" runat="server" id="register" alt="register" />
                 </a>
             </td>
             <td>

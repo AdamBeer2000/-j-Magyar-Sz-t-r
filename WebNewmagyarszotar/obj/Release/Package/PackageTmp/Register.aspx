@@ -133,6 +133,14 @@
             width: 20%;
         }
 
+        #Label1 {
+            font-family: Calibri;
+            font-size: 100%;
+            color: #898E01;
+            background-color: #080808;
+            opacity: 0.9;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');
@@ -241,6 +249,14 @@
             #back_image {
                 width: 15%;
             }
+
+            #Label1 {
+                font-family: Calibri;
+                font-size: 100%;
+                color: #898E01;
+                background-color: #080808;
+                opacity: 0.9;
+            }
         }
 
     </style>
@@ -293,7 +309,7 @@
             </table>
         </div>
         <p>
-            <asp:Label ID="Label1" runat="server" BackColor="White" Text="Label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" BackColor="#080808" Text="Label"></asp:Label>
         </p>
         <a id="vissza" href="index.aspx">
             <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />
