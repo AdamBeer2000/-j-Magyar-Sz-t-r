@@ -102,11 +102,15 @@ namespace WebNewmagyarszotar
         {
             //addOneRow(eng.getWord(),"-----------", table);
             HtmlTableRow row = new HtmlTableRow();
+            ImageButton dummy = new ImageButton();
+            ImageButton like = new ImageButton();
+            ImageButton dislike = new ImageButton();
 
             HtmlTableCell cell1 = new HtmlTableCell();
             HtmlTableCell cell2 = new HtmlTableCell();
             HtmlTableCell cell3 = new HtmlTableCell();
             HtmlTableCell cell4 = new HtmlTableCell();
+            HtmlTableCell cell5 = new HtmlTableCell();
 
             ImageButton lenyit = new ImageButton();
 
@@ -141,16 +145,19 @@ namespace WebNewmagyarszotar
 
             LinkButton engWorld = new LinkButton();
             engWorld.Text = eng.getWord();
+            engWorld.ID = "eng_word_label_" + eng.getEngID();
             engWorld.CssClass = "textStyle";
             engWorld.Command += new CommandEventHandler(OpenWindowInfo);
-            engWorld.CommandArgument = eng.getWord() + "," + eng.getUser() + "," + eng.getDesc();
+            engWorld.CommandArgument = eng.getWord() + ";" + eng.getUser() + ";" + eng.getDesc();
             cell1.Controls.Add(engWorld);
+            
 
             LinkButton hunWorld = new LinkButton();
             hunWorld.Text = eng.getTranslations()[0].getHunWord();
+            hunWorld.ID="hun_word_label_" + eng.getTranslations()[0].getHunID();
             hunWorld.CssClass = "textStyle";
             hunWorld.Command += new CommandEventHandler(OpenWindowInfo);
-            hunWorld.CommandArgument = eng.getTranslations()[0].getHunWord() + "," + eng.getTranslations()[0].getUser() + ",";
+            hunWorld.CommandArgument = eng.getTranslations()[0].getHunWord() + ";" + eng.getTranslations()[0].getUser() + ";";
             cell2.Controls.Add(hunWorld);
 
             ImageButton reportWordHun = new ImageButton();
@@ -175,17 +182,65 @@ namespace WebNewmagyarszotar
             row.Attributes.Add("max-height", "30%");
             table.Rows.Add(row);
 
+            /*
+            dummy.ImageUrl = "https://i.imgur.com/Oc1Ynsm.png";
+            dummy.Attributes.Add("class", "likebutton");
+            dummy.ID = "dummy_h_" + eng.getEngID();
+            cell4.Controls.Add(dummy);
+            cell5.Controls.Add(dummy);
+
+            row.Cells.Add(cell4);
+            row.Cells.Add(cell5);
+            */
+            HungarianWord hun = eng.getTranslations()[0];
+
+            like.ID = "Button_like_" + hun.getHunID();
+
+            //like.Click += new ImageClickEventHandler(this.like_button_button_Click);
+            like.CommandArgument += hun.getHunID();
+            like.Command += new CommandEventHandler(this.like_button_button_Click);
+
+            like.Attributes.Add("runat", "server");
+            like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
+            like.Attributes.Add("class", "likebutton");
+
+            dislike.ID = "Button_dislike_" + hun.getHunID();
+
+            dummy.ImageUrl = "https://i.imgur.com/Oc1Ynsm.png";
+            //dummy.Attributes.Add("class", "likebutton");
+            dummy.CssClass = "likebutton";
+
+            //dislike.Click+=new ImageClickEventHandler(this.dislike_button_button_Click);
+            dislike.CommandArgument += hun.getHunID();
+            dislike.Command += new CommandEventHandler(this.dislike_button_button_Click);
+
+            dislike.Attributes.Add("runat", "server");
+            dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
+            dislike.Attributes.Add("class", "likebutton");
+
+            cell4.InnerText = "" + hun.getLike();
+            cell4.Controls.Add(like);
+
+            cell5.InnerText = "" + hun.getDislike();
+            cell5.Controls.Add(dislike);
+
+            row.Cells.Add(cell4);
+            row.Cells.Add(cell5);
+
+
             if (showall.Contains(eng.getWord()))
             {
                 //lenéz
+                cell1.Attributes.Add("rowspan", Convert.ToString((eng.getTranslations().Count())));
                 foreach (HungarianWord trans in eng.getTranslations())
                 {
-                    addOneRow(eng, trans, table, true);
+                    if(trans!=eng.getTranslations()[0])
+                    addOneRow(eng, trans, table, true,true);
                 }
             }
         }
 
-        private void addOneRow(EnglishWord eng_world, HungarianWord hun, HtmlTable table, bool ismultiple)
+        private void addOneRow(EnglishWord eng_world, HungarianWord hun, HtmlTable table, bool ismultiple,bool spawn=false)
         {
             string eng = eng_world.getWord();
 
@@ -205,13 +260,15 @@ namespace WebNewmagyarszotar
 
             LinkButton engWorld = new LinkButton();
 
-            engWorld.Text = eng;
-            engWorld.CssClass = "textStyle";
-            //cell1.InnerText = eng;
-            cell1.Controls.Add(engWorld);
-
             if (!ismultiple)
             {
+                engWorld.Text = eng;
+                engWorld.CssClass = "textStyle";
+                engWorld.ID = "eng_word_label_" + eng_world.getEngID();
+                //cell1.InnerText = eng;
+                cell1.Controls.Add(engWorld);
+                
+
                 ImageButton addWord = new ImageButton();
                 addWord.ImageUrl = "https://i.imgur.com/ceYONF2.png";
                 addWord.Attributes.Add("class", "addbutton");
@@ -222,7 +279,7 @@ namespace WebNewmagyarszotar
 
                 ImageButton reportWord = new ImageButton();
                 reportWord.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
-                reportWord.Attributes.Add("class", "addbutton");
+                reportWord.Attributes.Add("class", "reportbutton");
                 reportWord.CommandArgument = "E," + eng_world.getEngID();
                 reportWord.Command += new CommandEventHandler(this.OpenWindowReport);
                 reportWord.ID = "rep_e_" + eng_world.getEngID();
@@ -231,25 +288,40 @@ namespace WebNewmagyarszotar
                 
 
                 engWorld.Command += new CommandEventHandler(OpenWindowInfo);
-                engWorld.CommandArgument = eng_world.getWord() + "," + eng_world.getUser() + "," + eng_world.getDesc();
+                engWorld.CommandArgument = eng_world.getWord() + ";" + eng_world.getUser() + ";" + eng_world.getDesc();
             }
 
 
             //cell3.InnerText = hun.getHunWord();
             LinkButton hunWord = new LinkButton();
+            
             hunWord.Text = hun.getHunWord();
-            hunWord.CommandArgument = hun.getHunWord() + "," + hun.getUser();
+            hunWord.CommandArgument = hun.getHunWord() + ";" + hun.getUser();
             hunWord.CssClass = "textStyle";
             hunWord.Command += new CommandEventHandler(OpenWindowInfo);
             cell3.Controls.Add(hunWord);
             cell3.BorderColor = "#898E01";
 
+            if(!spawn)
+            {
+                row.Cells.Add(cell1);
+            }
+            
 
-            row.Cells.Add(cell1);
             row.Cells.Add(cell3);
 
             if (hun.getHunID() != -1)//csak akkor -1 ha még nincs arra az angol szóra fordítás
             {
+                if(ismultiple)
+                {
+                    hunWord.ID = "hun_word_label_m" + hun.getHunID();
+                }
+                else
+                {
+                    hunWord.ID = "hun_word_label" + hun.getHunID();
+                }
+                
+
                 ImageButton reportWordHun = new ImageButton();
                 reportWordHun.ImageUrl = "https://i.imgur.com/9Ml0E1o.png";
                 reportWordHun.Attributes.Add("class", "reportbutton");
@@ -272,7 +344,8 @@ namespace WebNewmagyarszotar
                 dislike.ID = "Button_dislike_" + hun.getHunID();
 
                 dummy.ImageUrl = "https://i.imgur.com/Oc1Ynsm.png";
-                dummy.Attributes.Add("class", "likebutton");
+                //dummy.Attributes.Add("class", "likebutton");
+                dummy.CssClass = "likebutton";
 
                 //dislike.Click+=new ImageClickEventHandler(this.dislike_button_button_Click);
                 dislike.CommandArgument += hun.getHunID();
@@ -290,17 +363,18 @@ namespace WebNewmagyarszotar
 
                 row.Cells.Add(cell4);
                 row.Cells.Add(cell5);
-            }
-            else
+            }else
             {
                 dummy.ImageUrl = "https://i.imgur.com/Oc1Ynsm.png";
                 dummy.Attributes.Add("class", "likebutton");
-
+                dummy.ID= "dummy_" + eng_world.getEngID();
                 cell4.Controls.Add(dummy);
                 cell5.Controls.Add(dummy);
 
                 row.Cells.Add(cell4);
                 row.Cells.Add(cell5);
+
+                hunWord.ID = "hun_word_label_" + hun.getHunID()+"_"+ eng_world.getEngID();
             }
 
             row.Attributes.Add("class", "rowStyle");
@@ -347,7 +421,7 @@ namespace WebNewmagyarszotar
 
         protected void OpenWindowInfo(object sender, CommandEventArgs e)
         {
-            string[] split = e.CommandArgument.ToString().Split(',');
+            string[] split = e.CommandArgument.ToString().Split(';');
             World.Text = split[0];
             Creator.Text = "Beküldte: " + split[1];
             if (split.Length == 3)
