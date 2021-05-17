@@ -100,7 +100,7 @@ namespace WebNewmagyarszotar
 
             if (db.regUser(usernameBox.Text,"no e-mail here", passwordBox1.Text))
             {
-                Label1.Text = "Sikeres regisztráció :";
+                Label1.Text = "Sikeres regisztráció";
             }
             else
             {
