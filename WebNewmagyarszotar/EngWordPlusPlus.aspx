@@ -306,12 +306,12 @@
                     Magyar szó (Opcionális):
                 </h1>
 
-                <asp:Label ID="error_hun" runat="server" Text=""></asp:Label>
+                <asp:Label ID="error_hun" runat="server"></asp:Label>
 
                 <asp:Label ID="hl" runat="server" Text=""></asp:Label>
                 <br />
 
-                <asp:TextBox ID="ht" runat="server"></asp:TextBox>
+                <asp:TextBox ID="ht" runat="server" OnTextChanged="eng_hun_textbox_TextChanged"></asp:TextBox>
                 <br />
 
                 <asp:Button ID="add_eng_button" runat="server" OnClick="add_eng_button_Click" Text="Hozzáad" />
@@ -326,10 +326,6 @@
     <a id="vissza" href="index.aspx">
         <img src="https://i.imgur.com/Gq9hR5m.png" id="back_image" alt="back_image" />
     </a>
-            
-        <p>
-        <asp:Label ID="debugl" runat="server" Text="D-Dont look my d-debug.. b-baka!!!"></asp:Label>
-        </p>
     
     </form>
 </body>

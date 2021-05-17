@@ -9,12 +9,13 @@ namespace WebNewmagyarszotar
 {
     public partial class EngWordPlusPlus : System.Web.UI.Page
     {
+        //-----[ VARIABLES ]----------------------------------------------------------------
         private DataBase db = new DataBase();
-        private User logged = new User();
         private List<string> english_words = new List<string>();
-        private string word = "", description = "No data", hunword = "", username = "GUEST";
+        private string word = "", description = "No data", hunword = "";
         private bool valid = false;
 
+        //-----[ DEFAULT FUNCTIONS ]--------------------------------------------------------
         protected void Page_Load(object sender, EventArgs e)
         {
             List<string> temporary = new List<string>();
@@ -24,18 +25,9 @@ namespace WebNewmagyarszotar
             {
                 english_words.Add(temporary[i].ToUpper());
             }
-
-            if (Request.Cookies["User"] != null)
-            {
-                if (Request.Cookies["User"]["Logged"] != null)
-                {
-                    logged = db.getUserById(Convert.ToInt32(Request.Cookies["User"]["Logged"]));
-                    if (logged != null)
-                        username = logged.Username;
-                }
-            }
         }
 
+        //-----[ FUNCTIONS ]----------------------------------------------------------------
         private void validate(string str)
         {
             if(!english_words.Contains(str.ToUpper()))
@@ -60,7 +52,6 @@ namespace WebNewmagyarszotar
                         string new_word = this.word;
                         string new_desc = this.description;
                         db.addEndlishWord(new_word, new_desc,Request.Cookies["User"]["Logged"]);
-                        debugl.Text = db.getLatestErrorMsg();
 
                         EnglishWord e = db.getEnglishWord(word);
                         int engid = e.getEngID();
@@ -69,15 +60,15 @@ namespace WebNewmagyarszotar
                         {
                             hunword = ht.Text;
                             bool state = !db.addHunWord(hunword, Convert.ToInt32(Request.Cookies["User"]["Logged"]), engid);
-                            //debugl.Text = db.getLatestErrorMsg();
+                            
                             if (state)
                             {
-                                db.getLatestErrorMsg();
                                 error_hun.Text = "Vólt már ilyen magyar szó";
+                                added_label.Text = "Hozzáadás sikertelen";
                             }
                             else
                             {
-
+                                error_hun.Text = "";
                                 added_label.Text = "Sikeresen hozzáadva";
                             }
                         }
@@ -85,10 +76,12 @@ namespace WebNewmagyarszotar
                     else if (!valid)
                     {
                         error_label.Text = "Ez a szó már létezik a szótárban!";
+                        added_label.Text = "Hozzáadás sikertelen";
                     }
                     else
                     {
                         error_label.Text = "Nem megfelelő szó!";
+                        added_label.Text = "Hozzáadás sikertelen";
                     }
                 }
             }
@@ -97,6 +90,7 @@ namespace WebNewmagyarszotar
         protected void add_eng_button_Click(object sender, EventArgs e)
         {
             this.addNewWord();
+
             eng_word_textbox.Text = "";
             eng_description_textbox.Text = "";
             ht.Text = "";
@@ -114,6 +108,11 @@ namespace WebNewmagyarszotar
         {
             error_label.Text = "";
             this.word = eng_word_textbox.Text;
+        }
+
+        protected void eng_hun_textbox_TextChanged(object sender, EventArgs e)
+        {
+            error_hun.Text = "";
         }
     }
 }
