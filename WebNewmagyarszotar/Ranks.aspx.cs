@@ -161,47 +161,47 @@ namespace WebNewmagyarszotar
             {
                 return 2;
             }
-            else if (top < 30)
+            else if (top < 50)
             {
                 return 3;
             }
-            else if (top < 40)
+            else if (top < 75)
             {
                 return 4;
             }
-            else if (top < 50)
+            else if (top < 100)
             {
                 return 5;
             }
-            else if (top < 60)
+            else if (top < 125)
             {
                 return 6;
             }
-            else if (top < 70)
+            else if (top < 150)
             {
                 return 7;
             }
-            else if (top < 80)
+            else if (top < 200)
             {
                 return 8;
             }
-            else if (top < 90)
+            else if (top < 250)
             {
                 return 9;
             }
-            else if (top < 100)
+            else if (top < 300)
             {
                 return 10;
             }
-            else if (top < 150)
+            else if (top < 350)
             {
                 return 11;
             }
-            else if (top < 200)
+            else if (top < 400)
             {
                 return 12;
             }
-            else if (top >= 200)
+            else if (top >= 400)
             {
                 return 13;
             }
