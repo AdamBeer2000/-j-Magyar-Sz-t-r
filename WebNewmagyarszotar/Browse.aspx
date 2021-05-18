@@ -175,7 +175,7 @@
 
         .textStyle2
         {
-            color: #dde401;
+            color: #898E01;
             text-decoration: none;
             font-family: Calibri;
             max-height: 30%;
