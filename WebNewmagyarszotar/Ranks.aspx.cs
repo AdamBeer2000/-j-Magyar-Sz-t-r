@@ -69,7 +69,7 @@ namespace WebNewmagyarszotar
             if (top == 0)
             {
                 tmp_rank = ranks[0];
-                if (highlighted) tmp_num = 0;
+                if (highlighted) tmp_num = 1;
             }
             else if (top < 10)
             {
