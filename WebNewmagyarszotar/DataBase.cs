@@ -753,6 +753,14 @@ namespace WebNewmagyarszotar
                 latestErrorMsg = ex.Message;
                 conn.Close();
             }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+            }
+
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
 
             return result;
         }
@@ -785,6 +793,14 @@ namespace WebNewmagyarszotar
                 latestErrorMsg = ex.Message;
                 conn.Close();
             }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+            }
+
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
 
             return result;
         }
