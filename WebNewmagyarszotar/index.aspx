@@ -119,6 +119,11 @@
             box-shadow: 0 0 10px #898E01;
         }
 
+        #deletebutton1 {
+            cursor: pointer;
+            width: 10%;
+            outline: none;
+        }
 
         @media only screen and (min-width: 1024px) {
             body {
@@ -277,6 +282,23 @@
 
             </td>
         </tr>
+
+        <tr>
+            <td>
+
+            </td>
+
+            <td>
+               
+            </td>
+
+            <td>
+                <asp:ImageButton ID="deletebutton1" ImageUrl="https://i.imgur.com/oroD9l8.png"
+                    runat="server" onmouseover="this.src='https://i.imgur.com/1yPeb2D.png'"
+                    onmouseout="this.src='https://i.imgur.com/oroD9l8.png'" OnClick="Logout_Click" />
+            </td>
+        </tr>
+
     </table>
     </form>
 </body>
