@@ -10,7 +10,7 @@ namespace WebNewmagyarszotar
     public partial class EngWordPlusPlus : System.Web.UI.Page
     {
         //-----[ VARIABLES ]----------------------------------------------------------------
-        private DataBase db = new DataBase();
+        private DataBase db = DataBase.Instance;
         private List<string> english_words = new List<string>();
         private string word = "", description = "No data", hunword = "";
         private bool valid = false;

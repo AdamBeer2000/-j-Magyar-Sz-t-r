@@ -10,7 +10,7 @@ namespace WebNewmagyarszotar
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        static DataBase db = new DataBase();
+        static DataBase db = DataBase.Instance;
 
         protected void Page_Load(object sender, EventArgs e)
         {

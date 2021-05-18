@@ -25,8 +25,11 @@ namespace WebNewmagyarszotar
     public class DataBase
     {
         private static string conn_string = buildDefConnString();
-
         private static SqlConnection conn = new SqlConnection(conn_string);
+        string boworseQuerry;
+
+        private static DataBase instance = null;
+        private static readonly object padlock = new object();
 
         private static string buildDefConnString()
         {
@@ -43,10 +46,28 @@ namespace WebNewmagyarszotar
             return defconn.ConnectionString;
         }
 
-
-        public DataBase()
+        public static DataBase Instance
         {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new DataBase();
+                    }
+                    return instance;
+                }
+            }
+        }
+    
 
+        private DataBase()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
+            string querry = File.ReadAllText(path);
+            boworseQuerry =querry;
+            Console.WriteLine("DB Create");
         }
 
         private string latestErrorMsg;
@@ -214,13 +235,10 @@ namespace WebNewmagyarszotar
         public Dictionary<String, EnglishWord> getAll(string searchField, int page_num,int logged_id=-1)
         {
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
+            
+            SqlCommand sqlCmd = new SqlCommand(boworseQuerry, new SqlConnection(buildDefConnString()));
             try
             {
-                string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
-                string querry = File.ReadAllText(path);
-
-                SqlCommand sqlCmd = new SqlCommand(querry, conn);
-
                 SqlParameter p1 = new SqlParameter(@"@scale", 20);
                 p1.SqlDbType = SqlDbType.Int;
                 p1.Direction = ParameterDirection.Input;
@@ -240,7 +258,7 @@ namespace WebNewmagyarszotar
                 sqlCmd.Parameters.Add(p3);
                 sqlCmd.Parameters.Add(p4);
 
-                conn.Open();
+                sqlCmd.Connection.Open();
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -258,11 +276,11 @@ namespace WebNewmagyarszotar
                         words[reader.GetString(1)].addTranslation(tmp);
                     }
                 }
-                conn.Close();
+                sqlCmd.Connection.Close();
             }
             catch (Exception e)
             {
-                conn.Close();
+                sqlCmd.Connection.Close();
                 latestErrorMsg = e.Message;
                 Console.WriteLine(e.Message); 
             }
@@ -440,7 +458,7 @@ namespace WebNewmagyarszotar
 
             return new SqlConnection(tmp.ConnectionString);
         }
-        //https://docs.microsoft.com/hu-hu/azure/azure-sql/database/always-encrypted-certificate-store-configure
+        
 
         public User verifyUser(string username, string jelszo)//ha létezik és sikeres a bejelentkezés felhaszidvel tér vissza egyébként -1
         {

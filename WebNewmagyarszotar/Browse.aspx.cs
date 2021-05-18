@@ -11,7 +11,7 @@ namespace WebNewmagyarszotar
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
-        static public DataBase db = new DataBase();
+        static public DataBase db = DataBase.Instance;
         static public int pagenum = 0;
         static public List<String> showall = new List<string>();
         static int addwordid;
@@ -64,8 +64,6 @@ namespace WebNewmagyarszotar
                     {
                         lb.CssClass = "lapozo";
                     }
-
-
                     lb.ID = k + "_Page";
                     lb.Text = "" + k;
                     int tmp = k;
@@ -80,9 +78,9 @@ namespace WebNewmagyarszotar
             }
             else
             {
-                Thread.Sleep(600);
                 update();
             }
+            
         }
 
         protected void Page_Load(object sender, EventArgs e)

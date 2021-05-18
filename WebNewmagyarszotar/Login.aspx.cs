@@ -9,7 +9,7 @@ namespace WebNewmagyarszotar
 {
     public partial class WebForm6 : System.Web.UI.Page
     {
-        DataBase db = new DataBase();
+        DataBase db = DataBase.Instance;
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = String.Empty;

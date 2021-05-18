@@ -19,7 +19,7 @@ namespace WebNewmagyarszotar
             vizualize();
         }
 
-        DataBase db = new DataBase();
+        DataBase db = DataBase.Instance;
         List<EnglishWord> words = new List<EnglishWord>();
         Random rand = new Random();
         static bool loaded=false;

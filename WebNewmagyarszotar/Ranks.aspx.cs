@@ -16,7 +16,7 @@ namespace WebNewmagyarszotar
         private List<string> ranks = new List<string>();
         private Dictionary<string, int> all_ranks = new Dictionary<string, int>();
 
-        private DataBase db = new DataBase();
+        private DataBase db = DataBase.Instance;
 
         protected void Page_Load(object sender, EventArgs e)
         {
