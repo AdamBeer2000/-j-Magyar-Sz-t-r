@@ -81,57 +81,57 @@ namespace WebNewmagyarszotar
                 tmp_rank = ranks[2];
                 if (highlighted) tmp_num = (20 - top);
             }
-            else if (top < 30)
+            else if (top < 50)
             {
                 tmp_rank = ranks[3];
                 if (highlighted) tmp_num = (30 - top);
             }
-            else if (top < 40)
+            else if (top < 75)
             {
                 tmp_rank = ranks[4];
                 if (highlighted) tmp_num = (40 - top);
             }
-            else if (top < 50)
+            else if (top < 100)
             {
                 tmp_rank = ranks[5];
                 if (highlighted) tmp_num = (50 - top);
             }
-            else if (top < 60)
+            else if (top < 125)
             {
                 tmp_rank = ranks[6];
                 if (highlighted) tmp_num = (60 - top);
             }
-            else if (top < 70)
+            else if (top < 150)
             {
                 tmp_rank = ranks[7];
                 if (highlighted) tmp_num = (70 - top);
             }
-            else if (top < 80)
+            else if (top < 200)
             {
                 tmp_rank = ranks[8];
                 if (highlighted) tmp_num = (80 - top);
             }
-            else if (top < 90)
+            else if (top < 250)
             {
                 tmp_rank = ranks[9];
                 if (highlighted) tmp_num = (90 - top);
             }
-            else if (top < 100)
+            else if (top < 300)
             {
                 tmp_rank = ranks[10];
                 if (highlighted) tmp_num = (100 - top);
             }
-            else if (top < 150)
+            else if (top < 350)
             {
                 tmp_rank = ranks[11];
                 if (highlighted) tmp_num = (150 - top);
             }
-            else if (top < 200)
+            else if (top < 400)
             {
                 tmp_rank = ranks[12];
                 if (highlighted) tmp_num = (200 - top);
             }
-            else if (top >= 200)
+            else if (top >= 400)
             {
                 tmp_rank = ranks[13];
                 if (highlighted) need_to_next_rank_label.Text = "Its Over Obi-Wan, you have the high ground!";
@@ -139,7 +139,7 @@ namespace WebNewmagyarszotar
 
             if (highlighted) rank_label.Text = tmp_rank;
 
-            if (top < 200 && highlighted)
+            if (top < 400 && highlighted)
             {
                 need_to_next_rank_label.Text = Convert.ToString(tmp_num);
             }
@@ -161,47 +161,47 @@ namespace WebNewmagyarszotar
             {
                 return 2;
             }
-            else if (top < 30)
+            else if (top < 50)
             {
                 return 3;
             }
-            else if (top < 40)
+            else if (top < 75)
             {
                 return 4;
             }
-            else if (top < 50)
+            else if (top < 100)
             {
                 return 5;
             }
-            else if (top < 60)
+            else if (top < 125)
             {
                 return 6;
             }
-            else if (top < 70)
+            else if (top < 150)
             {
                 return 7;
             }
-            else if (top < 80)
+            else if (top < 200)
             {
                 return 8;
             }
-            else if (top < 90)
+            else if (top < 250)
             {
                 return 9;
             }
-            else if (top < 100)
+            else if (top < 300)
             {
                 return 10;
             }
-            else if (top < 150)
+            else if (top < 350)
             {
                 return 11;
             }
-            else if (top < 200)
+            else if (top < 400)
             {
                 return 12;
             }
-            else if (top >= 200)
+            else if (top >= 400)
             {
                 return 13;
             }
@@ -209,7 +209,7 @@ namespace WebNewmagyarszotar
         }
         private void loadRanks()
         {
-            ranks.Add("Előbb likeolják a szavadat Bástya");
+            ranks.Add("Thats not good enough");
             ranks.Add("Kezdő");
             ranks.Add("Középhaladó");
             ranks.Add("Haladó");
