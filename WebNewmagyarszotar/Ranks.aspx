@@ -28,13 +28,17 @@
         }
 
         .rangtabla {
-            border: 1px solid #898E01;
+            border: 1px solid #5B5E00;
             padding: 1%;
             text-align: center;
             width: 100%;
             height: 20%;
-            background-color: #080808;
+            background-color: #000000;
             opacity: 0.8;
+        }
+
+        .rangtabla tr td {
+            border: 1px solid #5B5E00;
         }
 
         #back_image {
