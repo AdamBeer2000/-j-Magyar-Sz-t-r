@@ -39,6 +39,7 @@ namespace WebNewmagyarszotar
             defconn.Encrypt = true;
             defconn.TrustServerCertificate = false;
             defconn.ConnectTimeout = 30;
+            //defconn.Add("Auto Translate",false);
             return defconn.ConnectionString;
         }
 
@@ -383,16 +384,16 @@ namespace WebNewmagyarszotar
                 SqlCommand sqlCmd = new SqlCommand(querry, conn);
 
                 SqlParameter p1 = new SqlParameter(@"@magyarszo", magyarszo);
-                p1.SqlDbType = SqlDbType.VarChar;
-                p1.Direction = ParameterDirection.Input;
+                p1.SqlDbType = SqlDbType.NVarChar;
+                //p1.Direction = ParameterDirection.Input;
 
                 SqlParameter p2 = new SqlParameter(@"@bekuldo_id", bekuldo_id);
                 p2.SqlDbType = SqlDbType.Int;
-                p2.Direction = ParameterDirection.Input;
+                //p2.Direction = ParameterDirection.Input;
 
                 SqlParameter p3 = new SqlParameter(@"@angolszo_id", angolszo_id);
                 p3.SqlDbType = SqlDbType.Int;
-                p3.Direction = ParameterDirection.Input;
+                //p3.Direction = ParameterDirection.Input;
 
                 sqlCmd.Parameters.Add(p1);
                 sqlCmd.Parameters.Add(p2);
@@ -405,6 +406,7 @@ namespace WebNewmagyarszotar
             }
             catch (Exception e)
             {
+                conn.Close();
                 latestErrorMsg = e.Message +""+querry+"\n"+magyarszo+","+ bekuldo_id+","+angolszo_id;
                 return false;
             }
@@ -443,8 +445,11 @@ namespace WebNewmagyarszotar
 
             try
             {
-                querry = "SELECT id,felhasznalonev,jelszo,jogosultasag FROM felhasznalok WHERE felhasznalonev='" + username + "'";
-                SqlCommand sqlCmd = new SqlCommand(querry, getSecureConn());
+                querry = "SELECT id,felhasznalonev,jelszo,jogosultasag FROM felhasznalok WHERE felhasznalonev=@username";
+                SqlCommand sqlCmd = new SqlCommand(querry, conn);
+                SqlParameter uname = new SqlParameter("@username", username);
+                uname.SqlDbType = SqlDbType.NVarChar;
+                sqlCmd.Parameters.Add(uname);
 
                 /*
                 SqlParameter passw = new SqlParameter(@"@passw", jelszo);
@@ -563,6 +568,8 @@ namespace WebNewmagyarszotar
 
             SqlCommand sqlCmd = new SqlCommand(querry);
             SqlParameter p1 = new SqlParameter(@"@p1", username);
+            p1.SqlDbType = SqlDbType.NVarChar;
+
             SqlParameter p2 = new SqlParameter(@"@p2", email);
             SqlParameter p3 = new SqlParameter(@"@p3", "+");;
             SqlParameter p4 = new SqlParameter(@"@p4", jelszo_hash);
