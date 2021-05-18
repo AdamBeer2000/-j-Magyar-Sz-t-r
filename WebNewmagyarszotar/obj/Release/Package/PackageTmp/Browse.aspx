@@ -172,6 +172,15 @@
             font-family: Calibri;
             max-height: 30%;
         }
+
+        .textStyle2
+        {
+            color: #dde401;
+            text-decoration: none;
+            font-family: Calibri;
+            max-height: 30%;
+        }
+
         .addbutton
         {
             height: 20px;

@@ -71,6 +71,7 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 result = ex.Message;
+                conn.Close();
             }
 
             return result;
@@ -106,7 +107,6 @@ namespace WebNewmagyarszotar
             {
                 conn.Close();
                 Console.WriteLine(e.Message);
-                
             }
             return rows;
         }
@@ -135,6 +135,7 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 latestErrorMsg = ex.Message;
+                conn.Close();
             }
 
             return send_this;
@@ -155,6 +156,7 @@ namespace WebNewmagyarszotar
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
             }
 
         }
@@ -292,6 +294,7 @@ namespace WebNewmagyarszotar
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
             }
         }
 
@@ -361,6 +364,7 @@ namespace WebNewmagyarszotar
 
                 sqlCmd.Connection.Open();
                 sqlCmd.ExecuteNonQuery();
+                conn.Close();
 
             }
             catch (Exception e)
@@ -370,10 +374,7 @@ namespace WebNewmagyarszotar
             }
             finally
             {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
+                conn.Close();
             }
 
         }
@@ -492,6 +493,7 @@ namespace WebNewmagyarszotar
                 }
 
                 sqlCmd.Connection.Close();
+
                 if(id!=-1)
                 {
                     PERMISSION p=PERMISSION.GUEST;
@@ -507,6 +509,7 @@ namespace WebNewmagyarszotar
                     {
                         //tudo csökentett hozzáférés
                     }
+
                     return new User(username, id, PERMISSION.LOGGED);
                 }
                 else
@@ -514,14 +517,20 @@ namespace WebNewmagyarszotar
                     conn.Close();
                     return null;
                 }
-                
             }
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
                 return null;
             }
-
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
 
         public bool checkhUsername(string username)//igaz ha létezik
