@@ -299,7 +299,7 @@ namespace WebNewmagyarszotar
             
             hunWord.Text = hun.getHunWord();
             hunWord.CommandArgument = hun.getHunWord() + ";" + hun.getUser();
-            hunWord.CssClass = "textStyle";
+            hunWord.CssClass = "textStyle2";
             hunWord.Command += new CommandEventHandler(OpenWindowInfo);
             cell3.Controls.Add(hunWord);
             cell3.BorderColor = "#898E01";
