@@ -28,12 +28,13 @@
         }
 
         .rangtabla {
-            border: none;
-            margin-left: 20%;
+            border: 1px solid #898E01;
             padding: 1%;
             text-align: center;
-            width: 60%;
+            width: 100%;
             height: 20%;
+            background-color: #080808;
+            opacity: 0.8;
         }
 
         #back_image {
@@ -50,7 +51,7 @@
 
         #rank_label {
             font-family: Calibri;
-            font-size: 100%;
+            font-size: 300%;
             color: #898E01;
             background-color: none;
             opacity: 0.9;
@@ -58,7 +59,7 @@
 
         #only_text_label1 {
             font-family: Calibri;
-            font-size: 100%;
+            font-size: 150%;
             color: #898E01;
             background-color: none;
             opacity: 0.9;
@@ -66,7 +67,7 @@
 
         #need_to_next_rank_label {
             font-family: Calibri;
-            font-size: 100%;
+            font-size: 150%;
             color: #898E01;
             background-color: none;
             opacity: 0.9;
@@ -104,10 +105,9 @@
             }
 
             .rangtabla {
-                margin-left: 25%;
                 padding: 1%;
                 text-align: center;
-                width: 60%;
+                width: 100%;
                 height: 20%;
             }
 
@@ -139,13 +139,14 @@
     <form id="form1" runat="server">
         <div>
             
-            <asp:Label ID="only_text_label0" runat="server" Text="Rang" BackColor="#080808"></asp:Label><br>
-            <asp:Label ID="rank_label" runat="server" BackColor="#080808"></asp:Label><br>
-            <asp:Label ID="only_text_label1" runat="server" Text="A legkedveltebb szavadról hiányzó like-ok következő rangig" BackColor="#080808"></asp:Label><br>
-            <asp:Label ID="need_to_next_rank_label" runat="server" BackColor="#080808"></asp:Label><br>
+            <asp:Label ID="only_text_label0" runat="server" Text=""></asp:Label><br>
+            <asp:Label ID="rank_label" runat="server"></asp:Label><br><br><br>
+            <asp:Label ID="only_text_label1" runat="server" Text="A legkedveltebb szavadról hiányzó like-ok következő rangig"></asp:Label><br>
+            <asp:Label ID="need_to_next_rank_label" runat="server"></asp:Label><br><br><br>
             
-            <asp:Label ID="only_text_label2" runat="server" Text="Többi felhasználó rangja" BackColor="#080808"></asp:Label><br>
-            
+            <asp:Label ID="only_text_label2" runat="server" Text="Többi felhasználó rangja  [ Csak akkor lehetsz rajta a ranglistán, ha már kaptál lájkot! ]"></asp:Label><br>
+            <br>
+
             <table id="rank_table" runat="server">
             <tr class="egysor">
                 <td>

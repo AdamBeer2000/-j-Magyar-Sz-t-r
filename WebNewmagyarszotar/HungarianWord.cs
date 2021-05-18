@@ -9,6 +9,7 @@ namespace WebNewmagyarszotar
     {
         private int hun_ID, like, dislike, report_count,userId;
         private string hun_word, user;
+        public string loggedreact { get; set; } = "Placeholder";
         
         public HungarianWord() { }
         

@@ -172,6 +172,15 @@
             font-family: Calibri;
             max-height: 30%;
         }
+
+        .textStyle2
+        {
+            color: #898E01;
+            text-decoration: none;
+            font-family: Calibri;
+            max-height: 30%;
+        }
+
         .addbutton
         {
             height: 20px;
@@ -526,6 +535,7 @@
             <td>
                 <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
                 <asp:ImageButton ID ="searchbutton" runat="server" src="https://i.imgur.com/vXukVi0.png"></asp:ImageButton>
+                <asp:Label ID="Label4" runat="server" ForeColor="White" Text="ANyááááááááááád"></asp:Label>
             </td>
         </tr>
     </table>

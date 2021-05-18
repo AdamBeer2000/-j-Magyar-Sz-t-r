@@ -71,6 +71,7 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 result = ex.Message;
+                conn.Close();
             }
 
             return result;
@@ -106,7 +107,6 @@ namespace WebNewmagyarszotar
             {
                 conn.Close();
                 Console.WriteLine(e.Message);
-                
             }
             return rows;
         }
@@ -135,6 +135,7 @@ namespace WebNewmagyarszotar
             catch (SqlException ex)
             {
                 latestErrorMsg = ex.Message;
+                conn.Close();
             }
 
             return send_this;
@@ -155,6 +156,7 @@ namespace WebNewmagyarszotar
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
             }
 
         }
@@ -209,12 +211,12 @@ namespace WebNewmagyarszotar
             return result;
         }
 
-        public Dictionary<String, EnglishWord> getAll(string searchField, int page_num)
+        public Dictionary<String, EnglishWord> getAll(string searchField, int page_num,int logged_id=-1)
         {
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
             try
             {
-                string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryF.sql";
+                string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
                 string querry = File.ReadAllText(path);
 
                 SqlCommand sqlCmd = new SqlCommand(querry, conn);
@@ -230,10 +232,13 @@ namespace WebNewmagyarszotar
                 SqlParameter p3 = new SqlParameter(@"@search", searchField);
                 p3.SqlDbType = SqlDbType.NVarChar;
                 p3.Direction = ParameterDirection.Input;
-           
+
+                SqlParameter p4 = new SqlParameter(@"@felhaszId", logged_id);
+
                 sqlCmd.Parameters.Add(p1);
                 sqlCmd.Parameters.Add(p2);
                 sqlCmd.Parameters.Add(p3);
+                sqlCmd.Parameters.Add(p4);
 
                 conn.Open();
                 SqlDataReader reader = sqlCmd.ExecuteReader();
@@ -241,14 +246,17 @@ namespace WebNewmagyarszotar
                 {
                     if (!words.ContainsKey(reader.GetString(1)))
                     {
-                        words.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(2),reader.GetString(10), reader.GetInt32(3)));
-                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(9), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8)));
+                        words.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(10), reader.GetInt32(3)));
+                        HungarianWord tmp = new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(9), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8));
+                        tmp.loggedreact = reader.GetString(11);
+                        words[reader.GetString(1)].addTranslation(tmp);
                     }
                     else
                     {
-                        words[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(9), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8)));
+                        HungarianWord tmp = new HungarianWord(reader.GetInt32(4), reader.GetString(5), reader.GetString(9), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8));
+                        tmp.loggedreact = reader.GetString(11);
+                        words[reader.GetString(1)].addTranslation(tmp);
                     }
-
                 }
                 conn.Close();
             }
@@ -286,6 +294,7 @@ namespace WebNewmagyarszotar
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
             }
         }
 
@@ -355,6 +364,7 @@ namespace WebNewmagyarszotar
 
                 sqlCmd.Connection.Open();
                 sqlCmd.ExecuteNonQuery();
+                conn.Close();
 
             }
             catch (Exception e)
@@ -364,10 +374,7 @@ namespace WebNewmagyarszotar
             }
             finally
             {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
+                conn.Close();
             }
 
         }
@@ -486,6 +493,7 @@ namespace WebNewmagyarszotar
                 }
 
                 sqlCmd.Connection.Close();
+
                 if(id!=-1)
                 {
                     PERMISSION p=PERMISSION.GUEST;
@@ -501,6 +509,7 @@ namespace WebNewmagyarszotar
                     {
                         //tudo csökentett hozzáférés
                     }
+
                     return new User(username, id, PERMISSION.LOGGED);
                 }
                 else
@@ -508,14 +517,20 @@ namespace WebNewmagyarszotar
                     conn.Close();
                     return null;
                 }
-                
             }
             catch (Exception e)
             {
                 latestErrorMsg = e.Message;
+                conn.Close();
                 return null;
             }
-
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
 
         public bool checkhUsername(string username)//igaz ha létezik

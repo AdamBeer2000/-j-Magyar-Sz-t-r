@@ -23,7 +23,15 @@ namespace WebNewmagyarszotar
             int i = 0;
             if (db.isReady())
             {
-                Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum);
+                int id = -1;
+                if (Request.Cookies["User"] != null)
+                {
+                    if (Request.Cookies["User"]["Logged"] != null)
+                    {
+                        id = Convert.ToInt32(Request.Cookies["User"]["Logged"]);
+                    }
+                }
+                Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum,id);
                 SzotarTable.Rows.Clear();
                 addHeaderRow(SzotarTable);
 
@@ -137,9 +145,9 @@ namespace WebNewmagyarszotar
             lenyit.Attributes.Add("runat", "server");
 
             if (showall.Contains(eng.getWord()))
-                lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//lenéz
+                lenyit.ImageUrl = "https://i.imgur.com/4Qv1V8L.png";//lenéz
             else
-                lenyit.ImageUrl = "https://i.imgur.com/4Qv1V8L.png";//felnéz
+                lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//felnéz
 
             lenyit.Attributes.Add("class", "lenyitbutton");
             //cell1.InnerText = eng.getWord();
@@ -203,7 +211,16 @@ namespace WebNewmagyarszotar
             like.Command += new CommandEventHandler(this.like_button_button_Click);
 
             like.Attributes.Add("runat", "server");
-            like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
+
+            if(hun.loggedreact=="L")
+            {
+                like.ImageUrl = "https://i.imgur.com/zQYyaiB.png";
+            }
+            else
+            {
+                like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
+            }
+
             like.Attributes.Add("class", "likebutton");
 
             dislike.ID = "Button_dislike_" + hun.getHunID();
@@ -218,7 +235,18 @@ namespace WebNewmagyarszotar
 
             dislike.Attributes.Add("runat", "server");
             dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
+            if (hun.loggedreact == "D")
+            {
+                dislike.ImageUrl = "https://i.imgur.com/ypitBGN.png";
+            }
+            else
+            {
+                dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
+            }
             dislike.Attributes.Add("class", "likebutton");
+
+            cell1.BgColor = "#101000";
+            cell2.BgColor = "#101000";
 
             cell4.InnerText = "" + hun.getLike();
             cell4.Controls.Add(like);
@@ -299,12 +327,13 @@ namespace WebNewmagyarszotar
             
             hunWord.Text = hun.getHunWord();
             hunWord.CommandArgument = hun.getHunWord() + ";" + hun.getUser();
-            hunWord.CssClass = "textStyle";
+            hunWord.CssClass = "textStyle2";
             hunWord.Command += new CommandEventHandler(OpenWindowInfo);
             cell3.Controls.Add(hunWord);
             cell3.BorderColor = "#898E01";
+            
 
-            if(!spawn)
+            if (!spawn)
             {
                 row.Cells.Add(cell1);
             }
@@ -340,7 +369,14 @@ namespace WebNewmagyarszotar
                 like.Command += new CommandEventHandler(this.like_button_button_Click);
 
                 like.Attributes.Add("runat", "server");
-                like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
+                if (hun.loggedreact == "L")
+                {
+                    like.ImageUrl = "https://i.imgur.com/zQYyaiB.png";
+                }
+                else
+                {
+                    like.ImageUrl = "https://i.imgur.com/WXVaypj.png";
+                }
                 like.Attributes.Add("class", "likebutton");
 
                 dislike.ID = "Button_dislike_" + hun.getHunID();
@@ -354,7 +390,14 @@ namespace WebNewmagyarszotar
                 dislike.Command += new CommandEventHandler(this.dislike_button_button_Click);
 
                 dislike.Attributes.Add("runat", "server");
-                dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
+                if (hun.loggedreact == "D")
+                {
+                    dislike.ImageUrl = "https://i.imgur.com/ypitBGN.png";
+                }
+                else
+                {
+                    dislike.ImageUrl = "https://i.imgur.com/aXezCAu.png";
+                }
                 dislike.Attributes.Add("class", "likebutton");
 
                 cell4.InnerText = "" + hun.getLike();
