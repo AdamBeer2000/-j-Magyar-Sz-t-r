@@ -437,11 +437,12 @@ namespace WebNewmagyarszotar
 
         protected void forward_button_Click(object sender, ImageClickEventArgs e)
         {
-            pagenum++;
-            if (!update())
+            if(db.rowCount(searchBox.Text, 20)> pagenum)
             {
-                pagenum--;
+                pagenum++;
+                update();
             }
+            
         }
 
         protected void back_button_Click(object sender, ImageClickEventArgs e)
