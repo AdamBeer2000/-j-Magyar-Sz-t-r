@@ -216,12 +216,14 @@ namespace WebNewmagyarszotar
 
                 }
 
-                conn.Close();
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
             }
             catch (SqlException ex)
             {
                 latestErrorMsg = ex.Message;
-                conn.Close();
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
             }
             finally
             {
@@ -229,6 +231,9 @@ namespace WebNewmagyarszotar
                 conn.Close();
             }
 
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            
             return result;
         }
 

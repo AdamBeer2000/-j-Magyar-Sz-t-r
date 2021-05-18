@@ -15,6 +15,8 @@ namespace WebNewmagyarszotar
             {
                 Response.Redirect("index.aspx");
             }
+            ids[0] = -1;
+            ids[1] = -1;
             getWords();
             vizualize();
         }

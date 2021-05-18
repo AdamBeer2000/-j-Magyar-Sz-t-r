@@ -113,7 +113,7 @@
             outline: none;
             border: 1px solid #898E01;
             min-width: 40%;
-            font-size: 300%;
+            font-size: 400%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -209,6 +209,7 @@
 
         #back_image {
             width: 20%;
+            outline: none;
         }
 
         .modalBackground
@@ -340,7 +341,7 @@
                 outline: none;
                 border: 1px solid #898E01;
                 min-width: 40%;
-                font-size: 100%;
+                font-size: 200%;
                 font-family: Calibri;
                 color: #898E01;
                 background-color: #080808;
