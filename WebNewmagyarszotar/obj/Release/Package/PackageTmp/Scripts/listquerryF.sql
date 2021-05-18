@@ -33,12 +33,12 @@ angolszo.szo as 'angolszo',
 definicio,
 angolszo.bekuldo as 'angolbekuldoId',
 ISNULL(szotar.magyarszo_id,-1) as 'magyarszo',
-ISNULL(magyarszo.szo,'Nincs mmég fordítás') as 'forditas',
+ISNULL(magyarszo.szo,'Nincs még fordítás') as 'forditas',
 ISNULL(magyarszo.bekuldo,3) as 'magyarbekuldoId',
 ISNULL(#TMPTetszes.tetszes,0)as 'tetszes' ,
 ISNULL(#TMPNemTetszes.nemtetszes,0) as 'nemtetszes',
-ISNULL(felhasznalok.felhasznalonev,'Senki') as 'magyarbekuldoNev',
-(select felhasznalok.felhasznalonev from felhasznalok WHERE felhasznalok.ID=angolszo.bekuldo) as 'angolbekuldoldoNev'
+ISNULL(felhasznalok.felhasznalonev,'Senki/Már nem létezik a felhasznalo') as 'magyarbekuldoNev',
+ISNULL((select felhasznalok.felhasznalonev from felhasznalok WHERE felhasznalok.ID=angolszo.bekuldo),'Senki/Már nem létezik a felhasznalo') as 'angolbekuldoldoNev'
 INTO #TEMP
 FROM angolszo 
 LEFT JOIN szotar on angolszo.ID=szotar.angolszo_id
@@ -51,6 +51,7 @@ LEFT JOIN felhasznalok on magyarszo.bekuldo = felhasznalok.ID
 --INNER JOIN felhasznalok on angolszo.bekuldo = felhasznalok.ID
 
 WHERE angolszo.szo like '%'+@search+'%' OR magyarszo.szo like '%'+@search+'%' OR definicio like '%'+@search+'%'
+
 
 SELECT TOP(@prev) with ties angolszoID 
 into #VOTMA

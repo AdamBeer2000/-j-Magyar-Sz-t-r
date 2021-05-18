@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.Threading;
 
 namespace WebNewmagyarszotar
 {
@@ -17,62 +18,63 @@ namespace WebNewmagyarszotar
         static int reportwordid;
         static char reportWordType;
 
-        protected bool update()
+        protected void update()
         {
             int i = 0;
-            Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum);
-
-            if (words.Count == 0)
+            if (db.isReady())
             {
-                return false;
+                Dictionary<String, EnglishWord> words = db.getAll(searchBox.Text, pagenum);
+                SzotarTable.Rows.Clear();
+                addHeaderRow(SzotarTable);
+
+                foreach (KeyValuePair<String, EnglishWord> word in words)
+                {
+                    if (word.Value.getTranslations().Count > 1)
+                    {
+                        addOneRowMoultipleTrans(word.Value, SzotarTable);
+                    }
+                    else
+                    {
+                        addOneRow(word.Value, word.Value.getTranslations()[0], SzotarTable, false);
+                    }
+                    i++;
+                }
+                //Label1.Text = Convert.ToString(pagenum) + " it: " + i;
+
+                pagenums.Controls.Clear();
+
+                int cunt = db.rowCount(searchBox.Text, 20);
+
+                for (int k = 0; k <= cunt; k++)
+                {
+                    LinkButton lb = new LinkButton();
+                    if (k == pagenum)
+                    {
+                        lb.CssClass = "lapozofocus";
+                    }
+                    else
+                    {
+                        lb.CssClass = "lapozo";
+                    }
+
+
+                    lb.ID = k + "_Page";
+                    lb.Text = "" + k;
+                    int tmp = k;
+                    lb.CommandArgument += tmp;
+                    lb.Command += new CommandEventHandler(skip_forwad_button_Click);
+                    pagenums.Controls.Add(lb);
+
+                    Label l = new Label();
+                    l.Text = " ";
+                    pagenums.Controls.Add(l);
+                }
             }
-
-            SzotarTable.Rows.Clear();
-            addHeaderRow(SzotarTable);
-
-            foreach (KeyValuePair<String, EnglishWord> word in words)
+            else
             {
-                if (word.Value.getTranslations().Count > 1)
-                {
-                    addOneRowMoultipleTrans(word.Value, SzotarTable);
-                }
-                else
-                {
-                    addOneRow(word.Value, word.Value.getTranslations()[0], SzotarTable, false);
-                }
-                i++;
+                Thread.Sleep(600);
+                update();
             }
-            //Label1.Text = Convert.ToString(pagenum) + " it: " + i;
-
-            pagenums.Controls.Clear();
-            
-            int cunt = db.rowCount(searchBox.Text, 20);
-
-            for (int k = 0;k<=cunt; k++)
-            {
-                LinkButton lb = new LinkButton();
-                if(k==pagenum)
-                {
-                    lb.CssClass = "lapozofocus";
-                }
-                else
-                {
-                    lb.CssClass = "lapozo";
-                }
-                
-
-                lb.ID = k + "_Page";
-                lb.Text = "" + k;
-                int tmp = k;
-                lb.CommandArgument += tmp;
-                lb.Command += new CommandEventHandler(skip_forwad_button_Click);
-                pagenums.Controls.Add(lb);
-
-                Label l = new Label();
-                l.Text = " ";
-                pagenums.Controls.Add(l);
-            }
-            return true;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -437,11 +439,12 @@ namespace WebNewmagyarszotar
 
         protected void forward_button_Click(object sender, ImageClickEventArgs e)
         {
-            pagenum++;
-            if (!update())
+            if(db.rowCount(searchBox.Text, 20)> pagenum)
             {
-                pagenum--;
+                pagenum++;
+                update();
             }
+            
         }
 
         protected void back_button_Click(object sender, ImageClickEventArgs e)

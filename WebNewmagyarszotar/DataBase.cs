@@ -211,31 +211,30 @@ namespace WebNewmagyarszotar
 
         public Dictionary<String, EnglishWord> getAll(string searchField, int page_num)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryF.sql";
-            string querry = File.ReadAllText(path);
-
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
-
-            SqlCommand sqlCmd = new SqlCommand(querry, conn);
-
-            SqlParameter p1 = new SqlParameter(@"@scale", 20);
-            p1.SqlDbType = SqlDbType.Int;
-            p1.Direction = ParameterDirection.Input;
-
-            SqlParameter p2 = new SqlParameter(@"@pagenum", page_num);
-            p2.SqlDbType = SqlDbType.Int;
-            p2.Direction = ParameterDirection.Input;
-
-            SqlParameter p3 = new SqlParameter(@"@search", searchField);
-            p3.SqlDbType = SqlDbType.NVarChar;
-            p3.Direction = ParameterDirection.Input;
-           
-            sqlCmd.Parameters.Add(p1);
-            sqlCmd.Parameters.Add(p2);
-            sqlCmd.Parameters.Add(p3);
-
             try
             {
+                string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryF.sql";
+                string querry = File.ReadAllText(path);
+
+                SqlCommand sqlCmd = new SqlCommand(querry, conn);
+
+                SqlParameter p1 = new SqlParameter(@"@scale", 20);
+                p1.SqlDbType = SqlDbType.Int;
+                p1.Direction = ParameterDirection.Input;
+
+                SqlParameter p2 = new SqlParameter(@"@pagenum", page_num);
+                p2.SqlDbType = SqlDbType.Int;
+                p2.Direction = ParameterDirection.Input;
+
+                SqlParameter p3 = new SqlParameter(@"@search", searchField);
+                p3.SqlDbType = SqlDbType.NVarChar;
+                p3.Direction = ParameterDirection.Input;
+           
+                sqlCmd.Parameters.Add(p1);
+                sqlCmd.Parameters.Add(p2);
+                sqlCmd.Parameters.Add(p3);
+
                 conn.Open();
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
@@ -773,12 +772,10 @@ namespace WebNewmagyarszotar
             }
         }
 
-        public void safteyNet()
+        public bool isReady()
         {
-            if(conn.State==ConnectionState.Open)
-            {
-                conn.Close();
-            }
+            return conn.State != ConnectionState.Open;
         }
+
     }
 }
