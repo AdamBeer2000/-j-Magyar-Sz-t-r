@@ -52,7 +52,6 @@ LEFT JOIN felhasznalok on magyarszo.bekuldo = felhasznalok.ID
 
 WHERE angolszo.szo like '%'+@search+'%' OR magyarszo.szo like '%'+@search+'%' OR definicio like '%'+@search+'%'
 
-
 SELECT TOP(@prev) with ties angolszoID 
 into #VOTMA
 FROM #TEMP
