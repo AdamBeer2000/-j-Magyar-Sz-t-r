@@ -23,7 +23,6 @@ namespace WebNewmagyarszotar
             int i = 0;
             if (db.isReady())
             {
-                Label4.Text = db.getLatestErrorMsg();
                 int id = -1;
                 if (Request.Cookies["User"] != null)
                 {
