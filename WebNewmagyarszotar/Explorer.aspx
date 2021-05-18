@@ -199,7 +199,7 @@
             
             <td id="friss">            
                 <a href="Explorer.aspx">
-                    <img src="https://i.imgur.com/r665QFH.png" height="40px" id="reload" alt="reload" />
+                    <img src="https://i.imgur.com/r665QFH.png" height="40px" id="reload" alt="reload"/>
                 </a>
             </td>
         </tr>
