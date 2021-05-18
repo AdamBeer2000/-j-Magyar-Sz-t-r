@@ -145,6 +145,61 @@
             outline: none;
         }
 
+        .modalPopup {
+            background-color: #080808;
+            border-width: 3px;
+            border-style: solid;
+            border-color: black;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: 400px;
+            height: 210px;
+        }
+
+        #World {
+            color: #898E01;
+            padding: 3%;
+            font-weight: bold;
+            font-family: Calibri;
+            font-size: 120%;
+        }
+
+        #Comfirm {
+            cursor: pointer;
+            border: none;
+            margin-top: 3%;
+            margin-bottom: 1%;
+            outline: none;
+            background-color: #898E01;
+            color: #080808;
+            font-size: 100%;
+            font-weight: bolder;
+            font-family: Calibri;
+            padding: 2%;
+        }
+
+        #Comfirm:hover{
+            box-shadow: 0 0 10px #898E01;
+        }
+
+        #Cnacle {
+            cursor: pointer;
+            border: none;
+            margin-top: 3%;
+            margin-bottom: 1%;
+            outline: none;
+            background-color: #898E01;
+            color: #080808;
+            font-size: 100%;
+            font-weight: bolder;
+            font-family: Calibri;
+            padding: 2%;
+        }
+
+        #Cnacle:hover{
+            box-shadow: 0 0 10px #898E01;
+        }
+
         @media only screen and (min-width: 1024px) {
             body {
                 background-image: url('https://i.imgur.com/FKNQ2rM.png');

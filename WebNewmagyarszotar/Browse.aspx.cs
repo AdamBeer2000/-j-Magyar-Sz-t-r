@@ -145,9 +145,9 @@ namespace WebNewmagyarszotar
             lenyit.Attributes.Add("runat", "server");
 
             if (showall.Contains(eng.getWord()))
-                lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//lenéz
+                lenyit.ImageUrl = "https://i.imgur.com/4Qv1V8L.png";//lenéz
             else
-                lenyit.ImageUrl = "https://i.imgur.com/4Qv1V8L.png";//felnéz
+                lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//felnéz
 
             lenyit.Attributes.Add("class", "lenyitbutton");
             //cell1.InnerText = eng.getWord();
@@ -245,6 +245,9 @@ namespace WebNewmagyarszotar
             }
             dislike.Attributes.Add("class", "likebutton");
 
+            cell1.BgColor = "#101000";
+            cell2.BgColor = "#101000";
+
             cell4.InnerText = "" + hun.getLike();
             cell4.Controls.Add(like);
 
@@ -328,8 +331,9 @@ namespace WebNewmagyarszotar
             hunWord.Command += new CommandEventHandler(OpenWindowInfo);
             cell3.Controls.Add(hunWord);
             cell3.BorderColor = "#898E01";
+            
 
-            if(!spawn)
+            if (!spawn)
             {
                 row.Cells.Add(cell1);
             }
