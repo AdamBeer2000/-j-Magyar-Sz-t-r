@@ -53,10 +53,13 @@ namespace WebNewmagyarszotar
             all_ranks = db.getAllMostLiked();
             this.tableMaker(rank_table);
 
+            for (int k = ranks.Count()-1; k >=0 ; k--)
             foreach (KeyValuePair<String, int> one_rank in all_ranks)
             {
+                if(rankId(one_rank.Value, false)==k)
                 addOneRow(one_rank.Key, rankSelector(one_rank.Value, false));
             }
+
         }
 
         private string rankSelector(int top, bool highlighted)
@@ -144,6 +147,66 @@ namespace WebNewmagyarszotar
             return tmp_rank;
         }
 
+        private int rankId(int top, bool highlighted)
+        {
+            if (top == 0)
+            {
+                return 0;
+            }
+            else if (top < 10)
+            {
+                return 1;
+            }
+            else if (top < 20)
+            {
+                return 2;
+            }
+            else if (top < 30)
+            {
+                return 3;
+            }
+            else if (top < 40)
+            {
+                return 4;
+            }
+            else if (top < 50)
+            {
+                return 5;
+            }
+            else if (top < 60)
+            {
+                return 6;
+            }
+            else if (top < 70)
+            {
+                return 7;
+            }
+            else if (top < 80)
+            {
+                return 8;
+            }
+            else if (top < 90)
+            {
+                return 9;
+            }
+            else if (top < 100)
+            {
+                return 10;
+            }
+            else if (top < 150)
+            {
+                return 11;
+            }
+            else if (top < 200)
+            {
+                return 12;
+            }
+            else if (top >= 200)
+            {
+                return 13;
+            }
+            return 13;
+        }
         private void loadRanks()
         {
             ranks.Add("Előbb likeolják a szavadat Bástya");

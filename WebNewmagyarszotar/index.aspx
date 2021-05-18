@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WebNewmagyarszotar.WebForm1" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 
@@ -16,6 +17,25 @@
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+        }
+
+        .modalBackground
+        {
+            background-color: #000000;
+            filter: alpha(opacity=90);
+            opacity: 0.7;
+        }
+
+        .modalPopup
+        {
+            background-color: #080808;
+            border-width: 3px;
+            border-style: solid;
+            border-color: black;
+            padding-top: 10px;
+            padding-left: 10px;
+            width: 400px;
+            height: 210px;
         }
 
         #user_label {
@@ -215,6 +235,15 @@
 </head>
 <body runat="server">
     <form id="form1" runat="server">
+    <asp:ScriptManager ID="Sm1" runat="server"></asp:ScriptManager>
+    <asp:Panel ID="DeleteUserPanel" runat="server" CssClass="modalPopup">
+        <asp:Label ID="World" runat="server" Text="Biztos ki akarod törölni magad?"></asp:Label><br>
+        <asp:Button ID="Comfirm" runat="server" Text="Biztos" OnClick="Button3_Click" />
+        <asp:Button ID="Cnacle" runat="server" Text="Mégse" OnClick="Cnacle_Click"/>
+        </asp:Panel>
+    <cc1:ModalPopupExtender ID="DeleteUser" runat="server" PopupControlID="DeleteUserPanel" TargetControlID="Button2" BackgroundCssClass="modalBackground"> </cc1:ModalPopupExtender>
+
+    <asp:Button ID="Button2" runat="server" Text="Button" style="display: none;"/>
     <table id="box">
         <tr>
             <td id="menu_title">
@@ -295,7 +324,7 @@
             <td>
                 <asp:ImageButton ID="deletebutton1" ImageUrl="https://i.imgur.com/oroD9l8.png"
                     runat="server" onmouseover="this.src='https://i.imgur.com/1yPeb2D.png'"
-                    onmouseout="this.src='https://i.imgur.com/oroD9l8.png'" OnClick="Logout_Click" />
+                    onmouseout="this.src='https://i.imgur.com/oroD9l8.png'" OnClick="deletebutton1_Click" />
             </td>
         </tr>
 

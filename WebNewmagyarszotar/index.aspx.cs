@@ -26,6 +26,7 @@ namespace WebNewmagyarszotar
                         user_label.Text = logged.Username;
                         register.Visible = false;
                         login.Visible = false;
+                        deletebutton1.Visible = true;
                     }
                 }
                 else
@@ -39,6 +40,7 @@ namespace WebNewmagyarszotar
                 engword.Visible = false;
                 user_label.Visible = false;
                 Button1.Visible = false;
+                deletebutton1.Visible = false;
             }
         }
 
@@ -46,6 +48,25 @@ namespace WebNewmagyarszotar
         {
             Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect(Request.RawUrl);
+        }
+
+        protected void deletebutton1_Click(object sender, ImageClickEventArgs e)
+        {
+            DeleteUser.Show();
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(Request.Cookies["User"]["Logged"]);
+            Response.Cookies["User"].Expires = DateTime.Now.AddDays(-1);
+            db.deleteUser(id);
+            DeleteUser.Hide();
+            Response.Redirect("index.aspx");
+        }
+
+        protected void Cnacle_Click(object sender, EventArgs e)
+        {
+            DeleteUser.Hide();
         }
     }
 }

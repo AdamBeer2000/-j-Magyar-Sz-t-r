@@ -483,7 +483,7 @@ namespace WebNewmagyarszotar
                 }
                 else
                 {
-                    latestErrorMsg = "Nincs ilyen embör";
+                    latestErrorMsg = "Nincs ilyen nevü felhasználó";
                 }
 
                 sqlCmd.Connection.Close();
@@ -750,6 +750,27 @@ namespace WebNewmagyarszotar
             }
 
             return result;
+        }
+
+        public void deleteUser(int id)
+        {
+            string querry = "delete from felhasznalok where id = @user_id";
+
+            SqlCommand cmd = new SqlCommand(querry, conn);
+            SqlParameter p = new SqlParameter(@"@user_id", id);
+            cmd.Parameters.Add(p);
+
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                latestErrorMsg = ex.Message;
+                conn.Close();
+            }
         }
 
         public void safteyNet()

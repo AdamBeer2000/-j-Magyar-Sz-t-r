@@ -29,7 +29,7 @@ namespace WebNewmagyarszotar
             }
             else
             {
-                Label1.Text = "Nem Fasza "+db.getLatestErrorMsg();
+                Label1.Text = db.getLatestErrorMsg();
             }
         }
     }
