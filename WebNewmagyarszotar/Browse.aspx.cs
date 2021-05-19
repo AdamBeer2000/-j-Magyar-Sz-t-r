@@ -17,7 +17,7 @@ namespace WebNewmagyarszotar
         static Dictionary<int, DataBase> dbMap = new Dictionary<int, DataBase>();
 
         //static public int pagenum = 0;
-        static public List<String> showall = new List<string>();
+        static Dictionary<int, List<String>> showall = new Dictionary<int, List<String>>();
         int session_id;
 
         protected void update(int pagenum = -1)
@@ -63,7 +63,6 @@ namespace WebNewmagyarszotar
                 pagecount = dbMap[session_id].rowCount(searchBox.Text, 20);
                 retry = false;
             
-
                 SzotarTable.Rows.Clear();
                 addHeaderRow(SzotarTable);
 
@@ -82,7 +81,7 @@ namespace WebNewmagyarszotar
 
                 pagenums.Controls.Clear();
 
-                for (int k = 0; k <= pagecount+1; k++)
+                for (int k = 0; k <= pagecount; k++)
                 {
                     LinkButton lb = new LinkButton();
                     if (k == pagenum)
@@ -130,10 +129,29 @@ namespace WebNewmagyarszotar
                     session_id = Convert.ToInt32(Request.Cookies["User"]["Logged"]);
                 }
             }
+            else
+            {
+                if(Request.Cookies["TempUser"]==null)
+                {
+                    Random r = new Random();
+                    Response.Cookies["TempUser"]["s"] = Convert.ToString(r.Next(69420, 138840));
+                    Response.Cookies["TempUser"].Expires= DateTime.Now.AddHours(8);
+                }
+                else
+                {
+                    session_id = Convert.ToInt32(Request.Cookies["TempUser"]["s"]);
+                }
+            }
+
             if(!dbMap.ContainsKey(session_id))
             {
                 dbMap.Add(session_id, new DataBase(true));
             }
+            if(!showall.ContainsKey(session_id))
+            {
+                showall.Add(session_id,new List<String>());
+            }
+            //Label4.Text = ""+session_id;
             update();
 
             //Label1.Text = db.getLatestErrorMsg();
@@ -193,10 +211,13 @@ namespace WebNewmagyarszotar
             lenyit.Click += new ImageClickEventHandler(this.show_all);
             lenyit.Attributes.Add("runat", "server");
 
-            if (showall.Contains(eng.getWord()))
+            
+            if (showall[session_id].Contains(eng.getWord()))
                 lenyit.ImageUrl = "https://i.imgur.com/4Qv1V8L.png";//lenéz
             else
                 lenyit.ImageUrl = "https://i.imgur.com/kkF7JDM.png";//felnéz
+            
+            
 
             lenyit.Attributes.Add("class", "lenyitbutton");
             //cell1.InnerText = eng.getWord();
@@ -306,8 +327,7 @@ namespace WebNewmagyarszotar
             row.Cells.Add(cell4);
             row.Cells.Add(cell5);
 
-
-            if (showall.Contains(eng.getWord()))
+            if (showall[session_id].Contains(eng.getWord()))
             {
                 //lenéz
                 cell1.Attributes.Add("rowspan", Convert.ToString((eng.getTranslations().Count())));
@@ -513,6 +533,7 @@ namespace WebNewmagyarszotar
                         AddWordResponseLable.CssClass = "LableGood";
                         //Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                     }
+                    Response.Cookies["TMPEgy"].Expires= DateTime.Now.AddHours(-1);
                 }
             }
             mp1.Show();
@@ -544,6 +565,7 @@ namespace WebNewmagyarszotar
                     ReportWordResponseLable.Text = "A bejelentést megkaptuk.Köszönjük a viszajelzést!";
                     ReportWordResponseLable.CssClass = "LableGood";
                     Button3.Text = "Vissza";
+                    Response.Cookies["TMPKetto"].Expires = DateTime.Now.AddHours(-1);
                 }
             }
             mp2.Show();
@@ -622,13 +644,13 @@ namespace WebNewmagyarszotar
             string id = (((ImageButton)sender).ID);
             id = id.Replace("Button_lenyit_", "");
 
-            if (!showall.Contains(id))
+            if (!showall[session_id].Contains(id))
             {
-                showall.Add(id);
+                showall[session_id].Add(id);
             }
             else
             {
-                showall.Remove(id);
+                showall[session_id].Remove(id);
             }
             update();
         }

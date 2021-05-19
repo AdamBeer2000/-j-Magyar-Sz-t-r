@@ -11,6 +11,7 @@ namespace WebNewmagyarszotar
     {
         int session_id = 0;
         static Dictionary<int, DataBase> dbMap = new Dictionary<int, DataBase>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             session_id = 69420;
