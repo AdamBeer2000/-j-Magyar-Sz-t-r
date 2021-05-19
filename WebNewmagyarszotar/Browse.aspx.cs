@@ -17,7 +17,6 @@ namespace WebNewmagyarszotar
 
         //static public int pagenum = 0;
         static public List<String> showall = new List<string>();
-        static char reportWordType;
 
         protected void update()
         {
