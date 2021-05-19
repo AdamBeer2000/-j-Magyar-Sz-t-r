@@ -42,7 +42,7 @@ namespace WebNewmagyarszotar
             }
             bool retry=true;
             
-            words = db.getAll(searchBox.Text, pagenum, id);
+            words = db.getAll(searchBox.Text ,pagenum, id);
             pagecount = db.rowCount(searchBox.Text, 20);
             retry = false;
             
@@ -106,6 +106,7 @@ namespace WebNewmagyarszotar
                 Response.Cookies["Thing"].Expires = DateTime.Now.AddHours(1);
             }
             update();
+
             //Label1.Text = db.getLatestErrorMsg();
         }
 
@@ -616,7 +617,7 @@ namespace WebNewmagyarszotar
 
         protected void searchBox_TextChanged1(object sender, EventArgs e)
         {
-
+            update();
         }
     }
 }
