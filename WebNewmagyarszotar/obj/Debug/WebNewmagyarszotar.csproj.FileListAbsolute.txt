@@ -491,3 +491,4 @@ D:\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.cspro
 D:\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csproj.CopyComplete
 D:\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.dll
 D:\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.pdb
+D:\GitHub\-j-Magyar-Sz-t-r\WebNewmagyarszotar\obj\Debug\WebNewmagyarszotar.csprojAssemblyReference.cache

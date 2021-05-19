@@ -69,7 +69,7 @@ namespace WebNewmagyarszotar
             if (top == 0)
             {
                 tmp_rank = ranks[0];
-                if (highlighted) tmp_num = 0;
+                if (highlighted) tmp_num = 1;
             }
             else if (top < 10)
             {
@@ -84,52 +84,52 @@ namespace WebNewmagyarszotar
             else if (top < 50)
             {
                 tmp_rank = ranks[3];
-                if (highlighted) tmp_num = (30 - top);
+                if (highlighted) tmp_num = (50 - top);
             }
             else if (top < 75)
             {
                 tmp_rank = ranks[4];
-                if (highlighted) tmp_num = (40 - top);
+                if (highlighted) tmp_num = (75 - top);
             }
             else if (top < 100)
             {
                 tmp_rank = ranks[5];
-                if (highlighted) tmp_num = (50 - top);
+                if (highlighted) tmp_num = (100 - top);
             }
             else if (top < 125)
             {
                 tmp_rank = ranks[6];
-                if (highlighted) tmp_num = (60 - top);
+                if (highlighted) tmp_num = (125 - top);
             }
             else if (top < 150)
             {
                 tmp_rank = ranks[7];
-                if (highlighted) tmp_num = (70 - top);
+                if (highlighted) tmp_num = (150 - top);
             }
             else if (top < 200)
             {
                 tmp_rank = ranks[8];
-                if (highlighted) tmp_num = (80 - top);
+                if (highlighted) tmp_num = (200 - top);
             }
             else if (top < 250)
             {
                 tmp_rank = ranks[9];
-                if (highlighted) tmp_num = (90 - top);
+                if (highlighted) tmp_num = (250 - top);
             }
             else if (top < 300)
             {
                 tmp_rank = ranks[10];
-                if (highlighted) tmp_num = (100 - top);
+                if (highlighted) tmp_num = (300 - top);
             }
             else if (top < 350)
             {
                 tmp_rank = ranks[11];
-                if (highlighted) tmp_num = (150 - top);
+                if (highlighted) tmp_num = (350 - top);
             }
             else if (top < 400)
             {
                 tmp_rank = ranks[12];
-                if (highlighted) tmp_num = (200 - top);
+                if (highlighted) tmp_num = (400 - top);
             }
             else if (top >= 400)
             {
