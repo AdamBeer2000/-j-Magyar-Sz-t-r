@@ -106,7 +106,7 @@ namespace WebNewmagyarszotar
             {
                 Response.Cookies.Add(new HttpCookie("Thing"));
                 Response.Cookies["Thing"]["Page"] = "0";
-                Response.Cookies["Thing"].Expires = DateTime.Now.AddMinutes(5);
+                Response.Cookies["Thing"].Expires = DateTime.Now.AddHours(1);
             }
             update();
             //Label1.Text = db.getLatestErrorMsg();
@@ -516,7 +516,6 @@ namespace WebNewmagyarszotar
 
         protected void back_button_Click(object sender, ImageClickEventArgs e)
         {
-            
             int pagenum = Convert.ToInt32(Request.Cookies["Thing"]["Page"]);
             if (0< pagenum)
             {
