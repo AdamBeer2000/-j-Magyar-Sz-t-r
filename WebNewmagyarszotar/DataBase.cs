@@ -26,7 +26,9 @@ namespace WebNewmagyarszotar
     {
         private static string conn_string = buildDefConnString();
         private static SqlConnection conn = new SqlConnection(conn_string);
-        string boworseQuerry;
+        string boworseQuerry= File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql");
+        string rowCountQuerry = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Scripts/countPageNums.sql");
+        string explorerQuerry= File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/Scripts/explorer_sql_a.sql");
 
         private static DataBase instance = null;
         private static readonly object padlock = new object();
@@ -65,17 +67,11 @@ namespace WebNewmagyarszotar
         }
         private DataBase()
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
-            string querry = File.ReadAllText(path);
-            boworseQuerry =querry;
             Console.WriteLine("DB Create");
         }
 
         public DataBase(bool thing)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
-            string querry = File.ReadAllText(path);
-            boworseQuerry = querry;
             Console.WriteLine("DB Create");
         }
 
@@ -109,34 +105,26 @@ namespace WebNewmagyarszotar
         
         public int rowCount(string serarch,int scale)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/countPageNums.sql";
-            string querry = File.ReadAllText(path);
-            SqlCommand cmd = new SqlCommand(querry, conn);
-            SqlParameter p1 = new SqlParameter(@"@scale", 20);
-            p1.SqlDbType = SqlDbType.Int;
-            p1.Direction = ParameterDirection.Input;
-
-            SqlParameter p3 = new SqlParameter(@"@search", serarch);
-            p3.SqlDbType = SqlDbType.NVarChar;
-            p3.Direction = ParameterDirection.Input;
-
-            cmd.Parameters.Add(p1);
-            cmd.Parameters.Add(p3);
-
-            int rows=0;
-            try
+            int rows = 0;
+            using (SqlConnection connection = new SqlConnection(buildDefConnString()))
             {
+                SqlCommand cmd = new SqlCommand(rowCountQuerry, connection);
+                SqlParameter p1 = new SqlParameter(@"@scale", 20);
+                p1.SqlDbType = SqlDbType.Int;
+                p1.Direction = ParameterDirection.Input;
+
+                SqlParameter p3 = new SqlParameter(@"@search", serarch);
+                p3.SqlDbType = SqlDbType.NVarChar;
+                p3.Direction = ParameterDirection.Input;
+
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p3);
+                
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
                 rows = reader.GetInt32(0);
                 Console.WriteLine(rows);
-                cmd.Connection.Close();
-            }
-            catch(Exception e)
-            {
-                conn.Close();
-                Console.WriteLine(e.Message);
             }
             return rows;
         }
@@ -193,66 +181,69 @@ namespace WebNewmagyarszotar
 
         public Dictionary<String, EnglishWord> getExploreWords(int param)
         {
-            
-            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/explorer_sql_a.sql";
-            string query = File.ReadAllText(path);
-
-
-            SqlCommand command = new SqlCommand(query, conn);
             Dictionary<String, EnglishWord> result = new Dictionary<String, EnglishWord>();
-
-            SqlParameter p1 = new SqlParameter(@"@userid", param);
-            p1.SqlDbType = SqlDbType.Int;
-            p1.Direction = ParameterDirection.Input;
-
-            command.Parameters.Add(p1);
-
-            try
+            using (SqlConnection connection = new SqlConnection(buildDefConnString()))
             {
-                conn.Open();
+                
+
+                SqlCommand command = new SqlCommand(explorerQuerry, connection);
+                
+
+                SqlParameter p1 = new SqlParameter(@"@userid", param);
+                p1.SqlDbType = SqlDbType.Int;
+                p1.Direction = ParameterDirection.Input;
+
+                command.Parameters.Add(p1);
+
+
+                connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
                     if (!result.ContainsKey(reader.GetString(1)))
                     {
-                        result.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1),reader.GetString(7), reader.GetInt32(8)));
+                        result.Add(reader.GetString(1), new EnglishWord(reader.GetInt32(0), reader.GetString(1), reader.GetString(7), reader.GetInt32(8)));
                         result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3), reader.GetInt32(6), reader.GetInt32(4), reader.GetInt32(5)));
                     }
                     else
                     {
-                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3),reader.GetInt32(6), reader.GetInt32(4), reader.GetInt32(5)));
+                        result[reader.GetString(1)].addTranslation(new HungarianWord(reader.GetInt32(2), reader.GetString(3), reader.GetInt32(6), reader.GetInt32(4), reader.GetInt32(5)));
                     }
 
+                }
+                /*
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                */
+                
+                /*
+                catch (SqlException ex)
+                {
+                    latestErrorMsg = ex.Message;
+                    if (conn.State == ConnectionState.Open)
+                        conn.Close();
+                }
+                finally
+                {
+                    if (conn.State == ConnectionState.Open)
+                        conn.Close();
                 }
 
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
+                */
             }
-            catch (SqlException ex)
-            {
-                latestErrorMsg = ex.Message;
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
-            }
-            finally
-            {
-                if(conn.State==ConnectionState.Open)
-                conn.Close();
-            }
-
-            if (conn.State == ConnectionState.Open)
-                conn.Close();
-            
             return result;
         }
 
         public Dictionary<String, EnglishWord> getAll(string searchField, int page_num,int logged_id=-1)
         {
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
-            try
+            
+            using (SqlConnection connection = new SqlConnection(buildDefConnString()))
             {
-                SqlCommand sqlCmd = new SqlCommand(boworseQuerry, conn);
+                SqlCommand sqlCmd = new SqlCommand(boworseQuerry, connection);
                 SqlParameter p1 = new SqlParameter(@"@scale", 20);
                 p1.SqlDbType = SqlDbType.Int;
                 p1.Direction = ParameterDirection.Input;
@@ -272,7 +263,7 @@ namespace WebNewmagyarszotar
                 sqlCmd.Parameters.Add(p3);
                 sqlCmd.Parameters.Add(p4);
 
-                conn.Open();
+                connection.Open();
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -290,15 +281,7 @@ namespace WebNewmagyarszotar
                         words[reader.GetString(1)].addTranslation(tmp);
                     }
                 }
-                conn.Close();
             }
-            catch (Exception e)
-            {
-                conn.Close();
-                latestErrorMsg = e.Message;
-                Console.WriteLine(e.Message); 
-            }
-
             return words;
         }
 

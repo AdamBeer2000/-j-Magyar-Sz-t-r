@@ -134,7 +134,6 @@ namespace WebNewmagyarszotar
             {
                 dbMap.Add(session_id, new DataBase(true));
             }
-
             update();
 
             //Label1.Text = db.getLatestErrorMsg();

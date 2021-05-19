@@ -9,23 +9,44 @@ namespace WebNewmagyarszotar
 {
     public partial class WebForm5 : System.Web.UI.Page
     {
+        int session_id = 0;
+        static Dictionary<int, DataBase> dbMap = new Dictionary<int, DataBase>();
         protected void Page_Load(object sender, EventArgs e)
         {
+            session_id = 69420;
+
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    session_id = Convert.ToInt32(Request.Cookies["User"]["Logged"]);
+                }
+            }
+            if (!dbMap.ContainsKey(session_id))
+            {
+                dbMap.Add(session_id, new DataBase(true));
+            }
             if (Request.Cookies["User"] == null)
             {
                 Response.Redirect("index.aspx");
             }
-            ids[0] = -1;
-            ids[1] = -1;
+
+            int[] ids = { -1, -1 };
+            if (!idspp.ContainsKey(session_id))
+                idspp.Add(session_id, ids);
+            
             getWords();
             vizualize();
         }
 
-        DataBase db = DataBase.Instance;
+        //DataBase db = DataBase.Instance;
+        
         List<EnglishWord> words = new List<EnglishWord>();
+        static Dictionary<int, int[]> idspp = new Dictionary<int, int[]>();
+
         Random rand = new Random();
-        bool loaded=false;
-        int[] ids = { -1,-1};
+        static bool loaded=false;
+       
 
         private int getRand() { return rand.Next(0, words.Count); }
 
@@ -41,7 +62,7 @@ namespace WebNewmagyarszotar
         public void getWords()
         {
             Dictionary<String, EnglishWord> temp = new Dictionary<string, EnglishWord>();
-            temp = db.getExploreWords(Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+            temp = dbMap[session_id].getExploreWords(Convert.ToInt32(Request.Cookies["User"]["Logged"]));
             words = temp.Values.ToList<EnglishWord>();
         }
 
@@ -49,6 +70,7 @@ namespace WebNewmagyarszotar
         {
             if (words.Count > 0)
             {
+                var ids = idspp[session_id];
                 if (ids[0] == -1 && ids[1] == -1)
                 {
                     EnglishWord env = this.exploreVisualization();
@@ -67,6 +89,7 @@ namespace WebNewmagyarszotar
                     ids[0] = hun_list[f].getHunID();
                     ids[1] = hun_list[s].getHunID();
                     loaded = true;
+                    idspp[session_id] = ids;
                 }
             }
             else
@@ -79,14 +102,17 @@ namespace WebNewmagyarszotar
 
         protected void upClick(object sender, ImageClickEventArgs e)
         {
+            var ids = idspp[session_id];
+            Console.WriteLine();
             if (words.Count > 0)
             {
                 //update elso forditas like++
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    db.addLike(ids[0], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    dbMap[session_id].addLike(ids[0], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
                     ids[0] = -1;
                     ids[1] = -1;
+                    idspp[session_id] = ids;
                     getWords();
                 }
                 this.vizualize();
@@ -95,14 +121,16 @@ namespace WebNewmagyarszotar
 
         protected void downClick(object sender, ImageClickEventArgs e)
         {
+            var ids = idspp[session_id];
             if (words.Count > 0)
             {
                 //update masodik forditas like++
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    db.addLike(ids[1], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    dbMap[session_id].addLike(ids[1], Convert.ToInt32(Request.Cookies["User"]["Logged"]));
                     ids[0] = -1;
                     ids[1] = -1;
+                    idspp[session_id] = ids;
                     getWords();
                 }
                 this.vizualize();
