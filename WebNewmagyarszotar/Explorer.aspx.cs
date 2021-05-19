@@ -24,9 +24,8 @@ namespace WebNewmagyarszotar
         DataBase db = DataBase.Instance;
         List<EnglishWord> words = new List<EnglishWord>();
         Random rand = new Random();
-        static bool loaded=false;
-        static int[] ids = { -1,-1};
-        //static int[] ids=new int[2];
+        bool loaded=false;
+        int[] ids = { -1,-1};
 
         private int getRand() { return rand.Next(0, words.Count); }
 
