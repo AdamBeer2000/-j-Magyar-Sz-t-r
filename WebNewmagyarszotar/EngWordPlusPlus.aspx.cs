@@ -63,25 +63,25 @@ namespace WebNewmagyarszotar
                             
                             if (state)
                             {
-                                error_hun.Text = "Vólt már ilyen magyar szó";
-                                added_label.Text = "Hozzáadás sikertelen";
+                                error_hun.Text = "Volt már ilyen magyar szó.";
+                                added_label.Text = "Hozzáadás sikertelen.";
                             }
                             else
                             {
                                 error_hun.Text = "";
-                                added_label.Text = "Sikeresen hozzáadva";
+                                added_label.Text = "Sikeresen hozzáadva.";
                             }
                         }
                     }
                     else if (!valid)
                     {
                         error_label.Text = "Ez a szó már létezik a szótárban!";
-                        added_label.Text = "Hozzáadás sikertelen";
+                        added_label.Text = "Hozzáadás sikertelen.";
                     }
                     else
                     {
                         error_label.Text = "Nem megfelelő szó!";
-                        added_label.Text = "Hozzáadás sikertelen";
+                        added_label.Text = "Hozzáadás sikertelen.";
                     }
                 }
             }
