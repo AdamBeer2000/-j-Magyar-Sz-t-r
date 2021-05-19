@@ -13,102 +13,133 @@ namespace WebNewmagyarszotar
     {
         //public DataBase db = DataBase.Instance;
         //public DataBase db = new DataBase(true);
-        public DataBase db = DataBase.Instance;
+        //public DataBase db = DataBase.Instance;
+        static Dictionary<int, DataBase> dbMap = new Dictionary<int, DataBase>();
 
         //static public int pagenum = 0;
         static public List<String> showall = new List<string>();
+        int session_id;
 
-        protected void update()
+        protected void update(int pagenum = -1)
         {
             Dictionary<String, EnglishWord> words;
             int pagecount = 0;
-            int pagenum;
-            if (Request.Cookies["Thing"] == null)
+            if(dbMap[session_id].isReady())
             {
-                pagenum = 0;
+                if(pagenum==-1)
+                {
+                    if (Request.Cookies["Thing"] == null)
+                    {
+                        pagenum = 0;
+                    }
+                    else
+                    {
+                        if (searchBox.Text != String.Empty)
+                        {
+                            pagenum = 0;
+                        }
+                        else
+                        {
+                            pagenum = Convert.ToInt32(Request.Cookies["Thing"]["Page"]);
+                        }
+                    }
+                }
+
+                int id = -1;
+                if (Request.Cookies["User"] != null)
+                {
+                    if (Request.Cookies["User"]["Logged"] != null)
+                    {
+                        id = Convert.ToInt32(Request.Cookies["User"]["Logged"]);
+                    }
+                }
+                bool retry=true;
+            
+                words = dbMap[session_id].getAll(searchBox.Text ,pagenum, id);
+                if(words.Values.Count()==0)
+                {
+                    update(pagenum - 1);
+                }
+                pagecount = dbMap[session_id].rowCount(searchBox.Text, 20);
+                retry = false;
+            
+
+                SzotarTable.Rows.Clear();
+                addHeaderRow(SzotarTable);
+
+                foreach (KeyValuePair<String, EnglishWord> word in words)
+                {
+                    if (word.Value.getTranslations().Count > 1)
+                    {
+                        addOneRowMoultipleTrans(word.Value, SzotarTable);
+                    }
+                    else
+                    {
+                        addOneRow(word.Value, word.Value.getTranslations()[0], SzotarTable, false);
+                    }
+                }
+                //Label1.Text = Convert.ToString(pagenum) + " it: " + i;
+
+                pagenums.Controls.Clear();
+
+                for (int k = 0; k <= pagecount+1; k++)
+                {
+                    LinkButton lb = new LinkButton();
+                    if (k == pagenum)
+                    {
+                        lb.CssClass = "lapozofocus";
+                    }
+                    else
+                    {
+                        lb.CssClass = "lapozo";
+                    }
+                    lb.ID = k + "_Page";
+                    lb.Text = "" + k;
+                    int tmp = k;
+                    lb.CommandArgument += tmp;
+                    lb.Command += new CommandEventHandler(skip_forwad_button_Click);
+                    pagenums.Controls.Add(lb);
+
+                    Label l = new Label();
+                    l.Text = " ";
+                    pagenums.Controls.Add(l);
+                }
             }
             else
             {
-                pagenum = Convert.ToInt32(Request.Cookies["Thing"]["Page"]);
-            }
-
-            int id = -1;
-            if (Request.Cookies["User"] != null)
-            {
-                if (Request.Cookies["User"]["Logged"] != null)
-                {
-                    id = Convert.ToInt32(Request.Cookies["User"]["Logged"]);
-                }
-            }
-            bool retry=true;
-            
-            words = db.getAll(searchBox.Text ,pagenum, id);
-            pagecount = db.rowCount(searchBox.Text, 20);
-            retry = false;
-            
-
-            SzotarTable.Rows.Clear();
-            addHeaderRow(SzotarTable);
-
-            foreach (KeyValuePair<String, EnglishWord> word in words)
-            {
-                if (word.Value.getTranslations().Count > 1)
-                {
-                    addOneRowMoultipleTrans(word.Value, SzotarTable);
-                }
-                else
-                {
-                    addOneRow(word.Value, word.Value.getTranslations()[0], SzotarTable, false);
-                }
-            }
-            //Label1.Text = Convert.ToString(pagenum) + " it: " + i;
-
-            pagenums.Controls.Clear();
-
-            for (int k = 0; k <= pagecount+1; k++)
-            {
-                LinkButton lb = new LinkButton();
-                if (k == pagenum)
-                {
-                    lb.CssClass = "lapozofocus";
-                }
-                else
-                {
-                    lb.CssClass = "lapozo";
-                }
-                lb.ID = k + "_Page";
-                lb.Text = "" + k;
-                int tmp = k;
-                lb.CommandArgument += tmp;
-                lb.Command += new CommandEventHandler(skip_forwad_button_Click);
-                pagenums.Controls.Add(lb);
-
-                Label l = new Label();
-                l.Text = " ";
-                pagenums.Controls.Add(l);
-            }
-            
-            if(!db.isReady())
-            {
-                Thread.Sleep(15000);
+                Thread.Sleep(10000);
                 update();
             }
-            
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["Thing"]==null)
+            if (Request.Cookies["Thing"] == null)
             {
                 Response.Cookies.Add(new HttpCookie("Thing"));
                 Response.Cookies["Thing"]["Page"] = "0";
                 Response.Cookies["Thing"]["Ser"] = "";
                 Response.Cookies["Thing"].Expires = DateTime.Now.AddHours(1);
             }
+
+            session_id = 69420;
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    session_id = Convert.ToInt32(Request.Cookies["User"]["Logged"]);
+                }
+            }
+            if(!dbMap.ContainsKey(session_id))
+            {
+                dbMap.Add(session_id, new DataBase(true));
+            }
+
             update();
 
             //Label1.Text = db.getLatestErrorMsg();
         }
+        
 
         private void addHeaderRow(HtmlTable table)
         {
@@ -469,10 +500,10 @@ namespace WebNewmagyarszotar
             {
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    bool state = !db.addHunWord(WordAddInputBox.Text, Convert.ToInt32(Request.Cookies["User"]["Logged"]), Convert.ToInt32(Request.Cookies["TMPEgy"]["AddId"]));
+                    bool state = !dbMap[session_id].addHunWord(WordAddInputBox.Text, Convert.ToInt32(Request.Cookies["User"]["Logged"]), Convert.ToInt32(Request.Cookies["TMPEgy"]["AddId"]));
                     if (state)
                     {
-                        db.getLatestErrorMsg();
+                        dbMap[session_id].getLatestErrorMsg();
                         AddWordResponseLable.Text = "Vótmá";
                         AddWordResponseLable.CssClass = "LableBad";
                         //Response.Write("<script>alert('Vótmá')</script>");
@@ -510,7 +541,7 @@ namespace WebNewmagyarszotar
             {
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
-                    db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), '?', Convert.ToInt32(Request.Cookies["TMPKetto"]["RepId"]), reportCommentInput.Text);
+                    dbMap[session_id].addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), '?', Convert.ToInt32(Request.Cookies["TMPKetto"]["RepId"]), reportCommentInput.Text);
                     ReportWordResponseLable.Text = "A bejelentést megkaptuk.Köszönjük a viszajelzést!";
                     ReportWordResponseLable.CssClass = "LableGood";
                     Button3.Text = "Vissza";
@@ -540,7 +571,7 @@ namespace WebNewmagyarszotar
         protected void forward_button_Click(object sender, ImageClickEventArgs e)
         {
             int pagenum = Convert.ToInt32(Request.Cookies["Thing"]["Page"]);
-            if (db.rowCount(searchBox.Text, 20) >= pagenum)
+            if (dbMap[session_id].rowCount(searchBox.Text, 20) >= pagenum)
             {
                 Response.Cookies["Thing"]["Page"] =""+(pagenum+1);
                 Response.Cookies["Thing"].Expires = DateTime.Now.AddHours(1);
@@ -572,7 +603,7 @@ namespace WebNewmagyarszotar
 
             if (Request.Cookies["User"] != null)
                 if (Request.Cookies["User"]["Logged"] != null)
-                    db.addLike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    dbMap[session_id].addLike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
 
             update();
 
@@ -583,7 +614,7 @@ namespace WebNewmagyarszotar
 
             if (Request.Cookies["User"] != null)
                 if (Request.Cookies["User"]["Logged"] != null)
-                    db.addDislike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
+                    dbMap[session_id].addDislike(Convert.ToInt32(id), Convert.ToInt32(Request.Cookies["User"]["Logged"]));
 
             update();
         }

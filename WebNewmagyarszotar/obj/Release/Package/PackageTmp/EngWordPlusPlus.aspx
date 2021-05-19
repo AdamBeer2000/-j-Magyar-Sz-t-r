@@ -300,7 +300,7 @@
                 <asp:TextBox ID="eng_description_textbox" runat="server" OnTextChanged="eng_description_textbox_TextChanged"></asp:TextBox>
                 <br />
                 <h1>
-                    Magyar szó (Opcionális):
+                    Magyar szó (opcionális):
                 </h1>
 
                 <asp:Label ID="error_hun" runat="server"></asp:Label>

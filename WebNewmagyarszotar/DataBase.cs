@@ -37,6 +37,7 @@ namespace WebNewmagyarszotar
             defconn.InitialCatalog = "NewMagyarSzotar";
             defconn.UserID = "pistabacsi";
             defconn.Password = "Nemezajelszo1";
+            defconn.MultipleActiveResultSets = true;
             defconn.ConnectTimeout = 30;
             return defconn.ConnectionString;
         }
@@ -62,7 +63,6 @@ namespace WebNewmagyarszotar
                 }
             }
         }
-
         private DataBase()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
