@@ -145,10 +145,10 @@
             
             <asp:Label ID="only_text_label0" runat="server" Text=""></asp:Label><br>
             <asp:Label ID="rank_label" runat="server"></asp:Label><br><br><br>
-            <asp:Label ID="only_text_label1" runat="server" Text="A legkedveltebb szavadról hiányzó like-ok következő rangig"></asp:Label><br>
+            <asp:Label ID="only_text_label1" runat="server" Text="A legkedveltebb szavadról hiányzó like-ok következő rangig:"></asp:Label><br>
             <asp:Label ID="need_to_next_rank_label" runat="server"></asp:Label><br><br><br>
             
-            <asp:Label ID="only_text_label2" runat="server" Text="Többi felhasználó rangja  [ Csak akkor lehetsz rajta a ranglistán, ha már kaptál lájkot! ]"></asp:Label><br>
+            <asp:Label ID="only_text_label2" runat="server" Text="Többi felhasználó rangja  [ Csak akkor lehetsz rajta a ranglistán, ha már kaptál lájkot! ]:"></asp:Label><br>
             <br>
 
             <table id="rank_table" runat="server">
