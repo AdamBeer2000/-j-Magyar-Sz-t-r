@@ -534,7 +534,7 @@
     <table id="search">
         <tr>
             <td>
-                <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                <asp:TextBox ID="searchBox" runat="server"></asp:TextBox>
                 <asp:ImageButton ID ="searchbutton" runat="server" src="https://i.imgur.com/vXukVi0.png"></asp:ImageButton>
             </td>
         </tr>

@@ -35,17 +35,19 @@ namespace WebNewmagyarszotar
         {
             SqlConnectionStringBuilder defconn = new SqlConnectionStringBuilder("Server=tcp:the-first-git-emire.database.windows.net,1433");
             defconn.InitialCatalog = "NewMagyarSzotar";
-            defconn.PersistSecurityInfo = false;
             defconn.UserID = "pistabacsi";
             defconn.Password = "Nemezajelszo1";
-            defconn.MultipleActiveResultSets = false;
-            defconn.Encrypt = true;
-            defconn.TrustServerCertificate = false;
             defconn.ConnectTimeout = 30;
-            //defconn.Add("Auto Translate",false);
             return defconn.ConnectionString;
         }
 
+        public void openSafety()
+        {
+            if(conn.State==ConnectionState.Open)
+            {
+                conn.Close();
+            }
+        }
         public static DataBase Instance
         {
             get
@@ -60,13 +62,20 @@ namespace WebNewmagyarszotar
                 }
             }
         }
-    
 
         private DataBase()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
             string querry = File.ReadAllText(path);
             boworseQuerry =querry;
+            Console.WriteLine("DB Create");
+        }
+
+        public DataBase(bool thing)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/listquerryG.sql";
+            string querry = File.ReadAllText(path);
+            boworseQuerry = querry;
             Console.WriteLine("DB Create");
         }
 
@@ -184,6 +193,7 @@ namespace WebNewmagyarszotar
 
         public Dictionary<String, EnglishWord> getExploreWords(int param)
         {
+            
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Scripts/explorer_sql_a.sql";
             string query = File.ReadAllText(path);
 
@@ -240,10 +250,9 @@ namespace WebNewmagyarszotar
         public Dictionary<String, EnglishWord> getAll(string searchField, int page_num,int logged_id=-1)
         {
             Dictionary<String, EnglishWord> words = new Dictionary<String, EnglishWord>();
-            
-            SqlCommand sqlCmd = new SqlCommand(boworseQuerry, new SqlConnection(buildDefConnString()));
             try
             {
+                SqlCommand sqlCmd = new SqlCommand(boworseQuerry, conn);
                 SqlParameter p1 = new SqlParameter(@"@scale", 20);
                 p1.SqlDbType = SqlDbType.Int;
                 p1.Direction = ParameterDirection.Input;
@@ -263,7 +272,7 @@ namespace WebNewmagyarszotar
                 sqlCmd.Parameters.Add(p3);
                 sqlCmd.Parameters.Add(p4);
 
-                sqlCmd.Connection.Open();
+                conn.Open();
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -281,11 +290,11 @@ namespace WebNewmagyarszotar
                         words[reader.GetString(1)].addTranslation(tmp);
                     }
                 }
-                sqlCmd.Connection.Close();
+                conn.Close();
             }
             catch (Exception e)
             {
-                sqlCmd.Connection.Close();
+                conn.Close();
                 latestErrorMsg = e.Message;
                 Console.WriteLine(e.Message); 
             }

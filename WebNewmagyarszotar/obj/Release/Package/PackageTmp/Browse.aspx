@@ -113,7 +113,7 @@
             outline: none;
             border: 1px solid #898E01;
             min-width: 40%;
-            font-size: 300%;
+            font-size: 400%;
             font-family: Calibri;
             color: #898E01;
             background-color: #080808;
@@ -209,6 +209,7 @@
 
         #back_image {
             width: 20%;
+            outline: none;
         }
 
         .modalBackground
@@ -340,7 +341,7 @@
                 outline: none;
                 border: 1px solid #898E01;
                 min-width: 40%;
-                font-size: 100%;
+                font-size: 200%;
                 font-family: Calibri;
                 color: #898E01;
                 background-color: #080808;
@@ -533,7 +534,7 @@
     <table id="search">
         <tr>
             <td>
-                <asp:TextBox ID="searchBox" runat="server" OnTextChanged="searchBox_TextChanged" AutoPostBack="True"></asp:TextBox>
+                <asp:TextBox ID="searchBox" runat="server"></asp:TextBox>
                 <asp:ImageButton ID ="searchbutton" runat="server" src="https://i.imgur.com/vXukVi0.png"></asp:ImageButton>
             </td>
         </tr>
