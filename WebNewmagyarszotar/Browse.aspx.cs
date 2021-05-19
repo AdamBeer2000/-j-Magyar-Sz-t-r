@@ -585,7 +585,7 @@ namespace WebNewmagyarszotar
                     }
                     else
                     {
-                        AddWordResponseLable.Text = "Sikeresen hozzáadva";
+                        AddWordResponseLable.Text = "Sikeresen hozzáadva.";
                         AddWordResponseLable.CssClass = "LableGood";
                         //Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
                     }
@@ -605,7 +605,7 @@ namespace WebNewmagyarszotar
                 if (Request.Cookies["User"]["Logged"] != null)
                 {
                     db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), reportWordType, reportwordid, reportCommentInput.Text);
-                    ReportWordResponseLable.Text = "A bejelentést megkaptuk.Köszönjük a viszajelzést!";
+                    ReportWordResponseLable.Text = "A bejelentést megkaptuk. Köszönjük a viszajelzést!";
                     ReportWordResponseLable.CssClass = "LableGood";
                     Button3.Text = "Vissza";
                 }
