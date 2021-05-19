@@ -14,17 +14,15 @@ namespace WebNewmagyarszotar
         //public DataBase db = DataBase.Instance;
         //public DataBase db = new DataBase(true);
         public DataBase db = DataBase.Instance;
-        
+
         //static public int pagenum = 0;
-        static public int pagecount = 0;
         static public List<String> showall = new List<string>();
-        static Dictionary<String, EnglishWord> words;
-        static int addwordid;
-        static int reportwordid;
         static char reportWordType;
 
         protected void update()
         {
+            Dictionary<String, EnglishWord> words;
+            int pagecount = 0;
             int pagenum;
             if (Request.Cookies["Thing"] == null)
             {
@@ -44,12 +42,11 @@ namespace WebNewmagyarszotar
                 }
             }
             bool retry=true;
-            if (db.isReady())
-            {
-                words = db.getAll(searchBox.Text, pagenum, id);
-                pagecount = db.rowCount(searchBox.Text, 20);
-                retry = false;
-            }
+            
+            words = db.getAll(searchBox.Text, pagenum, id);
+            pagecount = db.rowCount(searchBox.Text, 20);
+            retry = false;
+            
 
             SzotarTable.Rows.Clear();
             addHeaderRow(SzotarTable);
@@ -92,7 +89,7 @@ namespace WebNewmagyarszotar
                 pagenums.Controls.Add(l);
             }
             
-            if(retry)
+            if(!db.isReady())
             {
                 Thread.Sleep(15000);
                 update();
@@ -106,6 +103,7 @@ namespace WebNewmagyarszotar
             {
                 Response.Cookies.Add(new HttpCookie("Thing"));
                 Response.Cookies["Thing"]["Page"] = "0";
+                Response.Cookies["Thing"]["Ser"] = "";
                 Response.Cookies["Thing"].Expires = DateTime.Now.AddHours(1);
             }
             update();
@@ -460,12 +458,35 @@ namespace WebNewmagyarszotar
                     string partid = ((ImageButton)sender).ID;
                     partid = partid.Split('_')[1];
                     int id = Convert.ToInt32(partid);
-                    addwordid = id;
+                    Response.Cookies["TMPEgy"]["AddId"] = ""+id;
                     mp1.Show();
                 }
             }
         }
-
+        protected void WordAddInputConfirm_Click(object sender, EventArgs e)
+        {
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    bool state = !db.addHunWord(WordAddInputBox.Text, Convert.ToInt32(Request.Cookies["User"]["Logged"]), Convert.ToInt32(Request.Cookies["TMPEgy"]["AddId"]));
+                    if (state)
+                    {
+                        db.getLatestErrorMsg();
+                        AddWordResponseLable.Text = "Vótmá";
+                        AddWordResponseLable.CssClass = "LableBad";
+                        //Response.Write("<script>alert('Vótmá')</script>");
+                    }
+                    else
+                    {
+                        AddWordResponseLable.Text = "Sikeresen hozzáadva";
+                        AddWordResponseLable.CssClass = "LableGood";
+                        //Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
+                    }
+                }
+            }
+            mp1.Show();
+        }
         protected void OpenWindowReport(object sender, CommandEventArgs e)
         {
             ReportWordResponseLable.Text = "";
@@ -478,11 +499,24 @@ namespace WebNewmagyarszotar
                     e.ToString().Split();
                     int id = Convert.ToInt32(e.CommandArgument.ToString().Split(',')[1]);
                     char wordType = Convert.ToChar(e.CommandArgument.ToString().Split(',')[0][0]);
-                    reportwordid = id;
-                    reportWordType = wordType;
+                    Response.Cookies["TMPKetto"]["RepId"] = "" + id;
                     mp2.Show();
                 }
             }
+        }
+        protected void WordAddReportConfirm_Click(object sender, EventArgs e)
+        {
+            if (Request.Cookies["User"] != null)
+            {
+                if (Request.Cookies["User"]["Logged"] != null)
+                {
+                    db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), '?', Convert.ToInt32(Request.Cookies["TMPKetto"]["RepId"]), reportCommentInput.Text);
+                    ReportWordResponseLable.Text = "A bejelentést megkaptuk.Köszönjük a viszajelzést!";
+                    ReportWordResponseLable.CssClass = "LableGood";
+                    Button3.Text = "Vissza";
+                }
+            }
+            mp2.Show();
         }
 
         protected void OpenWindowInfo(object sender, CommandEventArgs e)
@@ -569,52 +603,21 @@ namespace WebNewmagyarszotar
             update();
         }
 
-        protected void WordAddInputConfirm_Click(object sender, EventArgs e)
-        {
-            if (Request.Cookies["User"] != null)
-            {
-                if (Request.Cookies["User"]["Logged"] != null)
-                {
-                    bool state = !db.addHunWord(WordAddInputBox.Text, Convert.ToInt32(Request.Cookies["User"]["Logged"]), addwordid);
-                    if (state)
-                    {
-                        db.getLatestErrorMsg();
-                        AddWordResponseLable.Text = "Vótmá";
-                        AddWordResponseLable.CssClass = "LableBad";
-                        //Response.Write("<script>alert('Vótmá')</script>");
-                    }
-                    else
-                    {
-                        AddWordResponseLable.Text = "Sikeresen hozzáadva";
-                        AddWordResponseLable.CssClass = "LableGood";
-                        //Response.Write("<script>alert('Sikeresen hozzáadva')</script>");
-                    }
-                }
-            }
-            mp1.Show();
-        }
+        
         protected void WordAddCancle_Click(object sender, EventArgs e)
         {
             mp1.Hide();
         }
 
-        protected void WordAddReportConfirm_Click(object sender, EventArgs e)
-        {
-            if (Request.Cookies["User"] != null)
-            {
-                if (Request.Cookies["User"]["Logged"] != null)
-                {
-                    db.addReport(Convert.ToInt32(Request.Cookies["User"]["Logged"]), reportWordType, reportwordid, reportCommentInput.Text);
-                    ReportWordResponseLable.Text = "A bejelentést megkaptuk.Köszönjük a viszajelzést!";
-                    ReportWordResponseLable.CssClass = "LableGood";
-                    Button3.Text = "Vissza";
-                }
-            }
-            mp2.Show();
-        }
+       
         protected void WordReportCancle_Click(object sender, EventArgs e)
         {
             mp2.Hide();
+        }
+
+        protected void searchBox_TextChanged1(object sender, EventArgs e)
+        {
+
         }
     }
 }
